@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>仙侣介绍 — 九小卿攻略站</title>
+<meta name="description" content="九小卿仙侣系统攻略 - 仙侣图鉴、寻缘、升星、神器、结交、洞府、元神、情缘">
+<link rel="icon" type="image/jpeg" href="art/favicon.jpg">
+<style>
+  :root{
+    --ink:#1a1a1a;
+    --muted:#666;
+    --link:#4d7cff;
+    --bg:#fff;
+    --pink:#ff4d8d;
+    --violet:#8b5cf6;
+    --card:#ffffff;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font);
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.8;
+  }
+  a{color:var(--link);text-decoration:none}
+  a:hover{text-decoration:underline}
+  img{max-width:100%;display:block}
+  button{font-family:inherit}
+
+  .wrap{max-width:960px;margin:0 auto;padding:32px 24px 60px}
+
+  /* Header */
+  .back-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:10px 20px;border-radius:999px;
+    background:var(--card);
+    border:1.5px solid rgba(22,19,15,.08);
+    color:var(--ink);font-weight:700;font-size:.9rem;
+    cursor:pointer;transition:all .2s;
+    box-shadow:0 4px 12px rgba(22,19,15,.06);
+  }
+  .back-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(22,19,15,.12);
+    border-color:var(--pink);
+    text-decoration:none;
+  }
+  .back-btn svg{width:18px;height:18px}
+  .page-title{
+    text-align:center;margin:40px 0 48px;
+  }
+  .page-title h1{
+    font-size:clamp(2rem,5vw,3rem);
+    font-weight:900;letter-spacing:.02em;
+    background:linear-gradient(135deg,var(--violet),var(--pink));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+
+  /* Notice box */
+  .notice-box{
+    border:1.5px solid #f0a0a0;
+    border-radius:8px;
+    padding:20px 24px;
+    margin-bottom:24px;
+    background:#fff;
+  }
+  .notice-box .notice-item{
+    display:flex;gap:10px;margin-bottom:12px;
+    font-size:.95rem;line-height:1.7;
+  }
+  .notice-box .notice-item:last-child{margin-bottom:0}
+  .notice-box .pin{font-size:1.2rem;flex-shrink:0}
+
+  /* Sections */
+  .section{
+    margin-bottom:16px;
+  }
+  #xianlv-encyclopedia{margin-bottom:40px}
+
+  /* Sub-header bar */
+  .sub-header{
+    background:#e8f4fd;
+    border-left:3px solid #4d7cff;
+    padding:6px 14px;
+    margin:24px 0 14px;
+    font-size:1.05rem;
+    font-weight:700;
+    color:var(--ink);
+  }
+
+  /* Content list */
+  .section ol, .section ul{
+    padding-left:0;margin-bottom:16px;list-style:none;
+  }
+  .section li{
+    margin-bottom:10px;
+    font-size:.95rem;
+    line-height:1.8;
+    color:#333;
+    padding-left:0;
+  }
+
+  /* Collapsible banner */
+  .hs-toggle-header{
+    background:#f3e8ff;
+    border-left-color:#8b5cf6;
+    font-size:1.25rem;
+    margin:16px 0 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    cursor:pointer;
+    -webkit-user-select:none;
+    user-select:none;
+    transition:background .2s;
+  }
+  .hs-toggle-header:hover{background:#ece4fb}
+  .hs-toggle-header:focus-visible{outline:2px solid #8b5cf6;outline-offset:2px}
+  .section > .hs-toggle-header:first-child{margin-top:0}
+  .hs-expand-btn{
+    background:none;
+    border:none;
+    font-family:inherit;
+    font-size:1rem;
+    font-weight:700;
+    color:#d43a3a;
+    cursor:pointer;
+    padding:2px 8px;
+    flex:none;
+  }
+  .hs-collapsible{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+  .hs-collapsible.open{grid-template-rows:1fr}
+  .hs-collapsible-inner{overflow:hidden;min-height:0;padding-top:20px}
+
+  /* Images */
+  .step-img{
+    border-radius:8px;
+    margin:12px auto;
+    display:block;
+    max-width:min(640px,100%);
+  }
+  .img-row{
+    display:flex;gap:12px;flex-wrap:wrap;margin:12px 0;
+    justify-content:center;
+  }
+  .img-row-item{
+    border-radius:8px;flex:1;min-width:200px;max-width:400px;
+  }
+
+  /* Tables */
+  .table-wrap{
+    overflow-x:auto;margin:16px 0;
+    border:1px solid #e5e7eb;
+    border-radius:8px;
+  }
+  .table-wrap table{
+    width:100%;border-collapse:collapse;
+    font-size:.9rem;
+  }
+  .table-wrap th{
+    background:#f3f4f6;
+    font-weight:700;padding:10px 14px;
+    text-align:left;white-space:nowrap;
+    border-bottom:2px solid #e5e7eb;
+  }
+  .table-wrap td{
+    padding:10px 14px;
+    border-bottom:1px solid #f3f4f6;
+    color:#333;vertical-align:top;
+  }
+  .table-wrap tr:last-child td{border-bottom:none}
+
+  /* Bond table colors */
+  .c-blue{color:#3b82f6}
+  .c-purple{color:#8b5cf6}
+  .c-red{color:#ef4444}
+  .th-blue{color:#3b82f6}
+  .th-purple{color:#8b5cf6}
+  .th-red{color:#ef4444}
+  .bond-person{font-weight:700;white-space:nowrap}
+  .bond-name{font-weight:600;white-space:nowrap}
+  .quality-badge{
+    display:inline-block;
+    font-size:.78rem;font-weight:700;
+    padding:1px 10px;border-radius:999px;
+    white-space:nowrap;
+  }
+  .quality-badge.q-SS{background:rgba(239,68,68,.1);color:#ef4444}
+  .quality-badge.q-S{background:rgba(249,115,22,.1);color:#f97316}
+  .quality-badge.q-A{background:rgba(139,92,246,.1);color:#8b5cf6}
+  .quality-badge.q-B{background:rgba(59,130,246,.1);color:#3b82f6}
+
+  /* Encyclopedia layout */
+  .ency-layout{display:flex;gap:24px;margin-top:20px;min-height:500px}
+  .ency-sidebar{flex-shrink:0;width:160px;display:flex;flex-direction:column;gap:6px}
+  .ency-side-btn{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 14px;
+    border-radius:12px;
+    border:1.5px solid #e8e4dd;
+    background:#fff;
+    font-size:.9rem;
+    font-weight:600;
+    color:#555;
+    cursor:pointer;
+    transition:all .2s;
+    text-align:left
+  }
+  .ency-side-btn:hover{border-color:#c5b8ff;color:#7c3aed;background:rgba(139,92,246,.04)}
+  .ency-side-btn.active{background:linear-gradient(135deg,#f0e6ff,#ffe6f0);border-color:#d4b8ff;color:#7c3aed}
+  .side-count{margin-left:auto;font-size:.75rem;color:#aaa;font-weight:400}
+  .ency-side-btn.active .side-count{color:#b088d0}
+
+  .ency-main{flex:1;min-width:0}
+  .ency-search-bar{margin-bottom:16px}
+  .ency-search-bar input{
+    width:100%;
+    max-width:320px;
+    padding:10px 18px;
+    border-radius:999px;
+    border:1.5px solid #e0dcd5;
+    font-size:.9rem;
+    outline:none;
+    transition:border .2s;
+    background:#fff
+  }
+  .ency-search-bar input:focus{border-color:#8b5cf6}
+
+  /* Companion grid - fixed 3 rows height with scroll */
+  .xianlv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:20px 12px;height:390px;overflow-y:auto;padding-right:4px}
+  .xianlv-grid::-webkit-scrollbar{width:4px}
+  .xianlv-grid::-webkit-scrollbar-thumb{background:#d4b8ff;border-radius:4px}
+  .xianlv-item{display:flex;flex-direction:column;align-items:center;cursor:pointer;transition:transform .2s}
+  .xianlv-item:hover{transform:translateY(-3px)}
+  .xl-avatar{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    overflow:hidden;
+    margin-bottom:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+    transition:box-shadow .2s
+  }
+  .xianlv-item:hover .xl-avatar{box-shadow:0 4px 16px rgba(0,0,0,.12)}
+  .xl-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+  .xl-g-B{background:linear-gradient(135deg,#93c5fd,#3b82f6)}
+  .xl-g-A{background:linear-gradient(135deg,#c4b5fd,#8b5cf6)}
+  .xl-g-S{background:linear-gradient(135deg,#fdba74,#f97316)}
+  .xl-g-SS{background:linear-gradient(135deg,#fca5a5,#ef4444)}
+  .xl-grid-name{font-size:.85rem;font-weight:600;color:#333;text-align:center}
+  .xl-grid-sect{font-size:.7rem;color:#6b7280;background:rgba(107,114,128,.08);padding:1px 8px;border-radius:999px;margin-top:3px}
+
+  /* Detail modal overlay */
+  .pet-detail-overlay{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:rgba(0,0,0,.45);
+    z-index:1000;
+    align-items:center;
+    justify-content:center;
+    padding:20px
+  }
+  .pet-detail-overlay.show{display:flex}
+  .pet-detail-card{
+    background:#fff;
+    border-radius:20px;
+    max-width:560px;
+    width:100%;
+    height:80vh;
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    box-shadow:0 20px 60px rgba(0,0,0,.15);
+    animation:cardIn .25s ease
+  }
+  @keyframes cardIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+  .detail-close{position:absolute;top:14px;right:18px;background:none;border:none;font-size:1.6rem;color:#999;cursor:pointer;line-height:1;z-index:10}
+  .detail-close:hover{color:#333}
+
+  /* Fixed header */
+  .detail-header{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:28px 28px 16px;
+    border-bottom:1px solid #f0ede8;
+    flex-shrink:0;
+    background:#fff;
+    border-radius:20px 20px 0 0
+  }
+  .xl-detail-avatar{
+    width:64px;height:64px;border-radius:50%;overflow:hidden;flex-shrink:0
+  }
+  .xl-detail-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+  .detail-title{font-size:1.3rem;font-weight:700;color:#1a1a1a}
+  .detail-info{font-size:.85rem;color:#888;margin-top:2px}
+  .grade-badge{font-size:.75rem;padding:2px 10px;border-radius:999px;font-weight:600;margin-top:4px;display:inline-block}
+  .grade-badge.g-B{background:rgba(59,130,246,.1);color:#3b82f6}
+  .grade-badge.g-A{background:rgba(139,92,246,.1);color:#8b5cf6}
+  .grade-badge.g-S{background:rgba(249,115,22,.1);color:#f97316}
+  .grade-badge.g-SS{background:rgba(239,68,68,.1);color:#ef4444}
+
+  /* Scrollable content area */
+  .detail-body{flex:1;overflow-y:auto;overflow-x:hidden;padding:16px 28px 24px;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+  .detail-body::-webkit-scrollbar{width:4px}
+  .detail-body::-webkit-scrollbar-thumb{background:#d4b8ff;border-radius:4px}
+
+  .xl-modal-sub{
+    font-size:.95rem;font-weight:700;color:#1a1a1a;
+    margin:18px 0 10px;
+    padding-bottom:6px;
+    border-bottom:1.5px solid rgba(139,92,246,.12)
+  }
+  .xl-modal-sub:first-child{margin-top:0}
+  .xl-modal-sub-note{font-size:.72rem;font-weight:400;color:#999;margin-left:8px}
+
+  .xl-skill-list{display:grid;gap:6px}
+  .xl-skill{padding:6px 0;border-bottom:1px dashed #f0ede8}
+  .xl-skill:last-child{border-bottom:none}
+  .xl-skill-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .xl-skill-name{font-size:.9rem;font-weight:700;color:#8b5cf6}
+  .xl-skill-cond{font-size:.7rem;background:rgba(245,158,11,.08);color:#b45309;padding:1px 8px;border-radius:999px;white-space:nowrap}
+  .xl-skill-desc{font-size:.85rem;color:#444;line-height:1.6;margin-top:2px}
+
+  .stats-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;margin:8px 0 16px}
+  .stats-table-wrap::-webkit-scrollbar{height:4px}
+  .stats-table-wrap::-webkit-scrollbar-thumb{background:#d4b8ff;border-radius:4px}
+
+  .xl-bond-table{border-collapse:collapse;font-size:.82rem;min-width:480px}
+  .xl-bond-table th{
+    background:rgba(139,92,246,.06);
+    font-weight:600;
+    padding:6px 8px;
+    text-align:left;
+    white-space:nowrap;
+    border-bottom:1.5px solid rgba(139,92,246,.12);
+    font-size:.78rem;
+    color:#555
+  }
+  .xl-bond-table td{padding:5px 8px;border-bottom:1px solid #f0ede8;vertical-align:top}
+  .xl-bond-table .bond-name{font-weight:600;color:#8b5cf6;white-space:nowrap}
+
+  .xl-gift-note{
+    font-size:.85rem;
+    color:#444;
+    background:rgba(255,77,141,.05);
+    padding:8px 14px;
+    border-radius:8px;
+    margin:8px 0 12px;
+    border-left:3px solid #ff4d8d
+  }
+  .xl-gift-note b{color:#ff4d8d;font-weight:700}
+
+  .footer{
+    text-align:center;padding:40px 0 20px;
+    color:var(--muted);font-size:.85rem;
+  }
+
+  @media (max-width:768px){
+    .page-title{margin:24px 0 32px}
+    .ency-layout{flex-direction:column}
+    .ency-sidebar{width:100%;flex-direction:row;flex-wrap:wrap;gap:8px}
+    .ency-side-btn{flex:1;min-width:120px;padding:10px 12px}
+    .xianlv-grid{grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:16px 8px;height:330px}
+    .xl-avatar{width:64px;height:64px}
+    .pet-detail-card{height:85vh;border-radius:16px}
+    .detail-header{padding:20px 20px 14px;border-radius:16px 16px 0 0}
+    .detail-body{padding:12px 20px 20px}
+    .detail-title{font-size:1.15rem}
+    .xl-detail-avatar{width:56px;height:56px}
+    .section li{font-size:.85rem;word-wrap:break-word;overflow-wrap:break-word}
+  }
+  @media (max-width:480px){
+    .xianlv-grid{grid-template-columns:repeat(3,1fr);height:300px}
+    .xl-bond-table{font-size:.72rem}
+    .xl-skill{padding:6px 0}
+    .pet-detail-card{height:90vh;border-radius:12px}
+    .detail-header{padding:16px 16px 12px;border-radius:12px 12px 0 0}
+    .detail-body{padding:10px 16px 16px}
+    .detail-title{font-size:1.05rem}
+    .xl-detail-avatar{width:48px;height:48px}
+    .detail-close{top:10px;right:14px;font-size:1.4rem}
+  }
+
+  /* 全屏水印 */
+  .site-watermark{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99999;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22220%22%20height%3D%22160%22%3E%0A%20%20%3Ctext%20x%3D%2220%22%20y%3D%2280%22%20font-size%3D%2212%22%20fill%3D%22%23000000%22%20fill-opacity%3D%220.05%22%20font-family%3D%22Microsoft%20YaHei%2C%20sans-serif%22%20transform%3D%22rotate%2825%2C%20110%2C%2080%29%22%3E%E4%B9%9D%E5%B0%8F%E5%8D%BF%E6%94%BB%E7%95%A5%E7%AB%99%3C/text%3E%0A%3C/svg%3E");background-repeat:repeat;opacity:1}
+
+  /* 禁止复制 */
+  body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+  input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+
+</style>
+</head>
+<body>
+<div class="site-watermark"></div>
+
+<div class="wrap">
+
+  <a href="index.html?skipIntro=1#card-companion" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    返回首页
+  </a>
+  <a href="conv_8.html" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    智能客服
+  </a>
+
+  <div class="page-title">
+    <h1>仙侣介绍</h1>
+  </div>
+
+  <div class="notice-box">
+    <div class="notice-item">
+      <span class="pin">&#x1F4CC;</span>
+      <span>1.仙侣系统开启等级：人物等级达到 13 级。仙侣分为 B/A/S/SS 四个级别（由低到高），仙侣后三个技能需要仙侣修炼分别达到 8/10/12 级解锁。</span>
+    </div>
+    <div class="notice-item">
+      <span class="pin">&#x1F4CC;</span>
+      <span>2.下方仙侣图鉴可按级别筛选、搜索名称，点击卡片可查看该仙侣的技能、情缘与礼物偏好；其余章节均可点击标题栏展开/收起。</span>
+    </div>
+  </div>
+
+  <div class="section" id="xianlv-encyclopedia">
+    <h2 style="font-size:1.4rem;font-weight:700;margin-bottom:4px">仙侣图鉴</h2>
+    <div class="ency-layout">
+      <div class="ency-sidebar">
+        <button class="ency-side-btn active" data-cat="ALL"><span>全部仙侣</span><span class="side-count"></span></button>
+        <button class="ency-side-btn" data-cat="B"><span>B级</span><span class="side-count"></span></button>
+        <button class="ency-side-btn" data-cat="A"><span>A级</span><span class="side-count"></span></button>
+        <button class="ency-side-btn" data-cat="S"><span>S级</span><span class="side-count"></span></button>
+        <button class="ency-side-btn" data-cat="SS"><span>SS级</span><span class="side-count"></span></button>
+      </div>
+      <div class="ency-main">
+        <div class="ency-search-bar"><input type="text" id="xianlv-search" placeholder="搜索仙侣名称..."></div>
+        <div class="xianlv-grid" id="xianlv-grid"></div>
+      </div>
+    </div>
+    <div class="pet-detail-overlay" id="xianlv-detail-overlay">
+      <div class="pet-detail-card" id="xianlv-detail-card">
+        <button class="detail-close" id="xianlv-detail-close">&times;</button>
+        <div class="detail-header" id="xianlv-detail-header"></div>
+        <div class="detail-body" id="xianlv-detail-body"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-xunyuan">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>仙侣寻缘</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <img class="step-img" src="art/xianlv_tutorial/image3.webp" alt="仙侣寻缘" loading="lazy">
+        <li>1.  仙侣寻缘活动期间，每天可以金币寻缘 10 次，罗盘寻缘 100000 次，每天 0 点刷新次数。</li>
+        <li>2.  参与仙侣寻缘可获得仙侣专属突破道具，用于仙侣升星过程中突破更高星级。</li>
+        <li>3.  每次十连必得一个仙侣仙缘福袋道具，打开可随机获得一个仙侣仙缘。</li>
+        <li>4.  多余的仙侣突破道具可在寻缘背包中分解积分，用于积分商城兑换。</li>
+        <img class="step-img" src="art/xianlv_tutorial/image4.png" alt="寻缘背包" loading="lazy">
+        <div class="img-row">
+          <img class="img-row-item" src="art/xianlv_tutorial/image5.webp" alt="积分分解" loading="lazy">
+          <img class="img-row-item" src="art/xianlv_tutorial/image6.webp" alt="积分分解" loading="lazy">
+        </div>
+        <img class="step-img" src="art/xianlv_tutorial/image7.webp" alt="积分商城" loading="lazy">
+        <img class="step-img" src="art/xianlv_tutorial/image8.webp" alt="积分商城兑换" loading="lazy">
+        <li>仙星石 1 个 = 1 缘力积分。</li>
+        <img class="step-img" src="art/xianlv_tutorial/image9.png" alt="仙星石分解" loading="lazy">
+        <li>仙侣仙缘 1 个 = 10 缘力积分，不分级别。</li>
+        <div class="img-row">
+          <img class="img-row-item" src="art/xianlv_tutorial/image10.png" alt="仙侣仙缘分解" loading="lazy">
+          <img class="img-row-item" src="art/xianlv_tutorial/image11.webp" alt="缘力积分" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-shengxing">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>仙侣升星</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <img class="step-img" src="art/xianlv_tutorial/image12.webp" alt="仙侣升星" loading="lazy">
+        <li>1.  仙侣升星将提升仙侣的各项属性。</li>
+        <li>2.  仙侣升星道具可通过活动获得，部分星级需要使用仙侣突破道具，仙侣突破道具将通过寻缘玩法获得。</li>
+        <li>3.  累计仙侣总星级还将为角色提供属性加成。</li>
+        <li>4.  每 5 的倍数星级要突破，前期突破要仙星石，后期要仙星石 + 对应仙缘。</li>
+        <div class="img-row">
+          <img class="img-row-item" src="art/xianlv_tutorial/image13.png" alt="升星突破" loading="lazy">
+          <img class="img-row-item" src="art/xianlv_tutorial/image14.png" alt="升星突破" loading="lazy">
+        </div>
+        <img class="step-img" src="art/xianlv_tutorial/image15.webp" alt="升星消耗" loading="lazy">
+        <li>这里这个满级是 1200 星，看的是所有仙侣的总星级。</li>
+        <div class="img-row">
+          <img class="img-row-item" src="art/xianlv_tutorial/image16.png" alt="总星级加成" loading="lazy">
+          <img class="img-row-item" src="art/xianlv_tutorial/image17.png" alt="总星级加成" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-shenqi">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>仙侣神器</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <li>1.  通用部位神器（华胜、霞帔、璎珞、云履）是任何仙侣都能穿戴的，专属部位神器只有它的专属仙侣能穿戴。</li>
+        <li>2.  神器可以消耗相同部位的神器获得经验进行升级，升级后属性提升。</li>
+        <li>3.  一个仙侣所有的神器位置上都穿戴神器后，会激活套装技能效果。</li>
+        <li>4.  通用部位神器达到 25 级后，可以重置获得升级消耗的 80% 的经验。</li>
+        <li>5.  仙侣专属神器不可重置。</li>
+        <li>6.  神器重置后，相关属性加成将被清除，套装提供的加点将被扣除。</li>
+        <li>7.  若已开启自动加点，重置完成后将按自动加点规则自动分配。</li>
+        <img class="step-img" src="art/xianlv_tutorial/image18.webp" alt="仙侣神器" loading="lazy">
+        <img class="step-img" src="art/xianlv_tutorial/image19.png" alt="神器穿戴" loading="lazy">
+        <img class="step-img" src="art/xianlv_tutorial/image20.png" alt="神器升级" loading="lazy">
+        <img class="step-img" src="art/xianlv_tutorial/image21.png" alt="神器套装" loading="lazy">
+        <li>专属神器套装效果，列举一个仅供参考：</li>
+        <img class="step-img" src="art/xianlv_tutorial/image22.png" alt="专属神器套装效果" loading="lazy">
+        <div class="sub-header">神器重置</div>
+        <img class="step-img" src="art/xianlv_tutorial/image23.png" alt="神器重置" loading="lazy">
+        <li>1.  当少侠们的通用部位神器达到 5 级，即可开启神器重置。</li>
+        <li>2.  使用神器重置功能，神器在重置后，将会返还该部位神器已投入的升级经验的 80%，但相关属性加成和套装加点将被扣除。</li>
+        <li>3.  重置之后的神器加点需要少侠们手动进行重新分配。当然啦，如果少侠已经开启了自动加点功能，重置后的神器将按自动加点规则自动分配潜力点哦！</li>
+        <div class="img-row">
+          <img class="img-row-item" src="art/xianlv_tutorial/image24.png" alt="神器重置说明" loading="lazy">
+          <img class="img-row-item" src="art/xianlv_tutorial/image25.webp" alt="神器重置说明" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-xunluo">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>仙侣巡逻</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <li>这玩意没什么难度，纯挂机，就是半个小时左右回来了给你带回来材料了。</li>
+        <img class="step-img" src="art/xianlv_tutorial/image26.webp" alt="仙侣巡逻" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-jiejiao">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>仙侣结交</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <img class="step-img" src="art/xianlv_tutorial/image27.webp" alt="仙侣结交" loading="lazy">
+        <img class="step-img" src="art/xianlv_tutorial/image28.png" alt="仙侣结交等级" loading="lazy">
+        <li>每级都有属性提升，上限 30 级。</li>
+        <img class="step-img" src="art/xianlv_tutorial/image29.png" alt="赠送礼物" loading="lazy">
+        <li>根据下表赠送对应仙侣的对应礼物可以增加双倍交情。</li>
+        <div class="sub-header">仙侣礼物表</div>
+        <div class="table-wrap" id="gift-table-wrap"></div>
+        <img class="step-img" src="art/xianlv_tutorial/image30.webp" alt="礼物赠送界面" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-dongfu">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>仙侣洞府</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <img class="step-img" src="art/xianlv_tutorial/image31.webp" alt="仙侣洞府" loading="lazy">
+        <li>洞府属性增加的是人物属性。</li>
+        <img class="step-img" src="art/xianlv_tutorial/image32.png" alt="洞府驻扎" loading="lazy">
+        <li>这个驻扎没啥讲究，哪个牛逼就驻扎哪个就行了。</li>
+        <img class="step-img" src="art/xianlv_tutorial/image33.webp" alt="洞府加成" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-yuanshen">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>仙侣元神</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <li>1.  等级限制：人物等级达到 70 级。本次加强了仙侣元神，在原来基础上提高了 5 倍。</li>
+        <li>2.  在元神升级上，每个穴位的每个位置都需要升级，不能单独升级其中的某一个。此外每一级需要的升级材料都会增加 1 个。所以如果想要升级高的宝宝可要慢慢存才行。虽然需求的材料很多，不过仙侣实力可是得到了大大的提升，当面对同等级实力相差不大的仙侣可以完爆对面，再配合上仙侣的情缘简直是实力大增。</li>
+        <li>3.  只需要开 4 个穴位就行了，因为每个人只能携带 4 个仙侣上场。如果想要更换仙侣，可以点击仙侣元神处切换。</li>
+        <div class="sub-header">道具介绍</div>
+        <img class="step-img" src="art/xianlv_tutorial/image36.png" alt="元神道具" loading="lazy">
+        <div class="sub-header">属性提升</div>
+        <li>仙侣元神系统为仙侣能够提供的战力支持还是很高的，不同的元神每升一级增加的属性也不一样，分别有气血 +1%、物(法)攻 +0.6%、物(法)防 +0.4%、物(法)暴 +1%、法力 +1%、封抗 +1% 以及速度 +0.6%。</li>
+        <img class="step-img" src="art/xianlv_tutorial/image38.webp" alt="元神属性" loading="lazy">
+        <div class="sub-header">消耗介绍</div>
+        <li>注：统计的为单一位置消耗数量，建议各位少侠均匀提升！残念消耗 = 元神星级 × 10。</li>
+        <div class="table-wrap" id="yuanshen-cost-wrap"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>九小卿攻略站</p>
+
+</div>
+
+<script>
+var companionData = [
+{
+  "name": "小环",
+  "grade": "B",
+  "sect": "天音",
+  "obtain": "主线任务赠送",
+  "skills": [
+    {"cond": "无", "name": "无量净世咒", "desc": "法术攻击两个目标，能攻击的目标数在伙伴等级30/60时会增加一个"},
+    {"cond": "无", "name": "佛光普照", "desc": "恢复友方单个目标大量气血值，提升技能等级和法术伤害会增加治疗量"},
+    {"cond": "无", "name": "醍醐灌顶", "desc": "恢复友方2个目标少量气血值，并持续恢复气血，提升技能等级和法术伤害会增加治疗量，技能每提升35级持续回合数提升1回合，60级时可作用到3个目标"},
+    {"cond": "无", "name": "驱魔咒", "desc": "解除友方单个目标所受所有封印状态"},
+    {"cond": "无", "name": "往生咒", "desc": "复活队友单个目标，并为其恢复一定气血，提升技能等级和法术伤害会增加治疗量"},
+    {"cond": "仙侣修炼8级解锁", "name": "通灵之体", "desc": "法术强度提升"},
+    {"cond": "仙侣修炼10级解锁", "name": "仙骨", "desc": "大幅提升治疗技能效果，pvp战斗中治疗量提升幅度降低"},
+    {"cond": "仙侣修炼12级解锁", "name": "回魂", "desc": "使用醍醐灌顶时会增加目标物理防御和法术防御"}
+  ]
+},
+{
+  "name": "金瓶儿",
+  "grade": "B",
+  "sect": "合欢",
+  "obtain": "主线任务赠送",
+  "skills": [
+    {"cond": "无", "name": "百花缭乱", "desc": "物理攻击2个目标，30/60级时攻击目标会增加一个"},
+    {"cond": "无", "name": "烟雨断肠", "desc": "单体物理攻击目标，并降低目标物防，持续3回合，可叠加3层"},
+    {"cond": "无", "name": "落花听雨", "desc": "物理攻击单体目标4次，使用后休息一回合"},
+    {"cond": "无", "name": "移花接木", "desc": "物理攻击2个目标，能攻击的目标数在伙伴等级30/60时会增加一个，使用后休息一回合"},
+    {"cond": "仙侣修炼8级解锁", "name": "花飞漫天", "desc": "攻击时忽视目标一定物理防御"},
+    {"cond": "仙侣修炼10级解锁", "name": "致命红颜", "desc": "对异性伤害提高"},
+    {"cond": "仙侣修炼12级解锁", "name": "魅惑众生", "desc": "攻击时有概率令目标下回合内只能执行防御"}
+  ]
+},
+{
+  "name": "幽姬",
+  "grade": "B",
+  "sect": "鬼王",
+  "obtain": "主线任务赠送",
+  "skills": [
+    {"cond": "无", "name": "乱鬼斩", "desc": "物理攻击2个目标，能攻击的目标数在伙伴等级30/60时会增加一个"},
+    {"cond": "无", "name": "狂鬼击", "desc": "物理攻击敌方单个目标三次，使用后降低自身物理、法术防御，且虚弱一回合"},
+    {"cond": "无", "name": "后发先至", "desc": "本回合待机，下回合提高速度和伤害，自动物理攻击单个目标，技能使用后减少本回合、第二回合技能施放前受到的伤害"},
+    {"cond": "无", "name": "先发制人", "desc": "临时提升速度，物理攻击敌方单个目标"},
+    {"cond": "仙侣修炼8级解锁", "name": "摧心", "desc": "攻击目标使目标物理和法术防御降低，持续2回合"},
+    {"cond": "仙侣修炼10级解锁", "name": "朱雀业火", "desc": "乱鬼斩技能目标增加1个"},
+    {"cond": "仙侣修炼12级解锁", "name": "亦幻亦真", "desc": "每次攻击有概率为自身释放一个吸收一次伤害的护盾，护盾持续2回合"}
+  ]
+},
+{
+  "name": "张小凡",
+  "grade": "A",
+  "sect": "青云",
+  "obtain": "主线任务赠送",
+  "skills": [
+    {"cond": "无", "name": "神剑御雷真决", "desc": "法术攻击3个目标，能攻击的目标数在伙伴等级30/60时会增加一个"},
+    {"cond": "无", "name": "天灵剑诀", "desc": "法术攻击单个目标，目标血量越少伤害越高"},
+    {"cond": "无", "name": "挑月剑诀", "desc": "法术攻击3个目标，附带降低目标速度3回合"},
+    {"cond": "无", "name": "净秽诀", "desc": "解除单体负面状态，但无法解封印和毒"},
+    {"cond": "仙侣修炼8级解锁", "name": "大凡般若", "desc": "大幅提升自身物理防御"},
+    {"cond": "仙侣修炼10级解锁", "name": "摄魂", "desc": "回合内出手前被击一次增加10%伤害"},
+    {"cond": "仙侣修炼12级解锁", "name": "嗜血珠", "desc": "获得10%的法术吸血"}
+  ]
+},
+{
+  "name": "李洵",
+  "grade": "B",
+  "sect": "焚香",
+  "obtain": "10000金币购买",
+  "skills": [
+    {"cond": "无", "name": "八荒玄火阵", "desc": "法术攻击2个目标，能攻击的目标数在伙伴等级30/60时会增加一个"},
+    {"cond": "无", "name": "双龙旋", "desc": "法术攻击目标2次"},
+    {"cond": "无", "name": "炎龙啸", "desc": "临时增加自身法爆，单体法术攻击目标"},
+    {"cond": "无", "name": "三味真火", "desc": "单体法术攻击目标并降低法防，持续3回合"},
+    {"cond": "仙侣修炼8级解锁", "name": "炎魔盾", "desc": "物理防御提升"},
+    {"cond": "仙侣修炼10级解锁", "name": "天火三玄变", "desc": "血量越低法术伤害和法术暴击越高"},
+    {"cond": "仙侣修炼12级解锁", "name": "九阳尺", "desc": "法术强度提升"}
+  ]
+},
+{
+  "name": "田灵儿",
+  "grade": "B",
+  "sect": "青云",
+  "obtain": "5000金币购买",
+  "skills": [
+    {"cond": "无", "name": "神剑御雷真决", "desc": "法术攻击3个目标，能攻击的目标数在伙伴等级30/60时会增加一个"},
+    {"cond": "无", "name": "天灵剑诀", "desc": "法术攻击单个目标，目标血量越少伤害越高"},
+    {"cond": "无", "name": "挑月剑诀", "desc": "法术攻击3个目标，附带降低目标速度3回合"},
+    {"cond": "无", "name": "净秽诀", "desc": "解除单体负面状态，但无法解封印和毒"},
+    {"cond": "仙侣修炼8级解锁", "name": "琥珀朱绫", "desc": "提升战斗中所有玩家和伙伴的封印抗性"},
+    {"cond": "仙侣修炼10级解锁", "name": "缚神", "desc": "挑月剑诀不再降低目标速度，变为有概率封印目标物理攻击3回合"},
+    {"cond": "仙侣修炼12级解锁", "name": "灵动", "desc": "进入战斗后速度提升一倍"}
+  ]
+},
+{
+  "name": "林惊羽",
+  "grade": "A",
+  "sect": "青云",
+  "obtain": "5000金币购买",
+  "skills": [
+    {"cond": "无", "name": "神剑御雷真决", "desc": "法术攻击3个目标，能攻击的目标数在伙伴等级30/60时会增加一个"},
+    {"cond": "无", "name": "天灵剑诀", "desc": "法术攻击单个目标，目标血量越少伤害越高"},
+    {"cond": "无", "name": "挑月剑诀", "desc": "法术攻击3个目标，附带降低目标速度3回合"},
+    {"cond": "无", "name": "净秽诀", "desc": "解除单体负面状态，但无法解封印和毒"},
+    {"cond": "仙侣修炼8级解锁", "name": "九霄龙吟", "desc": "进入战斗后前3个回合法术伤害提升，物防法防下降"},
+    {"cond": "仙侣修炼10级解锁", "name": "碧光啸", "desc": "战斗中玩家和伙伴的速度提升"},
+    {"cond": "仙侣修炼12级解锁", "name": "斩鬼神", "desc": "天灵剑诀伤害大幅增加但消耗的法力值也随之增加"}
+  ]
+},
+{
+  "name": "普智",
+  "grade": "A",
+  "sect": "天音",
+  "obtain": "20000金币购买",
+  "skills": [
+    {"cond": "无", "name": "无量净世咒", "desc": "法术攻击两个目标，能攻击的目标数在伙伴等级30/60时会增加一个"},
+    {"cond": "无", "name": "佛光普照", "desc": "恢复友方单个目标大量气血值，提升技能等级和法术伤害会增加治疗量"},
+    {"cond": "无", "name": "醍醐灌顶", "desc": "恢复友方2个目标少量气血值，并持续恢复气血，提升技能等级和法术伤害会增加治疗量，技能每提升35级持续回合数提升1回合，60级时可作用到3个目标"},
+    {"cond": "无", "name": "驱魔咒", "desc": "解除友方单个目标所受所有封印状态"},
+    {"cond": "无", "name": "往生咒", "desc": "复活队友单个目标，并为其恢复一定气血，提升技能等级和法术伤害会增加治疗量"},
+    {"cond": "仙侣修炼8级解锁", "name": "度芳华", "desc": "提升往生咒的回复气血量"},
+    {"cond": "仙侣修炼10级解锁", "name": "浴佛光", "desc": "佛光普照的治疗量大幅提升"},
+    {"cond": "仙侣修炼12级解锁", "name": "寂灭入定", "desc": "增加10000气血"}
+  ]
+},
+{
+  "name": "秦无炎",
+  "grade": "A",
+  "sect": "合欢",
+  "obtain": "20000金币购买",
+  "skills": [
+    {"cond": "无", "name": "百花缭乱", "desc": "物理攻击2个目标，30/60级时攻击目标会增加一个"},
+    {"cond": "无", "name": "烟雨断肠", "desc": "单体物理攻击目标，并降低目标物防，持续3回合，可叠加3层"},
+    {"cond": "无", "name": "落花听雨", "desc": "物理攻击单体目标4次，使用后休息一回合"},
+    {"cond": "无", "name": "移花接木", "desc": "物理攻击2个目标，能攻击的目标数在伙伴等级30/60时会增加一个，使用后休息一回合"},
+    {"cond": "仙侣修炼8级解锁", "name": "万毒归宗", "desc": "攻击目标时有概率使其获得中毒，持续2回合，毒的伤害与秦无炎物理伤害有关"},
+    {"cond": "仙侣修炼10级解锁", "name": "刀斩相思", "desc": "百花缭乱攻击个数增加一个"},
+    {"cond": "仙侣修炼12级解锁", "name": "倜傥风流", "desc": "进入战斗后速度提升一倍"}
+  ]
+},
+{
+  "name": "小白",
+  "grade": "A",
+  "sect": "青云",
+  "obtain": "20000金币购买",
+  "skills": [
+    {"cond": "无", "name": "八荒玄火阵", "desc": "法术攻击2个目标，能攻击的目标数在伙伴等级30/60时会增加一个"},
+    {"cond": "无", "name": "双龙旋", "desc": "法术攻击目标2次"},
+    {"cond": "无", "name": "炎龙啸", "desc": "临时增加自身法爆，单体法术攻击目标"},
+    {"cond": "无", "name": "三味真火", "desc": "单体法术攻击目标并降低法防，持续3回合"},
+    {"cond": "仙侣修炼8级解锁", "name": "摄心", "desc": "对敌人造成伤害时有概率混乱目标2回合"},
+    {"cond": "仙侣修炼10级解锁", "name": "如沐春风", "desc": "提升战斗中玩家和伙伴的法术抗性"},
+    {"cond": "仙侣修炼12级解锁", "name": "我见尤怜", "desc": "回合内被击一次下次受到的伤害降低10%"}
+  ]
+},
+{
+  "name": "鬼先生",
+  "grade": "A",
+  "sect": "圣巫",
+  "obtain": "100元宝购买",
+  "skills": [
+    {"cond": "无", "name": "痴心裂", "desc": "法术攻击多个目标造成固定伤害，能攻击的目标数在伙伴等级30/60时会增加一个，使目标本回合受到的伤害增加10%"},
+    {"cond": "无", "name": "绵骨咒", "desc": "临时提高封印命中率封印目标物理和法术，持续3回合，该技能会有1回合冷却时间"},
+    {"cond": "无", "name": "禁灵锁", "desc": "一定概率使敌方单个目标无法使用技能，并降低目标防御20%，持续3回合"},
+    {"cond": "无", "name": "入梦令", "desc": "一定概率使目标睡眠，持续3回合，受到伤害会解除睡眠，若命中后3回合内无法再次被入梦令命中"},
+    {"cond": "仙侣修炼8级解锁", "name": "鬼影巫王", "desc": "增加出战宠物的最大气血"},
+    {"cond": "仙侣修炼10级解锁", "name": "魂葬", "desc": "增加气血上限20%"},
+    {"cond": "仙侣修炼12级解锁", "name": "鬼道", "desc": "大幅增加封印命中率"}
+  ]
+},
+{
+  "name": "青龙",
+  "grade": "A",
+  "sect": "鬼王",
+  "obtain": "100元宝购买",
+  "skills": [
+    {"cond": "无", "name": "乱鬼斩", "desc": "物理攻击2个目标，能攻击的目标数在伙伴等级30/60时会增加一个"},
+    {"cond": "无", "name": "狂鬼击", "desc": "物理攻击敌方单个目标三次，使用后降低自身物理、法术防御，且虚弱一回合"},
+    {"cond": "无", "name": "后发先至", "desc": "本回合待机，下回合提高速度和伤害，自动物理攻击单个目标，技能使用后减少本回合、第二回合技能施放前受到的伤害"},
+    {"cond": "无", "name": "先发制人", "desc": "临时提升速度，物理攻击敌方单个目标"},
+    {"cond": "仙侣修炼8级解锁", "name": "九天清光", "desc": "每次释放技能恢复自身气血上限10%的气血，乱鬼斩无法触发"},
+    {"cond": "仙侣修炼10级解锁", "name": "锁血剎护体", "desc": "战斗中提升所有友方玩家和伙伴的物理防御"},
+    {"cond": "仙侣修炼12级解锁", "name": "倒转乾坤", "desc": "每回合开始提升自身2%物理暴击概率和4%暴击伤害"}
+  ]
+},
+{
+  "name": "碧瑶",
+  "grade": "S",
+  "sect": "合欢",
+  "obtain": "待定",
+  "skills": [
+    {"cond": "无", "name": "百花缭乱", "desc": "物理攻击2个目标，30/60级时攻击目标会增加一个"},
+    {"cond": "无", "name": "烟雨断肠", "desc": "单体物理攻击目标，并降低目标物防，持续3回合，可叠加3层"},
+    {"cond": "无", "name": "落花听雨", "desc": "物理攻击单体目标4次，使用后休息一回合"},
+    {"cond": "无", "name": "移花接木", "desc": "物理攻击2个目标，能攻击的目标数在伙伴等级30/60时会增加一个，使用后休息一回合"},
+    {"cond": "仙侣修炼8级解锁", "name": "凌波微步", "desc": "物理闪避概率增加5%"},
+    {"cond": "仙侣修炼10级解锁", "name": "香消玉损", "desc": "减少来自异性的伤害"},
+    {"cond": "仙侣修炼12级解锁", "name": "摘叶飞花", "desc": "使用移花接木时有一定概率不休息"}
+  ]
+},
+{
+  "name": "赵盼儿",
+  "grade": "S",
+  "sect": "焚香",
+  "obtain": "待定",
+  "skills": [
+    {"cond": "无", "name": "八荒玄火阵", "desc": "法术攻击2个目标，能攻击的目标数在伙伴等级30/60时会增加一个"},
+    {"cond": "无", "name": "双龙旋", "desc": "法术攻击目标2次"},
+    {"cond": "无", "name": "炎龙啸", "desc": "临时增加自身法爆，单体法术攻击目标"},
+    {"cond": "无", "name": "三味真火", "desc": "单体法术攻击目标并降低法防，持续3回合"},
+    {"cond": "仙侣修炼8级解锁", "name": "茶艺一绝", "desc": "提升法术攻击对异性伤害增加，降低异性对自己造成的伤害"},
+    {"cond": "仙侣修炼10级解锁", "name": "筹算无双", "desc": "法术攻击时，概率触发法术连击"},
+    {"cond": "仙侣修炼12级解锁", "name": "十二先生", "desc": "法术攻击可吸取对方所掉气血的20%，对拥有鬼魅技能的单位无效"}
+  ]
+},
+{
+  "name": "法相",
+  "grade": "S",
+  "sect": "天音",
+  "obtain": "魂之蕴X50兑换",
+  "skills": [
+    {"cond": "无", "name": "无量净世咒", "desc": "法术攻击两个目标，能攻击的目标数在伙伴等级30/60时会增加一个"},
+    {"cond": "无", "name": "佛光普照", "desc": "恢复友方单个目标大量气血值，提升技能等级和法术伤害会增加治疗量"},
+    {"cond": "无", "name": "醍醐灌顶", "desc": "恢复友方2个目标少量气血值，并持续恢复气血，提升技能等级和法术伤害会增加治疗量，技能每提升35级持续回合数提升1回合，60级时可作用到3个目标"},
+    {"cond": "无", "name": "驱魔咒", "desc": "解除友方单个目标所受所有封印状态"},
+    {"cond": "无", "name": "往生咒", "desc": "复活队友单个目标，并为其恢复一定气血，提升技能等级和法术伤害会增加治疗量"},
+    {"cond": "仙侣修炼8级解锁", "name": "玉净圣水", "desc": "大量提升醍醐灌顶的单次治疗量"},
+    {"cond": "仙侣修炼10级解锁", "name": "金钟罩", "desc": "队友受到物理攻击时有概率替其承担一半伤害"},
+    {"cond": "仙侣修炼12级解锁", "name": "定心", "desc": "使用技能时暴击率大幅提升"}
+  ]
+},
+{
+  "name": "柒柒柒",
+  "grade": "S",
+  "sect": "异能",
+  "obtain": "魂之蕴X50兑换",
+  "skills": [
+    {"cond": "无", "name": "原子核裂变", "desc": "将重原子核分裂成轻原子核，从而释放能量发起猛烈的物理攻击，初始攻击2个目标，仙侣等级30/60时会增加一个"},
+    {"cond": "无", "name": "加农粒子炮", "desc": "粒子炮轰，对目标造成两次物理攻击"},
+    {"cond": "无", "name": "响尾蛇导弹", "desc": "对三个目标造成巨额物理伤害，使用后休息一回合"},
+    {"cond": "无", "name": "光子束缚", "desc": "发射光子弹降低伤害对单体目标发起物理攻击，并有概率封印其一回合，无法使用普攻、技能、特技"},
+    {"cond": "仙侣修炼8级解锁", "name": "双暗刻", "desc": "造成伤害时，若伤害值最后一位为1、4、7时，则提升自身攻击2回合，状态可叠加"},
+    {"cond": "仙侣修炼10级解锁", "name": "大三元", "desc": "造成伤害时，若伤害值最后一位为2、5、8时，则吸收本次伤害的一部分转换为自身气血"},
+    {"cond": "仙侣修炼12级解锁", "name": "大四喜", "desc": "造成伤害时，若伤害值最后一位为3、6、9时，则提升自身防御2回合，状态可叠加"}
+  ]
+},
+{
+  "name": "古星魂",
+  "grade": "S",
+  "sect": "灵音",
+  "obtain": "待定",
+  "skills": [
+    {"cond": "无", "name": "碧海潮生曲", "desc": "回风拂柳，碧海潮生，法术攻击2个目标，伙伴等级30/60时增加一个目标"},
+    {"cond": "无", "name": "魔音破灵", "desc": "依次法术攻击3个目标，使用后虚弱一回合"},
+    {"cond": "无", "name": "长恨歌", "desc": "增加友方4个单位法术防御值，持续4回合"},
+    {"cond": "无", "name": "万象大音", "desc": "降低敌方3个目标受到的20%的治疗量，持续3回合"},
+    {"cond": "仙侣修炼8级解锁", "name": "长恨绵绵", "desc": "长恨歌的目标个数变为3个，并且额外恢复目标部分气血"},
+    {"cond": "仙侣修炼10级解锁", "name": "苍穹鼓", "desc": "气血上限提升20%"},
+    {"cond": "仙侣修炼12级解锁", "name": "大音希声", "desc": "对敌方使用万象大音时会额外对其造成伤害"}
+  ]
+},
+{
+  "name": "冷凝霜",
+  "grade": "S",
+  "sect": "苍羽",
+  "obtain": "魂之蕴X50兑换",
+  "skills": [
+    {"cond": "无", "name": "寒柳分烟箭", "desc": "同时物理攻击2个目标，能攻击的目标数在仙侣等级30/60级时会增加一个"},
+    {"cond": "无", "name": "化雪穿甲箭", "desc": "单体物理攻击目标以及该目标身后的角色"},
+    {"cond": "无", "name": "劲烈爆炎箭", "desc": "物理攻击同排4个目标，攻击宠物和子女附加其10%气血上限的额外伤害，使用后休息1回合"},
+    {"cond": "无", "name": "霜露之病", "desc": "极冰绽放，死亡蔓延，给目标附加致死状态，持续4回合，若其死亡，则对周围目标造成与致死伤害相关的伤害，且3回合只可触发一次"},
+    {"cond": "仙侣修炼8级解锁", "name": "风之守护", "desc": "物理防御提升"},
+    {"cond": "仙侣修炼10级解锁", "name": "风之祝福", "desc": "使用技能后有概率提升本方一个单位下回合出手速度"},
+    {"cond": "仙侣修炼12级解锁", "name": "风之语", "desc": "使用技能攻击敌人时有概率为目标增加霜露之病"}
+  ]
+},
+{
+  "name": "陆雪琪",
+  "grade": "S",
+  "sect": "青云",
+  "obtain": "待定",
+  "skills": [
+    {"cond": "无", "name": "神剑御雷真决", "desc": "法术攻击3个目标，能攻击的目标数在伙伴等级30/60时会增加一个"},
+    {"cond": "无", "name": "天灵剑诀", "desc": "法术攻击单个目标，目标血量越少伤害越高"},
+    {"cond": "无", "name": "挑月剑诀", "desc": "法术攻击3个目标，附带降低目标速度3回合"},
+    {"cond": "无", "name": "净秽诀", "desc": "解除单体负面状态，但无法解封印和毒"},
+    {"cond": "仙侣修炼8级解锁", "name": "三千雷动", "desc": "群攻技能以血量较少的单位作为目标"},
+    {"cond": "仙侣修炼10级解锁", "name": "天雷亟", "desc": "使用法术攻击时忽视目标10%的法术防御"},
+    {"cond": "仙侣修炼12级解锁", "name": "太极玄青", "desc": "每次释放法术有高概率触发法术连击"}
+  ]
+},
+{
+  "name": "兽神",
+  "grade": "S",
+  "sect": "焚香",
+  "obtain": "魂之蕴X50兑换",
+  "skills": [
+    {"cond": "无", "name": "八荒玄火阵", "desc": "法术攻击2个目标，能攻击的目标数在伙伴等级30/60时会增加一个"},
+    {"cond": "无", "name": "双龙旋", "desc": "法术攻击目标2次"},
+    {"cond": "无", "name": "炎龙啸", "desc": "临时增加自身法爆，单体法术攻击目标"},
+    {"cond": "无", "name": "三味真火", "desc": "单体法术攻击目标并降低法防，持续3回合"},
+    {"cond": "仙侣修炼8级解锁", "name": "灭世", "desc": "暴击造成的法术伤害从150%提升到230%"},
+    {"cond": "仙侣修炼10级解锁", "name": "天地煞气", "desc": "死亡时有30%概率复活并回复100%血量"},
+    {"cond": "仙侣修炼12级解锁", "name": "神怒", "desc": "法术暴击率大幅提升"}
+  ]
+},
+{
+  "name": "玲珑",
+  "grade": "S",
+  "sect": "圣巫",
+  "obtain": "魂之蕴X50兑换",
+  "skills": [
+    {"cond": "无", "name": "痴心裂", "desc": "法术攻击多个目标造成固定伤害，能攻击的目标数在伙伴等级30/60时会增加一个，使目标本回合受到的伤害增加10%"},
+    {"cond": "无", "name": "绵骨咒", "desc": "临时提高封印命中率封印目标物理和法术，持续3回合，该技能会有1回合冷却时间"},
+    {"cond": "无", "name": "禁灵锁", "desc": "一定概率使敌方单个目标无法使用技能，并降低目标防御20%，持续3回合"},
+    {"cond": "无", "name": "入梦令", "desc": "一定概率使目标睡眠，持续3回合，受到伤害会解除睡眠，若命中后3回合内无法再次被入梦令命中"},
+    {"cond": "仙侣修炼8级解锁", "name": "神鬼莫测", "desc": "受到伤害时有概率减少受到的伤害"},
+    {"cond": "仙侣修炼10级解锁", "name": "圣女", "desc": "进入战斗后速度提升40%"},
+    {"cond": "仙侣修炼12级解锁", "name": "天资", "desc": "使用封印技能时有一定概率增加一个封印目标"}
+  ]
+},
+{
+  "name": "大巫师",
+  "grade": "S",
+  "sect": "圣巫",
+  "obtain": "待定",
+  "skills": [
+    {"cond": "无", "name": "痴心裂", "desc": "法术攻击多个目标造成固定伤害，能攻击的目标数在伙伴等级30/60时会增加一个，使目标本回合受到的伤害增加10%"},
+    {"cond": "无", "name": "绵骨咒", "desc": "临时提高封印命中率封印目标物理和法术，持续3回合，该技能会有1回合冷却时间"},
+    {"cond": "无", "name": "禁灵锁", "desc": "一定概率使敌方单个目标无法使用技能，并降低目标防御20%，持续3回合"},
+    {"cond": "无", "name": "入梦令", "desc": "一定概率使目标睡眠，持续3回合，受到伤害会解除睡眠，若命中后3回合内无法再次被入梦令命中"},
+    {"cond": "仙侣修炼8级解锁", "name": "咒灵之体", "desc": "法术防御提升"},
+    {"cond": "仙侣修炼10级解锁", "name": "巫蛊", "desc": "被大巫师绵骨咒封印的目标将每回合损失气血"},
+    {"cond": "仙侣修炼12级解锁", "name": "离魂恐咒", "desc": "被禁灵锁禁锢的敌人只能以普通攻击来攻击队友，无法进行其他行动并且每回合损失气血"}
+  ]
+},
+{
+  "name": "鬼厉",
+  "grade": "S",
+  "sect": "鬼王",
+  "obtain": "魂之蕴X50兑换",
+  "skills": [
+    {"cond": "无", "name": "乱鬼斩", "desc": "物理攻击2个目标，能攻击的目标数在伙伴等级30/60时会增加一个"},
+    {"cond": "无", "name": "狂鬼击", "desc": "物理攻击敌方单个目标三次，使用后降低自身物理、法术防御，且虚弱一回合"},
+    {"cond": "无", "name": "后发先至", "desc": "本回合待机，下回合提高速度和伤害，自动物理攻击单个目标，技能使用后减少本回合、第二回合技能施放前受到的伤害"},
+    {"cond": "无", "name": "先发制人", "desc": "临时提升速度，物理攻击敌方单个目标"},
+    {"cond": "仙侣修炼8级解锁", "name": "天地不仁", "desc": "敌人剩余血量百分比越低造成伤害越高"},
+    {"cond": "仙侣修炼10级解锁", "name": "摄魂", "desc": "鬼厉本回合损失血量越多，下回合造成的伤害越高"},
+    {"cond": "仙侣修炼12级解锁", "name": "天道轮回", "desc": "释放三连有一定概率不用虚弱"}
+  ]
+},
+{
+  "name": "白露",
+  "grade": "SS",
+  "sect": "万毒",
+  "obtain": "待定",
+  "skills": [
+    {"cond": "无", "name": "毒步天下", "desc": "万毒浸染，百里枯残，召唤巫毒娃娃法术攻击2个目标，仙侣等级30/60时增加一个目标"},
+    {"cond": "无", "name": "破碎冰晶", "desc": "冰晶绽放，破碎之力，法术攻击2个目标，技能30/60级时增加一个目标，使用后休息一回合"},
+    {"cond": "无", "name": "诛心灭", "desc": "最毒诛心，法术攻击敌方单个目标三次，使用后降低自身物理、法术防御，且虚弱一回合，提升技能等级会减少降防"},
+    {"cond": "无", "name": "五彩迷晶", "desc": "五彩斑斓的晶石迷阵，增强友方封抗能力。对友方3个角色或仙侣使用，增加封抗10%，持续5回合"},
+    {"cond": "仙侣修炼8级解锁", "name": "遮影步", "desc": "进入战斗后速度提升40%"},
+    {"cond": "仙侣修炼10级解锁", "name": "白露为霜", "desc": "使用技能后随机为一友方角色附加五彩迷晶"},
+    {"cond": "仙侣修炼12级解锁", "name": "极寒冰晶", "desc": "使用破碎冰晶后自身进入冰冻状态，持续1回合"},
+    {"cond": "仙侣修炼12级解锁", "name": "天晶", "desc": "使用诛心灭后不会获得虚弱状态"}
+  ]
+},
+{
+  "name": "艾丽",
+  "grade": "SS",
+  "sect": "异能",
+  "obtain": "待定",
+  "skills": [
+    {"cond": "无", "name": "原子核裂变", "desc": "将重原子核分裂成轻原子核，从而释放能量发起猛烈的物理攻击，初始攻击2个目标，仙侣等级30/60时会增加一个"},
+    {"cond": "无", "name": "响尾蛇导弹", "desc": "对三个目标造成巨额物理伤害，使用后休息一回合"},
+    {"cond": "无", "name": "镰刀飞舞", "desc": "死神形态可用；死神扔出镰刀，肆意斩杀2个目标，造成物理伤害，仙侣等级30/60时增加一个目标"},
+    {"cond": "无", "name": "分裂击", "desc": "死神形态可用；对目标发起物理攻击，其两侧目标会同时强制掉血，掉血量为主目标受到伤害的50%，无视两侧目标的防御、免伤、反伤等状态，使用后休息一回合"},
+    {"cond": "无", "name": "死神之镰", "desc": "死神形态可用，使用限制：当前气血≥气血上限的50%；死神操控5把神兵对敌方单体目标发起5段攻击，如果目标死亡则会把剩余攻击次数转移到随机一个敌方目标身上，使用后虚弱一回合"},
+    {"cond": "无", "name": "等离子态放逐", "desc": "攻击敌方3人并且异能者变身死神形态，持续5回合"},
+    {"cond": "仙侣修炼10级解锁", "name": "粒子加速器α", "desc": "每回合开始时有概率进入粒子加速状态，粒子加速状态下被攻击死亡必定触发保命，主动死亡时不会触发"},
+    {"cond": "仙侣修炼12级解锁", "name": "粒子加速器γ", "desc": "战斗第一回合开始立即进入等离子放逐状态"}
+  ]
+},
+{
+  "name": "莫芊芊",
+  "grade": "SS",
+  "sect": "丹青",
+  "obtain": "待定",
+  "skills": [
+    {"cond": "无", "name": "墨洒青山", "desc": "书生意气，挥斥方遒，以水墨之道物理攻击2个目标，仙侣等级30/60时增加一个目标"},
+    {"cond": "无", "name": "妙笔生花", "desc": "胸有沟壑，笔落惊鸿，单体物理攻击目标4次，每次造成伤害后有30%概率封印目标1回合，最多封印4回合，使用后休息1回合"},
+    {"cond": "无", "name": "画龙点睛", "desc": "点睛之笔，群体物理攻击三个目标，有概率封印敌人一回合，使用后休息1回合"},
+    {"cond": "无", "name": "写意山河", "desc": "指点江山，激扬文字，增加友方4个单位5%法术攻击，持续5回合，副目标优先法术攻击高的"},
+    {"cond": "仙侣修炼8级解锁", "name": "墨写春秋", "desc": "使用画龙点睛和墨洒青山时有概率封印目标，持续3回合"},
+    {"cond": "仙侣修炼10级解锁", "name": "颜如玉", "desc": "行动时有概率使用写意山河提升队友法术攻击"},
+    {"cond": "仙侣修炼12级解锁", "name": "笔仙", "desc": "妙笔生花封印概率提升50%，伤害大幅提升"},
+    {"cond": "仙侣修炼12级解锁", "name": "御笔灵风", "desc": "进入战斗后速度提升100%"}
+  ]
+},
+{
+  "name": "阿努比斯",
+  "grade": "SS",
+  "sect": "黄金",
+  "obtain": "待定",
+  "skills": [
+    {"cond": "无", "name": "沙暴送葬", "desc": "飞沙扬砾，遮天蔽日，召唤沙砾同时攻击3个目标并有概率降低敌方速度2回合，能攻击的目标数在仙侣等级30/60时会增加1个，最高5个"},
+    {"cond": "无", "name": "阿蒙祈祷", "desc": "日月重光，辉耀救世，祈求太阳神阿蒙拉降下神迹，回复三名友方单位的气血"},
+    {"cond": "无", "name": "亡者之书", "desc": "魂触黑暗，连接光明，亡者之书的力量将复活一名已死亡的队友，并使其隐身两回合"},
+    {"cond": "无", "name": "木乃伊束缚", "desc": "生灵不息，轮回不止，对敌方使用禁锢一个目标，使其无法使用普攻、技能，持续3回合；对己方使用则解除目标的封印状态"},
+    {"cond": "仙侣修炼8级解锁", "name": "荒漠行者", "desc": "进入战斗后速度提升100%"},
+    {"cond": "仙侣修炼10级解锁", "name": "沙之守护", "desc": "释放技能有35%概率解除友方单个目标所受所有封印状态"},
+    {"cond": "仙侣修炼12级解锁", "name": "灵魂引渡", "desc": "亡者之书复活目标后额外为目标恢复大量气血"},
+    {"cond": "仙侣修炼12级解锁", "name": "无尽束缚", "desc": "木乃伊束缚封印的目标额外附加禁止召唤"}
+  ]
+},
+{
+  "name": "芦屋绫",
+  "grade": "SS",
+  "sect": "阴阳",
+  "obtain": "待定",
+  "skills": [
+    {"cond": "无", "name": "百鬼夜行", "desc": "阴风骤起，万鬼嚎哭，召唤众鬼同时法术攻击3个目标，能攻击的目标数在仙侣等级30/60时会增加1个，同时增加1点能量"},
+    {"cond": "无", "name": "痛饮狂歌", "desc": "酒酣狂鬼，怒喝疾行，势如破竹，气动山河，召唤酒吞童子向目标位置施放十字斩，对其造成伤害，目标前后与两侧亦受到一定伤害，消耗3点能量"},
+    {"cond": "无", "name": "惑心乱尾", "desc": "九尾妖狐，娇颜媚骨，乱神惑心，攻其不备，召唤玉藻前单体法术攻击目标4次，若目标死亡，则把剩余攻击次数转移至随机敌方目标，消耗3点能量"},
+    {"cond": "无", "name": "付丧之扇", "desc": "日月逾迈，物亦有灵，积怨经年，凶险万分，本回合提速50%，召唤付丧神加持友方目标2回合，在其受到第一次封印时，100%将封印反弹给施法者"},
+    {"cond": "仙侣修炼8级解锁", "name": "铃木香", "desc": "进入战斗后立刻拥有6点能量"},
+    {"cond": "仙侣修炼10级解锁", "name": "众生之象", "desc": "施放技能有概率追加一次百鬼夜行"},
+    {"cond": "仙侣修炼12级解锁", "name": "嗔痴之念", "desc": "进入战斗后提升战斗速度15%"},
+    {"cond": "仙侣修炼12级解锁", "name": "虚幻之影", "desc": "第一回合处于免伤的状态"}
+  ]
+},
+{
+  "name": "诗音",
+  "grade": "SS",
+  "sect": "灵音",
+  "obtain": "待定",
+  "skills": [
+    {"cond": "无", "name": "碧海潮生曲", "desc": "回风拂柳，碧海潮生，法术攻击2个目标，伙伴等级30/60时增加一个目标"},
+    {"cond": "无", "name": "魔音破灵", "desc": "依次法术攻击3个目标，使用后虚弱一回合"},
+    {"cond": "无", "name": "大风歌", "desc": "大风起兮云飞扬，法术攻击单体目标2-5次，使用后休息一回合"},
+    {"cond": "无", "name": "长恨歌", "desc": "增加友方4个单位法术防御值，持续4回合"},
+    {"cond": "仙侣修炼8级解锁", "name": "长袖曼舞", "desc": "受到同性的伤害降低"},
+    {"cond": "仙侣修炼10级解锁", "name": "镇魂曲", "desc": "每次行动后有概率驱散一个角色的封印状态"},
+    {"cond": "仙侣修炼12级解锁", "name": "天魔音", "desc": "魔音破灵将不再有使用血量限制"}
+  ]
+},
+{
+  "name": "嫦娥",
+  "grade": "SS",
+  "sect": "妖盟",
+  "obtain": "待定",
+  "skills": [
+    {"cond": "无", "name": "横扫千军", "desc": "妖蛮其身，千军易辟，携千钧之力冲向敌人，同时对3个目标造成群体物理伤害，能攻击的目标数在仙侣等级30/60时会增加1个，最高5个"},
+    {"cond": "无", "name": "力劈华山", "desc": "势不可挡，崩天裂地，横扫目标及其左右两个单位后，跃起纵向劈砍目标后方单位，造成群体物理伤害，使用后休息1回合"},
+    {"cond": "无", "name": "金晶火眼", "desc": "妖兽灵觉，无所遁形，临时提高暴击率对单体目标造成物理伤害，并随后为自己附加“火眼”状态，“火眼”状态下可攻击隐身单位并有30%概率驱散目标的隐身状态"},
+    {"cond": "无", "name": "分形化影", "desc": "天光月华，深邃幽影，参悟光暗相生的妖族分化4个幽影攻击随机目标，对首个目标附加减治疗效果，每个目标独立选择，如果击中了相同的目标，伤害会降低，使用后休息一回合"},
+    {"cond": "仙侣修炼8级解锁", "name": "月兔神速", "desc": "进入战斗后速度提升40%"},
+    {"cond": "仙侣修炼10级解锁", "name": "天妖能量", "desc": "分形化影有40%概率不休息"},
+    {"cond": "仙侣修炼12级解锁", "name": "皓月之力", "desc": "释放技能有35%概率追加释放一次天妖图腾"},
+    {"cond": "仙侣修炼12级解锁", "name": "迅妖猛击", "desc": "物理攻击时有35%概率忽视目标50%物防"}
+  ]
+},
+{
+  "name": "隼仙子",
+  "grade": "SS",
+  "sect": "苍羽",
+  "obtain": "待定",
+  "skills": [
+    {"cond": "无", "name": "寒柳分烟箭", "desc": "同时物理攻击2个目标，能攻击的目标数在仙侣等级30/60级时会增加一个"},
+    {"cond": "无", "name": "化雪穿甲箭", "desc": "单体物理攻击目标以及该目标身后的角色"},
+    {"cond": "无", "name": "劲烈爆炎箭", "desc": "物理攻击同排4个目标，攻击宠物和子女附加其10%气血上限的额外伤害，使用后休息1回合"},
+    {"cond": "无", "name": "玄冥追魂箭", "desc": "第一回合蓄势准备，第二回合进行释放对目标造成物理伤害，目标血量越低伤害越高"},
+    {"cond": "仙侣修炼8级解锁", "name": "荆棘之风", "desc": "进入战斗后速度大幅提升"},
+    {"cond": "仙侣修炼10级解锁", "name": "破妄通神", "desc": "可以攻击隐身目标，并提升对其造成的伤害"},
+    {"cond": "仙侣修炼12级解锁", "name": "追光透影", "desc": "劲烈爆炎箭将不再攻击同一排目标，并且攻击目标增加1个"}
+  ]
+}
+];
+
+var bondData = {
+"B": [
+{"person": "小环", "name": "四海逍遥", "partner": "鬼厉", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "小环", "name": "清灵动人", "partner": "陆雪琪", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "小环", "name": "出水芙蓉", "partner": "小白", "blue": "法术防御提升：等级*0.7", "purple": "法术防御提升：等级*1.1", "red": "法术防御提升：等级*1.5"},
+{"person": "小环", "name": "卜天一卦", "partner": "秦无炎", "blue": "闪避率2%", "purple": "闪避率4%", "red": "闪避率6%"},
+{"person": "小环", "name": "浪迹天涯", "partner": "金瓶儿", "blue": "物理防御提升：等级*0.7", "purple": "物理防御提升：等级*1.1", "red": "物理防御提升：等级*1.5"},
+{"person": "小环", "name": "我佛慈琴", "partner": "法相", "blue": "每回合回复气血：等级*1+50", "purple": "每回合回复气血：等级*1.5+75", "red": "每回合回复气血：等级*2+100"},
+{"person": "小环", "name": "巫族血脉", "partner": "鬼先生", "blue": "法术攻击提升：等级*0.7", "purple": "法术攻击提升：等级*1.1", "red": "法术攻击提升：等级*1.5"},
+{"person": "金瓶儿", "name": "魔教三公子", "partner": "鬼厉、秦无炎", "blue": "", "purple": "", "red": "物攻：等级*1.5，速度增加10%"},
+{"person": "金瓶儿", "name": "魅心之术", "partner": "林惊羽", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "金瓶儿", "name": "紫芒耀阳", "partner": "小白", "blue": "法术攻击提升：等级*0.7", "purple": "法术攻击提升：等级*1.1", "red": "法术攻击提升：等级*1.5"},
+{"person": "金瓶儿", "name": "金铃断情", "partner": "敌方碧瑶", "blue": "敌方碧瑶物理和法术防御降低", "purple": "敌方碧瑶物理和法术防御降低", "red": "敌方碧瑶物理和法术防御降低"},
+{"person": "金瓶儿", "name": "缘起缘灭", "partner": "法相", "blue": "出手前被击一次增加8%伤害", "purple": "出手前被击一次增加11%伤害", "red": "出手前被击一次增加15%伤害"},
+{"person": "金瓶儿", "name": "情同姐妹", "partner": "小环", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "金瓶儿", "name": "冷语柔肠", "partner": "玲珑", "blue": "忽略目标5%物理防御", "purple": "忽略目标7.5%物理防御", "red": "忽略目标10%物理防御"},
+{"person": "金瓶儿", "name": "狱火炼魂", "partner": "鬼先生", "blue": "获得2%吸血效果", "purple": "获得4%吸血效果", "red": "获得6%吸血效果"},
+{"person": "幽姬", "name": "四象之力", "partner": "青龙", "blue": "忽略目标5%物理防御", "purple": "忽略目标7.5%物理防御", "red": "忽略目标10%物理防御"},
+{"person": "幽姬", "name": "蕙质兰心", "partner": "陆雪琪", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "幽姬", "name": "斩龙问情", "partner": "林惊羽", "blue": "物理防御提升：等级*0.7", "purple": "物理防御提升：等级*1.1", "red": "物理防御提升：等级*1.5"},
+{"person": "幽姬", "name": "凌波微步", "partner": "小白", "blue": "物理闪概率提升2%", "purple": "物理闪避概率提升4%", "red": "物理闪避概率提升6%"},
+{"person": "幽姬", "name": "掌上明珠", "partner": "碧瑶", "blue": "物理攻击提升：等级*0.7", "purple": "物理攻击提升：等级*1.1", "red": "物理攻击提升：等级*1.5"},
+{"person": "幽姬", "name": "红尘无相", "partner": "法相", "blue": "有吸收伤害护盾，持续2回合", "purple": "有吸收伤害护盾，持续2回合", "red": "有吸收伤害护盾，持续2回合"},
+{"person": "幽姬", "name": "神秘莫则", "partner": "鬼先生", "blue": "被封印概率降低3%", "purple": "被封印概率降低6%", "red": "被封印概率降低9%"},
+{"person": "田灵儿", "name": "不如不见", "partner": "鬼厉", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "田灵儿", "name": "浮光倩影", "partner": "陆雪琪", "blue": "法术攻击提升：等级*0.7", "purple": "法术攻击提升：等级*1.1", "red": "法术攻击提升：等级*1.5"},
+{"person": "田灵儿", "name": "敢爱敢恨", "partner": "小白", "blue": "法术暴击概率提升2%", "purple": "法术暴击概率提升4%", "red": "法术暴击概率提升6%"},
+{"person": "田灵儿", "name": "琥珀灵炎", "partner": "秦无炎", "blue": "物理防御提升：等级*0.7", "purple": "物理防御提升：等级*1.1", "red": "物理防御提升：等级*1.5"},
+{"person": "田灵儿", "name": "情窦初开", "partner": "张小凡", "blue": "闪避率2%", "purple": "闪避率4%", "red": "闪避率6%"},
+{"person": "田灵儿", "name": "花容月貌", "partner": "玲珑", "blue": "被封印概率降低3%", "purple": "被封印概率降低6%", "red": "被封印概率降低9%"},
+{"person": "李洵", "name": "心魔", "partner": "鬼厉", "blue": "法术暴击概率提升2%", "purple": "法术暴击概率提升4%", "red": "法术暴击概率提升6%"},
+{"person": "李洵", "name": "风流倜傥", "partner": "青龙", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "李洵", "name": "梦中情人", "partner": "陆雪琪", "blue": "全属性少量提升", "purple": "全属性提升", "red": "全属性大量提升"},
+{"person": "李洵", "name": "玄火焚心", "partner": "小白", "blue": "法术防御提升：等级*0.7", "purple": "法术防御提升：等级*1.1", "red": "法术防御提升：等级*1.5"},
+{"person": "李洵", "name": "金虹一瞥", "partner": "秦无炎", "blue": "忽略目标5%法术防御", "purple": "忽略目标7.5%法术防御", "red": "忽略目标10%法术防御"},
+{"person": "李洵", "name": "青年才俊", "partner": "法相", "blue": "法术攻击提升：等级*0.7", "purple": "法术攻击提升：等级*1.1", "red": "法术攻击提升：等级*1.5"},
+{"person": "李洵", "name": "嗜血九阳", "partner": "鬼先生", "blue": "获得2%法术吸血效果", "purple": "获得4%法术吸血效果", "red": "获得6%法术吸血效果"}
+],
+"A": [
+{"person": "张小凡", "name": "善恶一念间", "partner": "鬼厉", "blue": "每回合提升法术伤害：等级*0.2", "purple": "每回合提升法术伤害：等级*0.4", "red": "每回合提升法术伤害：等级*0.6"},
+{"person": "张小凡", "name": "缘定三生", "partner": "陆雪琪", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "张小凡", "name": "岁月如梭", "partner": "林惊羽", "blue": "物理防御提升：等级*0.7", "purple": "物理防御提升：等级*1.1", "red": "物理防御提升：等级*1.5"},
+{"person": "张小凡", "name": "为情所困", "partner": "兽神", "blue": "法术攻击提升：等级*0.7", "purple": "法术攻击提升：等级*1.1", "red": "法术攻击提升：等级*1.5"},
+{"person": "张小凡", "name": "倾心", "partner": "碧瑶", "blue": "忽略目标5%法术防御", "purple": "忽略目标7.5%法术防御", "red": "忽略目标10%法术防御"},
+{"person": "张小凡", "name": "舍身愿", "partner": "法相", "blue": "每回合开始回复自身气血：等级*1+50", "purple": "每回合开始回复自身气血：等级*1.5+75", "red": "每回合开始回复自身气血：等级*2+100"},
+{"person": "林惊羽", "name": "斩龙间情", "partner": "青龙", "blue": "法攻提升等级*1，物防降低等级*1", "purple": "法攻提升等级*2，物防降低等级*1", "red": "法攻提升等级*2，物防降低等级*0.5"},
+{"person": "林惊羽", "name": "剑破残阳", "partner": "陆雪琪", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "林惊羽", "name": "天赋天禀", "partner": "兽神", "blue": "忽略目标5%法术防御", "purple": "忽略目标7.5%法术防御", "red": "忽略目标10%法术防御"},
+{"person": "林惊羽", "name": "反噬", "partner": "秦无炎", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "林惊羽", "name": "岁月如梭", "partner": "张小凡", "blue": "物理防御提升：等级*0.7", "purple": "物理防御提升：等级*1.1", "red": "物理防御提升：等级*1.5"},
+{"person": "林惊羽", "name": "缘起缘灭", "partner": "法相", "blue": "法术攻击提升：等级*0.2", "purple": "法术攻击提升：等级*0.4", "red": "法术攻击提升：等级*0.6"},
+{"person": "林惊羽", "name": "龙斩妖邪", "partner": "敌方鬼先生", "blue": "", "purple": "", "red": "封印命中率下降10%"},
+{"person": "普智", "name": "朱雀业火", "partner": "幽姬", "blue": "物理防御提升：等级*0.7", "purple": "物理防御提升：等级*1.1", "red": "物理防御提升：等级*1.5"},
+{"person": "普智", "name": "琥珀之心", "partner": "田灵儿", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "普智", "name": "一己私欲", "partner": "李洵", "blue": "法术攻击提升：等级*0.7", "purple": "法术攻击提升：等级*1.1", "red": "法术攻击提升：等级*1.5"},
+{"person": "普智", "name": "紫芒耀日", "partner": "金瓶儿", "blue": "被封印概率降低3%", "purple": "被封印概率降低6%", "red": "被封印概率降低9%"},
+{"person": "普智", "name": "老而弥坚", "partner": "鬼先生", "blue": "法术防御提升：等级*0.7", "purple": "法术防御提升：等级*1.1", "red": "法术防御提升：等级*1.5"},
+{"person": "秦无炎", "name": "魔教三公子", "partner": "鬼厉、金瓶儿", "blue": "", "purple": "", "red": "生命、防御、速度提升5%"},
+{"person": "秦无炎", "name": "反噬", "partner": "林惊羽", "blue": "被封印概率降低3%", "purple": "被封印概率降低6%", "red": "被封印概率降低9%"},
+{"person": "秦无炎", "name": "心狠手辣", "partner": "兽神", "blue": "物理防御提升：等级*0.7", "purple": "物理防御提升：等级*1.1", "red": "物理防御提升：等级*1.5"},
+{"person": "秦无炎", "name": "魔教双子", "partner": "金瓶儿", "blue": "物理攻击提升：等级*0.7", "purple": "物理攻击提升：等级*1.1", "red": "物理攻击提升：等级*1.5"},
+{"person": "秦无炎", "name": "苦海无边", "partner": "法相", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "秦无炎", "name": "卜天一卦", "partner": "小环", "blue": "每回合回复气血：等级*1+50", "purple": "每回合回复气血：等级*1.5+75", "red": "每回合回复气血：等级*2+100"},
+{"person": "秦无炎", "name": "幽泉鬼步", "partner": "鬼先生", "blue": "获得2%吸血效果", "purple": "获得4%吸血效果", "red": "获得6%吸血效果"},
+{"person": "小白", "name": "缘起缘灭", "partner": "鬼厉", "blue": "", "purple": "", "red": "每回合前概率驱散一个负面状态，非封印和毒"},
+{"person": "小白", "name": "似是故人来", "partner": "青龙", "blue": "物理防御提升：等级*0.7", "purple": "物理防御提升：等级*1.1", "red": "物理防御提升：等级*1.5"},
+{"person": "小白", "name": "故人相识", "partner": "陆雪琪", "blue": "物理和法术闪避提升2%", "purple": "物理和法术闪避提升4%", "red": "物理和法术闪避提升6%"},
+{"person": "小白", "name": "玄火焚心", "partner": "秦无炎", "blue": "暴击概率提升2%", "purple": "暴击概率提升4%", "red": "暴击概率提升6%"},
+{"person": "小白", "name": "少年初相识", "partner": "兽神", "blue": "物理防御提升：等级*0.7", "purple": "物理防御提升：等级*1.1", "red": "物理防御提升：等级*1.5"},
+{"person": "小白", "name": "血脉相连", "partner": "碧瑶", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "小白", "name": "浮光蝶舞", "partner": "玲珑", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "鬼先生", "name": "无常", "partner": "鬼厉", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "鬼先生", "name": "宿命天琊", "partner": "陆雪琪", "blue": "每回合回复气血：等级*1+50", "purple": "每回合回复气血：等级*1.5+75", "red": "每回合回复气血：等级*2+100"},
+{"person": "鬼先生", "name": "天道无光", "partner": "兽神", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "鬼先生", "name": "幽泉鬼步", "partner": "秦无炎", "blue": "封印命中率增加2%", "purple": "封印命中率增加4%", "red": "封印命中率增加6%"},
+{"person": "鬼先生", "name": "狱火炼魂", "partner": "法相", "blue": "双防增加：等级*0.6", "purple": "双防增加：等级*0.8", "red": "双防增加：等级*1"},
+{"person": "鬼先生", "name": "巫族血脉", "partner": "小环", "blue": "物理防御提升：等级*0.7", "purple": "物理防御提升：等级*1.1", "red": "物理防御提升：等级*1.5"},
+{"person": "鬼先生", "name": "阎罗唤魂", "partner": "玲珑", "blue": "每回合前概率驱散一个负面状态，非封印和毒", "purple": "", "red": ""},
+{"person": "青龙", "name": "四象之力", "partner": "鬼厉", "blue": "忽略目标5%物理防御", "purple": "忽略目标7.5%物理防御", "red": "忽略目标10%物理防御"},
+{"person": "青龙", "name": "九天剑芒", "partner": "陆雪琪、林惊羽", "blue": "伤害结果增加6%", "purple": "伤害结果增加8%", "red": "伤害结果增加10%"},
+{"person": "青龙", "name": "故人相识", "partner": "小白", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "青龙", "name": "掌上明珠", "partner": "碧瑶", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "青龙", "name": "紫陷青光", "partner": "金瓶儿", "blue": "出手前被击一次增加8%伤害", "purple": "出手前被击一次增加11%伤害", "red": "出手前被击一次增加15%伤害"},
+{"person": "青龙", "name": "威震一方", "partner": "普智", "blue": "物理防御提升：等级*0.7", "purple": "物理防御提升：等级*1.1", "red": "物理防御提升：等级*1.5"},
+{"person": "青龙", "name": "神秘莫测", "partner": "鬼先生", "blue": "法术防御提升：等级*0.7", "purple": "法术防御提升：等级*1.1", "red": "法术防御提升：等级*1.5"}
+],
+"S": [
+{"person": "赵盼儿", "name": "绝代双骄", "partner": "金瓶儿", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "赵盼儿", "name": "大小双姝", "partner": "小环", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "赵盼儿", "name": "千娇百媚", "partner": "幽姬", "blue": "闪避提升2%", "purple": "闪避提升4%", "red": "闪避提升6%"},
+{"person": "赵盼儿", "name": "芳华绝代", "partner": "碧瑶", "blue": "法术攻击提升：等级*0.5", "purple": "法术攻击提升：等级*1", "red": "法术攻击提升：等级*1.5"},
+{"person": "赵盼儿", "name": "美人如诗", "partner": "陆雪琪", "blue": "击杀目标自身回复20%气血", "purple": "击杀目标自身回复25%气血", "red": "击杀目标自身回复30%气血"},
+{"person": "赵盼儿", "name": "千年之约", "partner": "玲珑", "blue": "法术暴击概率提升2%", "purple": "法术暴击概率提升4%", "red": "法术暴击概率提升6%"},
+{"person": "赵盼儿", "name": "以茶会友", "partner": "大巫师", "blue": "被封印概率降低3%", "purple": "被封印概率降低6%", "red": "被封印概率降低9%"},
+{"person": "赵盼儿", "name": "茶道高手", "partner": "兽神", "blue": "忽略目标5%法术防御", "purple": "忽略目标7.5%法术防御", "red": "忽略目标10%法术防御"},
+{"person": "法相", "name": "红尘无相", "partner": "鬼厉", "blue": "物理防御提升：等级*0.7", "purple": "物理防御提升：等级*1.1", "red": "物理防御提升：等级*1.5"},
+{"person": "法相", "name": "众生相", "partner": "小白", "blue": "法术攻击提升：等级*0.7", "purple": "法术攻击提升：等级*1.1", "red": "法术攻击提升：等级*1.5"},
+{"person": "法相", "name": "携手", "partner": "林惊羽", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "法相", "name": "回头是岸", "partner": "敌方秦无炎", "blue": "双防少量降低", "purple": "双防降低", "red": "双防大幅降低"},
+{"person": "法相", "name": "舍身愿", "partner": "张小凡", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "法相", "name": "心系众生", "partner": "玲珑", "blue": "法术防御提升：等级*0.7", "purple": "法术防御提升：等级*1.1", "red": "法术防御提升：等级*1.5"},
+{"person": "法相", "name": "不动冥王", "partner": "鬼先生", "blue": "被封印概率降低3%", "purple": "被封印概率降低6%", "red": "被封印概率降低9%"},
+{"person": "碧瑶", "name": "永世不悔", "partner": "鬼厉", "blue": "每回合回复气血：等级*1+50", "purple": "每回合回复气血：等级*1.5+75", "red": "每回合回复气血：等级*2+100"},
+{"person": "碧瑶", "name": "掌上明珠", "partner": "青龙", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "碧瑶", "name": "皓齿明眸", "partner": "小环", "blue": "法术防御提升：等级*0.7", "purple": "法术防御提升：等级*1.1", "red": "法术防御提升：等级*1.5"},
+{"person": "碧瑶", "name": "熟悉的陌生人", "partner": "陆雪琪", "blue": "暴击概率提升2%", "purple": "暴击概率提升4%", "red": "暴击概率提升6%"},
+{"person": "碧瑶", "name": "九死不悔", "partner": "兽神", "blue": "忽略目标5%物理防御", "purple": "忽略目标7.5%物理防御", "red": "忽略目标10%物理防御"},
+{"person": "碧瑶", "name": "血脉相连", "partner": "小白", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "碧瑶", "name": "倾心", "partner": "张小凡", "blue": "物理攻击提升：等级*0.7", "purple": "物理攻击提升：等级*1.1", "red": "物理攻击提升：等级*1.5"},
+{"person": "柒柒柒", "name": "天外来客", "partner": "鬼厉", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "柒柒柒", "name": "不同文明", "partner": "陆雪琪", "blue": "法术防御提升：等级*0.7", "purple": "法术防御提升：等级*1.1", "red": "法术防御提升：等级*1.5"},
+{"person": "柒柒柒", "name": "十分好奇", "partner": "田灵儿", "blue": "出手前被击一次增加8%伤害", "purple": "出手前被击一次增加11%伤害", "red": "出手前被击一次增加15%伤害"},
+{"person": "柒柒柒", "name": "猜谜高手", "partner": "金瓶儿", "blue": "5%反击概率", "purple": "10%反击概率", "red": "15%反击概率"},
+{"person": "柒柒柒", "name": "从未赢过", "partner": "张小凡", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "柒柒柒", "name": "异能来客", "partner": "鬼先生", "blue": "忽略目标5%物理防御", "purple": "忽略目标7.5%物理防御", "red": "忽略目标10%物理防御"},
+{"person": "古星魂", "name": "神交已久", "partner": "青龙", "blue": "法术暴击概率提升2%", "purple": "法术暴击概率提升4%", "red": "法术暴击概率提升6%"},
+{"person": "古星魂", "name": "战力相当", "partner": "陆雪琪", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "古星魂", "name": "倾慕非常", "partner": "碧瑶", "blue": "全属性少量提升", "purple": "全属性提升", "red": "全属性大量提升"},
+{"person": "古星魂", "name": "暗中交手", "partner": "法相", "blue": "法术防御提升：等级*0.7", "purple": "法术防御提升：等级*1.1", "red": "法术防御提升：等级*1.5"},
+{"person": "古星魂", "name": "相识一场", "partner": "小环", "blue": "忽略目标5%法术防御", "purple": "忽略目标7.5%法术防御", "red": "忽略目标10%法术防御"},
+{"person": "古星魂", "name": "暗生情愫", "partner": "冷凝霜", "blue": "法术攻击提升：等级*0.7", "purple": "法术攻击提升：等级*1.1", "red": "法术攻击提升：等级*1.5"},
+{"person": "冷凝霜", "name": "战个痛快", "partner": "鬼厉", "blue": "暴击概率提升2%", "purple": "暴击概率提升4%", "red": "暴击概率提升6%"},
+{"person": "冷凝霜", "name": "依酒相识", "partner": "小白", "blue": "忽略目标5%物理防御", "purple": "忽略目标7.5%物理防御", "red": "忽略目标10%物理防御"},
+{"person": "冷凝霜", "name": "京城偶遇", "partner": "金瓶儿", "blue": "闪避提升2%", "purple": "闪避提升4%", "red": "闪避提升6%"},
+{"person": "冷凝霜", "name": "一卦之缘", "partner": "小环", "blue": "每回合开始增加冷凝霜物攻：等级*0.2", "purple": "每回合开始增加冷凝霜物攻：等级*0.4", "red": "每回合开始增加冷凝霜物攻：等级*0.6"},
+{"person": "冷凝霜", "name": "同宗同门", "partner": "隼仙子", "blue": "隼仙子阵亡后，自身伤害增加20%", "purple": "隼仙子阵亡后，自身伤害增加25%", "red": "隼仙子阵亡后，自身伤害增加30%"},
+{"person": "冷凝霜", "name": "似曾相识", "partner": "古星魂", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "陆雪琪", "name": "命中注定", "partner": "鬼厉", "blue": "法攻：等级*0.5，物防：等级*0.3", "purple": "法攻：等级*1，物防：等级*0.6", "red": "法攻：等级*1.5，物防：等级*1"},
+{"person": "陆雪琪", "name": "九天剑芒", "partner": "林惊羽", "blue": "法术攻击提升：等级*0.7", "purple": "法术攻击提升：等级*1.1", "red": "法术攻击提升：等级*1.5"},
+{"person": "陆雪琪", "name": "白衣胜雪", "partner": "法相", "blue": "法术防御提升：等级*0.7", "purple": "法术防御提升：等级*1.1", "red": "法术防御提升：等级*1.5"},
+{"person": "陆雪琪", "name": "熟悉的陌生人", "partner": "碧瑶", "blue": "暴击概率提升2%", "purple": "暴击概率提升4%", "red": "暴击概率提升6%"},
+{"person": "陆雪琪", "name": "缘定三生", "partner": "张小凡", "blue": "每回合回复气血：等级*1+50", "purple": "每回合回复气血：等级*1.5+75", "red": "每回合回复气血：等级*2+100"},
+{"person": "陆雪琪", "name": "九天神兵", "partner": "青龙、金瓶儿、秦无炎", "blue": "", "purple": "", "red": "法攻提升等级*3"},
+{"person": "兽神", "name": "惺惺相惜", "partner": "鬼厉", "blue": "物理防御提升：等级*0.7", "purple": "物理防御提升：等级*1.1", "red": "物理防御提升：等级*1.5"},
+{"person": "兽神", "name": "同命相连", "partner": "陆雪琪", "blue": "出手前被击一次增加8%伤害", "purple": "出手前被击一次增加11%伤害", "red": "出手前被击一次增加15%伤害"},
+{"person": "兽神", "name": "隐世高人", "partner": "林惊羽", "blue": "法术攻击提升：等级*0.7", "purple": "法术攻击提升：等级*1.1", "red": "法术攻击提升：等级*1.5"},
+{"person": "兽神", "name": "少年初相识", "partner": "小白", "blue": "进入战斗后有一个可以吸收少量伤害的护盾，持续2回合", "purple": "进入战斗后有一个可以吸收伤害的护盾，持续2回合", "red": "进入战斗后有一个可以吸收大量伤害的护盾，持续2回合"},
+{"person": "兽神", "name": "情为何物", "partner": "碧瑶", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "兽神", "name": "一己私欲", "partner": "秦无炎", "blue": "法术防御提升：等级*0.7", "purple": "法术防御提升：等级*1.1", "red": "法术防御提升：等级*1.5"},
+{"person": "兽神", "name": "忆绵绵", "partner": "玲珑", "blue": "玲珑阵亡后，自身伤害增加20%", "purple": "玲珑阵亡后，自身伤害增加25%", "red": "玲珑阵亡后，自身伤害增加30%"},
+{"person": "兽神", "name": "天道无光", "partner": "鬼先生", "blue": "获得2%吸血效果", "purple": "获得4%吸血效果", "red": "获得6%吸血效果"},
+{"person": "玲珑", "name": "天若有情", "partner": "陆雪琪", "blue": "4%概率减少受到伤害的40%", "purple": "6%概率减少受到伤害的50%", "red": "6%概率减少受到伤害的60%"},
+{"person": "玲珑", "name": "花容月貌", "partner": "青龙", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "玲珑", "name": "忆绵绵", "partner": "兽神", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "玲珑", "name": "浮光蝶影", "partner": "小白", "blue": "法术防御提升：等级*0.7", "purple": "法术防御提升：等级*1.1", "red": "法术防御提升：等级*1.5"},
+{"person": "玲珑", "name": "情坠阎罗", "partner": "碧瑶", "blue": "被封印概率降低3%", "purple": "被封印概率降低6%", "red": "被封印概率降低9%"},
+{"person": "玲珑", "name": "冷语柔肠", "partner": "金瓶儿", "blue": "封印命中率增加2%", "purple": "封印命中率增加4%", "red": "封印命中率增加6%"},
+{"person": "玲珑", "name": "巫族渊源", "partner": "小环", "blue": "物理防御提升：等级*0.7", "purple": "物理防御提升：等级*1.1", "red": "物理防御提升：等级*1.5"},
+{"person": "玲珑", "name": "阎罗唤魂", "partner": "鬼先生", "blue": "法术攻击提升：等级*0.7", "purple": "法术攻击提升：等级*1.1", "red": "法术攻击提升：等级*1.5"},
+{"person": "大巫师", "name": "恩情难忘", "partner": "鬼厉", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "大巫师", "name": "南疆一梦", "partner": "陆雪琪", "blue": "4%概率减少受到伤害的40%", "purple": "6%概率减少受到伤害的50%", "red": "6%概率减少受到伤害的60%"},
+{"person": "大巫师", "name": "久远传说", "partner": "兽神", "blue": "封印命中率增加2%", "purple": "封印命中率增加4%", "red": "封印命中率增加6%"},
+{"person": "大巫师", "name": "千年往事", "partner": "小白", "blue": "法术攻击提升：等级*0.7", "purple": "法术攻击提升：等级*1.1", "red": "法术攻击提升：等级*1.5"},
+{"person": "大巫师", "name": "逆天还魂", "partner": "碧瑶", "blue": "闪避提升2%", "purple": "闪避提升4%", "red": "闪避提升6%"},
+{"person": "大巫师", "name": "前世今生", "partner": "张小凡", "blue": "每回合回复气血：等级*1+50", "purple": "每回合回复气血：等级*1.5+75", "red": "每回合回复气血：等级*2+100"},
+{"person": "大巫师", "name": "同出一门", "partner": "鬼先生", "blue": "进入战斗后有一个可以吸收少量伤害的护盾，持续2回合", "purple": "进入战斗后有一个可以吸收伤害的护盾，持续2回合", "red": "进入战斗后有一个可以吸收大量伤害的护盾，持续2回合"},
+{"person": "鬼厉", "name": "命中注定", "partner": "陆雪琪", "blue": "暴击概率提升2%", "purple": "暴击概率提升4%", "red": "暴击概率提升6%"},
+{"person": "鬼厉", "name": "亦敌亦友", "partner": "林惊羽", "blue": "忽略目标5%物理防御", "purple": "忽略目标7.5%物理防御", "red": "忽略目标10%物理防御"},
+{"person": "鬼厉", "name": "惺惺相惜", "partner": "兽神", "blue": "物理防御提升：等级*0.7", "purple": "物理防御提升：等级*1.1", "red": "物理防御提升：等级*1.5"},
+{"person": "鬼厉", "name": "缘起缘灭", "partner": "小白", "blue": "物理攻击提升：等级*0.7", "purple": "物理攻击提升：等级*1.1", "red": "物理攻击提升：等级*1.5"},
+{"person": "鬼厉", "name": "生死相依", "partner": "碧瑶", "blue": "碧瑶阵亡后，自身伤害增加20%", "purple": "碧瑶阵亡后，自身伤害增加25%", "red": "碧瑶阵亡后，自身伤害增加30%"},
+{"person": "鬼厉", "name": "魔教三公子", "partner": "金瓶儿、秦无炎", "blue": "", "purple": "", "red": "20%吸血效果"},
+{"person": "鬼厉", "name": "善恶一念间", "partner": "张小凡", "blue": "法术防御提升：等级*0.7", "purple": "法术防御提升：等级*1.1", "red": "法术防御提升：等级*1.5"},
+{"person": "鬼厉", "name": "缘起", "partner": "法相", "blue": "5%反击概率", "purple": "10%反击概率", "red": "15%反击概率"},
+{"person": "鬼厉", "name": "四海见面", "partner": "小环", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"}
+],
+"SS": [
+{"person": "白露", "name": "红袖添香", "partner": "鬼厉", "blue": "法术攻击提升：等级*0.7", "purple": "法术攻击提升：等级*1.1", "red": "法术攻击提升：等级*1.5"},
+{"person": "白露", "name": "仙落红尘", "partner": "陆雪琪", "blue": "法术暴击概率提升2%", "purple": "法术暴击概率提升4%", "red": "法术暴击概率提升6%"},
+{"person": "白露", "name": "亦敌亦友", "partner": "兽神", "blue": "获得2%吸血效果", "purple": "获得4%吸血效果", "red": "获得6%吸血效果"},
+{"person": "白露", "name": "哀婉叹息", "partner": "碧瑶", "blue": "碧瑶阵亡后，自身伤害增加20%", "purple": "碧瑶阵亡后，自身伤害增加25%", "red": "碧瑶阵亡后，自身伤害增加30%"},
+{"person": "白露", "name": "蕙心兰质", "partner": "法相", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "白露", "name": "阡陌红尘", "partner": "玲珑", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "白露", "name": "如花美眷", "partner": "冷凝霜", "blue": "物理防御提升：等级*0.7", "purple": "物理防御提升：等级*1.1", "red": "物理防御提升：等级*1.5"},
+{"person": "白露", "name": "鬼神莫测", "partner": "艾丽", "blue": "被封印概率降低3%", "purple": "被封印概率降低6%", "red": "被封印概率降低9%"},
+{"person": "艾丽", "name": "棋逢对手", "partner": "鬼厉", "blue": "艾丽和鬼厉的生命值增加5%", "purple": "艾丽和鬼厉的生命值增加7.5%", "red": "艾丽和鬼厉的生命值增加10%"},
+{"person": "艾丽", "name": "谈判使者", "partner": "林惊羽", "blue": "艾丽和林惊羽的被封印概率降低3%", "purple": "艾丽和林惊羽的被封印概率降低6%", "red": "艾丽和林惊羽的被封印概率降低9%"},
+{"person": "艾丽", "name": "不可思议", "partner": "兽神", "blue": "出手前被击一次增加8%伤害", "purple": "出手前被击一次增加11%伤害", "red": "出手前被击一次增加15%伤害"},
+{"person": "艾丽", "name": "深深好奇", "partner": "碧瑶", "blue": "5%反击概率", "purple": "10%反击概率", "red": "15%反击概率"},
+{"person": "艾丽", "name": "最强算计", "partner": "金瓶儿", "blue": "击杀目标自身回复20%气血", "purple": "击杀目标自身回复25%气血", "red": "击杀目标自身回复30%气血"},
+{"person": "艾丽", "name": "心地善良", "partner": "小环", "blue": "进入战斗后有一个可以吸收少量伤害的护盾，持续2回合", "purple": "进入战斗后有一个可以吸收伤害的护盾，持续2回合", "red": "进入战斗后有一个可以吸收大量伤害的护盾，持续2回合"},
+{"person": "艾丽", "name": "传说重现", "partner": "玲珑", "blue": "忽略目标5%物理防御", "purple": "忽略目标7.5%物理防御", "red": "忽略目标10%物理防御"},
+{"person": "艾丽", "name": "速度之上", "partner": "隼仙子", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "莫芊芊", "name": "谈判使者", "partner": "林惊羽", "blue": "莫芊芊和林惊羽的被封印概率降低3%", "purple": "莫芊芊和林惊羽的被封印概率降低6%", "red": "莫芊芊和林惊羽的被封印概率降低9%"},
+{"person": "莫芊芊", "name": "魅惑众生", "partner": "小白", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "莫芊芊", "name": "猜谜高手", "partner": "金瓶儿", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "莫芊芊", "name": "心地善良", "partner": "小环", "blue": "进入战斗后有一个可以吸收少量伤害的护盾，持续2回合", "purple": "进入战斗后有一个可以吸收伤害的护盾，持续2回合", "red": "进入战斗后有一个可以吸收大量伤害的护盾，持续2回合"},
+{"person": "莫芊芊", "name": "似曾相识", "partner": "古星魂", "blue": "忽略目标5%物理防御", "purple": "忽略目标7.5%物理防御", "red": "忽略目标10%物理防御"},
+{"person": "阿努比斯", "name": "亡者护卫", "partner": "张小凡", "blue": "4%概率减少受到伤害的40%", "purple": "6%概率减少受到伤害的50%", "red": "6%概率减少受到伤害的60%"},
+{"person": "阿努比斯", "name": "心脏称重", "partner": "田灵儿", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "阿努比斯", "name": "秘仪祭祀", "partner": "芦屋绫", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "阿努比斯", "name": "不腐", "partner": "艾丽", "blue": "双防增加：等级*0.6", "purple": "双防增加：等级*0.8", "red": "双防增加：等级*1"},
+{"person": "阿努比斯", "name": "苦修", "partner": "隼仙子", "blue": "阿努比斯和隼仙子的被封印概率降低3%", "purple": "阿努比斯和隼仙子的被封印概率降低6%", "red": "阿努比斯和隼仙子的被封印概率降低9%"},
+{"person": "阿努比斯", "name": "葬者", "partner": "鬼厉", "blue": "封印命中率增加2%", "purple": "封印命中率增加4%", "red": "封印命中率增加6%"},
+{"person": "芦屋绫", "name": "青梅竹马", "partner": "莫芊芊", "blue": "法术攻击提升：等级*0.7", "purple": "法术攻击提升：等级*1.1", "red": "法术攻击提升：等级*1.5"},
+{"person": "芦屋绫", "name": "两小无猜", "partner": "陆雪琪", "blue": "法术暴击概率提升2%", "purple": "法术暴击概率提升4%", "red": "法术暴击概率提升6%"},
+{"person": "芦屋绫", "name": "相见恨晚", "partner": "兽神", "blue": "获得2%吸血效果", "purple": "获得4%吸血效果", "red": "获得6%吸血效果"},
+{"person": "芦屋绫", "name": "似曾相识", "partner": "碧瑶", "blue": "碧瑶阵亡后，自身伤害增加20%", "purple": "碧瑶阵亡后，自身伤害增加25%", "red": "碧瑶阵亡后，自身伤害增加30%"},
+{"person": "芦屋绫", "name": "命薄缘怪", "partner": "白露", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "芦屋绫", "name": "一面之缘", "partner": "玲珑", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "诗音", "name": "一舞定情", "partner": "青龙", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "诗音", "name": "闹事偶遇", "partner": "田灵儿", "blue": "法术防御提升：等级*0.7", "purple": "法术防御提升：等级*1.1", "red": "法术防御提升：等级*1.5"},
+{"person": "诗音", "name": "魅惑众生", "partner": "小白", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "诗音", "name": "神交已久", "partner": "碧瑶", "blue": "物理防御提升：等级*0.7", "purple": "物理防御提升：等级*1.1", "red": "物理防御提升：等级*1.5"},
+{"person": "诗音", "name": "游戏人间", "partner": "金瓶儿", "blue": "忽略目标5%法术防御", "purple": "忽略目标7.5%法术防御", "red": "忽略目标10%法术防御"},
+{"person": "诗音", "name": "大隐于世", "partner": "小环", "blue": "进入战斗后有一个可以吸收少量伤害的护盾，持续2回合", "purple": "进入战斗后有一个可以吸收伤害的护盾，持续2回合", "red": "进入战斗后有一个可以吸收大量伤害的护盾，持续2回合"},
+{"person": "嫦娥", "name": "月光寒", "partner": "陆雪琪", "blue": "物理攻击提升：等级*0.7", "purple": "物理攻击提升：等级*1.1", "red": "物理攻击提升：等级*1.5"},
+{"person": "嫦娥", "name": "月殿清", "partner": "林惊羽", "blue": "嫦娥和林惊羽的被封印概率降低3%", "purple": "嫦娥和林惊羽的被封印概率降低6%", "red": "嫦娥和林惊羽的被封印概率降低9%"},
+{"person": "嫦娥", "name": "奔月曲", "partner": "诗音", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "嫦娥", "name": "长生药", "partner": "鬼先生", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "嫦娥", "name": "皓月护", "partner": "白露", "blue": "进入战斗后有一个可以吸收少量伤害的护盾，持续2回合", "purple": "进入战斗后有一个可以吸收伤害的护盾，持续2回合", "red": "进入战斗后有一个可以吸收大量伤害的护盾，持续2回合"},
+{"person": "嫦娥", "name": "飞仙者", "partner": "莫芊芊", "blue": "忽略目标5%物理防御", "purple": "忽略目标7.5%物理防御", "red": "忽略目标10%物理防御"},
+{"person": "隼仙子", "name": "一面之缘", "partner": "鬼厉", "blue": "暴击概率提升2%", "purple": "暴击概率提升4%", "red": "暴击概率提升6%"},
+{"person": "隼仙子", "name": "天空君主", "partner": "幽姬", "blue": "速度提升5%", "purple": "速度提升7.5%", "red": "速度提升10%"},
+{"person": "隼仙子", "name": "天地钟灵", "partner": "小白", "blue": "法术防御提升：等级*0.7", "purple": "法术防御提升：等级*1.1", "red": "法术防御提升：等级*1.5"},
+{"person": "隼仙子", "name": "守护之缘", "partner": "碧瑶", "blue": "气血上限提升5%", "purple": "气血上限提升7.5%", "red": "气血上限提升10%"},
+{"person": "隼仙子", "name": "女中英杰", "partner": "金瓶儿", "blue": "忽略目标5%物理防御", "purple": "忽略目标7.5%物理防御", "red": "忽略目标10%物理防御"},
+{"person": "隼仙子", "name": "修罗之力", "partner": "鬼先生", "blue": "击杀目标自身回复20%气血", "purple": "击杀目标自身回复25%气血", "red": "击杀目标自身回复30%气血"}
+]
+};
+
+var giftData = [
+{"quality": "SS", "name": "阿努比斯", "normal": "秘籍", "adv": ["夜明珠"]},
+{"quality": "SS", "name": "嫦娥", "normal": "鲜果", "adv": ["夜明珠"]},
+{"quality": "S", "name": "赵盼儿", "normal": "羊脂玉", "adv": ["财宝"]},
+{"quality": "SS", "name": "艾丽", "normal": "羊脂玉", "adv": ["上古神兵"]},
+{"quality": "SS", "name": "白露", "normal": "玉笛", "adv": ["无极仙丹", "夜明珠"]},
+{"quality": "SS", "name": "莫芊芊", "normal": "秘籍", "adv": ["夜明珠"]},
+{"quality": "SS", "name": "诗音", "normal": "鲜果", "adv": ["琼浆玉液"]},
+{"quality": "SS", "name": "芦屋绫", "normal": "玉笛", "adv": ["无极仙丹"]},
+{"quality": "S", "name": "兽神", "normal": "羊脂玉", "adv": ["财宝", "无极仙丹"]},
+{"quality": "S", "name": "陆雪琪", "normal": "羊脂玉", "adv": ["上古神兵", "夜明珠"]},
+{"quality": "S", "name": "鬼厉", "normal": "玉笛", "adv": ["琼浆玉液", "夜明珠"]},
+{"quality": "S", "name": "唐十三", "normal": "玉笛", "adv": ["上古神兵", "无极仙丹"]},
+{"quality": "S", "name": "大巫师", "normal": "玉笛", "adv": []},
+{"quality": "S", "name": "碧瑶", "normal": "玉笛", "adv": ["琼浆玉液", "无极仙丹"]},
+{"quality": "S", "name": "冷凝霜", "normal": "秘籍", "adv": ["财宝", "琼浆玉液"]},
+{"quality": "S", "name": "古星魂", "normal": "羊脂玉", "adv": []},
+{"quality": "S", "name": "玲珑", "normal": "鲜果", "adv": ["上古神兵", "琼浆玉液", "财宝"]},
+{"quality": "S", "name": "法相", "normal": "金丝楠木", "adv": ["无极仙丹", "财宝", "夜明珠"]},
+{"quality": "S", "name": "柒柒柒", "normal": "金丝楠木", "adv": ["上古神兵", "夜明珠"]},
+{"quality": "A", "name": "林惊羽", "normal": "", "adv": ["财宝", "琼浆玉液"]},
+{"quality": "A", "name": "鬼先生", "normal": "玉笛", "adv": ["琼浆玉液", "上古神兵"]},
+{"quality": "A", "name": "秦无炎", "normal": "秘籍", "adv": ["上古神兵", "夜明珠"]},
+{"quality": "A", "name": "张小凡", "normal": "秘籍", "adv": ["上古神兵", "夜明珠"]},
+{"quality": "A", "name": "青龙", "normal": "羊脂玉", "adv": ["上古神兵", "夜明珠"]},
+{"quality": "A", "name": "小白", "normal": "鲜果", "adv": ["无极仙丹", "琼浆玉液"]},
+{"quality": "A", "name": "普智", "normal": "金丝楠木", "adv": ["无极仙丹", "财宝"]},
+{"quality": "B", "name": "小环", "normal": "玉笛", "adv": ["琼浆玉液", "上古神兵"]},
+{"quality": "B", "name": "金瓶儿", "normal": "玉笛", "adv": ["琼浆玉液", "无极仙丹"]},
+{"quality": "B", "name": "田灵儿", "normal": "秘籍", "adv": ["上古神兵", "夜明珠"]},
+{"quality": "B", "name": "幽姬", "normal": "秘籍", "adv": ["财宝", "琼浆玉液"]},
+{"quality": "B", "name": "李洵", "normal": "秘籍", "adv": ["上古神兵", "无极仙丹"]}
+];
+
+// 仙侣头像图标（素材在 icons/xltj/，替换路径只需修改此处）
+var companionIcons = {
+"小环": "icons/xltj/smallhead_xiaonvhai.png",
+"金瓶儿": "icons/xltj/smallhead_jinpinger.png",
+"幽姬": "icons/xltj/smallhead_youji.png",
+"张小凡": "icons/xltj/smallhead_zhangxiaofan.png",
+"李洵": "icons/xltj/smallhead_lixun.png",
+"田灵儿": "icons/xltj/smallhead_tianlinger.png",
+"林惊羽": "icons/xltj/smallhead_linjingyu.png",
+"普智": "icons/xltj/smallhead_puzhi.png",
+"秦无炎": "icons/xltj/smallhead_qinwuyan.png",
+"小白": "icons/xltj/smallhead_sanwei.png",
+"鬼先生": "icons/xltj/smallhead_guixiansheng.png",
+"青龙": "icons/xltj/smallhead_huobanqinglong.png",
+"碧瑶": "icons/xltj/smallhead_biyao.png",
+"赵盼儿": "icons/xltj/item_03950.png",
+"法相": "icons/xltj/smallhead_faxiang.png",
+"柒柒柒": "icons/xltj/smallhead_005.png",
+"古星魂": "icons/xltj/smallhead_LJS.png",
+"冷凝霜": "icons/xltj/lns.png",
+"陆雪琪": "icons/xltj/smallhead_luxueqi.png",
+"兽神": "icons/xltj/smallhead_shoushen.png",
+"玲珑": "icons/xltj/smallhead_linglong.png",
+"大巫师": "icons/xltj/smallhead_dawushi.png",
+"鬼厉": "icons/xltj/smallhead_guili.png",
+"白露": "icons/xltj/smallhead_063.png",
+"艾丽": "icons/xltj/smallhead_yn04.png",
+"莫芊芊": "icons/xltj/item_02530.png",
+"阿努比斯": "icons/xltj/item_05374.png",
+"芦屋绫": "icons/xltj/item_02743.png",
+"诗音": "icons/xltj/smallhead_LYNN.png",
+"嫦娥": "icons/xltj/item_05375.png",
+"隼仙子": "icons/xltj/smallhead_sunxianzi.png"
+};
+
+// Encyclopedia: render grid, filter, search, detail modal
+(function(){
+  var catLabels = {B:'B级', A:'A级', S:'S级', SS:'SS级'};
+  var currentCat = 'ALL';
+  var grid = document.getElementById('xianlv-grid');
+  var sideBtns = document.querySelectorAll('.ency-side-btn');
+  var overlay = document.getElementById('xianlv-detail-overlay');
+  var detailHeader = document.getElementById('xianlv-detail-header');
+  var detailBody = document.getElementById('xianlv-detail-body');
+
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  // Avatar (grid + modal share one builder so both are controlled in one place)
+  function avatarHtml(c, cls){
+    var icon = companionIcons[c.name] || 'icons/cwtj/smallhead_024.png';
+    return '<div class="'+cls+' xl-g-'+c.grade+'"><img src="'+icon+'" alt="仙侣头像" loading="lazy"></div>';
+  }
+
+  // Render grid
+  var html = '';
+  companionData.forEach(function(c, i){
+    html += '<div class="xianlv-item" data-cat="'+c.grade+'" data-name="'+esc(c.name)+'" data-idx="'+i+'">'
+      + avatarHtml(c, 'xl-avatar')
+      + '<span class="xl-grid-name">'+esc(c.name)+'</span>'
+      + '<span class="xl-grid-sect">'+esc(c.sect)+'</span>'
+      + '</div>';
+  });
+  grid.innerHTML = html;
+  var items = grid.querySelectorAll('.xianlv-item');
+
+  // Sidebar counts
+  sideBtns.forEach(function(btn){
+    var cat = btn.dataset.cat;
+    var count = cat === 'ALL' ? companionData.length : companionData.filter(function(c){ return c.grade === cat; }).length;
+    var countEl = btn.querySelector('.side-count');
+    if(countEl) countEl.textContent = count;
+  });
+
+  // Initial filter: show all
+  items.forEach(function(item){
+    item.style.display = '';
+  });
+
+  // Category filter
+  sideBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      sideBtns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      currentCat = btn.dataset.cat;
+      items.forEach(function(item){
+        item.style.display = (currentCat === 'ALL' || item.dataset.cat === currentCat) ? '' : 'none';
+      });
+      if(overlay.classList.contains('show')) closeModal();
+    });
+  });
+
+  // Search
+  var searchInput = document.getElementById('xianlv-search');
+  if(searchInput){
+    searchInput.addEventListener('input', function(){
+      var q = searchInput.value.trim().toLowerCase();
+      items.forEach(function(item){
+        var name = item.dataset.name.toLowerCase();
+        var catMatch = currentCat === 'ALL' || item.dataset.cat === currentCat;
+        item.style.display = (catMatch && name.indexOf(q) >= 0) ? '' : 'none';
+      });
+    });
+  }
+
+  // Click companion to show detail
+  items.forEach(function(item){
+    item.addEventListener('click', function(){
+      var idx = parseInt(item.dataset.idx);
+      var c = companionData[idx];
+
+      // Header — reuse the clicked grid item's icon so one src controls both list and card
+      var h = '<div class="xl-detail-avatar xl-g-'+c.grade+'"><img src="'+item.querySelector('.xl-avatar img').getAttribute('src')+'" alt="仙侣头像" loading="lazy"></div>';
+      h += '<div><div class="detail-title">'+esc(c.name)+'</div>';
+      h += '<div class="detail-info">门派：'+esc(c.sect)+' · 获取：'+esc(c.obtain)+'</div>';
+      h += '<span class="grade-badge g-'+c.grade+'">'+catLabels[c.grade]+'</span></div>';
+      detailHeader.innerHTML = h;
+
+      var body = '';
+
+      // Skills
+      if(c.skills && c.skills.length){
+        body += '<div class="xl-modal-sub">技能</div><div class="xl-skill-list">';
+        c.skills.forEach(function(s){
+          body += '<div class="xl-skill"><div class="xl-skill-head"><span class="xl-skill-name">'+esc(s.name)+'</span>';
+          if(s.cond && s.cond !== '无'){
+            body += '<span class="xl-skill-cond">'+esc(s.cond.replace(/^仙侣/,''))+'</span>';
+          }
+          body += '</div><div class="xl-skill-desc">'+esc(s.desc)+'</div></div>';
+        });
+        body += '</div>';
+      }
+
+      // Bonds of this companion
+      var bonds = (bondData[c.grade] || []).filter(function(b){ return b.person === c.name; });
+      if(bonds.length){
+        body += '<div class="xl-modal-sub">情缘<span class="xl-modal-sub-note">洗炼获得 · 需一同上阵生效</span></div>';
+        body += '<div class="stats-table-wrap"><table class="xl-bond-table"><thead><tr><th>情缘</th><th>需一同上阵</th><th class="th-blue">蓝</th><th class="th-purple">紫</th><th class="th-red">红</th></tr></thead><tbody>';
+        bonds.forEach(function(b){
+          body += '<tr><td class="bond-name">'+esc(b.name)+'</td><td>'+esc(b.partner)+'</td>'
+            + '<td class="c-blue">'+esc(b.blue)+'</td>'
+            + '<td class="c-purple">'+esc(b.purple)+'</td>'
+            + '<td class="c-red">'+esc(b.red)+'</td></tr>';
+        });
+        body += '</tbody></table></div>';
+      }
+
+      // Gift preference
+      var gift = null;
+      for(var i = 0; i < giftData.length; i++){
+        if(giftData[i].name === c.name){ gift = giftData[i]; break; }
+      }
+      if(gift){
+        body += '<div class="xl-modal-sub">礼物偏好</div>';
+        body += '<div class="xl-gift-note">普通礼物：<b>'+esc(gift.normal)+'</b>'
+          + '　高级礼物：<b>'+esc(gift.adv.join('、'))+'</b></div>';
+      }
+
+      detailBody.innerHTML = body;
+      overlay.classList.add('show');
+      var sbWidth = window.innerWidth - document.documentElement.clientWidth;
+      document.documentElement.style.overflow = 'hidden';
+      if(sbWidth > 0) document.body.style.paddingRight = sbWidth + 'px';
+    });
+  });
+
+  function closeModal(){
+    overlay.classList.remove('show');
+    document.documentElement.style.overflow = '';
+    document.body.style.paddingRight = '';
+  }
+
+  document.getElementById('xianlv-detail-close').addEventListener('click', closeModal);
+
+  overlay.addEventListener('click', function(e){
+    if(e.target === overlay) closeModal();
+  });
+})();
+
+// Static tables: gifts, bonds per grade, yuanshen cost
+(function(){
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  // Gift table
+  var giftWrap = document.getElementById('gift-table-wrap');
+  if(giftWrap){
+    var rows = '';
+    giftData.forEach(function(g){
+      rows += '<tr>'
+        + '<td><span class="quality-badge q-'+g.quality+'">'+esc(g.quality)+'</span></td>'
+        + '<td class="bond-person">'+esc(g.name)+'</td>'
+        + '<td>'+esc(g.normal)+'</td>'
+        + '<td>'+esc(g.adv.join('、'))+'</td>'
+        + '</tr>';
+    });
+    giftWrap.innerHTML = '<table><thead><tr><th>品质</th><th>仙侣</th><th>普通礼物</th><th>高级礼物</th></tr></thead><tbody>'+rows+'</tbody></table>';
+  }
+
+  // Yuanshen cost table: 1-90 stars, 3 pairs per row
+  var costWrap = document.getElementById('yuanshen-cost-wrap');
+  if(costWrap){
+    var rows = '';
+    for(var r = 0; r < 30; r++){
+      rows += '<tr>';
+      for(var k = 0; k < 3; k++){
+        var star = k * 30 + r + 1;
+        rows += '<td class="bond-person">'+star+' 星</td><td>'+(star * 10)+'</td>';
+      }
+      rows += '</tr>';
+    }
+    var head = '<tr><th>元神星级</th><th>残念消耗</th><th>元神星级</th><th>残念消耗</th><th>元神星级</th><th>残念消耗</th></tr>';
+    costWrap.innerHTML = '<table><thead>'+head+'</thead><tbody>'+rows+'</tbody></table>';
+  }
+})();
+
+// Collapsible section banners
+(function(){
+  document.querySelectorAll('.hs-toggle-header').forEach(function(header){
+    var panel = header.nextElementSibling;
+    var btn = header.querySelector('.hs-expand-btn');
+    if(!panel || !panel.classList.contains('hs-collapsible') || !btn) return;
+    function toggle(){
+      var open = panel.classList.toggle('open');
+      btn.textContent = open ? '收起 ∧' : '展开 ∨';
+      header.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    header.addEventListener('click', toggle);
+    header.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+  });
+})();
+</script>
+
+<script>
+document.addEventListener('copy',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('contextmenu',function(e){e.preventDefault();});
+</script>
+
+</body>
+</html>

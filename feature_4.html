@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人物悟道 — 九小卿攻略站</title>
+<meta name="description" content="九小卿人物悟道攻略">
+<link rel="icon" type="image/jpeg" href="art/favicon.jpg">
+<style>
+  :root{
+    --bg:#fff;--ink:#16130f;--muted:#6f675c;--card:#ffffff;
+    --pink:#ff4d8d;--blue:#4d7cff;--violet:#8b5cf6;--lime:#cdf05a;
+    --orange:#ff8a3d;--gold:#f59e0b;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scrollbar-gutter:stable}
+  body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.8;overflow-x:hidden}
+  ::selection{background:var(--pink);color:#fff}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:960px;margin:0 auto;padding:32px 24px 60px}
+  .back-btn{display:inline-flex;flex-direction:row;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;background:var(--card);border:1.5px solid rgba(22,19,15,.12);color:var(--ink);font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s;white-space:nowrap;width:auto;align-self:flex-start}
+  .back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(22,19,15,.12);border-color:var(--pink)}
+  .back-btn svg{width:18px;height:18px}
+  .page-title{text-align:center;margin:40px 0 48px}
+  .page-title h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;letter-spacing:.02em;background:linear-gradient(135deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .footer{text-align:center;padding:40px 0;color:var(--muted);font-size:.85rem}
+  .footer .heart{color:var(--pink)}
+  .purple-header{background:#f3e8ff;border-left:4px solid #8b5cf6;padding:12px 18px;margin:28px 0 16px;font-size:1.2rem;font-weight:700;color:var(--ink);border-radius:0 8px 8px 0}
+  .blue-header{background:#e8f4fd;border-left:4px solid #4d7cff;padding:10px 16px;margin:20px 0 12px;font-size:1.05rem;font-weight:700;color:var(--ink);border-radius:0 6px 6px 0}
+  .doc-p{margin:10px 0;font-size:.95rem;line-height:1.8;color:#333}
+  .doc-img{margin:16px 0;text-align:center}
+  .doc-img img{max-width:100%;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.1);display:inline-block}
+  ul{padding-left:0;margin:12px 0;list-style:none}
+  li{margin-bottom:8px;font-size:.95rem;line-height:1.8;color:#333;padding-left:20px;position:relative}
+  li::before{content:"•";position:absolute;left:0;color:var(--violet);font-weight:700}
+  .note{background:#fffbeb;border-left:3px solid #f59e0b;padding:12px 16px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.92rem;color:#78350f}
+  .note strong{color:#92400e}
+  .doc-table-wrap{margin:16px 0;overflow-x:auto}
+  .doc-table{width:100%;border-collapse:collapse;font-size:.85rem}
+  .doc-table th{background:#f3e8ff;color:#6d28d9;padding:10px 12px;text-align:left;border:1px solid #e9d5ff;font-weight:700}
+  .doc-table td{padding:8px 12px;border:1px solid #e5e7eb;color:#374151;vertical-align:top}
+  @media (min-width:641px){
+    .doc-table td:first-child,.doc-table td:nth-child(2),.doc-table th:first-child,.doc-table th:nth-child(2){width:90px;white-space:nowrap;text-align:center}
+    .doc-table td:nth-child(3),.doc-table td:nth-child(4),.doc-table th:nth-child(3),.doc-table th:nth-child(4){width:80px;white-space:nowrap;text-align:center}
+  }
+  .doc-table tr:nth-child(even){background:#fafafa}
+  .img-grid{display:flex;gap:12px;margin:16px 0;flex-wrap:wrap}
+  .img-grid .img-cell{flex:1;min-width:0;text-align:center}
+  .img-grid .img-cell img{max-width:100%;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.1);display:inline-block}
+  .img-grid .img-caption{margin-top:8px;font-size:.85rem;color:#555;font-weight:600}
+  .img-grid-2 .img-cell{flex:0 0 calc(50% - 6px)}
+  .img-grid-3 .img-cell{flex:0 0 calc(33.333% - 8px)}
+  @media (max-width:640px){
+    .wrap{padding:24px 16px}
+    .page-title{margin:24px 0 32px}
+    .doc-p,li{font-size:.85rem}
+    .doc-table{font-size:.75rem}
+    .img-grid-2 .img-cell,.img-grid-3 .img-cell{flex:0 0 100%}
+  }
+
+  /* 全屏水印 */
+  .site-watermark{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99999;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22220%22%20height%3D%22160%22%3E%0A%20%20%3Ctext%20x%3D%2220%22%20y%3D%2280%22%20font-size%3D%2212%22%20fill%3D%22%23000000%22%20fill-opacity%3D%220.05%22%20font-family%3D%22Microsoft%20YaHei%2C%20sans-serif%22%20transform%3D%22rotate%2825%2C%20110%2C%2080%29%22%3E%E4%B9%9D%E5%B0%8F%E5%8D%BF%E6%94%BB%E7%95%A5%E7%AB%99%3C/text%3E%0A%3C/svg%3E");background-repeat:repeat;opacity:1}
+
+  /* 禁止复制 */
+  body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+  input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+
+</style>
+</head>
+<body>
+<div class="site-watermark"></div>
+<div class="wrap">
+  <a href="index.html?skipIntro=1#features" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    返回首页
+  </a>
+  <a href="conv_8.html" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    智能客服
+  </a>
+  <div class="page-title"><h1>人物悟道</h1></div>
+
+<div class="purple-header">悟道功能</div>
+<p class="doc-p"><b>人物30级解锁</b></p>
+<div class="doc-img"><img src="art/renwu_wudao/wudao_0.webp" alt="人物角色界面"></div>
+<ul><li>女角色的话人物显示就是女的，男角色的话就是男的（长生引同理）</li></ul>
+<div class="img-grid img-grid-2">
+  <div class="img-cell"><img src="art/renwu_wudao/wudao_1.webp" alt="悟道界面1" loading="lazy"></div>
+  <div class="img-cell"><img src="art/renwu_wudao/wudao_2.webp" alt="悟道界面2" loading="lazy"></div>
+</div>
+<div class="img-grid img-grid-2">
+  <div class="img-cell"><img src="art/renwu_wudao/wudao_3.png" alt="非战斗状态下效果图" loading="lazy"><div class="img-caption">非战斗状态下效果图</div></div>
+  <div class="img-cell"><img src="art/renwu_wudao/wudao_4.png" alt="战斗状态下效果图" loading="lazy"><div class="img-caption">战斗状态下效果图</div></div>
+</div>
+
+<div class="purple-header">参悟</div>
+<ul>
+<li>悟道具有若干境界道法，每境界分为九层;</li>
+<li>每参悟到新的道法阶层，可获得全新的奖励和属性加成，具体奖励内容可点击奖励预览查看;</li>
+</ul>
+<div class="img-grid img-grid-2">
+  <div class="img-cell"><img src="art/renwu_wudao/wudao_5.webp" alt="预览按钮" loading="lazy"></div>
+  <div class="img-cell"><img src="art/renwu_wudao/wudao_6.webp" alt="奖励预览" loading="lazy"></div>
+</div>
+<ul><li>每层有2~3条参悟条件，和道法经验值需求。只有同时满足所需道法值与参悟条件，才可进入可参悟状态;</li></ul>
+<div class="img-grid img-grid-2">
+  <div class="img-cell" style="flex:0 0 62%"><img src="art/renwu_wudao/wudao_7.webp" alt="参悟条件" loading="lazy"></div>
+  <div class="img-cell" style="flex:0 0 calc(38% - 12px)"><img src="art/renwu_wudao/wudao_8.png" alt="参悟状态图标" loading="lazy"></div>
+</div>
+<ul><li>可参悟状态下，道法值将不再上涨，同时需战胜当层心魔才可顺利参悟并进入下一层道法境界;（打心魔的时候这里会变成挑战的标）</li></ul>
+
+<div class="img-grid img-grid-3">
+  <div class="img-cell"><img src="art/renwu_wudao/wudao_9.png" alt="悟道收益图标" loading="lazy"></div>
+  <div class="img-cell"><img src="art/renwu_wudao/wudao_10.png" alt="弥月币" loading="lazy"></div>
+  <div class="img-cell"><img src="art/renwu_wudao/wudao_11.png" alt="道法经验" loading="lazy"></div>
+</div>
+<ul><li>当前所处道法阶层决定悟道的固定收益，道法值可从悟道收益中获取，也可通过获取并服用丹药获得，丹药每种每天可服用20次:</li></ul>
+<div class="doc-img"><img src="art/renwu_wudao/wudao_12.png" alt="丹药展示" loading="lazy"></div>
+<div class="img-grid img-grid-2">
+  <div class="img-cell"><img src="art/renwu_wudao/wudao_13.png" alt="使用丹药-三清散" loading="lazy"></div>
+  <div class="img-cell"><img src="art/renwu_wudao/wudao_14.png" alt="使用丹药-六寰丹" loading="lazy"></div>
+</div>
+
+<div class="purple-header">悟道收益</div>
+<div class="img-grid img-grid-2">
+  <div class="img-cell"><img src="art/renwu_wudao/wudao_15.png" alt="悟道收益界面" loading="lazy"></div>
+  <div class="img-cell"><img src="art/renwu_wudao/wudao_16.png" alt="机缘奖励" loading="lazy"></div>
+</div>
+<ul>
+<li>悟道收益包含固定收益与机缘奖励:</li>
+<li>固定收益：取决于当前所处道法阶层，境界越高，固定收益越高。每分钟均会产生一份收益，点击人物即可领取；</li>
+<li>机缘奖励:每整点获得一个募灵石，第十一次必获得一个募灵玉，随后次数重置。奖励内容可在机缘奖励中查看。</li>
+<li>机缘奖励掉落后与固定收益一起发放</li>
+</ul>
+<div class="doc-img"><img src="art/renwu_wudao/wudao_17.webp" alt="悟道收益大界面" loading="lazy"></div>
+
+<div class="blue-header">悟道时间</div>
+<ul><li>悟道时间:收益存在放置上限，当悟道时间达到12小时后即不再产生收益，需及时点击人物领取收益;（点击中心的这个光圈领取）</li></ul>
+<div class="doc-img"><img src="art/renwu_wudao/wudao_18.webp" alt="悟道界面" loading="lazy"></div>
+
+<div class="blue-header">加速</div>
+<ul><li>加速:每天有5次加速机会，可以一次获取2小时的收益。收益将直接发放，不会计入当前悟道时间内。</li></ul>
+<div class="img-grid img-grid-3">
+  <div class="img-cell"><img src="art/renwu_wudao/wudao_19.png" alt="加速弹窗" loading="lazy"></div>
+  <div class="img-cell"><img src="art/renwu_wudao/wudao_20.png" alt="加速成功" loading="lazy"></div>
+  <div class="img-cell"><img src="art/renwu_wudao/wudao_21.png" alt="加速确认" loading="lazy"></div>
+</div>
+
+<div class="purple-header">悟道任务</div>
+<div class="doc-table-wrap"><table class="doc-table">
+<tr>
+<th>参悟前</th>
+<th>参悟后</th>
+<th>经验</th>
+<th>每分钟经验</th>
+<th>参悟条件</th>
+</tr>
+<tr>
+<td>塑道1</td>
+<td>塑道 2</td>
+<td>30739</td>
+<td>100</td>
+<td>条件[1]角色达到 30 级 条件[2]拥有 4 个仙侣</td>
+</tr>
+<tr>
+<td>塑道 2</td>
+<td>塑道 3</td>
+<td>50301</td>
+<td>110</td>
+<td>条件[1]任意一件装备启灵等级达到 5 级 条件[2]完成一次赏月</td>
+</tr>
+<tr>
+<td>塑道 3</td>
+<td>塑道 4</td>
+<td>72657</td>
+<td>120</td>
+<td>条件[1]完成 5 场黑龙浩劫 条件[2]完成 5 次赏金</td>
+</tr>
+<tr>
+<td>塑道 4</td>
+<td>塑道 5</td>
+<td>97808</td>
+<td>130</td>
+<td>条件[1]角色达到 40 级 条件[2]任意 4 个修炼技能达到 2 级</td>
+</tr>
+<tr>
+<td>塑道 5</td>
+<td>塑道 6</td>
+<td>125753</td>
+<td>140</td>
+<td>条件[1]任意生活技能达到 40 级条件[2]任意帮派技能达到 30 级</td>
+</tr>
+<tr>
+<td>塑道 6</td>
+<td>塑道 7</td>
+<td>156493</td>
+<td>150</td>
+<td>条件[1]完成 1 次还魂秘术 条件 [2]通关青云志 - 普通第一章毒血尸王秘术</td>
+</tr>
+<tr>
+<td>塑道 7</td>
+<td>塑道 8</td>
+<td>190027</td>
+<td>160</td>
+<td>条件[1]角色达到 45 级 条件[2]任意一件装备启灵等级达到 9 级</td>
+</tr>
+<tr>
+<td>塑道 8</td>
+<td>塑道 9</td>
+<td>226356</td>
+<td>170</td>
+<td>条件[1]使用 1 张乾坤灵宝图 条件[2]任意 6 个修炼技能达到 3 级</td>
+</tr>
+<tr>
+<td>塑道 9</td>
+<td>育道1</td>
+<td>265479</td>
+<td>180</td>
+<td>条件[1]羽翼达到 4 阶 条件[2]首次通关精英副本 条件[3]从道法心魔对抗中获得胜利</td>
+</tr>
+<tr>
+<td>育道1</td>
+<td>育道 2</td>
+<td>307397</td>
+<td>190</td>
+<td>条件[1]通关青云志 - 普通第二章鲁莽 条件[2]角色战力达到 5600</td>
+</tr>
+<tr>
+<td>育道 2</td>
+<td>育道 3</td>
+<td>352109</td>
+<td>200</td>
+<td>条件[1]角色达到 50 级 条件[2]通关青云志普通第二章小灰</td>
+</tr>
+<tr>
+<td>育道 3</td>
+<td>育道 4</td>
+<td>399616</td>
+<td>210</td>
+<td>条件[1]羽翼达到 6 阶 条件[2]完成 30 次帮派任务</td>
+</tr>
+<tr>
+<td>育道 4</td>
+<td>育道 5</td>
+<td>449917</td>
+<td>220</td>
+<td>条件[1]探险猫探险 1 次 条件[2]房屋风水值达到100</td>
+</tr>
+<tr>
+<td>育道 5</td>
+<td>育道 6</td>
+<td>503013</td>
+<td>230</td>
+<td>条件[1]任意羽翼灵护达到 0 星 10 段 条件[2]通关青云志普通第二章师尊</td>
+</tr>
+<tr>
+<td>育道 6</td>
+<td>育道 7</td>
+<td>558904</td>
+<td>240</td>
+<td>条件[1]角色达到 55 级 条件[2]任意一件装备启灵等级达到12级</td>
+</tr>
+<tr>
+<td>育道 7</td>
+<td>育道 8</td>
+<td>617589</td>
+<td>250</td>
+<td>条件[1]通关青云志精英第一章少帮主 条件[2]完成 3 次十二生肖战斗</td>
+</tr>
+<tr>
+<td>育道 8</td>
+<td>育道 9</td>
+<td>679068</td>
+<td>260</td>
+<td>条件[1]任意 6 个修炼技能达到7级 条件[2]角色战力达到7500</td>
+</tr>
+<tr>
+<td>育道 9</td>
+<td>化道1</td>
+<td>743342</td>
+<td>270</td>
+<td>条件[1]角色达到 60 级 条件[2]通关青云志 - 精英第二章师尊 条件[3]从道法心魔对抗中获得胜利</td>
+</tr>
+<tr>
+<td>化道1</td>
+<td>化道 2</td>
+<td>810410</td>
+<td>280</td>
+<td>条件[1]拥有一件橙色装备 条件 [2]通关青云志 - 普通第三章愤怒</td>
+</tr>
+<tr>
+<td>化道 2</td>
+<td>化道 3</td>
+<td>880273</td>
+<td>290</td>
+<td>条件[1]通关 60 级及以上精英副本 条件[2]拥有 4 个 2 星法宝</td>
+</tr>
+<tr>
+<td>化道 3</td>
+<td>化道 4</td>
+<td>952931</td>
+<td>300</td>
+<td>条件[1]挑战世界 BOSS 五次 条件[2]小镇达到 3 级</td>
+</tr>
+<tr>
+<td>化道 4</td>
+<td>化道 5</td>
+<td>1028383</td>
+<td>310</td>
+<td>条件[1]角色达到 65 级 条件[2]羽翼达到 10 阶</td>
+</tr>
+<tr>
+<td>化道 5</td>
+<td>化道 6</td>
+<td>1106630</td>
+<td>320</td>
+<td>条件[1]通关青云志 - 普通第三章冰雪美人 条件[2]装备 12 颗 5 级龙晶</td>
+</tr>
+<tr>
+<td>化道 6</td>
+<td>化道 7</td>
+<td>1187671</td>
+<td>330</td>
+<td>条件[1]完成 2 次妖兽突袭 条件[2] 4 个法宝化形等级达到 2 级</td>
+</tr>
+<tr>
+<td>化道 7</td>
+<td>化道 8</td>
+<td>1271506</td>
+<td>340</td>
+<td>条件[1]单赛季完成 5 次上古战场 条件[2]角色战力达到10000</td>
+</tr>
+<tr>
+<td>化道 8</td>
+<td>化道 9</td>
+<td>1358136</td>
+<td>350</td>
+<td>条件[1]角色达到 70 级 条件[2]通关青云志 - 普通第四章赤炎猪妖</td>
+</tr>
+<tr>
+<td>化道 9</td>
+<td>道元1</td>
+<td>1447561</td>
+<td>360</td>
+<td>条件[1]通关青云志精英第四章阴灵头领 条件[2]拥有一个 2 星光华 条件[3]从道法心魔对抗中获得胜利</td>
+</tr>
+<tr>
+<td>道元1</td>
+<td>道元 2</td>
+<td>1539780</td>
+<td>370</td>
+<td>条件[1]2 个仙侣元神达到 10 级条件[2]拥有一个子女</td>
+</tr>
+<tr>
+<td>道元 2</td>
+<td>道元 3</td>
+<td>1634794</td>
+<td>380</td>
+<td>条件[1]任意 2 只坐骑达到 2 阶条件[2]拥有 4 个 2 星灵器</td>
+</tr>
+<tr>
+<td>道元 3</td>
+<td>道元 4</td>
+<td>1732602</td>
+<td>390</td>
+<td>条件[1]角色达到 75 级 条件[2]通关青云志精英第五章黄鸟</td>
+</tr>
+<tr>
+<td>道元 4</td>
+<td>道元 5</td>
+<td>1833205</td>
+<td>400</td>
+<td>条件[1]羽翼达到 12 阶 条件[2]装备 12 颗 6 级龙晶</td>
+</tr>
+<tr>
+<td>道元 5</td>
+<td>道元 6</td>
+<td>1936602</td>
+<td>410</td>
+<td>条件[1]通关 75 级精英副本 条件[2]拥有一个 8 技能宠物</td>
+</tr>
+<tr>
+<td>道元 6</td>
+<td>道元 7</td>
+<td>2042794</td>
+<td>420</td>
+<td>条件[1]角色战力达到 12000 条件[2]任意 6 个修炼技能达到10级</td>
+</tr>
+<tr>
+<td>道元 7</td>
+<td>道元 8</td>
+<td>2151780</td>
+<td>430</td>
+<td>条件[1]角色达到 80 级 条件[2]通关青云志精英第六章血骷髅</td>
+</tr>
+<tr>
+<td>道元 8</td>
+<td>道元 9</td>
+<td>2263561</td>
+<td>440</td>
+<td>条件[1]任意 5 只坐骑达到 2 阶条件[2]拥有 3 个 3 星光华</td>
+</tr>
+<tr>
+<td>道元 9</td>
+<td>混元1</td>
+<td>2378136</td>
+<td>450</td>
+<td>条件[1]任意羽翼灵护达到1 星<br>条件[2]全身穿戴橙色装备 条件[3]从道法心魔对抗中获得胜利</td>
+</tr>
+<tr>
+<td>混元1</td>
+<td>混元 2</td>
+<td>2495506</td>
+<td>460</td>
+<td>条件[1]重铸一次装备特效 条件[2]拥有 6 个类别的变身卡</td>
+</tr>
+<tr>
+<td>混元 2</td>
+<td>混元 3</td>
+<td>2615671</td>
+<td>470</td>
+<td>条件[1]角色达到 85 级 条件[2]全身装备启灵达到 15 级</td>
+</tr>
+<tr>
+<td>混元 3</td>
+<td>混元 4</td>
+<td>2738630</td>
+<td>480</td>
+<td>条件[1]通关 85 级及以上英雄副本 条件[2]任意 6 个修炼技能达到 13 级</td>
+</tr>
+<tr>
+<td>混元 4</td>
+<td>混元 5</td>
+<td>2864383</td>
+<td>490</td>
+<td>条件[1]通关青云志精英第七章青龙 条件[2]任意宠物印记达到5 级</td>
+</tr>
+<tr>
+<td>混元 5</td>
+<td>混元 6</td>
+<td>2992931</td>
+<td>500</td>
+<td>条件[1]装备 1 个橙色天命元魂条件[2]角色战力达到16000</td>
+</tr>
+<tr>
+<td>混元 6</td>
+<td>混元 7</td>
+<td>3124273</td>
+<td>510</td>
+<td>条件[1]角色达到 90 级 条件[2]装备 15 颗 8 级龙晶</td>
+</tr>
+<tr>
+<td>混元 7</td>
+<td>混元 8</td>
+<td>3258410</td>
+<td>520</td>
+<td>条件[1]通关青云志精英第八章魔教 条件[2]拥有 5 个 5 星光华</td>
+</tr>
+<tr>
+<td>混元 8</td>
+<td>混元 9</td>
+<td>3395342</td>
+<td>530</td>
+<td>条件[1]6 件装备拥有神识 条件[2]拥有一只神兽</td>
+</tr>
+<tr>
+<td>混元 9</td>
+<td>合道1</td>
+<td>3535068</td>
+<td>540</td>
+<td>条件[1]拥有一只飞升宠物 条件[2]拥有一个橙色宠物印记 条件[3]从道法心魔对抗中获得胜利</td>
+</tr>
+<tr>
+<td>合道1</td>
+<td>合道 2</td>
+<td>3677589</td>
+<td>550</td>
+<td>条件[1]角色达到 95 级 条件[2]通关青云志 - 英雄第二章师尊</td>
+</tr>
+<tr>
+<td>合道 2</td>
+<td>合道 3</td>
+<td>3829040</td>
+<td>560</td>
+<td>条件[1]任意宠物印记达到 10 级条件[2]羽翼达到 16 阶</td>
+</tr>
+<tr>
+<td>合道 3</td>
+<td>合道 4</td>
+<td>3971013</td>
+<td>570</td>
+<td>条件[1]通关轮回虚空 10 层 条件[2]4 个法宝化形等级达到 5 级</td>
+</tr>
+<tr>
+<td>合道 4</td>
+<td>合道 5</td>
+<td>4121917</td>
+<td>580</td>
+<td>条件[1]任意天命元魂等级达到20 级 条件[2]角色战力达到<br>20000</td>
+</tr>
+<tr>
+<td>合道 5</td>
+<td>合道 6</td>
+<td>4275616</td>
+<td>590</td>
+<td>条件[1]角色达到 99 级 条件[2]拥有一个飞升子女</td>
+</tr>
+<tr>
+<td>合道 6</td>
+<td>合道 7</td>
+<td>4432109</td>
+<td>600</td>
+<td>条件[1]通关青云志 - 英雄第三章冰雪美人 条件[2]任意 6 个修炼技能达到 16 级</td>
+</tr>
+<tr>
+<td>合道 7</td>
+<td>合道 8</td>
+<td>4591397</td>
+<td>610</td>
+<td>条件[1]通关轮回虚空 15 层 条件[2]装备 2 个橙色天命元魂</td>
+</tr>
+<tr>
+<td>合道 8</td>
+<td>合道 9</td>
+<td>4753479</td>
+<td>620</td>
+<td>条件[1]通关轮回虚空 18 层 条件[2]任意 1 件装备注灵等级达到2级</td>
+</tr>
+<tr>
+<td>合道 9</td>
+<td>造界1</td>
+<td>4918356</td>
+<td>630</td>
+<td>条件[1]任意 4 件神兵境界达到2阶 条件[2]拥有 5 个 7 星光华 条件[3]从道法心魔对抗中获得胜利</td>
+</tr>
+<tr>
+<td>造界1</td>
+<td>造界 2</td>
+<td>5086027</td>
+<td>640</td>
+<td>条件[1]通关青云志 - 英雄第四章阴灵头领 条件[2]装备 12 颗 6 级灵石</td>
+</tr>
+<tr>
+<td>造界 2</td>
+<td>造界 3</td>
+<td>5256493</td>
+<td>650</td>
+<td>条件[1]羽翼达到 18 阶 条件[2]任意一件装备启灵等级达到 20级</td>
+</tr>
+<tr>
+<td>造界 3</td>
+<td>造界 4</td>
+<td>5429753</td>
+<td>660</td>
+<td>条件[1]任意天命元魂等级达到25 级 条件[2]角色战力达到<br>25000</td>
+</tr>
+<tr>
+<td>造界 4</td>
+<td>造界 5</td>
+<td>5605808</td>
+<td>670</td>
+<td>条件[1]装备 12 颗 7 级灵石 条件[2]拥有 2 个 2 级面饰</td>
+</tr>
+<tr>
+<td>造界 5</td>
+<td>造界 6</td>
+<td>5784657</td>
+<td>680</td>
+<td>条件[1]通关青云志 - 英雄第五章黄鸟 条件[2]拥有 3 个橙色宠物印记</td>
+</tr>
+<tr>
+<td>造界 6</td>
+<td>造界 7</td>
+<td>5966301</td>
+<td>690</td>
+<td>条件[1]装备 12 颗 8 级灵石 条件[2]任意 5 个灵器达到 6 星</td>
+</tr>
+<tr>
+<td>造界 7</td>
+<td>造界 8</td>
+<td>6150739</td>
+<td>700</td>
+<td>条件[1]通关轮回虚空 20 层 条件[2]装备 3 个橙色天命元魂</td>
+</tr>
+<tr>
+<td>造界 8</td>
+<td>造界 9</td>
+<td>6337972</td>
+<td>710</td>
+<td>条件[1]4 个法宝化形等级达到7级 条件[2]装备 14 件稀有有灵</td>
+</tr>
+<tr>
+<td>造界 9</td>
+<td>合界1</td>
+<td>6528000</td>
+<td>720</td>
+<td>条件[1]通关青云志 - 英雄第六章血骷髅 条件[2]任意羽翼灵护达到 1 星 10 段 条件[3]从道法心魔对抗中获得胜利</td>
+</tr>
+<tr>
+<td>合界1</td>
+<td>合界 2</td>
+<td>6720821</td>
+<td>730</td>
+<td>条件[1]任意 2 个天命元魂等级达到 25 级 条件[2]羽翼达到 25阶</td>
+</tr>
+<tr>
+<td>合界 2</td>
+<td>合界 3</td>
+<td>6916438</td>
+<td>740</td>
+<td>条件[1]通关轮回虚空 22 层 条件[2]角色战力达到 30000</td>
+</tr>
+<tr>
+<td>合界 3</td>
+<td>合界 4</td>
+<td>7114849</td>
+<td>750</td>
+<td>条件[1]拥有 15 颗 10 级龙晶 条件[2]拥有 4 只 6 阶坐骑</td>
+</tr>
+<tr>
+<td>合界 4</td>
+<td>合界 5</td>
+<td>7316054</td>
+<td>760</td>
+<td>条件[1]通关青云志 - 英雄第七章青龙 条件[2]挑战 3 次超星妖兽（每日 1 次）</td>
+</tr>
+<tr>
+<td>合界 5</td>
+<td>合界 6</td>
+<td>7520054</td>
+<td>770</td>
+<td>条件[1]通关轮回虚空 24 层 条件[2]任意一件装备启灵等级达到<br>25 级</td>
+</tr>
+<tr>
+<td>合界 6</td>
+<td>合界 7</td>
+<td>7726849</td>
+<td>780</td>
+<td>条件[1]角色战力达到 35000 条件[2]装备 12 颗 10 级灵石</td>
+</tr>
+<tr>
+<td>合界 7</td>
+<td>合界 8</td>
+<td>7936438</td>
+<td>790</td>
+<td>条件[1]拥有 5 个橙色羽翼灵护条件[2]任意 4 件神兵境界达到 4阶</td>
+</tr>
+<tr>
+<td>合界 8</td>
+<td>合界 9</td>
+<td>8148821</td>
+<td>800</td>
+<td>条件[1]角色战力达到 37000 条件[2]任意 3 个天命元魂等级达到 25 级</td>
+</tr>
+<tr>
+<td>合界 9</td>
+<td>极道1</td>
+<td>4918356</td>
+<td>1000</td>
+<td>条件[1]四个法宝化形达到 9 级条件[2]羽翼达到 26 阶 条件[3]从道法心魔对抗中获得胜利</td>
+</tr>
+<tr>
+<td>极道1</td>
+<td>极道 2</td>
+<td>5086027</td>
+<td>1001</td>
+<td>条件[1] 通关青云志 - 英雄第八章求情 条件[2]角色战力达到 38000</td>
+</tr>
+<tr>
+<td>极道 2</td>
+<td>极道 3</td>
+<td>5256493</td>
+<td>1002</td>
+<td>条件[1]羽翼达到 27 阶 条件[2]4个法宝化形等级达到 10 级</td>
+</tr>
+<tr>
+<td>极道 3</td>
+<td>极道 4</td>
+<td>5429753</td>
+<td>1003</td>
+<td>条件[1]4 个天命元魂等级达到25 级 条件[2]角色战力达到<br>39000</td>
+</tr>
+<tr>
+<td>极道 4</td>
+<td>极道 5</td>
+<td>5605808</td>
+<td>1004</td>
+<td>条件[1]通关青云志 - 英雄第八章凶手 条件[2]任意 1 件装备注灵等级达到 18 级</td>
+</tr>
+<tr>
+<td>极道 5</td>
+<td>极道 6</td>
+<td>5784657</td>
+<td>1005</td>
+<td>条件[1]装备 15 颗 10 级灵石 条件[2]全身装备启灵等级达到18级</td>
+</tr>
+<tr>
+<td>极道 6</td>
+<td>极道 7</td>
+<td>5966301</td>
+<td>1006</td>
+<td>条件[1]通关青云志 - 英雄第八章魔教 ·英 条件[2] 拥有 7 个 7 星光华</td>
+</tr>
+<tr>
+<td>极道 7</td>
+<td>极道 8</td>
+<td>6150739</td>
+<td>1007</td>
+<td>条件[1]角色战力达到 41000 条件[2]任意一件装备启灵等级达到 26 级</td>
+</tr>
+<tr>
+<td>极道 8</td>
+<td>极道 9</td>
+<td>6337972</td>
+<td>1008</td>
+<td>条件[1]任意 4 件神兵境界达到 4阶 条件[2]拥有 2 个 5 级面饰</td>
+</tr>
+<tr>
+<td>极道 9</td>
+<td>超凡1</td>
+<td>29225739</td>
+<td>1009</td>
+<td>条件[1]通关青云志 - 英雄第九章护法 条件[2]装备 18 颗 10 级灵石 条件[3]从道法心魔对抗中获得胜利</td>
+</tr>
+<tr>
+<td>超凡1</td>
+<td>超凡 2</td>
+<td>33521948</td>
+<td>1010</td>
+<td>条件[1]5 个天命元魂等级达到 25 级 条件[2]任意 5 个灵器达到8 星</td>
+</tr>
+<tr>
+<td>超凡 2</td>
+<td>超凡 3</td>
+<td>38818504</td>
+<td>1011</td>
+<td>条件[1]拥有 6 个橙色羽翼灵护条件[2]羽翼达到 28 阶</td>
+</tr>
+<tr>
+<td>超凡 3</td>
+<td>超凡 4</td>
+<td>45296681</td>
+<td>1012</td>
+<td>条件[1]通关青云志 - 英雄第九章诛仙 条件[2]角色战力达到<br>43000</td>
+</tr>
+<tr>
+<td>超凡 4</td>
+<td>超凡 5</td>
+<td>53150530</td>
+<td>1013</td>
+<td>条件[1]4 个法宝化形等级达到 12 级 条件[2] 6 个天命元魂等级达到 25 级</td>
+</tr>
+<tr>
+<td>超凡 5</td>
+<td>超凡 6</td>
+<td>62587212</td>
+<td>1014</td>
+<td>条件[1]全身装备启灵等级达到20 级 条件[2]装备 4 个橙色天命元魂</td>
+</tr>
+<tr>
+<td>超凡 6</td>
+<td>超凡 7</td>
+<td>73827339</td>
+<td>1015</td>
+<td>条件[1]通关青云志 - 英雄第九章情故 条件[2]任意 5 个灵器达到 10 星</td>
+</tr>
+<tr>
+<td>超凡 7</td>
+<td>超凡 8</td>
+<td>87105305</td>
+<td>1016</td>
+<td>条件[1]7 个天命元魂等级达到 25 级 条件[2]任意羽翼灵护星级到 2 星</td>
+</tr>
+<tr>
+<td>超凡 8</td>
+<td>超凡 9</td>
+<td>10266962</td>
+<td>1017</td>
+<td>条件[1]4 个法宝化形等级达到15 级 条件[2]角色战力达到<br>45000</td>
+</tr>
+<tr>
+<td colspan="5" style="text-align:center;font-weight:700;color:#6d28d9;background:#f3e8ff">后续的任务全是经验够就可以晋升</td>
+</tr>
+</table></div>
+  <div class="footer">九小卿攻略站
+</div>
+
+<script>
+document.addEventListener('copy',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('contextmenu',function(e){e.preventDefault();});
+</script>
+
+</body>
+</html>

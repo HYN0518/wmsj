@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>装备介绍 — 九小卿攻略站</title>
+<meta name="description" content="九小卿装备介绍攻略">
+<link rel="icon" type="image/jpeg" href="art/favicon.jpg">
+<style>
+  :root{
+    --bg:#fff;--ink:#16130f;--muted:#6f675c;--card:#ffffff;
+    --pink:#ff4d8d;--blue:#4d7cff;--violet:#8b5cf6;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scrollbar-gutter:stable}
+  body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.8;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  button{font-family:inherit}
+  .wrap{max-width:960px;margin:0 auto;padding:32px 24px 60px}
+  .back-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;background:var(--card);border:1.5px solid rgba(22,19,15,.12);color:var(--ink);font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s}
+  .back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(22,19,15,.12);border-color:var(--pink)}
+  .back-btn svg{width:18px;height:18px}
+  .page-title{text-align:center;margin:40px 0 48px}
+  .page-title h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;letter-spacing:.02em;background:linear-gradient(135deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .footer{text-align:center;padding:40px 0;color:var(--muted);font-size:.85rem}
+  .footer .heart{color:var(--pink)}
+  .section{margin-bottom:16px}
+  .sub-header{background:#e8f4fd;border-left:3px solid #4d7cff;padding:6px 14px;margin:24px 0 14px;font-size:1.05rem;font-weight:700;color:var(--ink)}
+  .section ul{padding-left:0;margin-bottom:16px;list-style:none}
+  .section li{margin-bottom:10px;font-size:.95rem;line-height:1.8;color:#333}
+  .section li.img-li{margin:6px 0 18px}
+  .hs-toggle-header{background:#f3e8ff;border-left-color:#8b5cf6;font-size:1.25rem;margin:16px 0 0;display:flex;justify-content:space-between;align-items:center;gap:12px;cursor:pointer;user-select:none}
+  .hs-toggle-header:hover{background:#ece4fb}
+  .hs-expand-btn{background:none;border:none;font-family:inherit;font-size:1rem;font-weight:700;color:#d43a3a;cursor:pointer;padding:2px 8px;flex:none}
+  .hs-collapsible{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+  .hs-collapsible.open{grid-template-rows:1fr}
+  .hs-collapsible-inner{overflow:hidden;min-height:0;padding-top:20px}
+  .tut-img{max-width:min(640px,100%);border-radius:10px;border:1px solid rgba(22,19,15,.08);box-shadow:0 4px 14px rgba(22,19,15,.08);margin:8px auto 4px}
+  .data-table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:.88rem;border:1px solid rgba(22,19,15,.1);border-radius:10px;overflow:hidden}
+  .data-table th{background:linear-gradient(135deg,#8b5cf6,#ff4d8d);color:#fff;font-weight:700;padding:10px 12px;text-align:left;white-space:nowrap}
+  .data-table td{padding:9px 12px;border-bottom:1px solid rgba(22,19,15,.06);color:#333;line-height:1.6}
+  .data-table tr:nth-child(even) td{background:rgba(139,92,246,.03)}
+  .table-wrap{overflow-x:auto;margin:8px 0 16px}
+  @media (max-width:640px){
+    .wrap{padding:24px 16px}
+    .page-title{margin:24px 0 32px}
+    .section li{font-size:.85rem}
+    .hs-toggle-header{font-size:1.05rem}
+    .data-table{font-size:.78rem}
+    .data-table th,.data-table td{padding:7px 8px}
+  }
+
+  /* 全屏水印 */
+  .site-watermark{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99999;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22220%22%20height%3D%22160%22%3E%0A%20%20%3Ctext%20x%3D%2220%22%20y%3D%2280%22%20font-size%3D%2212%22%20fill%3D%22%23000000%22%20fill-opacity%3D%220.05%22%20font-family%3D%22Microsoft%20YaHei%2C%20sans-serif%22%20transform%3D%22rotate%2825%2C%20110%2C%2080%29%22%3E%E4%B9%9D%E5%B0%8F%E5%8D%BF%E6%94%BB%E7%95%A5%E7%AB%99%3C/text%3E%0A%3C/svg%3E");background-repeat:repeat;opacity:1}
+
+  /* 禁止复制 */
+  body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+  input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+
+</style>
+</head>
+<body>
+<div class="site-watermark"></div>
+<div class="wrap">
+  <a href="index.html?skipIntro=1#character" class="back-btn">
+    
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      
+<path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    返回首页
+  </a>
+  <a href="conv_8.html" class="back-btn">
+    
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    智能客服
+  </a>
+  
+<div class="page-title">
+    
+<h1>装备介绍</h1>
+  </div>
+  
+<div class="section" id="sec-1">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>打造介绍</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">等级限制：人物等级达到 30 级</p>
+<ul>
+<li>点击  “装备”  功能 ，点击右侧  “打造”  功能</li>
+<li>可以使用  “元宝补足”  或  “ 自动购买” 。不推荐用元宝打造 ， 自动购买会自动补齐金币银币</li>
+<li>打造装备消耗对应等级锻造书 + 对应等级千年寒铁 + 对应等级部位锻篷符</li>
+<li>人物达到 n5 级时可提前打造下一阶段装备 , 想提前穿下一阶段装备需用女娲补天石  将特效洗为简易才可穿 ，前期不推荐</li>
+<li class="img-li">
+<video class="tut-img" src="art/zhuangbei_tutorial/dzzb.mp4" poster="art/zhuangbei_tutorial/dzzb_poster.webp" controls style="width:100%;max-width:640px;border-radius:10px;display:block;margin:8px auto;" preload="none"></video>
+</li>
+</ul>
+<div class="sub-header">打造说明</div>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">在打造装备的过程中 ，有三条硬性指标决定了所打造出来的装备是否极品。</p>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">第一条：装备的初始品级 ，这一数值位于装备的上方 ，通过颜色可以判别出装备属性是否足够极品 ，可以参照如下颜色：<span style="color:#ff8c00;font-weight:700">橙色</span> &gt; <span style="color:#9370db;font-weight:700">紫色</span> &gt; <span style="color:#4169e1;font-weight:700">蓝色</span> &gt; <span style="color:#32cd32;font-weight:700">绿色</span> &gt; <span style="color:#fff;background:#eee;border:1px solid #ccc;padding:0 4px;font-weight:700">白色</span> ，所以<span style="color:#ff8c00;font-weight:700">橙品</span>是最佳的。（调整后目前打造所有装备均为<span style="color:#ff8c00;font-weight:700">橙色</span> , 没有其他品质的了）</p>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">第二条：装备的基础属性 ，越接近满属性越极品</p>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">第三条：装备的特技 ，单特技＞ 没特技（调整后目前连续打造同一件装备第 21 次必出带特技的装备）</p>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">注： 110 和 120 装备也可以手打，作者懒得更新梳理了，理解万岁！</p>
+<div class="sub-header">装备属性</div>
+<ul>
+<li class="img-li">
+<img class="tut-img" src="art/zhuangbei_tutorial/zhuangbei_shuxing.webp" alt="装备属性"></li>
+</ul>
+      </div>
+    </div>
+  </div>
+  
+<div class="section" id="sec-2">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>启灵介绍</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<ul>
+<li class="img-li">
+<img class="tut-img" src="art/zhuangbei_tutorial/image4.webp" alt="启灵介绍" loading="lazy"></li>
+</ul>
+<div class="sub-header">冒险模式</div>
+<ul>
+<li>启灵珠是启灵必备品</li>
+<li>启灵 +5 后可使用镇灵石 ，使用镇灵石可保启灵失败不掉启灵等级</li>
+<li>启灵 +12 后可使用幸运石 ，幸运石可以增加启灵成功率 ，启灵成功率达到100%时即使不用镇灵石保护也会 100% 启灵成功但启灵珠会扣除</li>
+<li>推荐全身 6 件装备启灵 +12 后就转使用累计模式 ，比较节省资源</li>
+<li>冒险模式下启灵 +35 即为上限 ，后续只能通过累计模式提升</li>
+<li class="img-li">
+<video class="tut-img" src="art/zhuangbei_tutorial/mxms.mp4" poster="art/zhuangbei_tutorial/mxms_poster.webp" controls style="width:100%;max-width:640px;border-radius:10px;display:block;margin:8px auto;" preload="none"></video>
+</li>
+</ul>
+<div class="sub-header">累计模式</div>
+<ul>
+<li>启灵积分到达上限后自动提升启灵等级</li>
+<li>当每种启灵消耗道具可使用数量为 0 时 ，当前启灵等级不可再消耗该道具</li>
+<li>带有启灵积分的装备若切换回冒险模式并进行一次启灵 ，启灵积分将清空</li>
+<li>在积累模式下启灵成功后 ，会给下一级启灵增加少量启灵积分</li>
+<li>启灵 +1-4 时使用启灵珠可增加积分 ，启灵 +5-9 使用镇灵石最具性价比 ，启灵+10-44 使用幸运石最具性价比</li>
+<li class="img-li">
+<video class="tut-img" src="art/zhuangbei_tutorial/ljms.mp4" poster="art/zhuangbei_tutorial/ljms_poster.webp" controls style="width:100%;max-width:640px;border-radius:10px;display:block;margin:8px auto;" preload="none"></video>
+</li>
+</ul>
+<div class="sub-header">消耗介绍</div>
+<ul>
+<li class="img-li">
+<img class="tut-img" src="art/zhuangbei_tutorial/qiling_xiaohao.png" alt="消耗介绍" loading="lazy"></li>
+</ul>
+<div class="sub-header">等级限制</div>
+<ul>
+<li class="img-li">
+<img class="tut-img" src="art/zhuangbei_tutorial/image9.png" alt="启灵介绍" loading="lazy"></li>
+</ul>
+      </div>
+    </div>
+  </div>
+  
+<div class="section" id="sec-3">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>套装效果</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">当 6 件装备都达到指定启灵等级时可激活套装效果</p>
+<ul>
+<li class="img-li">
+<img class="tut-img" src="art/zhuangbei_tutorial/taozhuang_xiaoguo.webp" alt="套装效果" loading="lazy"></li>
+</ul>
+      </div>
+    </div>
+  </div>
+  
+<div class="section" id="sec-4">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>洗魂介绍</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<div class="sub-header">功能介绍</div>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">等级限制：人物等级达到 50 级</p>
+<ul>
+<li>洗魂珠：用来洗炼装备魂的属性</li>
+<li>锁魂珠、锁魂玉： 用来锁定装装备魂属性 ，使其在下次洗魂中不会被替换掉</li>
+<li class="img-li">
+<img class="tut-img" src="art/zhuangbei_tutorial/image12.webp" alt="功能介绍" loading="lazy"></li>
+</ul>
+        
+<ul>
+<li>装备洗魂时每种类型的魂条出现的概率均等。</li>
+<li>魂条的稀有类型出现的概率为： 白色魂条 20% ，绿色魂条 25% ，蓝色魂条35% ，紫色魂条 15% ，橙色魂条 5%。（本次已调整为只会洗出橙色魂条）</li>
+<li>洗魂不会增加魂条数</li>
+<li>点击洗魂按钮重置魂属性</li>
+<li>勾选左边界面魂属性前的选框可永久锁定 ，再次点击可解锁</li>
+<li>洗魂时 ，已锁定的魂属性不会被重置</li>
+<li class="img-li">
+<video class="tut-img" src="art/zhuangbei_tutorial/xhjc.mp4" poster="art/zhuangbei_tutorial/xhjc_poster.webp" controls style="width:100%;max-width:640px;border-radius:10px;display:block;margin:8px auto;" preload="none"></video>
+</li>
+</ul>
+      </div>
+    </div>
+  </div>
+  
+<div class="section" id="sec-5">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>附魂介绍</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<ul>
+<li>使用同部位的装备可附魂</li>
+<li>转移装备的等级必须不高于受益装备</li>
+<li>转移装备将在附魂后消失</li>
+<li>附魂时主装备魂的锁无效且附魂成功后主装备魂的锁状态取消并继承副装备的所有魂属性</li>
+<li class="img-li">
+<video class="tut-img" src="art/zhuangbei_tutorial/zbfhjc.mp4" poster="art/zhuangbei_tutorial/zbfhjc_poster.webp" controls style="width:100%;max-width:640px;border-radius:10px;display:block;margin:8px auto;" preload="none"></video>
+</li>
+</ul>
+      </div>
+    </div>
+  </div>
+  
+<div class="section" id="sec-6">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>特效介绍</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<ul>
+<li>女娲石由橙装拆分所得 ，60 级及以上装备可以拆分女娲石碎片 ，5 个可合成一个女娲补天石</li>
+<li>商城可购买[一键拆分橙装]快速拆分无用装备 ，该道具不会拆分带特效的橙色装备 ，可放心使用！</li>
+<li class="img-li">
+<video class="tut-img" src="art/zhuangbei_tutorial/cfcz.mp4" poster="art/zhuangbei_tutorial/cfcz_poster.webp" controls style="width:100%;max-width:640px;border-radius:10px;display:block;margin:8px auto;" preload="none"></video>
+</li>
+</ul>
+<div class="sub-header">所有特效</div>
+<ul>
+<li class="img-li">
+<img class="tut-img" src="art/zhuangbei_tutorial/image16.webp" alt="特效介绍" loading="lazy"></li>
+<li class="img-li">
+<img class="tut-img" src="art/zhuangbei_tutorial/image17.webp" alt="特效介绍" loading="lazy"></li>
+</ul>
+      </div>
+    </div>
+  </div>
+  
+<div class="footer">
+    
+<p>九小卿攻略站</p>
+
+</div>
+<script>
+(function(){
+  document.querySelectorAll('.hs-toggle-header').forEach(function(header){
+    var panel = header.nextElementSibling;
+    var btn = header.querySelector('.hs-expand-btn');
+    if(!panel || !panel.classList.contains('hs-collapsible') || !btn) return;
+    function toggle(){
+      var open = panel.classList.toggle('open');
+      btn.textContent = open ? '收起 ∧' : '展开 ∨';
+    }
+    header.addEventListener('click', toggle);
+    header.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+  });
+})();
+</script>
+
+<script>
+document.addEventListener('copy',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('contextmenu',function(e){e.preventDefault();});
+</script>
+
+</body>
+</html>

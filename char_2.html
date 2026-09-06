@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>羽翼介绍 — 九小卿攻略站</title>
+<meta name="description" content="九小卿羽翼介绍攻略">
+<link rel="icon" type="image/jpeg" href="art/favicon.jpg">
+<style>
+  :root{
+    --bg:#fff;--ink:#16130f;--muted:#6f675c;--card:#ffffff;
+    --pink:#ff4d8d;--blue:#4d7cff;--violet:#8b5cf6;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scrollbar-gutter:stable}
+  body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.8;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  button{font-family:inherit}
+  .wrap{max-width:960px;margin:0 auto;padding:32px 24px 60px}
+  .back-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;background:var(--card);border:1.5px solid rgba(22,19,15,.12);color:var(--ink);font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s}
+  .back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(22,19,15,.12);border-color:var(--pink)}
+  .back-btn svg{width:18px;height:18px}
+  .page-title{text-align:center;margin:40px 0 48px}
+  .page-title h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;letter-spacing:.02em;background:linear-gradient(135deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .footer{text-align:center;padding:40px 0;color:var(--muted);font-size:.85rem}
+  .footer .heart{color:var(--pink)}
+  .section{margin-bottom:16px}
+  .sub-header{background:#e8f4fd;border-left:3px solid #4d7cff;padding:6px 14px;margin:24px 0 14px;font-size:1.05rem;font-weight:700;color:var(--ink)}
+  .section ul{padding-left:0;margin-bottom:16px;list-style:none}
+  .section li{margin-bottom:10px;font-size:.95rem;line-height:1.8;color:#333}
+  .section li.img-li{margin:6px 0 18px}
+  .hs-toggle-header{background:#f3e8ff;border-left-color:#8b5cf6;font-size:1.25rem;margin:16px 0 0;display:flex;justify-content:space-between;align-items:center;gap:12px;cursor:pointer;user-select:none}
+  .hs-toggle-header:hover{background:#ece4fb}
+  .hs-expand-btn{background:none;border:none;font-family:inherit;font-size:1rem;font-weight:700;color:#d43a3a;cursor:pointer;padding:2px 8px;flex:none}
+  .hs-collapsible{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+  .hs-collapsible.open{grid-template-rows:1fr}
+  .hs-collapsible-inner{overflow:hidden;min-height:0;padding-top:20px}
+  .tut-img{max-width:min(640px,100%);border-radius:10px;border:1px solid rgba(22,19,15,.08);box-shadow:0 4px 14px rgba(22,19,15,.08);margin:8px auto 4px}
+  .data-table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:.88rem;border:1px solid rgba(22,19,15,.1);border-radius:10px;overflow:hidden}
+  .data-table th{background:linear-gradient(135deg,#8b5cf6,#ff4d8d);color:#fff;font-weight:700;padding:10px 12px;text-align:left;white-space:nowrap}
+  .data-table td{padding:9px 12px;border-bottom:1px solid rgba(22,19,15,.06);color:#333;line-height:1.6}
+  .data-table tr:nth-child(even) td{background:rgba(139,92,246,.03)}
+  .table-wrap{overflow-x:auto;margin:8px 0 16px}
+  @media (max-width:640px){
+    .wrap{padding:24px 16px}
+    .page-title{margin:24px 0 32px}
+    .section li{font-size:.85rem}
+    .hs-toggle-header{font-size:1.05rem}
+    .data-table{font-size:.78rem}
+    .data-table th,.data-table td{padding:7px 8px}
+  }
+
+  /* 全屏水印 */
+  .site-watermark{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99999;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22220%22%20height%3D%22160%22%3E%0A%20%20%3Ctext%20x%3D%2220%22%20y%3D%2280%22%20font-size%3D%2212%22%20fill%3D%22%23000000%22%20fill-opacity%3D%220.05%22%20font-family%3D%22Microsoft%20YaHei%2C%20sans-serif%22%20transform%3D%22rotate%2825%2C%20110%2C%2080%29%22%3E%E4%B9%9D%E5%B0%8F%E5%8D%BF%E6%94%BB%E7%95%A5%E7%AB%99%3C/text%3E%0A%3C/svg%3E");background-repeat:repeat;opacity:1}
+
+  /* 禁止复制 */
+  body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+  input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+
+</style>
+</head>
+<body>
+<div class="site-watermark"></div>
+<div class="wrap">
+  <a href="index.html?skipIntro=1#character" class="back-btn">
+    
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      
+<path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    返回首页
+  </a>
+  <a href="conv_8.html" class="back-btn">
+    
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    智能客服
+  </a>
+  
+<div class="page-title">
+    
+<h1>羽翼介绍</h1>
+  </div>
+  
+<div class="section" id="sec-0">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>系统介绍</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">等级限制：人物等级达到 45 级</p>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">羽翼通过羽根解锁，做完羽翼指引任务获得羽根</p>
+<img class="tut-img" src="art/yuyi_tutorial/image1.png" alt="羽根">
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8;margin-top:16px">升级可用的两种材料【灵羽】【仙羽】</p>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">羽翼等级影响属性，升级到每 10 级需要进行升阶操作，才能继续升级</p>
+<img class="tut-img" src="art/yuyi_tutorial/image2.webp" alt="灵羽仙羽" loading="lazy">
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8;margin-top:16px">升阶可用的两种材料【羽化翎】【高级羽化翎】及升阶所需材料</p>
+<img class="tut-img" src="art/yuyi_tutorial/image3.webp" alt="羽化翎" loading="lazy">
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8;margin-top:16px">羽翼每升到 10 级可以进行升阶，升阶可获得额外属性、技能和新的外观，对属性和技能不满意，可进行重置</p>
+<img class="tut-img" src="art/yuyi_tutorial/image5.png" alt="重置道具" loading="lazy">
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8;margin-top:16px">用于给羽翼换个颜色</p>
+<img class="tut-img" src="art/yuyi_tutorial/image4.png" alt="焕彩绒" loading="lazy">
+      </div>
+    </div>
+  </div>
+  
+<div class="section" id="sec-1">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>升级消耗</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>等级段</th>
+<th>所需经验</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1-9 级</td>
+<td>810</td>
+</tr>
+<tr>
+<td>10-19 级</td>
+<td>1850</td>
+</tr>
+<tr>
+<td>20-29 级</td>
+<td>3030</td>
+</tr>
+<tr>
+<td>30-39 级</td>
+<td>4705</td>
+</tr>
+<tr>
+<td>40-49 级</td>
+<td>6880</td>
+</tr>
+<tr>
+<td>50-59 级</td>
+<td>9555</td>
+</tr>
+<tr>
+<td>60-69 级</td>
+<td>12910</td>
+</tr>
+<tr>
+<td>70-79 级</td>
+<td>17260</td>
+</tr>
+<tr>
+<td>80-89 级</td>
+<td>22610</td>
+</tr>
+<tr>
+<td>90-99 级</td>
+<td>28960</td>
+</tr>
+<tr>
+<td>100-109 级</td>
+<td>36310</td>
+</tr>
+<tr>
+<td>110-119 级</td>
+<td>44660</td>
+</tr>
+<tr>
+<td>120-129 级</td>
+<td>54010</td>
+</tr>
+<tr>
+<td>130-139 级</td>
+<td>64360</td>
+</tr>
+<tr>
+<td>140-149 级</td>
+<td>75710</td>
+</tr>
+<tr>
+<td>150-159 级</td>
+<td>88060</td>
+</tr>
+<tr>
+<td>160-169 级</td>
+<td>101410</td>
+</tr>
+<tr>
+<td>170-179 级</td>
+<td>115760</td>
+</tr>
+<tr>
+<td>180-189 级</td>
+<td>131110</td>
+</tr>
+<tr>
+<td>190-199 级</td>
+<td>197150</td>
+</tr>
+<tr>
+<td>200-209 级</td>
+<td>310200</td>
+</tr>
+<tr>
+<td>210-219 级</td>
+<td>473300</td>
+</tr>
+<tr>
+<td>220-229 级</td>
+<td>728300</td>
+</tr>
+<tr>
+<td>230-239 级</td>
+<td>1135000</td>
+</tr>
+<tr>
+<td>240-249 级</td>
+<td>1745000</td>
+</tr>
+<tr>
+<td>250-259 级</td>
+<td>2445000</td>
+</tr>
+<tr>
+<td>260-269 级</td>
+<td>3145000</td>
+</tr>
+<tr>
+<td>270-279 级</td>
+<td>3845000</td>
+</tr>
+<tr>
+<td>280-289 级</td>
+<td>4545000</td>
+</tr>
+<tr>
+<td>290-299 级</td>
+<td>5245000</td>
+</tr>
+<tr>
+<td>300-309 级</td>
+<td>5945000</td>
+</tr>
+<tr>
+<td>310-319 级</td>
+<td>6950000</td>
+</tr>
+<tr>
+<td>320-329 级</td>
+<td>8500000</td>
+</tr>
+<tr>
+<td>330-339 级</td>
+<td>9862000</td>
+</tr>
+<tr>
+<td>340-349 级</td>
+<td>9862000</td>
+</tr>
+<tr>
+<td>350-359 级</td>
+<td>9862000</td>
+</tr>
+<tr>
+<td>360-369 级</td>
+<td>9862000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul></ul>
+      </div>
+    </div>
+  </div>
+  
+<div class="section" id="sec-2">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>升阶消耗</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>升阶阶数</th>
+<th>所需道具及数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 阶</td>
+<td>羽化翎 ×1</td>
+</tr>
+<tr>
+<td>2 阶</td>
+<td>羽化翎 ×2</td>
+</tr>
+<tr>
+<td>3 阶</td>
+<td>羽化翎 ×3</td>
+</tr>
+<tr>
+<td>4 阶</td>
+<td>羽化翎 ×4</td>
+</tr>
+<tr>
+<td>5 阶</td>
+<td>羽化翎 ×5</td>
+</tr>
+<tr>
+<td>6 阶</td>
+<td>羽化翎 ×7</td>
+</tr>
+<tr>
+<td>7 阶</td>
+<td>羽化翎 ×10</td>
+</tr>
+<tr>
+<td>8 阶</td>
+<td>羽化翎 ×15</td>
+</tr>
+<tr>
+<td>9 阶</td>
+<td>羽化翎 ×23</td>
+</tr>
+<tr>
+<td>10 阶</td>
+<td>羽化翎 ×28</td>
+</tr>
+<tr>
+<td>11 阶</td>
+<td>羽化翎 ×33</td>
+</tr>
+<tr>
+<td>12 阶</td>
+<td>高级羽化翎 ×38</td>
+</tr>
+<tr>
+<td>13 阶</td>
+<td>高级羽化翎 ×45</td>
+</tr>
+<tr>
+<td>14 阶</td>
+<td>高级羽化翎 ×60</td>
+</tr>
+<tr>
+<td>15 阶</td>
+<td>高级羽化翎 ×80</td>
+</tr>
+<tr>
+<td>16 阶</td>
+<td>高级羽化翎 ×100</td>
+</tr>
+<tr>
+<td>17 阶</td>
+<td>高级羽化翎 ×100</td>
+</tr>
+<tr>
+<td>18 阶</td>
+<td>高级羽化翎 ×100</td>
+</tr>
+<tr>
+<td>19 阶</td>
+<td>高级羽化翎 ×200</td>
+</tr>
+<tr>
+<td>20 阶</td>
+<td>高级羽化翎 ×300</td>
+</tr>
+<tr>
+<td>21 阶</td>
+<td>高级羽化翎 ×400</td>
+</tr>
+<tr>
+<td>22 阶</td>
+<td>高级羽化翎 ×500</td>
+</tr>
+<tr>
+<td>23 阶</td>
+<td>高级羽化翎 ×600</td>
+</tr>
+<tr>
+<td>24 阶</td>
+<td>高级羽化翎 ×700</td>
+</tr>
+<tr>
+<td>25 阶</td>
+<td>高级羽化翎 ×800</td>
+</tr>
+<tr>
+<td>26 阶</td>
+<td>高级羽化翎 ×900</td>
+</tr>
+<tr>
+<td>27 阶</td>
+<td>高级羽化翎 ×1000</td>
+</tr>
+<tr>
+<td>28 阶</td>
+<td>高级羽化翎 ×1100</td>
+</tr>
+<tr>
+<td>29 阶</td>
+<td>高级羽化翎 ×1200</td>
+</tr>
+<tr>
+<td>30 阶</td>
+<td>高级羽化翎 ×1300</td>
+</tr>
+<tr>
+<td>31 阶</td>
+<td>高级羽化翎 ×1800</td>
+</tr>
+<tr>
+<td>32 阶</td>
+<td>高级羽化翎 ×2300</td>
+</tr>
+<tr>
+<td>33 阶</td>
+<td>高级羽化翎 ×1600</td>
+</tr>
+<tr>
+<td>34 阶</td>
+<td>高级羽化翎 ×1700</td>
+</tr>
+<tr>
+<td>35 阶</td>
+<td>高级羽化翎 ×1800</td>
+</tr>
+<tr>
+<td>36 阶</td>
+<td>高级羽化翎 ×1900</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul></ul>
+      </div>
+    </div>
+  </div>
+  
+<div class="section" id="sec-3">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>技能介绍</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>技能阶数</th>
+<th>技能名称</th>
+<th>技能效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2 阶</td>
+<td>和光同尘</td>
+<td>所有技能耗蓝降低 20%</td>
+</tr>
+<tr>
+<td>2 阶</td>
+<td>金钟护体</td>
+<td>进行防御时 ，受到的物理伤害降低为正常防御状态的50%</td>
+</tr>
+<tr>
+<td>2 阶</td>
+<td>不动如山</td>
+<td>受到物理伤害时 ，降低 3% 的被暴击概率</td>
+</tr>
+<tr>
+<td>2 阶</td>
+<td>不坏金身</td>
+<td>受到法术伤害时 ，降低 3% 的被暴击概率</td>
+</tr>
+<tr>
+<td>2 阶</td>
+<td>伺机而逃</td>
+<td>增加自身 10% 的逃跑成功率</td>
+</tr>
+<tr>
+<td>4 阶</td>
+<td>身强力壮</td>
+<td>降低自身受到的 30% 的物理暴击伤害</td>
+</tr>
+<tr>
+<td>4 阶</td>
+<td>上善若水</td>
+<td>降低自身受到的 30% 的法术暴击伤害</td>
+</tr>
+<tr>
+<td>4 阶</td>
+<td>百毒不侵</td>
+<td>降低受到的毒伤害50%</td>
+</tr>
+<tr>
+<td>6 阶</td>
+<td>凝神静气</td>
+<td>增加物理命中5%</td>
+</tr>
+<tr>
+<td>6 阶</td>
+<td>疾闪风急</td>
+<td>增加物理闪避率5%</td>
+</tr>
+<tr>
+<td>6 阶</td>
+<td>身轻如风</td>
+<td>增加法术闪避率5%</td>
+</tr>
+<tr>
+<td>8 阶</td>
+<td>包罗万象</td>
+<td>受到物理伤害时 ，有 10% 几率使受到的伤害减半</td>
+</tr>
+<tr>
+<td>8 阶</td>
+<td>孤军奋战</td>
+<td>无宠物参战的状态下 ， 自身受到的所有伤害均降为正常的80%</td>
+</tr>
+<tr>
+<td>8 阶</td>
+<td>明镜止水</td>
+<td>受到法术伤害时 ，有 10% 几率使受到的伤害减半</td>
+</tr>
+<tr>
+<td>10 阶</td>
+<td>乘胜追击</td>
+<td>法术攻击目标时 ，有 8% 的几率追加一次单法攻击</td>
+</tr>
+<tr>
+<td>10 阶</td>
+<td>医者精诚</td>
+<td>受到的门派治疗技能效果提升5%</td>
+</tr>
+<tr>
+<td>11 阶</td>
+<td>灵丹妙药</td>
+<td>战斗中受到非复活类的药品治疗量增加 20%</td>
+</tr>
+<tr>
+<td>11 阶</td>
+<td>本草纲目</td>
+<td>战斗中使用非复活类药品恢复气血
+时 ，有 10% 几率使气血恢复效果加倍</td>
+</tr>
+<tr>
+<td>12 阶</td>
+<td>万佛朝宗</td>
+<td>使用门派技能恢复气血时 ，有 8% 几率增加一个治疗目标 ，触发时治疗效果降低 10%</td>
+</tr>
+<tr>
+<td>12 阶</td>
+<td>袖纳乾坤</td>
+<td>使用门派封印类技能时 ，有 8% 几率增加一个封印目标</td>
+</tr>
+<tr>
+<td>13 阶</td>
+<td>背水一战</td>
+<td>自身气血低于 40% 时 ，伤害提高 10%</td>
+</tr>
+<tr>
+<td>13 阶</td>
+<td>心无杂念</td>
+<td>使用门派技能恢复气血时 ，有 10% 概率提升目标封印抗性 ，持续 2 回合</td>
+</tr>
+<tr>
+<td>14 阶</td>
+<td>太和弥清</td>
+<td>每回合结束有 30% 几率解除自身的一条负面效果（不包括封印状态）</td>
+</tr>
+<tr>
+<td>14 阶</td>
+<td>灵韵加身</td>
+<td>降低自身受到的 5% 的封印命中率</td>
+</tr>
+<tr>
+<td>15 阶</td>
+<td>丹田贯注</td>
+<td>增加物理暴击伤害20%</td>
+</tr>
+<tr>
+<td>15 阶</td>
+<td>五气朝元</td>
+<td>增加法术暴击伤害20%</td>
+</tr>
+<tr>
+<td>16 阶</td>
+<td>招无常式</td>
+<td>进行攻击时 ，伤害在 85%-120% 之间随机波动</td>
+</tr>
+<tr>
+<td>16 阶</td>
+<td>妙手仁心</td>
+<td>使用门派技能恢复气血时 ，效果增加10%</td>
+</tr>
+<tr>
+<td>16 阶</td>
+<td>怒发冲冠</td>
+<td>怒气消耗降低 10%</td>
+</tr>
+<tr>
+<td>17 阶</td>
+<td>浴血奋战</td>
+<td>当前参战宠物气血低于 40% 时 ，增加10% 宠物伤害</td>
+</tr>
+<tr>
+<td>17 阶</td>
+<td>其疾如风</td>
+<td>回合末 10% 几率触发 ，增加 10% 自身速度 ，持续 2 回合</td>
+</tr>
+<tr>
+<td>18 阶</td>
+<td>钩魄摄魂</td>
+<td>法术攻击时 ，有 5% 几率使目标本回合混乱 ，随机攻击友方</td>
+</tr>
+<tr>
+<td>18 阶</td>
+<td>分筋错骨</td>
+<td>物理攻击时 ，有 5% 几率使目标本回合伤筋断骨 ，本回合无法出手</td>
+</tr>
+<tr>
+<td>19 阶</td>
+<td>势如破竹</td>
+<td>攻击时忽视目标 5% 的物理防御</td>
+</tr>
+<tr>
+<td>19 阶</td>
+<td>势不可挡</td>
+<td>攻击时忽视目标 5% 的法术防御</td>
+</tr>
+<tr>
+<td>20 阶</td>
+<td>不动明王</td>
+<td>降低受到的群体门派和宠物技能伤害5%</td>
+</tr>
+<tr>
+<td>20 阶</td>
+<td>百折不挠</td>
+<td>降低宠物受到的群体门派和宠物技能伤害5%</td>
+</tr>
+<tr>
+<td>21 阶</td>
+<td>潜伏</td>
+<td>降低宠物 5% 的速度</td>
+</tr>
+<tr>
+<td>21 阶</td>
+<td>突击</td>
+<td>提升宠物 5% 的速度</td>
+</tr>
+<tr>
+<td>22 阶</td>
+<td>潜龙</td>
+<td>降低子女 5% 的速度</td>
+</tr>
+<tr>
+<td>22 阶</td>
+<td>勇猛</td>
+<td>提升子女 5% 的速度</td>
+</tr>
+<tr>
+<td>23 阶</td>
+<td>坚韧不拔</td>
+<td>增加耐力 30</td>
+</tr>
+<tr>
+<td>23 阶</td>
+<td>仙风道骨</td>
+<td>增加体质30</td>
+</tr>
+<tr>
+<td>24 阶</td>
+<td>怒目金刚</td>
+<td>增加力量 40</td>
+</tr>
+<tr>
+<td>24 阶</td>
+<td>慧根深深</td>
+<td>增加灵性 40</td>
+</tr>
+<tr>
+<td>24 阶</td>
+<td>暗影加身</td>
+<td>增加敏捷 40</td>
+</tr>
+<tr>
+<td>25 阶</td>
+<td>魔力涌动</td>
+<td>防御时恢复自身 5% 法力</td>
+</tr>
+<tr>
+<td>26 阶</td>
+<td>阳关三迭</td>
+<td>每到回合数以 3 为结尾的回合 ，回合初恢复 20 怒气</td>
+</tr>
+<tr>
+<td>26 阶</td>
+<td>六合之外</td>
+<td>每到回合数以 6 为结尾的回合 ，回合初恢复 20 怒气</td>
+</tr>
+<tr>
+<td>27 阶</td>
+<td>神之义眼</td>
+<td>物理命中增加5%</td>
+</tr>
+<tr>
+<td>27 阶</td>
+<td>天帝之眼</td>
+<td>法术命中增加5%</td>
+</tr>
+<tr>
+<td>28 阶</td>
+<td>两小无猜</td>
+<td>召唤宠物和子女后 ，宠物和子女对子女伤害提升50% ，持续 3 回合</td>
+</tr>
+<tr>
+<td>29 阶</td>
+<td>龙甲护体</td>
+<td>减少 5% 敌方宠物单位对自己的物理伤害</td>
+</tr>
+<tr>
+<td>29 阶</td>
+<td>龙魂护体</td>
+<td>减少 5% 敌方宠物单位对自己的法术伤害</td>
+</tr>
+<tr>
+<td>30 阶</td>
+<td>山崩不摧</td>
+<td>减少 5% 敌方角色单位对自己的物理伤害</td>
+</tr>
+<tr>
+<td>30 阶</td>
+<td>弱水三千</td>
+<td>减少 5% 敌方角色单位对自己的法术伤害</td>
+</tr>
+<tr>
+<td>31 阶</td>
+<td>避其锋芒</td>
+<td>减少 5% 受到的物理伤害</td>
+</tr>
+<tr>
+<td>31 阶</td>
+<td>暂避其锋</td>
+<td>减少 5% 受到的法术伤害</td>
+</tr>
+<tr>
+<td>32 阶</td>
+<td>荒古圣体</td>
+<td>战斗第 5 回合 ，免疫负面类状态</td>
+</tr>
+<tr>
+<td>32 阶</td>
+<td>莽荒圣体</td>
+<td>战斗第 5 回合 ，免疫毒类状态</td>
+</tr>
+<tr>
+<td>33 阶</td>
+<td>坚韧</td>
+<td>增加 5% 宠物物防</td>
+</tr>
+<tr>
+<td>33 阶</td>
+<td>护盾</td>
+<td>增加 5% 宠物法防</td>
+</tr>
+<tr>
+<td>34 阶</td>
+<td>强攻</td>
+<td>增加 5% 宠物物攻</td>
+</tr>
+<tr>
+<td>34 阶</td>
+<td>神威</td>
+<td>增加 5% 宠物法攻</td>
+</tr>
+<tr>
+<td>35 阶</td>
+<td>锋势渐盈</td>
+<td>增加 5% 造成的物理伤害</td>
+</tr>
+<tr>
+<td>35 阶</td>
+<td>刃魄凝华</td>
+<td>增加 5% 造成的法术伤害</td>
+</tr>
+<tr>
+<td>36 阶</td>
+<td>绿新邪灵</td>
+<td>战斗第 10 回合 ，免疫负面类状态</td>
+</tr>
+<tr>
+<td>36 阶</td>
+<td>清澈净灵</td>
+<td>战斗第 10 回合 ，免疫毒类状态</td>
+</tr>
+</tbody>
+</table>
+</div>
+      </div>
+    </div>
+  </div>
+  
+<div class="footer">
+    
+<p>九小卿攻略站</p>
+
+</div>
+<script>
+(function(){
+  document.querySelectorAll('.hs-toggle-header').forEach(function(header){
+    var panel = header.nextElementSibling;
+    var btn = header.querySelector('.hs-expand-btn');
+    if(!panel || !panel.classList.contains('hs-collapsible') || !btn) return;
+    function toggle(){
+      var open = panel.classList.toggle('open');
+      btn.textContent = open ? '收起 ∧' : '展开 ∨';
+    }
+    header.addEventListener('click', toggle);
+    header.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+  });
+})();
+</script>
+
+<script>
+document.addEventListener('copy',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('contextmenu',function(e){e.preventDefault();});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>变身卡介绍 — 九小卿攻略站</title>
+<meta name="description" content="九小卿变身卡介绍与图鉴攻略">
+<link rel="icon" type="image/jpeg" href="art/favicon.jpg">
+<style>
+  :root{
+    --bg:#fff;--ink:#16130f;--muted:#6f675c;--card:#ffffff;
+    --pink:#ff4d8d;--blue:#4d7cff;--violet:#8b5cf6;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scrollbar-gutter:stable}
+  body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.8;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  button{font-family:inherit}
+  .wrap{max-width:1100px;margin:0 auto;padding:32px 24px 60px}
+  .back-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;background:var(--card);border:1.5px solid rgba(22,19,15,.12);color:var(--ink);font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s}
+  .back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(22,19,15,.12);border-color:var(--pink)}
+  .back-btn svg{width:18px;height:18px}
+  .page-title{text-align:center;margin:40px 0 48px}
+  .page-title h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;letter-spacing:.02em;background:linear-gradient(135deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .footer{text-align:center;padding:40px 0;color:var(--muted);font-size:.85rem}
+  .footer .heart{color:var(--pink)}
+  .section{margin-bottom:16px}
+  .sub-header{background:#e8f4fd;border-left:3px solid #4d7cff;padding:6px 14px;margin:24px 0 14px;font-size:1.05rem;font-weight:700;color:var(--ink)}
+  .section ul{padding-left:0;margin-bottom:16px;list-style:none}
+  .section li{margin-bottom:10px;font-size:.95rem;line-height:1.8;color:#333}
+  .section li.img-li{margin:6px 0 18px}
+  .hs-toggle-header{background:#f3e8ff;border-left-color:#8b5cf6;font-size:1.25rem;margin:16px 0 0;display:flex;justify-content:space-between;align-items:center;gap:12px;cursor:pointer;user-select:none}
+  .hs-toggle-header:hover{background:#ece4fb}
+  .hs-expand-btn{background:none;border:none;font-family:inherit;font-size:1rem;font-weight:700;color:#d43a3a;cursor:pointer;padding:2px 8px;flex:none}
+  .hs-collapsible{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+  .hs-collapsible.open{grid-template-rows:1fr}
+  .hs-collapsible-inner{overflow:hidden;min-height:0;padding-top:20px}
+  .tut-img{max-width:min(640px,100%);border-radius:10px;border:1px solid rgba(22,19,15,.08);box-shadow:0 4px 14px rgba(22,19,15,.08);margin:8px auto 4px}
+  .data-table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:.88rem;border:1px solid rgba(22,19,15,.1);border-radius:10px;overflow:hidden}
+  .data-table th{background:linear-gradient(135deg,#8b5cf6,#ff4d8d);color:#fff;font-weight:700;padding:10px 12px;text-align:left;white-space:nowrap}
+  .data-table td{padding:9px 12px;border-bottom:1px solid rgba(22,19,15,.06);color:#333;line-height:1.6}
+  .data-table tr:nth-child(even) td{background:rgba(139,92,246,.03)}
+  .table-wrap{overflow-x:auto;margin:8px 0 16px}
+  /* 图鉴样式 */
+  .ency-section{margin-top:40px}
+  .ency-section h2{font-size:1.5rem;font-weight:800;margin-bottom:20px;background:linear-gradient(135deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .ency-layout{display:flex;gap:20px;align-items:flex-start}
+  .ency-sidebar{width:140px;flex-shrink:0;position:sticky;top:20px}
+  .ency-side-btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;margin-bottom:6px;border:1.5px solid rgba(22,19,15,.1);border-radius:10px;background:#fff;cursor:pointer;font-size:.9rem;font-weight:600;color:#333;transition:all .2s;text-align:left}
+  .ency-side-btn:hover{border-color:var(--violet);background:#f8f5ff}
+  .ency-side-btn.active{background:linear-gradient(135deg,var(--violet),var(--pink));color:#fff;border-color:transparent}
+  .ency-side-btn .side-count{font-size:.75rem;background:rgba(0,0,0,.08);padding:2px 8px;border-radius:999px}
+  .ency-side-btn.active .side-count{background:rgba(255,255,255,.25)}
+  .ency-main{flex:1;min-width:0}
+  .ency-search-bar{margin-bottom:16px}
+  .ency-search-bar input{width:100%;padding:12px 18px;border:1.5px solid rgba(22,19,15,.12);border-radius:12px;font-size:.95rem;font-family:inherit;outline:none;transition:border-color .2s}
+  .ency-search-bar input:focus{border-color:var(--violet)}
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px;max-height:600px;overflow-y:auto;padding-right:6px}
+  .card-grid::-webkit-scrollbar{width:5px}
+  .card-grid::-webkit-scrollbar-thumb{background:#d4b8ff;border-radius:4px}
+  .card-item{display:flex;flex-direction:column;align-items:center;padding:14px 10px;border:2px solid #e5e0eb;border-radius:14px;background:#fff;cursor:pointer;transition:all .2s;text-align:center}
+  .card-item:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,0,0,.1)}
+  .card-item .card-icon{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;font-size:1.4rem;margin-bottom:8px;color:#fff;font-weight:800}
+  .card-item .card-name{font-size:.9rem;font-weight:700;color:#222;margin-bottom:4px}
+  .card-item .card-type{font-size:.72rem;color:#888;padding:2px 8px;border-radius:999px;background:#f3f0f7}
+  .card-detail-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;z-index:1000;padding:20px}
+  .card-detail-overlay.show{display:flex}
+  .card-detail-card{background:#fff;border-radius:20px;max-width:600px;width:100%;max-height:85vh;overflow-y:auto;padding:32px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+  .detail-close{position:absolute;top:16px;right:20px;background:none;border:none;font-size:1.8rem;cursor:pointer;color:#999;line-height:1}
+  .detail-close:hover{color:#333}
+  .detail-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;padding-bottom:20px;border-bottom:2px solid #f0ecf5}
+  .detail-icon{width:64px;height:64px;border-radius:16px;display:grid;place-items:center;font-size:2rem;color:#fff;font-weight:800;flex-shrink:0}
+  .detail-title h3{font-size:1.4rem;font-weight:800;color:#222}
+  .detail-title .detail-meta{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+  .detail-tag{font-size:.75rem;padding:3px 10px;border-radius:999px;font-weight:600}
+  .detail-body .detail-row{display:flex;margin-bottom:12px;font-size:.9rem}
+  .detail-row .label{width:110px;flex-shrink:0;color:#888;font-weight:600}
+  .detail-row .value{flex:1;color:#333;line-height:1.7}
+  @media (max-width:768px){
+    .ency-layout{flex-direction:column}
+    .ency-sidebar{width:100%;position:static;display:flex;flex-wrap:wrap;gap:6px}
+    .ency-side-btn{width:auto;flex:1;min-width:80px}
+    .card-grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));max-height:500px}
+  }
+
+  /* 全屏水印 */
+  .site-watermark{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99999;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22220%22%20height%3D%22160%22%3E%0A%20%20%3Ctext%20x%3D%2220%22%20y%3D%2280%22%20font-size%3D%2212%22%20fill%3D%22%23000000%22%20fill-opacity%3D%220.05%22%20font-family%3D%22Microsoft%20YaHei%2C%20sans-serif%22%20transform%3D%22rotate%2825%2C%20110%2C%2080%29%22%3E%E4%B9%9D%E5%B0%8F%E5%8D%BF%E6%94%BB%E7%95%A5%E7%AB%99%3C/text%3E%0A%3C/svg%3E");background-repeat:repeat;opacity:1}
+
+  /* 禁止复制 */
+  body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+  input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+
+</style>
+</head>
+<body>
+<div class="site-watermark"></div>
+<div class="wrap">
+  <a href="index.html?skipIntro=1#character" class="back-btn">
+    
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      
+<path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    返回首页
+  </a>
+  <a href="conv_8.html" class="back-btn">
+    
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    智能客服
+  </a>
+  
+<div class="page-title">
+    
+<h1>变身卡介绍</h1>
+  </div>
+  
+<div class="section" id="sec-0">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>系统介绍</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">等级限制：人物等级达到 80 级</p>
+<ul>
+<li>点击右上角人物头像</li>
+<li>在人物面板点击右侧的  “ 变身卡”</li>
+<li>使用变身卡可以获得属性、系别并改变外形。</li>
+<li>变身卡有 5 个品质白绿蓝紫橙 ，品质可以提升；不同卡的品质上限不同 ，通过[S/A/B/C/D]标识</li>
+<li>变身卡有单独的卡片包裹 ，所有的卡片道具存放在卡片包裹</li>
+<li>在卡片包裹中使用后真正获得卡片 ，可操作变身</li>
+</ul>
+<div style="text-align:center;margin:12px 0;">
+<video class="tut-img" src="art/bianshen_tutorial/bsksy.mp4" poster="art/bianshen_tutorial/bsksy_poster.webp" controls style="width:100%;max-width:640px;border-radius:10px;" preload="none"></video>
+</div>
+      </div>
+    </div>
+  </div>
+  
+<div class="section" id="sec-1">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>百变精气</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<ul>
+<li>每次变身消耗每张卡对应的百变精气</li>
+<li>百变精气商城可购买</li>
+<li>变身后 ，倒计时为 0 或达到 PVP 次数后卡片效果消失 ，可点击角色头像下 BUFF 内容查看。 （例如：非 PVP 持续 60 分钟或 PVP3 次 ，两个条件任一消耗完则结束卡片效果）</li>
+<li class="img-li">
+<img class="tut-img" src="art/bianshen_tutorial/image3.webp" alt="百变精气"></li>
+</ul>
+      </div>
+    </div>
+  </div>
+  
+<div class="section" id="sec-2">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>系别克制</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<ul>
+<li>使用变身卡后获得系别 ，不使用系别  “ ⽆ ”</li>
+<li>不同的系别之间有克制关系 ，发生克制在战斗内伤害加成、受伤减少；具体可以查看每张卡片的克制详情</li>
+<li class="img-li">
+<img class="tut-img" src="art/bianshen_tutorial/image5.webp" alt="系别克制" loading="lazy"></li>
+</ul>
+      </div>
+    </div>
+  </div>
+  
+<div class="section" id="sec-3">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>变身抽取</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<ul>
+<li>百变积分通过抽奖等活动获得 ，本次优化防止批量使用造成游戏卡顿 ，可前往商会购买一键使用积分 ，80 级之前也会自动加入</li>
+</ul>
+<div style="text-align:center;margin:12px 0;">
+<video class="tut-img" src="art/bianshen_tutorial/bskcq.mp4" poster="art/bianshen_tutorial/bskcq_poster.webp" controls style="width:100%;max-width:640px;border-radius:10px;" preload="none"></video>
+</div>
+      </div>
+    </div>
+  </div>
+  
+<div class="section" id="sec-4">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>变身分解</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<ul>
+<li>可双击卡片指定分解变身卡 ，也可以根据卡等级批量分解积分</li>
+</ul>
+<div style="text-align:center;margin:12px 0;">
+<video class="tut-img" src="art/bianshen_tutorial/bskfj.mp4" poster="art/bianshen_tutorial/bskfj_poster.webp" controls style="width:100%;max-width:640px;border-radius:10px;" preload="none"></video>
+</div>
+      </div>
+    </div>
+  </div>
+
+  
+<div class="section" id="sec-5">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>变身卡图鉴</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>卡片名称</th>
+<th>卡片类型</th>
+<th>卡片品质</th>
+<th>属性加成</th>
+<th>克制效果</th>
+<th>克制类型</th>
+<th>被克类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>北斗神驴</td>
+<td>散仙</td>
+<td>彩色卡（SS 级）</td>
+<td>物攻 + 150</td>
+<td>伤害 + 12%、封印 + 6%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>小灰</td>
+<td>散仙</td>
+<td>彩色卡（SS 级）</td>
+<td>物攻 + 130、速度 + 33</td>
+<td>伤害 + 12%、封印 + 6%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>白虎</td>
+<td>散仙</td>
+<td>橙色卡（S 级）</td>
+<td>物攻 + 120</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>日精灵</td>
+<td>散仙</td>
+<td>橙色卡（S 级）</td>
+<td>物攻 + 60、物防 + 60、法防 + 60</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>日精灵</td>
+<td>散仙</td>
+<td>紫色卡（S 级）</td>
+<td>物攻 + 48、物防 + 48、法防 + 48</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>日精灵</td>
+<td>散仙</td>
+<td>蓝色卡（S 级）</td>
+<td>物攻 + 36、物防 + 36、法防 + 36</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>日精灵</td>
+<td>散仙</td>
+<td>绿色卡（S 级）</td>
+<td>物攻 + 24、物防 + 24、法防 + 24</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>日精灵</td>
+<td>散仙</td>
+<td>白色卡（S 级）</td>
+<td>物攻 + 12、物防 + 12、法防 + 12</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>笔仙</td>
+<td>散仙</td>
+<td>橙色卡（S 级）</td>
+<td>气血 + 864、物攻 + 60、速度 + 40</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>笔仙</td>
+<td>散仙</td>
+<td>紫色卡（S 级）</td>
+<td>气血 + 691、物攻 + 48、速度 + 32</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>笔仙</td>
+<td>散仙</td>
+<td>蓝色卡（S 级）</td>
+<td>气血 + 518、物攻 + 36、速度 + 24</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>笔仙</td>
+<td>散仙</td>
+<td>绿色卡（S 级）</td>
+<td>气血 + 345、物攻 + 24、速度 + 16</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>笔仙</td>
+<td>散仙</td>
+<td>白色卡（S 级）</td>
+<td>气血 + 172、物攻 + 12、速度 + 8</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>画中仙</td>
+<td>散仙</td>
+<td>橙色卡（S 级）</td>
+<td>法攻 + 80、法暴效果 + 6.66%</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>画中仙</td>
+<td>散仙</td>
+<td>紫色卡（S 级）</td>
+<td>法攻 + 64、法暴效果 + 5.32%</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>画中仙</td>
+<td>散仙</td>
+<td>蓝色卡（S 级）</td>
+<td>法攻 + 48、法暴效果 + 3.99%</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>画中仙</td>
+<td>散仙</td>
+<td>绿色卡（S 级）</td>
+<td>法攻 + 32、法暴效果 + 2.66%</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>画中仙</td>
+<td>散仙</td>
+<td>白色卡（S 级）</td>
+<td>法攻 + 16、法暴效果 + 1.33%</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>巨灵神</td>
+<td>散仙</td>
+<td>紫色卡（A 级）</td>
+<td>气血 + 921、物攻 + 64</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>巨灵神</td>
+<td>散仙</td>
+<td>蓝色卡（A 级）</td>
+<td>气血 + 691、物攻 + 48</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>巨灵神</td>
+<td>散仙</td>
+<td>绿色卡（A 级）</td>
+<td>气血 + 460、物攻 + 32</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>巨灵神</td>
+<td>散仙</td>
+<td>白色卡（A 级）</td>
+<td>气血 + 230、物攻 + 16</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>三眼灵猴</td>
+<td>散仙</td>
+<td>蓝色卡（B 级）</td>
+<td>物攻 + 36、物防 + 36、法防 + 36</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>三眼灵猴</td>
+<td>散仙</td>
+<td>绿色卡（B 级）</td>
+<td>物攻 + 24、物防 + 24、法防 + 24</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>三眼灵猴</td>
+<td>散仙</td>
+<td>白色卡（B 级）</td>
+<td>物攻 + 12、物防 + 12、法防 + 12</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>幻月仙子</td>
+<td>散仙</td>
+<td>蓝色卡（B 级）</td>
+<td>气血 + 691、速度 + 31</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>幻月仙子</td>
+<td>散仙</td>
+<td>绿色卡（B 级）</td>
+<td>气血 + 460、速度 + 21</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>幻月仙子</td>
+<td>散仙</td>
+<td>白色卡（B 级）</td>
+<td>气血 + 230、速度 + 10</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>魔音娃娃</td>
+<td>散仙</td>
+<td>蓝色卡（B 级）</td>
+<td>气血 + 518、物暴 + 36、物攻 + 36</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>魔音娃娃</td>
+<td>散仙</td>
+<td>绿色卡（B 级）</td>
+<td>气血 + 345、物暴 + 24、物攻 + 24</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>魔音娃娃</td>
+<td>散仙</td>
+<td>白色卡（B 级）</td>
+<td>气血 + 172、物暴 + 12、物攻 + 12</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>人、魄、无</td>
+<td>兽、毒</td>
+</tr>
+<tr>
+<td>大天狗</td>
+<td>人形</td>
+<td>彩色卡（SS 级）</td>
+<td>物攻 + 100、速度 + 66</td>
+<td>伤害 + 12%、封印 + 6%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>傀儡师</td>
+<td>人形</td>
+<td>彩色卡（SS 级）</td>
+<td>物攻 + 130、物暴概率 + 2%</td>
+<td>伤害 + 12%、封印 + 6%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>龟仙人</td>
+<td>人形</td>
+<td>橙色卡（S 级）</td>
+<td>法防 + 120</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>小兜妹</td>
+<td>人形</td>
+<td>橙色卡（S 级）</td>
+<td>物攻 + 80、物防 + 80</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>小兜妹</td>
+<td>人形</td>
+<td>紫色卡（S 级）</td>
+<td>物攻 + 64、物防 + 64</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>小兜妹</td>
+<td>人形</td>
+<td>蓝色卡（S 级）</td>
+<td>物攻 + 48、物防 + 48</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>小兜妹</td>
+<td>人形</td>
+<td>绿色卡（S 级）</td>
+<td>物攻 + 32、物防 + 32</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>小兜妹</td>
+<td>人形</td>
+<td>白色卡（S 级）</td>
+<td>物攻 + 16、物防 + 16</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>噬魂神枪</td>
+<td>人形</td>
+<td>橙色卡（S 级）</td>
+<td>气血 + 1152、速度 + 53</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>噬魂神枪</td>
+<td>人形</td>
+<td>紫色卡（S 级）</td>
+<td>气血 + 921、速度 + 42</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>噬魂神枪</td>
+<td>人形</td>
+<td>蓝色卡（S 级）</td>
+<td>气血 + 691、速度 + 31</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>噬魂神枪</td>
+<td>人形</td>
+<td>绿色卡（S 级）</td>
+<td>气血 + 460、速度 + 21</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>噬魂神枪</td>
+<td>人形</td>
+<td>白色卡（S 级）</td>
+<td>气血 + 230、速度 + 10</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>齐天大圣</td>
+<td>人形</td>
+<td>橙色卡（S 级）</td>
+<td>物攻 + 80、速度 + 53</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>天狼</td>
+<td>人形</td>
+<td>紫色卡（A 级）</td>
+<td>物暴 + 48、物攻 + 48、物暴效果 + 4%</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>天狼</td>
+<td>人形</td>
+<td>蓝色卡（A 级）</td>
+<td>物暴 + 36、物攻 + 36、物暴效果 + 3%</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>天狼</td>
+<td>人形</td>
+<td>绿色卡（A 级）</td>
+<td>物暴 + 24、物攻 + 24、物暴效果 + 2%</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>天狼</td>
+<td>人形</td>
+<td>白色卡（A 级）</td>
+<td>物暴 + 12、物攻 + 12、物暴效果 + 1%</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>虎人战士</td>
+<td>人形</td>
+<td>紫色卡（A 级）</td>
+<td>气血 + 921、物攻 + 64</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>虎人战士</td>
+<td>人形</td>
+<td>蓝色卡（A 级）</td>
+<td>气血 + 691、物攻 + 48</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>虎人战士</td>
+<td>人形</td>
+<td>绿色卡（A 级）</td>
+<td>气血 + 460、物攻 + 32</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>虎人战士</td>
+<td>人形</td>
+<td>白色卡（A 级）</td>
+<td>气血 + 230、物攻 + 16</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>女贼</td>
+<td>人形</td>
+<td>蓝色卡（B 级）</td>
+<td>物攻 + 36、物防 + 36、法防 + 36</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>女贼</td>
+<td>人形</td>
+<td>绿色卡（B 级）</td>
+<td>物攻 + 24、物防 + 24、法防 + 24</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>女贼</td>
+<td>人形</td>
+<td>白色卡（B 级）</td>
+<td>物攻 + 12、物防 + 12、法防 + 12</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>守灵女弟子</td>
+<td>人形</td>
+<td>蓝色卡（B 级）</td>
+<td>物攻 + 48、物暴效果 + 3.99%</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>守灵女弟子</td>
+<td>人形</td>
+<td>绿色卡（B 级）</td>
+<td>物攻 + 32、物暴效果 + 2.66%</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>守灵女弟子</td>
+<td>人形</td>
+<td>白色卡（B 级）</td>
+<td>物攻 + 16、物暴效果 + 1.33%</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>吸血妖人</td>
+<td>人形</td>
+<td>蓝色卡（B 级）</td>
+<td>物攻 + 36、速度 + 24、物暴效果 + 3%</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>吸血妖人</td>
+<td>人形</td>
+<td>绿色卡（B 级）</td>
+<td>物攻 + 24、速度 + 16、物暴效果 + 2%</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>吸血妖人</td>
+<td>人形</td>
+<td>白色卡（B 级）</td>
+<td>物攻 + 12、速度 + 8、物暴效果 + 1%</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>魄、羽、无</td>
+<td>仙、毒</td>
+</tr>
+<tr>
+<td>彩蝶依依</td>
+<td>灵魂</td>
+<td>彩色卡（SS 级）</td>
+<td>速度 + 33、法攻 + 130</td>
+<td>伤害 + 12%、封印 + 6%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>森林之子</td>
+<td>灵魂</td>
+<td>彩色卡（SS 级）</td>
+<td>法攻 + 150</td>
+<td>伤害 + 12%、封印 + 6%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>制裁之剑</td>
+<td>灵魂</td>
+<td>橙色卡（S 级）</td>
+<td>气血 + 864、法暴 + 60、法攻 + 60</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>制裁之剑</td>
+<td>灵魂</td>
+<td>紫色卡（S 级）</td>
+<td>气血 + 691、法暴 + 48、法攻 + 48</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>制裁之剑</td>
+<td>灵魂</td>
+<td>蓝色卡（S 级）</td>
+<td>气血 + 518、法暴 + 36、法攻 + 36</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>制裁之剑</td>
+<td>灵魂</td>
+<td>绿色卡（S 级）</td>
+<td>气血 + 345、法暴 + 24、法攻 + 24</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>制裁之剑</td>
+<td>灵魂</td>
+<td>白色卡（S 级）</td>
+<td>气血 + 172、法暴 + 12、法攻 + 12</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>黄金兜兜</td>
+<td>灵魂</td>
+<td>橙色卡（S 级）</td>
+<td>气血 + 1152、物防 + 80</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>黄金兜兜</td>
+<td>灵魄</td>
+<td>紫色卡（S 级）</td>
+<td>气血 + 921、物防 + 64</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>黄金兜兜</td>
+<td>灵魄</td>
+<td>蓝色卡（S 级）</td>
+<td>气血 + 691、物防 + 48</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>黄金兜兜</td>
+<td>灵魄</td>
+<td>绿色卡（S 级）</td>
+<td>气血 + 460、物防 + 32</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>黄金兜兜</td>
+<td>灵魄</td>
+<td>白色卡（S 级）</td>
+<td>气血 + 230、物防 + 16</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>赤炎魔灵</td>
+<td>灵魄</td>
+<td>橙色卡（S 级）</td>
+<td>速度 + 40、法攻 + 60、法暴效果 + 5%</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>赤炎魔灵</td>
+<td>灵魄</td>
+<td>紫色卡（S 级）</td>
+<td>速度 + 32、法攻 + 48、法暴效果 + 4%</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>赤炎魔灵</td>
+<td>灵魄</td>
+<td>蓝色卡（S 级）</td>
+<td>速度 + 24、法攻 + 36、法暴效果 + 3%</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>赤炎魔灵</td>
+<td>灵魄</td>
+<td>绿色卡（S 级）</td>
+<td>速度 + 16、法攻 + 24、法暴效果 + 2%</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>赤炎魔灵</td>
+<td>灵魄</td>
+<td>白色卡（S 级）</td>
+<td>速度 + 8、法攻 + 12、法暴效果 + 1%</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>兜兜</td>
+<td>灵魄</td>
+<td>橙色卡（S 级）</td>
+<td>法攻 + 120</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>剑魔</td>
+<td>灵魄</td>
+<td>紫色卡（A 级）</td>
+<td>气血 + 691、速度 + 32、法攻 + 48</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>剑魔</td>
+<td>灵魄</td>
+<td>蓝色卡（A 级）</td>
+<td>气血 + 518、速度 + 24、法攻 + 36</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>剑魔</td>
+<td>灵魄</td>
+<td>绿色卡（A 级）</td>
+<td>气血 + 345、速度 + 16、法攻 + 24</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>剑魔</td>
+<td>灵魄</td>
+<td>白色卡（A 级）</td>
+<td>气血 + 172、速度 + 8、法攻 + 12</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>刺空之矛</td>
+<td>灵魄</td>
+<td>紫色卡（A 级）</td>
+<td>气血 + 691、法暴 + 48、法攻 + 48</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>刺空之矛</td>
+<td>灵魄</td>
+<td>蓝色卡（A 级）</td>
+<td>气血 + 518、法暴 + 36、法攻 + 36</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>刺空之矛</td>
+<td>灵魄</td>
+<td>绿色卡（A 级）</td>
+<td>气血 + 345、法暴 + 24、法攻 + 24</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>刺空之矛</td>
+<td>灵魄</td>
+<td>白色卡（A 级）</td>
+<td>气血 + 172、法暴 + 12、法攻 + 12</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>小海魂</td>
+<td>灵魄</td>
+<td>蓝色卡（B 级）</td>
+<td>气血 + 691、法攻 + 345</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>小海魂</td>
+<td>灵魄</td>
+<td>绿色卡（B 级）</td>
+<td>气血 + 460、法攻 + 230</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>小海魂</td>
+<td>灵魄</td>
+<td>白色卡（B 级）</td>
+<td>气血 + 230、法攻 + 115</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>玉魔镜</td>
+<td>灵魄</td>
+<td>蓝色卡（B 级）</td>
+<td>气血 + 691、物防 + 48</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>玉魔镜</td>
+<td>灵魄</td>
+<td>绿色卡（B 级）</td>
+<td>气血 + 460、物防 + 32</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>玉魔镜</td>
+<td>灵魄</td>
+<td>白色卡（B 级）</td>
+<td>气血 + 230、物防 + 16</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>羽、兽、无</td>
+<td>仙、人</td>
+</tr>
+<tr>
+<td>羽化仙</td>
+<td>飞羽</td>
+<td>彩色卡（SS 级）</td>
+<td>速度 + 66、法攻 + 100</td>
+<td>伤害 + 12%、封印 + 6%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>小浣熊</td>
+<td>飞羽</td>
+<td>彩色卡（SS 级）</td>
+<td>法攻 + 130、法暴概率 + 2%</td>
+<td>伤害 + 12%、封印 + 6%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>青龙</td>
+<td>飞羽</td>
+<td>橙色卡（S 级）</td>
+<td>物攻 + 80、物暴效果 + 5%</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>煎蛋鸟</td>
+<td>飞羽</td>
+<td>橙色卡（S 级）</td>
+<td>法攻 + 80、法防 + 80</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>煎蛋鸟</td>
+<td>飞羽</td>
+<td>紫色卡（S 级）</td>
+<td>法攻 + 64、法防 + 64</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>煎蛋鸟</td>
+<td>飞羽</td>
+<td>蓝色卡（S 级）</td>
+<td>法攻 + 48、法防 + 48</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>煎蛋鸟</td>
+<td>飞羽</td>
+<td>绿色卡（S 级）</td>
+<td>法攻 + 32、法防 + 32</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>煎蛋鸟</td>
+<td>飞羽</td>
+<td>白色卡（S 级）</td>
+<td>法攻 + 16、法防 + 16</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>堕落天使</td>
+<td>飞羽</td>
+<td>橙色卡（S 级）</td>
+<td>法暴 + 80、法攻 + 80</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>堕落天使</td>
+<td>飞羽</td>
+<td>紫色卡（S 级）</td>
+<td>法暴 + 64、法攻 + 64</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>堕落天使</td>
+<td>飞羽</td>
+<td>蓝色卡（S 级）</td>
+<td>法暴 + 48、法攻 + 48</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>堕落天使</td>
+<td>飞羽</td>
+<td>绿色卡（S 级）</td>
+<td>法暴 + 32、法攻 + 32</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>堕落天使</td>
+<td>飞羽</td>
+<td>白色卡（S 级）</td>
+<td>法暴 + 16、法攻 + 16</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>九天灵鸟</td>
+<td>飞羽</td>
+<td>橙色卡（S 级）</td>
+<td>物攻 + 60、法攻 + 60、法防 + 60</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>九天灵鸟</td>
+<td>飞羽</td>
+<td>紫色卡（S 级）</td>
+<td>物攻 + 48、法攻 + 48、法防 + 48</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>九天灵鸟</td>
+<td>飞羽</td>
+<td>蓝色卡（S 级）</td>
+<td>物攻 + 36、法攻 + 36、法防 + 36</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>九天灵鸟</td>
+<td>飞羽</td>
+<td>绿色卡（S 级）</td>
+<td>物攻 + 24、法攻 + 24、法防 + 24</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>九天灵鸟</td>
+<td>飞羽</td>
+<td>白色卡（S 级）</td>
+<td>物攻 + 12、法攻 + 12、法防 + 12</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>朱雀</td>
+<td>飞羽</td>
+<td>橙色卡（S 级）</td>
+<td>速度 + 53、法攻 + 80</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>冰女</td>
+<td>飞羽</td>
+<td>紫色卡（A 级）</td>
+<td>气血 + 921、物防 + 64</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>冰女</td>
+<td>飞羽</td>
+<td>蓝色卡（A 级）</td>
+<td>气血 + 691、物防 + 48</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>冰女</td>
+<td>飞羽</td>
+<td>绿色卡（A 级）</td>
+<td>气血 + 460、物防 + 32</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>冰女</td>
+<td>飞羽</td>
+<td>白色卡（A 级）</td>
+<td>气血 + 230、物防 + 16</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>冰灵兽</td>
+<td>飞羽</td>
+<td>紫色卡（A 级）</td>
+<td>气血 + 921、速度 + 42</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>冰灵兽</td>
+<td>飞羽</td>
+<td>蓝色卡（A 级）</td>
+<td>气血 + 691、速度 + 31</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>冰灵兽</td>
+<td>飞羽</td>
+<td>绿色卡（A 级）</td>
+<td>气血 + 460、速度 + 21</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>冰灵兽</td>
+<td>飞羽</td>
+<td>白色卡（A 级）</td>
+<td>气血 + 230、速度 + 10</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>西瓜猫</td>
+<td>飞羽</td>
+<td>蓝色卡（B 级）</td>
+<td>法暴 + 48、法暴效果 + 3.99%</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>西瓜猫</td>
+<td>飞羽</td>
+<td>绿色卡（B 级）</td>
+<td>法暴 + 32、法暴效果 + 2.66%</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>西瓜猫</td>
+<td>飞羽</td>
+<td>白色卡（B 级）</td>
+<td>法暴 + 16、法暴效果 + 1.33%</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>花魅</td>
+<td>飞羽</td>
+<td>蓝色卡（B 级）</td>
+<td>气血 + 518、法暴 + 36、法攻 + 36</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>花魅</td>
+<td>飞羽</td>
+<td>绿色卡（B 级）</td>
+<td>气血 + 345、法暴 + 24、法攻 + 24</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>花魅</td>
+<td>飞羽</td>
+<td>白色卡（B 级）</td>
+<td>气血 + 172、法暴 + 12、法攻 + 12</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>兽、毒、无</td>
+<td>人、魄</td>
+</tr>
+<tr>
+<td>神风兔</td>
+<td>兽形</td>
+<td>彩色卡（SS 级）</td>
+<td>封抗 + 30、速度 + 100</td>
+<td>伤害 + 12%、封印 + 6%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>怒目金刚</td>
+<td>兽形</td>
+<td>彩色卡（SS 级）</td>
+<td>物防 + 100、速度 + 80</td>
+<td>伤害 + 12%、封印 + 6%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>熊滚滚</td>
+<td>兽形</td>
+<td>橙色卡（S 级）</td>
+<td>物防 + 120</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>皮皮龙</td>
+<td>兽形</td>
+<td>橙色卡（S 级）</td>
+<td>物防 + 80、法防 + 80</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>皮皮龙</td>
+<td>兽形</td>
+<td>紫色卡（S 级）</td>
+<td>物防 + 64、法防 + 64</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>皮皮龙</td>
+<td>兽形</td>
+<td>蓝色卡（S 级）</td>
+<td>物防 + 48、法防 + 48</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>皮皮龙</td>
+<td>兽形</td>
+<td>绿色卡（S 级）</td>
+<td>物防 + 32、法防 + 32</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>皮皮龙</td>
+<td>兽形</td>
+<td>白色卡（S 级）</td>
+<td>物防 + 16、法防 + 16</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>帝炎龙</td>
+<td>兽形</td>
+<td>橙色卡（S 级）</td>
+<td>法防 + 120、速度 + 40</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>帝炎龙</td>
+<td>兽形</td>
+<td>紫色卡（S 级）</td>
+<td>法防 + 96、速度 + 32</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>帝炎龙</td>
+<td>兽形</td>
+<td>蓝色卡（S 级）</td>
+<td>法防 + 72、速度 + 24</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>帝炎龙</td>
+<td>兽形</td>
+<td>绿色卡（S 级）</td>
+<td>法防 + 48、速度 + 16</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>帝炎龙</td>
+<td>兽形</td>
+<td>白色卡（S 级）</td>
+<td>法防 + 24、速度 + 8</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>火麟兽</td>
+<td>兽形</td>
+<td>橙色卡（A 级）</td>
+<td>法防 + 80、法防 + 80</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>火麟兽</td>
+<td>兽形</td>
+<td>紫色卡（A 级）</td>
+<td>法防 + 64、法防 + 64</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>火麟兽</td>
+<td>兽形</td>
+<td>蓝色卡（A 级）</td>
+<td>法防 + 48、法防 + 48</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>火麟兽</td>
+<td>兽形</td>
+<td>绿色卡（A 级）</td>
+<td>法防 + 32、法防 + 32</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>火麟兽</td>
+<td>兽形</td>
+<td>白色卡（A 级）</td>
+<td>法防 + 16、法防 + 16</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>铁钳虾</td>
+<td>兽形</td>
+<td>紫色卡（A 级）</td>
+<td>气血 + 691、封抗 + 24、法防 + 48</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>铁钳虾</td>
+<td>兽形</td>
+<td>蓝色卡（A 级）</td>
+<td>气血 + 518、封抗 + 18、法防 + 36</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>铁钳虾</td>
+<td>兽形</td>
+<td>绿色卡（A 级）</td>
+<td>气血 + 345、封抗 + 12、法防 + 24</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>铁钳虾</td>
+<td>兽形</td>
+<td>白色卡（A 级）</td>
+<td>气血 + 172、封抗 + 6、法防 + 12</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>横行蟹</td>
+<td>兽形</td>
+<td>紫色卡（A 级）</td>
+<td>气血 + 691、封抗 + 24、物防 + 48</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>横行蟹</td>
+<td>兽形</td>
+<td>蓝色卡（A 级）</td>
+<td>气血 + 518、封抗 + 18、物防 + 36</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>横行蟹</td>
+<td>兽形</td>
+<td>绿色卡（A 级）</td>
+<td>气血 + 345、封抗 + 12、物防 + 24</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>横行蟹</td>
+<td>兽形</td>
+<td>白色卡（A 级）</td>
+<td>气血 + 172、封抗 + 6、物防 + 12</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>小山狐</td>
+<td>兽形</td>
+<td>蓝色卡（B 级）</td>
+<td>气血 + 691、封抗 + 24</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>小山狐</td>
+<td>兽形</td>
+<td>绿色卡（B 级）</td>
+<td>气血 + 460、封抗 + 16</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>小山狐</td>
+<td>兽形</td>
+<td>白色卡（B 级）</td>
+<td>气血 + 230、封抗 + 8</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>魔蝎</td>
+<td>兽形</td>
+<td>蓝色卡（B 级）</td>
+<td>气血 + 691、物防 + 48</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>魔蝎</td>
+<td>兽形</td>
+<td>绿色卡（B 级）</td>
+<td>气血 + 460、物防 + 32</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>魔蝎</td>
+<td>兽形</td>
+<td>白色卡（B 级）</td>
+<td>气血 + 230、物防 + 16</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>爱心兔</td>
+<td>兽形</td>
+<td>蓝色卡（B 级）</td>
+<td>气血 + 691、法防 + 345</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>爱心兔</td>
+<td>兽形</td>
+<td>绿色卡（B 级）</td>
+<td>气血 + 460、法防 + 230</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>爱心兔</td>
+<td>兽形</td>
+<td>白色卡（B 级）</td>
+<td>气血 + 230、法防 + 115</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>菜刀兔</td>
+<td>兽形</td>
+<td>蓝色卡（B 级）</td>
+<td>物防 + 48、物防 + 48</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>菜刀兔</td>
+<td>兽形</td>
+<td>绿色卡（B 级）</td>
+<td>物防 + 32、物防 + 32</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>菜刀兔</td>
+<td>兽形</td>
+<td>白色卡（B 级）</td>
+<td>物防 + 16、物防 + 16</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>毒、仙、无</td>
+<td>魄、羽</td>
+</tr>
+<tr>
+<td>九儿</td>
+<td>巫毒</td>
+<td>彩色卡（SS 级）</td>
+<td>封印概率 + 2%、速度 + 90</td>
+<td>伤害 + 12%、封印 + 6%</td>
+<td>未知</td>
+<td>未知</td>
+</tr>
+<tr>
+<td>喵喵酱</td>
+<td>巫毒</td>
+<td>彩色卡（SS 级）</td>
+<td>速度 + 100</td>
+<td>伤害 + 12%、封印 + 6%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>死神</td>
+<td>巫毒</td>
+<td>橙色卡（S 级）</td>
+<td>封印 + 60、封抗 + 30、速度 + 40</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>死神</td>
+<td>巫毒</td>
+<td>紫色卡（S 级）</td>
+<td>封印 + 48、封抗 + 24、速度 + 32</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>死神</td>
+<td>巫毒</td>
+<td>蓝色卡（S 级）</td>
+<td>封印 + 36、封抗 + 18、速度 + 24</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>死神</td>
+<td>巫毒</td>
+<td>绿色卡（S 级）</td>
+<td>封印 + 24、封抗 + 12、速度 + 16</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>死神</td>
+<td>巫毒</td>
+<td>白色卡（S 级）</td>
+<td>封印 + 12、封抗 + 6、速度 + 8</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>小团酱</td>
+<td>巫毒</td>
+<td>橙色卡（S 级）</td>
+<td>法攻 + 80、法暴效果 + 5%</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>枭</td>
+<td>巫毒</td>
+<td>橙色卡（S 级）</td>
+<td>速度 + 80</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>撒旦之魂</td>
+<td>巫毒</td>
+<td>橙色卡（S 级）</td>
+<td>物攻 + 80、速度 + 53</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>撒旦之魂</td>
+<td>巫毒</td>
+<td>紫色卡（S 级）</td>
+<td>物攻 + 64、速度 + 42</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>撒旦之魂</td>
+<td>巫毒</td>
+<td>蓝色卡（S 级）</td>
+<td>物攻 + 48、速度 + 31</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>撒旦之魂</td>
+<td>巫毒</td>
+<td>绿色卡（S 级）</td>
+<td>物攻 + 32、速度 + 21</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>撒旦之魂</td>
+<td>巫毒</td>
+<td>白色卡（S 级）</td>
+<td>物攻 + 16、速度 + 10</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>喵太郎</td>
+<td>巫毒</td>
+<td>橙色卡（S 级）</td>
+<td>封印 + 80、速度 + 53</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>喵太郎</td>
+<td>巫毒</td>
+<td>紫色卡（S 级）</td>
+<td>封印 + 64、速度 + 42</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>喵太郎</td>
+<td>巫毒</td>
+<td>蓝色卡（S 级）</td>
+<td>封印 + 48、速度 + 31</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>喵太郎</td>
+<td>巫毒</td>
+<td>绿色卡（S 级）</td>
+<td>封印 + 32、速度 + 21</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>喵太郎</td>
+<td>巫毒</td>
+<td>白色卡（S 级）</td>
+<td>封印 + 16、速度 + 10</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>虚空魔镜</td>
+<td>巫毒</td>
+<td>橙色卡（S 级）</td>
+<td>速度 + 53、法防 + 80</td>
+<td>伤害 + 10%、封印 + 5%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>虚空魔镜</td>
+<td>巫毒</td>
+<td>紫色卡（S 级）</td>
+<td>速度 + 42、法防 + 64</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>虚空魔镜</td>
+<td>巫毒</td>
+<td>蓝色卡（S 级）</td>
+<td>速度 + 31、法防 + 48</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>虚空魔镜</td>
+<td>巫毒</td>
+<td>绿色卡（S 级）</td>
+<td>速度 + 21、法防 + 32</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>虚空魔镜</td>
+<td>巫毒</td>
+<td>白色卡（S 级）</td>
+<td>速度 + 10、法防 + 16</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>鬼巫</td>
+<td>巫毒</td>
+<td>紫色卡（A 级）</td>
+<td>封抗 + 24、速度 + 32、法防 + 48</td>
+<td>伤害 + 8%、封印 + 4%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>鬼巫</td>
+<td>巫毒</td>
+<td>蓝色卡（A 级）</td>
+<td>封抗 + 18、速度 + 24、法防 + 36</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>鬼巫</td>
+<td>巫毒</td>
+<td>绿色卡（A 级）</td>
+<td>封抗 + 12、速度 + 16、法防 + 24</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>鬼巫</td>
+<td>巫毒</td>
+<td>白色卡（A 级）</td>
+<td>封抗 + 6、速度 + 8、法防 + 12</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>死灵巫师</td>
+<td>巫毒</td>
+<td>蓝色卡（B 级）</td>
+<td>封印 + 36、气血 + 518、封抗 + 18</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>死灵巫师</td>
+<td>巫毒</td>
+<td>绿色卡（B 级）</td>
+<td>封印 + 24、气血 + 345、封抗 + 12</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>死灵巫师</td>
+<td>巫毒</td>
+<td>白色卡（B 级）</td>
+<td>封印 + 12、气血 + 172、封抗 + 6</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>凶灵</td>
+<td>巫毒</td>
+<td>蓝色卡（B 级）</td>
+<td>气血 + 691、法防 + 48</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>凶灵</td>
+<td>巫毒</td>
+<td>绿色卡（B 级）</td>
+<td>气血 + 460、法防 + 32</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>凶灵</td>
+<td>巫毒</td>
+<td>白色卡（B 级）</td>
+<td>气血 + 230、法防 + 16</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>通灵师</td>
+<td>巫毒</td>
+<td>蓝色卡（B 级）</td>
+<td>封抗 + 36</td>
+<td>伤害 + 6%、封印 + 3%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>通灵师</td>
+<td>巫毒</td>
+<td>绿色卡（B 级）</td>
+<td>封抗 + 24</td>
+<td>伤害 + 4%、封印 + 2%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+<tr>
+<td>通灵师</td>
+<td>巫毒</td>
+<td>白色卡（B 级）</td>
+<td>封抗 + 12</td>
+<td>伤害 + 2%、封印 + 1%</td>
+<td>仙、人、无</td>
+<td>羽、兽</td>
+</tr>
+</tbody>
+</table>
+</div>
+      </div>
+    </div>
+  </div>
+
+  
+<div class="footer">
+    
+<p>九小卿攻略站</p>
+
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('.hs-toggle-header').forEach(function(header){
+    var panel = header.nextElementSibling;
+    var btn = header.querySelector('.hs-expand-btn');
+    if(!panel || !panel.classList.contains('hs-collapsible') || !btn) return;
+    function toggle(){
+      var open = panel.classList.toggle('open');
+      btn.textContent = open ? '收起 ∧' : '展开 ∨';
+    }
+    header.addEventListener('click', toggle);
+    header.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+  });
+})();
+</script>
+
+<script>
+document.addEventListener('copy',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('contextmenu',function(e){e.preventDefault();});
+</script>
+
+</body>
+</html>

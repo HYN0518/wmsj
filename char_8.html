@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>技能介绍 — 九小卿攻略站</title>
+<meta name="description" content="九小卿技能介绍攻略">
+<link rel="icon" type="image/jpeg" href="art/favicon.jpg">
+<style>
+  :root{
+    --bg:#fff;--ink:#16130f;--muted:#6f675c;--card:#ffffff;
+    --pink:#ff4d8d;--blue:#4d7cff;--violet:#8b5cf6;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scrollbar-gutter:stable}
+  body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.8;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  button{font-family:inherit}
+  .wrap{max-width:960px;margin:0 auto;padding:32px 24px 60px}
+  .back-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;background:var(--card);border:1.5px solid rgba(22,19,15,.12);color:var(--ink);font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s}
+  .back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(22,19,15,.12);border-color:var(--pink)}
+  .back-btn svg{width:18px;height:18px}
+  .page-title{text-align:center;margin:40px 0 48px}
+  .page-title h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;letter-spacing:.02em;background:linear-gradient(135deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .footer{text-align:center;padding:40px 0;color:var(--muted);font-size:.85rem}
+  .footer .heart{color:var(--pink)}
+  .section{margin-bottom:16px}
+  .sub-header{background:#e8f4fd;border-left:3px solid #4d7cff;padding:6px 14px;margin:24px 0 14px;font-size:1.05rem;font-weight:700;color:var(--ink)}
+  .section ul{padding-left:0;margin-bottom:16px;list-style:none}
+  .section li{margin-bottom:10px;font-size:.95rem;line-height:1.8;color:#333}
+  .section li.img-li{margin:6px 0 18px}
+  .hs-toggle-header{background:#f3e8ff;border-left-color:#8b5cf6;font-size:1.25rem;margin:16px 0 0;display:flex;justify-content:space-between;align-items:center;gap:12px;cursor:pointer;user-select:none}
+  .hs-toggle-header:hover{background:#ece4fb}
+  .hs-expand-btn{background:none;border:none;font-family:inherit;font-size:1rem;font-weight:700;color:#d43a3a;cursor:pointer;padding:2px 8px;flex:none}
+  .hs-collapsible{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+  .hs-collapsible.open{grid-template-rows:1fr}
+  .hs-collapsible-inner{overflow:hidden;min-height:0;padding-top:20px}
+  .tut-img{max-width:min(640px,100%);border-radius:10px;border:1px solid rgba(22,19,15,.08);box-shadow:0 4px 14px rgba(22,19,15,.08);margin:8px auto 4px}
+  .data-table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:.88rem;border:1px solid rgba(22,19,15,.1);border-radius:10px;overflow:hidden}
+  .data-table th{background:linear-gradient(135deg,#8b5cf6,#ff4d8d);color:#fff;font-weight:700;padding:10px 12px;text-align:left;white-space:nowrap}
+  .data-table td{padding:9px 12px;border-bottom:1px solid rgba(22,19,15,.06);color:#333;line-height:1.6}
+  .data-table tr:nth-child(even) td{background:rgba(139,92,246,.03)}
+  .table-wrap{overflow-x:auto;margin:8px 0 16px}
+  @media (max-width:640px){
+    .wrap{padding:24px 16px}
+    .page-title{margin:24px 0 32px}
+    .section li{font-size:.85rem}
+    .hs-toggle-header{font-size:1.05rem}
+    .data-table{font-size:.78rem}
+    .data-table th,.data-table td{padding:7px 8px}
+  }
+
+  /* 全屏水印 */
+  .site-watermark{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99999;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22220%22%20height%3D%22160%22%3E%0A%20%20%3Ctext%20x%3D%2220%22%20y%3D%2280%22%20font-size%3D%2212%22%20fill%3D%22%23000000%22%20fill-opacity%3D%220.05%22%20font-family%3D%22Microsoft%20YaHei%2C%20sans-serif%22%20transform%3D%22rotate%2825%2C%20110%2C%2080%29%22%3E%E4%B9%9D%E5%B0%8F%E5%8D%BF%E6%94%BB%E7%95%A5%E7%AB%99%3C/text%3E%0A%3C/svg%3E");background-repeat:repeat;opacity:1}
+
+  /* 禁止复制 */
+  body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+  input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+
+</style>
+</head>
+<body>
+<div class="site-watermark"></div>
+<div class="wrap">
+  <a href="index.html?skipIntro=1#character" class="back-btn">
+    
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      
+<path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    返回首页
+  </a>
+  <a href="conv_8.html" class="back-btn">
+    
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    智能客服
+  </a>
+  
+<div class="page-title">
+    
+<h1>技能介绍</h1>
+  </div>
+  
+<div class="section" id="sec-0">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>修炼技能</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">等级限制：人物等级达到 40 级</p>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">修炼技能等级上限与玩家等级挂钩</p>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">修炼经验可以通过修炼道具 ，修炼学习和修炼经验奖励获得修炼道具和修炼经验奖励会增加默认修炼技能的修炼经验</p>
+<div class="sub-header">属性提升</div>
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th></th>
+<th>加成</th>
+<th>20 级前提升 /减少</th>
+<th>20 级后提升 /减少</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>角色功法</td>
+<td>可使人物的物理、法术伤害结果增加、封印成功率提高</td>
+<td>每级 2%</td>
+<td>每级 1%</td>
+</tr>
+<tr>
+<td>角色物防</td>
+<td>可使人物受到的物理伤害减少</td>
+<td>每级 2%</td>
+<td>每级 1%</td>
+</tr>
+<tr>
+<td>角色法防</td>
+<td>可使人物受到的法术伤害减少</td>
+<td>每级 2%</td>
+<td>每级 1%</td>
+</tr>
+<tr>
+<td>角色封抗</td>
+<td>可减少人物被封印成功率</td>
+<td>每级 2%</td>
+<td>每级 1%</td>
+</tr>
+<tr>
+<td>仙侣修炼</td>
+<td>可使伙伴伤害增加、减少受到伤害、提高封印成功率、减少被封印成功率</td>
+<td>每级 2%</td>
+<td>每级 1%</td>
+</tr>
+<tr>
+<td>宠物攻法</td>
+<td>可使宠物的物理、法术伤害结果增加</td>
+<td>每级 2%</td>
+<td>每级 1%</td>
+</tr>
+<tr>
+<td>宠物物防</td>
+<td>可使宠物受到的物理伤害减少</td>
+<td>每级 2%</td>
+<td>每级 1%</td>
+</tr>
+<tr>
+<td>宠物法防</td>
+<td>可使宠物受到的法术伤害减少</td>
+<td>每级 2%</td>
+<td>每级 1%</td>
+</tr>
+<tr>
+<td>子女修炼</td>
+<td>可使子女伤害增加、减少受到伤害、提高封印成功率、减少被封印成功率</td>
+<td>每级 2%</td>
+<td>每级 1%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sub-header">等级限制</div>
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>人物等级</th>
+<th>解锁等级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>40 级</td>
+<td>2 级</td>
+</tr>
+<tr>
+<td>45 级</td>
+<td>4 级</td>
+</tr>
+<tr>
+<td>50 级</td>
+<td>6 级</td>
+</tr>
+<tr>
+<td>55 级</td>
+<td>8 级</td>
+</tr>
+<tr>
+<td>60 级</td>
+<td>9 级</td>
+</tr>
+<tr>
+<td>65 级</td>
+<td>10 级</td>
+</tr>
+<tr>
+<td>70 级</td>
+<td>11 级</td>
+</tr>
+<tr>
+<td>75 级</td>
+<td>12 级</td>
+</tr>
+<tr>
+<td>80 级</td>
+<td>13 级</td>
+</tr>
+<tr>
+<td>85 级</td>
+<td>14 级</td>
+</tr>
+<tr>
+<td>90 级</td>
+<td>15 级</td>
+</tr>
+<tr>
+<td>95 级</td>
+<td>20 级</td>
+</tr>
+<tr>
+<td>120 级</td>
+<td>21 级</td>
+</tr>
+<tr>
+<td>125 级</td>
+<td>22 级</td>
+</tr>
+<tr>
+<td>130 级</td>
+<td>23 级</td>
+</tr>
+<tr>
+<td>135 级</td>
+<td>30 级</td>
+</tr>
+</tbody>
+</table>
+</div>
+      </div>
+    </div>
+  </div>
+  
+<div class="section" id="sec-1">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>生活技能</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">等级限制：人物等级达到 50 级</p>
+        
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">在生活技能中 ，除了花火制作是不用管的 ，其余功能均得在 100 级后功能性价比高其中干将 ，方土 ，织女的祝福符是提升装备祝福的必备材料 ，神药也是 PK 的必备道具！</p>
+<ul>
+<li class="img-li">
+<img class="tut-img" src="art/jineng_tutorial/image1.webp" alt="功能介绍"></li>
+</ul>
+      </div>
+    </div>
+  </div>
+  
+<div class="section" id="sec-2">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>帮派技能</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">等级限制：人物等级达到 50 级</p>
+        
+<ul>
+<li class="img-li">
+<img class="tut-img" src="art/jineng_tutorial/image2.webp" alt="功能介绍" loading="lazy"></li>
+<li>炼体诀：气血上限提升：心法等级 *5</li>
+<li>聚灵诀：法力上限提升：心法等级 *5</li>
+<li>万兽诀：捕捉成功率提升：心法等级 *0.5%</li>
+<li>神遁诀：我方逃跑成功率提升：心法等级 *0.5%</li>
+<li>镇魂诀：对方逃跑成功率降低：心法等级 *0.5%</li>
+<li>神力诀：物理暴击等级上限提升：心法等级 *1</li>
+<li>锻体诀：物理暴抗等级上限提升：心法等级 *1</li>
+<li>灵力诀：法术暴击等级上限提升：心法等级 *1</li>
+<li>锻灵诀：法术暴抗等级上限提升：心法等级 *1</li>
+<li>金灵诀： 降低受到物理暴击的伤害：心法等级 *0.1%</li>
+<li>蕴灵诀： 降低受到法术暴击的伤害：心法等级 *0.1%升级消耗：</li>
+</ul>
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>等级</th>
+<th>帮贡</th>
+<th>银币</th>
+<th>等级</th>
+<th>帮贡</th>
+<th>银币</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 级</td>
+<td>0</td>
+<td>398</td>
+<td>1 级</td>
+<td>0</td>
+<td>406</td>
+</tr>
+<tr>
+<td>2 级</td>
+<td>0</td>
+<td>414</td>
+<td>3 级</td>
+<td>0</td>
+<td>424</td>
+</tr>
+<tr>
+<td>4 级</td>
+<td>0</td>
+<td>432</td>
+<td>5 级</td>
+<td>0</td>
+<td>442</td>
+</tr>
+<tr>
+<td>6 级</td>
+<td>0</td>
+<td>452</td>
+<td>7 级</td>
+<td>0</td>
+<td>460</td>
+</tr>
+<tr>
+<td>8 级</td>
+<td>0</td>
+<td>470</td>
+<td>9 级</td>
+<td>0</td>
+<td>478</td>
+</tr>
+<tr>
+<td>10 级</td>
+<td>1</td>
+<td>488</td>
+<td>11 级</td>
+<td>1</td>
+<td>498</td>
+</tr>
+<tr>
+<td>12 级</td>
+<td>1</td>
+<td>506</td>
+<td>13 级</td>
+<td>1</td>
+<td>516</td>
+</tr>
+<tr>
+<td>14 级</td>
+<td>1</td>
+<td>524</td>
+<td>15 级</td>
+<td>1</td>
+<td>534</td>
+</tr>
+<tr>
+<td>16 级</td>
+<td>1</td>
+<td>542</td>
+<td>17 级</td>
+<td>1</td>
+<td>552</td>
+</tr>
+<tr>
+<td>18 级</td>
+<td>1</td>
+<td>562</td>
+<td>19 级</td>
+<td>1</td>
+<td>574</td>
+</tr>
+<tr>
+<td>20 级</td>
+<td>2</td>
+<td>666</td>
+<td>21 级</td>
+<td>2</td>
+<td>688</td>
+</tr>
+<tr>
+<td>22 级</td>
+<td>2</td>
+<td>710</td>
+<td>23 级</td>
+<td>2</td>
+<td>732</td>
+</tr>
+<tr>
+<td>24 级</td>
+<td>2</td>
+<td>756</td>
+<td>25 级</td>
+<td>3</td>
+<td>798</td>
+</tr>
+<tr>
+<td>26 级</td>
+<td>3</td>
+<td>826</td>
+<td>27 级</td>
+<td>3</td>
+<td>856</td>
+</tr>
+<tr>
+<td>28 级</td>
+<td>3</td>
+<td>886</td>
+<td>29 级</td>
+<td>3</td>
+<td>918</td>
+</tr>
+<tr>
+<td>30 级</td>
+<td>6</td>
+<td>1616</td>
+<td>31 级</td>
+<td>6</td>
+<td>1706</td>
+</tr>
+<tr>
+<td>32 级</td>
+<td>6</td>
+<td>1800</td>
+<td>33 级</td>
+<td>6</td>
+<td>1898</td>
+</tr>
+<tr>
+<td>34 级</td>
+<td>6</td>
+<td>2000</td>
+<td>35 级</td>
+<td>7</td>
+<td>3046</td>
+</tr>
+<tr>
+<td>36 级</td>
+<td>7</td>
+<td>3222</td>
+<td>37 级</td>
+<td>7</td>
+<td>3404</td>
+</tr>
+<tr>
+<td>38 级</td>
+<td>7</td>
+<td>3594</td>
+<td>39 级</td>
+<td>7</td>
+<td>3790</td>
+</tr>
+<tr>
+<td>40 级</td>
+<td>11</td>
+<td>6860</td>
+<td>41 级</td>
+<td>12</td>
+<td>7242</td>
+</tr>
+<tr>
+<td>44 级</td>
+<td>15</td>
+<td>8472</td>
+<td>45 级</td>
+<td>21</td>
+<td>10550</td>
+</tr>
+<tr>
+<td>46 级</td>
+<td>23</td>
+<td>11092</td>
+<td>47 级</td>
+<td>25</td>
+<td>11652</td>
+</tr>
+<tr>
+<td>48 级</td>
+<td>27</td>
+<td>12176</td>
+<td>49 级</td>
+<td>29</td>
+<td>12232</td>
+</tr>
+<tr>
+<td>50 级</td>
+<td>33</td>
+<td>12742</td>
+<td>51 级</td>
+<td>35</td>
+<td>12830</td>
+</tr>
+<tr>
+<td>52 级</td>
+<td>38</td>
+<td>13326</td>
+<td>53 级</td>
+<td>41</td>
+<td>13928</td>
+</tr>
+<tr>
+<td>54 级</td>
+<td>44</td>
+<td>14544</td>
+<td>55 级</td>
+<td>46</td>
+<td>20794</td>
+</tr>
+<tr>
+<td>56 级</td>
+<td>48</td>
+<td>21698</td>
+<td>57 级</td>
+<td>50</td>
+<td>22628</td>
+</tr>
+<tr>
+<td>58 级</td>
+<td>52</td>
+<td>23582</td>
+<td>59 级</td>
+<td>54</td>
+<td>24562</td>
+</tr>
+<tr>
+<td>60 级</td>
+<td>83</td>
+<td>45008</td>
+<td>61 级</td>
+<td>88</td>
+<td>46832</td>
+</tr>
+<tr>
+<td>62 级</td>
+<td>93</td>
+<td>48704</td>
+<td>63 级</td>
+<td>98</td>
+<td>50622</td>
+</tr>
+<tr>
+<td>64 级</td>
+<td>103</td>
+<td>52588</td>
+<td>65 级</td>
+<td>113</td>
+<td>60704</td>
+</tr>
+<tr>
+<td>66 级</td>
+<td>123</td>
+<td>63000</td>
+<td>67 级</td>
+<td>133</td>
+<td>65350</td>
+</tr>
+<tr>
+<td>68 级</td>
+<td>143</td>
+<td>67756</td>
+<td>69 级</td>
+<td>153</td>
+<td>70218</td>
+</tr>
+<tr>
+<td>70 级</td>
+<td>168</td>
+<td>90568</td>
+<td>71 级</td>
+<td>183</td>
+<td>93756</td>
+</tr>
+<tr>
+<td>72 级</td>
+<td>198</td>
+<td>97014</td>
+<td>73 级</td>
+<td>213</td>
+<td>100344</td>
+</tr>
+<tr>
+<td>74 级</td>
+<td>228</td>
+<td>103746</td>
+<td>75 级</td>
+<td>248</td>
+<td>114532</td>
+</tr>
+<tr>
+<td>76 级</td>
+<td>268</td>
+<td>118324</td>
+<td>77 级</td>
+<td>288</td>
+<td>122194</td>
+</tr>
+<tr>
+<td>78 级</td>
+<td>308</td>
+<td>126146</td>
+<td>79 级</td>
+<td>328</td>
+<td>130176</td>
+</tr>
+<tr>
+<td>80 级</td>
+<td>353</td>
+<td>167198</td>
+<td>81 级</td>
+<td>378</td>
+<td>172390</td>
+</tr>
+<tr>
+<td>82 级</td>
+<td>403</td>
+<td>177684</td>
+<td>83 级</td>
+<td>428</td>
+<td>183080</td>
+</tr>
+<tr>
+<td>84 级</td>
+<td>453</td>
+<td>188580</td>
+<td>85 级</td>
+<td>483</td>
+<td>275672</td>
+</tr>
+<tr>
+<td>88 级</td>
+<td>573</td>
+<td>300470</td>
+<td>89 级</td>
+<td>603</td>
+<td>309042</td>
+</tr>
+<tr>
+<td>90 级</td>
+<td>638</td>
+<td>446270</td>
+<td>91 级</td>
+<td>673</td>
+<td>458672</td>
+</tr>
+<tr>
+<td>92 级</td>
+<td>708</td>
+<td>471292</td>
+<td>93 级</td>
+<td>743</td>
+<td>484130</td>
+</tr>
+<tr>
+<td>94 级</td>
+<td>778</td>
+<td>497192</td>
+<td>95 级</td>
+<td>818</td>
+<td>597462</td>
+</tr>
+<tr>
+<td>96 级</td>
+<td>858</td>
+<td>613278</td>
+<td>97 级</td>
+<td>898</td>
+<td>629356</td>
+</tr>
+<tr>
+<td>98 级</td>
+<td>938</td>
+<td>645704</td>
+<td>99 级</td>
+<td>978</td>
+<td>662322</td>
+</tr>
+<tr>
+<td>100 级</td>
+<td>1023</td>
+<td>713028</td>
+<td>101 级</td>
+<td>1068</td>
+<td>730936</td>
+</tr>
+<tr>
+<td>102 级</td>
+<td>1113</td>
+<td>749130</td>
+<td>103 级</td>
+<td>1158</td>
+<td>767610</td>
+</tr>
+<tr>
+<td>104 级</td>
+<td>1203</td>
+<td>786380</td>
+<td>105 级</td>
+<td>1253</td>
+<td>814016</td>
+</tr>
+<tr>
+<td>106 级</td>
+<td>1303</td>
+<td>833578</td>
+<td>107 级</td>
+<td>1353</td>
+<td>853440</td>
+</tr>
+<tr>
+<td>108 级</td>
+<td>1403</td>
+<td>873602</td>
+<td>109 级</td>
+<td>1453</td>
+<td>894066</td>
+</tr>
+<tr>
+<td>110 级</td>
+<td>1508</td>
+<td>945222</td>
+<td>111 级</td>
+<td>1563</td>
+<td>966876</td>
+</tr>
+<tr>
+<td>112 级</td>
+<td>1618</td>
+<td>988844</td>
+<td>113 级</td>
+<td>1673</td>
+<td>1011132</td>
+</tr>
+<tr>
+<td>114 级</td>
+<td>1728</td>
+<td>1033738</td>
+<td>115 级</td>
+<td>1788</td>
+<td>1056996</td>
+</tr>
+<tr>
+<td>116 级</td>
+<td>1848</td>
+<td>1080256</td>
+<td>117 级</td>
+<td>1908</td>
+<td>1103842</td>
+</tr>
+<tr>
+<td>118 级</td>
+<td>1968</td>
+<td>1127756</td>
+<td>119 级</td>
+<td>2028</td>
+<td>1152002</td>
+</tr>
+<tr>
+<td>120 级</td>
+<td>2088</td>
+<td>1203834</td>
+<td>121 级</td>
+<td>2148</td>
+<td>1229186</td>
+</tr>
+<tr>
+<td>122 级</td>
+<td>2208</td>
+<td>1254880</td>
+<td>123 级</td>
+<td>2268</td>
+<td>1280914</td>
+</tr>
+<tr>
+<td>124 级</td>
+<td>2328</td>
+<td>1307294</td>
+<td>125 级</td>
+<td>2388</td>
+<td>1326374</td>
+</tr>
+<tr>
+<td>126 级</td>
+<td>2448</td>
+<td>1353294</td>
+<td>127 级</td>
+<td>2508</td>
+<td>1380564</td>
+</tr>
+<tr>
+<td>128 级</td>
+<td>2568</td>
+<td>1408184</td>
+<td>129 级</td>
+<td>2628</td>
+<td>1436158</td>
+</tr>
+<tr>
+<td>132 级</td>
+<td>2808</td>
+<td>1547234</td>
+<td>133 级</td>
+<td>2868</td>
+<td>1576972</td>
+</tr>
+<tr>
+<td>134 级</td>
+<td>2928</td>
+<td>1607076</td>
+<td>135 级</td>
+<td>2988</td>
+<td>1622136</td>
+</tr>
+<tr>
+<td>136 级</td>
+<td>3048</td>
+<td>1652686</td>
+<td>137 级</td>
+<td>3108</td>
+<td>1683604</td>
+</tr>
+<tr>
+<td>138 级</td>
+<td>3168</td>
+<td>1714892</td>
+<td>139 级</td>
+<td>3228</td>
+<td>1746554</td>
+</tr>
+</tbody>
+</table>
+</div>
+      </div>
+    </div>
+  </div>
+  
+<div class="footer">
+    
+<p>九小卿攻略站</p>
+
+</div>
+<script>
+(function(){
+  document.querySelectorAll('.hs-toggle-header').forEach(function(header){
+    var panel = header.nextElementSibling;
+    var btn = header.querySelector('.hs-expand-btn');
+    if(!panel || !panel.classList.contains('hs-collapsible') || !btn) return;
+    function toggle(){
+      var open = panel.classList.toggle('open');
+      btn.textContent = open ? '收起 ∧' : '展开 ∨';
+    }
+    header.addEventListener('click', toggle);
+    header.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+  });
+})();
+</script>
+
+<script>
+document.addEventListener('copy',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('contextmenu',function(e){e.preventDefault();});
+</script>
+
+</body>
+</html>

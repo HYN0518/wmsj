@@ -1,0 +1,14 @@
+{
+  "name": "九小卿攻略站",
+  "short_name": "九小卿",
+  "description": "九小卿攻略站 — 游戏攻略资料站：门派、装备、宠物、仙侣等全方位攻略",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#faf6ef",
+  "theme_color": "#faf6ef",
+  "icons": [
+    { "src": "art/favicon.jpg", "sizes": "any", "type": "image/jpeg", "purpose": "any" }
+  ]
+}

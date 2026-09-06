@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>家园介绍 — 九小卿攻略站</title>
+<meta name="description" content="九小卿家园系统攻略 - 家园建造、家具风水、房屋评分">
+<link rel="icon" type="image/jpeg" href="art/favicon.jpg">
+<style>
+  :root{
+    --bg:#fff;
+    --ink:#16130f;
+    --muted:#6f675c;
+    --card:#ffffff;
+    --pink:#ff4d8d;
+    --blue:#4d7cff;
+    --violet:#8b5cf6;
+    --lime:#cdf05a;
+    --orange:#ff8a3d;
+    --gold:#f59e0b;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scrollbar-gutter:stable}
+  body{
+    font-family:var(--font);
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.8;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--pink);color:#fff}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  button{font-family:inherit}
+
+  .wrap{max-width:960px;margin:0 auto;padding:32px 24px 60px}
+
+  .back-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:10px 20px;border-radius:999px;
+    background:var(--card);
+    border:1.5px solid rgba(22,19,15,.12);
+    color:var(--ink);font-weight:700;font-size:.9rem;
+    cursor:pointer;transition:all .2s;
+  }
+  .back-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(22,19,15,.12);
+    border-color:var(--pink);
+  }
+  .back-btn svg{width:18px;height:18px}
+
+  .page-title{
+    text-align:center;margin:40px 0 48px;
+  }
+  .page-title h1{
+    font-size:clamp(2rem,5vw,3rem);
+    font-weight:900;letter-spacing:.02em;
+    background:linear-gradient(135deg,var(--violet),var(--pink));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .page-title p{
+    margin-top:12px;color:var(--muted);font-size:1rem;
+  }
+
+  .footer{
+    text-align:center;padding:40px 0;
+    color:var(--muted);font-size:.85rem;
+  }
+  .footer .heart{color:var(--pink)}
+
+  .section { margin-bottom:16px; }
+  .sub-header { background:#e8f4fd; border-left:3px solid #4d7cff; padding:6px 14px; margin:24px 0 14px; font-size:1.05rem; font-weight:700; color:var(--ink); }
+  .section ul { padding-left:0; margin-bottom:16px; list-style:none; }
+  .section li { margin-bottom:10px; font-size:.95rem; line-height:1.8; color:#333; padding-left:0; }
+  .section li.img-li { margin:6px 0 18px; }
+  .hs-toggle-header { background:#f3e8ff; border-left-color:#8b5cf6; font-size:1.25rem; margin:16px 0 0; display:flex; justify-content:space-between; align-items:center; gap:12px; cursor:pointer; user-select:none; }
+  .hs-toggle-header:hover { background:#ece4fb }
+  .hs-toggle-header:focus-visible { outline:2px solid #8b5cf6;outline-offset:2px }
+  .section > .hs-toggle-header:first-child { margin-top:0 }
+  .hs-expand-btn { background:none; border:none; font-family:inherit; font-size:1rem; font-weight:700; color:#d43a3a; cursor:pointer; padding:2px 8px; flex:none; }
+  .hs-collapsible { display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease }
+  .hs-collapsible.open { grid-template-rows:1fr }
+  .hs-collapsible-inner { overflow:hidden;min-height:0;padding-top:20px }
+
+  .tut-img{
+    max-width:min(640px,100%);
+    border-radius:10px;
+    border:1px solid rgba(22,19,15,.08);
+    box-shadow:0 4px 14px rgba(22,19,15,.08);
+    margin:8px 0 4px;
+  }
+
+  .note{
+    background:rgba(139,92,246,.06);
+    border-left:4px solid var(--violet);
+    padding:12px 16px;border-radius:0 10px 10px 0;
+    margin:16px 0;font-size:.95rem;
+  }
+
+  .table-wrap { overflow-x:auto;margin:16px 0; border:1px solid #e5e7eb; border-radius:8px; }
+  .table-wrap table { width:100%;border-collapse:collapse; font-size:.9rem; }
+  .table-wrap th { background:#f3f4f6; font-weight:700;padding:10px 14px; text-align:left;white-space:nowrap; border-bottom:2px solid #e5e7eb; }
+  .table-wrap td { padding:10px 14px; border-bottom:1px solid #f3f4f6; color:#333;vertical-align:top; }
+  .table-wrap tr:last-child td { border-bottom:none }
+  .td-icon { width:64px; }
+  .jj-icon { width:44px;height:44px;border-radius:8px;object-fit:cover;display:block; background:#faf6ef; }
+  .td-fs { font-weight:700; color:#b45309; white-space:nowrap; }
+  .td-style { font-weight:700; white-space:nowrap; color:#4c1d95; }
+
+  @media (max-width:640px){
+    .wrap{padding:24px 16px}
+    .page-title{margin:24px 0 32px}
+    .section li { font-size:.85rem;word-wrap:break-word;overflow-wrap:break-word }
+    .table-wrap td, .table-wrap th { padding:8px 10px; font-size:.82rem }
+    .jj-icon { width:36px;height:36px }
+    .hs-toggle-header { font-size:1.05rem }
+  }
+
+  /* 全屏水印 */
+  .site-watermark{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99999;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22220%22%20height%3D%22160%22%3E%0A%20%20%3Ctext%20x%3D%2220%22%20y%3D%2280%22%20font-size%3D%2212%22%20fill%3D%22%23000000%22%20fill-opacity%3D%220.05%22%20font-family%3D%22Microsoft%20YaHei%2C%20sans-serif%22%20transform%3D%22rotate%2825%2C%20110%2C%2080%29%22%3E%E4%B9%9D%E5%B0%8F%E5%8D%BF%E6%94%BB%E7%95%A5%E7%AB%99%3C/text%3E%0A%3C/svg%3E");background-repeat:repeat;opacity:1}
+
+  /* 禁止复制 */
+  body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+  input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+
+</style>
+</head>
+<body>
+<div class="site-watermark"></div>
+
+<div class="wrap">
+
+  <a href="index.html?skipIntro=1#card-home" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    返回首页
+  </a>
+  <a href="conv_8.html" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    智能客服
+  </a>
+
+  <div class="page-title">
+    <h1>家园介绍</h1>
+  </div>
+
+  <div class="section" id="sec-intro">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>系统介绍</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li>家园是游戏中的休闲养成玩法，拥有自己的<strong>私人庭院与房屋</strong>，可自由布置家具、提升风水与房屋评分。</li>
+        </ul>
+        <div class="note">
+          <strong>等级限制：</strong>人物等级达到 <strong>50 级</strong>即可开通家园。
+        </div>
+        <ul>
+          <li>商会购买<strong>探险猫</strong>可以为你带来惊喜奖励，每日记得喂猫。</li>
+          <li class="img-li"><img class="tut-img" src="art/home_tutorial/image3.webp" alt="商会购买探险猫" loading="lazy"></li>
+          <li>商会购买<strong>庭院彩蛋</strong>，繁殖后也能获得奖励。</li>
+          <li class="img-li"><img class="tut-img" src="art/home_tutorial/image4.webp" alt="商会购买庭院彩蛋" loading="lazy"></li>
+          <li>同时每天中午会有<strong>神秘人</strong>来到家园，完成任务可以获得奖励。</li>
+          <li><strong>家宴</strong>为全天活动，玩家自己可自由控制开启时间。家宴的佳肴只会在<strong>院落</strong>里刷新，不会在室内刷新。家宴除了房屋创建人可以开启，结婚后，<strong>夫妻双方</strong>也都可以开启家宴，次数共用。家宴一天可开启一次，不能重复开启。</li>
+          <li class="img-li"><img class="tut-img" src="art/home_tutorial/image5.webp" alt="家宴与庭院" loading="lazy"></li>
+          <li>家园 / 庭院等级开放上限至 <strong>7 级</strong>。</li>
+          <li class="img-li"><img class="tut-img" src="art/home_tutorial/image6.png" alt="家园庭院等级" loading="lazy"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-level-score">
+      <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+        <span>房屋等级评分</span>
+        <button type="button" class="hs-expand-btn">展开 ∨</button>
+      </div>
+      <div class="hs-collapsible">
+        <div class="hs-collapsible-inner">
+          <div class="table-wrap" id="house-level-table"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="sec-fengshui">
+      <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+        <span>风水值详情</span>
+        <button type="button" class="hs-expand-btn">展开 ∨</button>
+      </div>
+      <div class="hs-collapsible">
+        <div class="hs-collapsible-inner">
+          <ul>
+            <li>家具的<strong>风水计算件数</strong>指该种类家具参与风水值计算的最多件数，超出部分不计入风水值。</li>
+          </ul>
+          <div class="table-wrap" id="fengshui-table"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="sec-style-score">
+      <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+        <span>风格家具评分</span>
+        <button type="button" class="hs-expand-btn">展开 ∨</button>
+      </div>
+      <div class="hs-collapsible">
+        <div class="hs-collapsible-inner">
+          <ul>
+            <li>摆放<strong>同风格</strong>的家具达到指定件数，即可获得对应的风格评分加成。</li>
+          </ul>
+          <div class="table-wrap" id="style-score-table"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="sec-furniture">
+      <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+        <span>房屋统计</span>
+        <button type="button" class="hs-expand-btn">展开 ∨</button>
+      </div>
+      <div class="hs-collapsible">
+        <div class="hs-collapsible-inner">
+          <ul>
+            <li>以下为各类型家具的<strong>类别、名称与风水值</strong>一览，风水值越高对房屋评分加成越多。</li>
+          </ul>
+          <div id="furniture-list"></div>
+        </div>
+      </div>
+    </div>
+
+  <div class="footer">
+    <p>九小卿攻略站</p>
+
+</div>
+
+<script>
+var houseLevels = [[1, 100], [2, 200], [3, 400], [4, 700], [5, 800], [6, 900], [7, 1000]];
+
+var fengshuiData = [
+["灯", "10", "商会购买"],
+["凳子", "8", "商会购买"],
+["挂画", "10", "商会购买"],
+["瓶子", "10", "商会购买"],
+["椅子", "8", "商会购买"],
+["桌子", "4", "商会购买"],
+["地毯", "10", "商会购买"],
+["床", "2", "商会购买"],
+["屏风", "8", "商会购买"],
+["花瓶", "8", "商会购买"],
+["柜子", "4", "商会购买"],
+["摇椅", "4", "商会购买"],
+["书柜", "4", "商会购买"],
+["窗", "10", "商会购买"],
+["地砖", "1", "商会购买"],
+["墙纸", "1", "商会购买"],
+["储物柜", "4", "暂未开放"],
+["房屋", "1", "暂未开放"],
+];
+
+var styleScores = [
+["古风典雅", [["1~5",10],["6~10",20],["11~15",30],["16~20",40],["21~25",50],["26~30",60],["31~35",70],[">35",80]]],
+["甜美可爱", [["1~3",10],["4~5",20],["6~8",30],["9~12",40],[">12",50]]],
+["时光魔法", [["1~3",10],["4~5",20],["6~8",30],["9~12",40],[">12",50]]],
+["哥特风情", [["1~3",10],["4~5",20],["6~8",30],["9~12",40],[">12",50]]],
+["海洋系列", [["1~3",10],["4~5",20],["6~8",30],["9~12",40],[">12",50]]],
+["节日限定", [["1~3",10],["4~5",20],["6~8",30],["9~12",40],[">12",50]]],
+["田园风光", [["1~3",10],["4~5",20],["6~8",30],["9~12",40],[">12",50]]],
+];
+
+var furnitureData = [
+{type:"灯", items:[
+  {cat:"甜美可爱", name:"机器人台灯", icon:"icons/jyjj/image12.png", fs:"4"},
+  {cat:"时光魔法", name:"魔法神灯", icon:"icons/jyjj/image13.png", fs:"4"},
+  {cat:"时光魔法", name:"帽子扫帚", icon:"icons/jyjj/image14.png", fs:"4"},
+  {cat:"哥特风情", name:"哥特三足角灯", icon:"icons/jyjj/image15.png", fs:"4"},
+  {cat:"海洋系列", name:"海底台灯", icon:"icons/jyjj/image16.png", fs:"4"},
+  {cat:"田园风光", name:"清新台灯", icon:"icons/jyjj/image17.png", fs:"4"},
+  {cat:"古风典雅", name:"星光琉璃盏", icon:"icons/jyjj/image18.png", fs:"3"},
+  {cat:"古风典雅", name:"福寿宫灯", icon:"icons/jyjj/image19.png", fs:"2"},
+  {cat:"古风典雅", name:"漆金烛台", icon:"icons/jyjj/image20.png", fs:"1"},
+]},
+{type:"凳子", items:[
+  {cat:"甜美可爱", name:"磨骨扭扭圆凳", icon:"icons/jyjj/image22.png", fs:"4"},
+  {cat:"甜美可爱", name:"储物凳子", icon:"icons/jyjj/image23.png", fs:"4"},
+  {cat:"甜美可爱", name:"糖果板凳", icon:"icons/jyjj/image24.png", fs:"4"},
+  {cat:"甜美可爱", name:"公主软凳", icon:"icons/jyjj/image25.png", fs:"4"},
+  {cat:"时光魔法", name:"飞毯条凳", icon:"icons/jyjj/image26.png", fs:"4"},
+  {cat:"田园风光", name:"微风小凳", icon:"icons/jyjj/image27.png", fs:"4"},
+  {cat:"古风典雅", name:"扶醉八仙凳", icon:"icons/jyjj/image28.png", fs:"3"},
+  {cat:"古风典雅", name:"七星捧月凳", icon:"icons/jyjj/image29.png", fs:"2"},
+  {cat:"古风典雅", name:"素漆凳", icon:"icons/jyjj/image30.png", fs:"1"},
+]},
+{type:"挂画", items:[
+  {cat:"甜美可爱", name:"流光幻彩魔镜", icon:"icons/jyjj/image32.png", fs:"4"},
+  {cat:"时光魔法", name:"魔术师扑克画", icon:"icons/jyjj/image33.png", fs:"4"},
+  {cat:"哥特风情", name:"哥特握手镜子", icon:"icons/jyjj/image34.png", fs:"4"},
+  {cat:"哥特风情", name:"哥特蝙蝠灯", icon:"icons/jyjj/image35.png", fs:"4"},
+  {cat:"节日限定", name:"圣诞花环", icon:"icons/jyjj/image36.png", fs:"4"},
+  {cat:"田园风光", name:"田园挂饰", icon:"icons/jyjj/image37.png", fs:"4"},
+  {cat:"古风典雅", name:"海月清辉图", icon:"icons/jyjj/image38.png", fs:"3"},
+  {cat:"古风典雅", name:"虎啸山林图", icon:"icons/jyjj/image39.png", fs:"2"},
+  {cat:"古风典雅", name:"雪豹冰原图", icon:"icons/jyjj/image40.png", fs:"1"},
+]},
+{type:"瓶子", items:[
+  {cat:"甜美可爱", name:"财小咪储蓄罐", icon:"icons/jyjj/image41.png", fs:"4"},
+  {cat:"时光魔法", name:"发条地壶", icon:"icons/jyjj/image42.png", fs:"4"},
+  {cat:"田园风光", name:"无暇伞桶", icon:"icons/jyjj/image43.png", fs:"4"},
+  {cat:"田园风光", name:"暖暖水壶", icon:"icons/jyjj/image44.png", fs:"4"},
+  {cat:"古风典雅", name:"祥云紫金瓶", icon:"icons/jyjj/image45.png", fs:"3"},
+  {cat:"古风典雅", name:"敞口瓷瓶", icon:"icons/jyjj/image46.png", fs:"2"},
+  {cat:"古风典雅", name:"青玉花瓶", icon:"icons/jyjj/image47.png", fs:"1"},
+]},
+{type:"椅子", items:[
+  {cat:"甜美可爱", name:"饼干熊沙发", icon:"icons/jyjj/image49.png", fs:"4"},
+  {cat:"时光魔法", name:"飞毯折椅", icon:"icons/jyjj/image50.png", fs:"4"},
+  {cat:"哥特风情", name:"哥特白骨瓷椅", icon:"icons/jyjj/image51.png", fs:"4"},
+  {cat:"哥特风情", name:"哥特阴森椅", icon:"icons/jyjj/image52.png", fs:"4"},
+  {cat:"哥特风情", name:"哥特黑暗魔椅", icon:"icons/jyjj/image53.png", fs:"4"},
+  {cat:"哥特风情", name:"哥特禁锢之椅", icon:"icons/jyjj/image54.png", fs:"4"},
+  {cat:"哥特风情", name:"死亡凝视", icon:"icons/jyjj/image55.png", fs:"4"},
+  {cat:"节日限定", name:"笑靥如花椅", icon:"icons/jyjj/image56.png", fs:"4"},
+  {cat:"节日限定", name:"精灵椅", icon:"icons/jyjj/image57.png", fs:"4"},
+  {cat:"海洋系列", name:"贝壳沙发", icon:"icons/jyjj/image58.png", fs:"4"},
+  {cat:"田园风光", name:"午后长椅", icon:"icons/jyjj/image59.png", fs:"4"},
+  {cat:"田园风光", name:"贵族沙发", icon:"icons/jyjj/image60.png", fs:"4"},
+  {cat:"田园风光", name:"落日长椅", icon:"icons/jyjj/image61.png", fs:"4"},
+  {cat:"古风典雅", name:"流光珊瑚椅", icon:"icons/jyjj/image62.png", fs:"3"},
+  {cat:"古风典雅", name:"麒麟罗汉椅", icon:"icons/jyjj/image63.png", fs:"2"},
+  {cat:"古风典雅", name:"玫瑰椅", icon:"icons/jyjj/image64.png", fs:"1"},
+]},
+{type:"桌子", items:[
+  {cat:"甜美可爱", name:"磨骨扭扭圆桌", icon:"icons/jyjj/image66.png", fs:"4"},
+  {cat:"甜美可爱", name:"喵喵桌", icon:"icons/jyjj/image67.png", fs:"4"},
+  {cat:"时光魔法", name:"最后晚餐桌", icon:"icons/jyjj/image68.png", fs:"4"},
+  {cat:"哥特风情", name:"哥特魔教暖桌", icon:"icons/jyjj/image69.png", fs:"4"},
+  {cat:"哥特风情", name:"哥特魂宴桌", icon:"icons/jyjj/image70.png", fs:"4"},
+  {cat:"节日限定", name:"精灵桌", icon:"icons/jyjj/image71.png", fs:"4"},
+  {cat:"节日限定", name:"桃花桌", icon:"icons/jyjj/image72.png", fs:"4"},
+  {cat:"海洋系列", name:"贝壳桌", icon:"icons/jyjj/image73.png", fs:"4"},
+  {cat:"海洋系列", name:"海底化妆桌", icon:"icons/jyjj/image74.png", fs:"4"},
+  {cat:"田园风光", name:"自然小桌", icon:"icons/jyjj/image75.png", fs:"4"},
+  {cat:"古风典雅", name:"扶醉八仙桌", icon:"icons/jyjj/image76.png", fs:"3"},
+  {cat:"古风典雅", name:"七星捧月桌", icon:"icons/jyjj/image77.png", fs:"2"},
+  {cat:"古风典雅", name:"素漆茶几", icon:"icons/jyjj/image78.png", fs:"1"},
+]},
+{type:"地毯", items:[
+  {cat:"甜美可爱", name:"心跳时刻绒毯", icon:"icons/jyjj/image80.png", fs:"4"},
+  {cat:"甜美可爱", name:"心花怒放地毯", icon:"icons/jyjj/image81.png", fs:"4"},
+  {cat:"时光魔法", name:"魔法圆毯", icon:"icons/jyjj/image82.png", fs:"4"},
+  {cat:"时光魔法", name:"魔法虎皮毯", icon:"icons/jyjj/image83.png", fs:"4"},
+  {cat:"哥特风情", name:"哥特魔师地毯", icon:"icons/jyjj/image84.png", fs:"4"},
+  {cat:"海洋系列", name:"深海地毯", icon:"icons/jyjj/image85.png", fs:"4"},
+  {cat:"田园风光", name:"斑点地毯", icon:"icons/jyjj/image86.png", fs:"4"},
+  {cat:"田园风光", name:"温馨地毯", icon:"icons/jyjj/image87.png", fs:"4"},
+  {cat:"古风典雅", name:"雀尾丝光毯", icon:"icons/jyjj/image88.png", fs:"3"},
+  {cat:"古风典雅", name:"驼绒毯", icon:"icons/jyjj/image89.png", fs:"2"},
+  {cat:"古风典雅", name:"羊毛毯", icon:"icons/jyjj/image90.png", fs:"1"},
+]},
+{type:"床", items:[
+  {cat:"甜美可爱", name:"梦幻公主软床", icon:"icons/jyjj/image92.png", fs:"4"},
+  {cat:"甜美可爱", name:"梦幻仙女软床", icon:"icons/jyjj/image93.png", fs:"4"},
+  {cat:"时光魔法", name:"记忆写梦床", icon:"icons/jyjj/image94.png", fs:"4"},
+  {cat:"哥特风情", name:"哥特紫砂软床", icon:"icons/jyjj/image95.png", fs:"4"},
+  {cat:"海洋系列", name:"珍珠梦幻床", icon:"icons/jyjj/image96.png", fs:"4"},
+  {cat:"田园风光", name:"乡村好梦", icon:"icons/jyjj/image97.png", fs:"4"},
+  {cat:"田园风光", name:"舒适小窝", icon:"icons/jyjj/image98.png", fs:"4"},
+  {cat:"田园风光", name:"温馨大床", icon:"icons/jyjj/image99.png", fs:"4"},
+  {cat:"古风典雅", name:"金丝霞光榻", icon:"icons/jyjj/image100.png", fs:"3"},
+  {cat:"古风典雅", name:"芙蓉美人榻", icon:"icons/jyjj/image101.png", fs:"2"},
+  {cat:"古风典雅", name:"青萝软香榻", icon:"icons/jyjj/image102.png", fs:"1"},
+]},
+{type:"屏风", items:[
+  {cat:"甜美可爱", name:"小耳朵的大熊", icon:"icons/jyjj/image104.png", fs:"4"},
+  {cat:"时光魔法", name:"发条屏风", icon:"icons/jyjj/image105.png", fs:"4"},
+  {cat:"时光魔法", name:"魔法屏风", icon:"icons/jyjj/image106.png", fs:"4"},
+  {cat:"古风典雅", name:"丝金锦绣屏风", icon:"icons/jyjj/image107.png", fs:"3"},
+  {cat:"古风典雅", name:"富贵印花屏风", icon:"icons/jyjj/image108.png", fs:"2"},
+  {cat:"古风典雅", name:"雕花屏风", icon:"icons/jyjj/image109.png", fs:"1"},
+]},
+{type:"花瓶", items:[
+  {cat:"甜美可爱", name:"和悦彩色花篮", icon:"icons/jyjj/image111.png", fs:"4"},
+  {cat:"时光魔法", name:"魔法药锅", icon:"icons/jyjj/image112.png", fs:"4"},
+  {cat:"时光魔法", name:"魔法占卜球", icon:"icons/jyjj/image113.png", fs:"4"},
+  {cat:"时光魔法", name:"魔法预言书", icon:"icons/jyjj/image114.png", fs:"4"},
+  {cat:"哥特风情", name:"安魂大提琴", icon:"icons/jyjj/image115.png", fs:"4"},
+  {cat:"海洋系列", name:"幸运海马", icon:"icons/jyjj/image116.png", fs:"4"},
+  {cat:"海洋系列", name:"小海豚", icon:"icons/jyjj/image117.png", fs:"4"},
+  {cat:"海洋系列", name:"蜗牛之家", icon:"icons/jyjj/image118.png", fs:"4"},
+  {cat:"田园风光", name:"精致衣架", icon:"icons/jyjj/image119.png", fs:"4"},
+  {cat:"古风典雅", name:"星光琉璃盏", icon:"icons/jyjj/image120.png", fs:"3"},
+  {cat:"古风典雅", name:"福寿宫灯", icon:"icons/jyjj/image121.png", fs:"2"},
+  {cat:"古风典雅", name:"漆金烛台", icon:"icons/jyjj/image122.png", fs:"1"},
+]},
+{type:"柜子", items:[
+  {cat:"甜美可爱", name:"会走路的衣柜", icon:"icons/jyjj/image124.png", fs:"4"},
+  {cat:"甜美可爱", name:"丘比特衣架", icon:"icons/jyjj/image125.png", fs:"4"},
+  {cat:"时光魔法", name:"帐篷衣柜", icon:"icons/jyjj/image126.png", fs:"4"},
+  {cat:"哥特风情", name:"哥特双面柜", icon:"icons/jyjj/image127.png", fs:"4"},
+  {cat:"哥特风情", name:"哥特怪诞衣架", icon:"icons/jyjj/image128.png", fs:"4"},
+  {cat:"哥特风情", name:"哥特神秘衣柜", icon:"icons/jyjj/image129.png", fs:"4"},
+  {cat:"哥特风情", name:"哥特蝙蝠衣架", icon:"icons/jyjj/image130.png", fs:"4"},
+  {cat:"古风典雅", name:"愁锦紫檀柜", icon:"icons/jyjj/image131.png", fs:"3"},
+  {cat:"古风典雅", name:"彩绘漆金柜", icon:"icons/jyjj/image132.png", fs:"2"},
+  {cat:"古风典雅", name:"漆花立柜", icon:"icons/jyjj/image133.png", fs:"1"},
+]},
+{type:"摇椅", items:[
+  {cat:"甜美可爱", name:"卡通摇摇椅", icon:"icons/jyjj/image135.png", fs:"4"},
+  {cat:"时光魔法", name:"皇冠摇椅", icon:"icons/jyjj/image136.png", fs:"4"},
+  {cat:"哥特风情", name:"哥特紫金摇椅", icon:"icons/jyjj/image137.png", fs:"4"},
+  {cat:"田园风光", name:"巧克力皮椅", icon:"icons/jyjj/image138.png", fs:"4"},
+  {cat:"田园风光", name:"回忆木椅", icon:"icons/jyjj/image139.png", fs:"4"},
+  {cat:"田园风光", name:"秋日木椅", icon:"icons/jyjj/image140.png", fs:"4"},
+  {cat:"田园风光", name:"女王沙发", icon:"icons/jyjj/image141.png", fs:"4"},
+  {cat:"古风典雅", name:"朱漆卧龙椅", icon:"icons/jyjj/image142.png", fs:"3"},
+  {cat:"古风典雅", name:"回纹太师椅", icon:"icons/jyjj/image143.png", fs:"2"},
+  {cat:"古风典雅", name:"青藤椅", icon:"icons/jyjj/image144.png", fs:"1"},
+]},
+{type:"书柜", items:[
+  {cat:"甜美可爱", name:"蝴蝶城堡书架", icon:"icons/jyjj/image146.png", fs:"4"},
+  {cat:"时光魔法", name:"吃记忆书柜", icon:"icons/jyjj/image147.png", fs:"4"},
+  {cat:"田园风光", name:"毛毛熊摆架", icon:"icons/jyjj/image148.png", fs:"4"},
+  {cat:"田园风光", name:"精致置物架", icon:"icons/jyjj/image149.png", fs:"4"},
+  {cat:"田园风光", name:"本真书架", icon:"icons/jyjj/image150.png", fs:"4"},
+  {cat:"古风典雅", name:"太古遗音书架", icon:"icons/jyjj/image151.png", fs:"3"},
+  {cat:"古风典雅", name:"如意红木书架", icon:"icons/jyjj/image152.png", fs:"2"},
+  {cat:"古风典雅", name:"镂雕书架", icon:"icons/jyjj/image153.png", fs:"1"},
+]},
+{type:"窗", items:[
+  {cat:"甜美可爱", name:"童话花园木窗", icon:"icons/jyjj/image155.png", fs:"4"},
+  {cat:"甜美可爱", name:"小仙女化妆镜", icon:"icons/jyjj/image156.png", fs:"4"},
+  {cat:"时光魔法", name:"穿越魔窗", icon:"icons/jyjj/image157.png", fs:"4"},
+  {cat:"时光魔法", name:"夜幕星河帘", icon:"icons/jyjj/image158.png", fs:"4"},
+  {cat:"时光魔法", name:"魔法星月帘", icon:"icons/jyjj/image159.png", fs:"4"},
+  {cat:"哥特风情", name:"诡异之窗", icon:"icons/jyjj/image160.png", fs:"4"},
+  {cat:"哥特风情", name:"哥特人性之镜", icon:"icons/jyjj/image161.png", fs:"4"},
+  {cat:"哥特风情", name:"哥特黑色怖窗", icon:"icons/jyjj/image162.png", fs:"4"},
+  {cat:"哥特风情", name:"哥特蝙蝠窗帘", icon:"icons/jyjj/image163.png", fs:"4"},
+  {cat:"海洋系列", name:"海底梦窗", icon:"icons/jyjj/image164.png", fs:"4"},
+  {cat:"古风典雅", name:"云锦垂暮帘", icon:"icons/jyjj/image165.png", fs:"3"},
+  {cat:"古风典雅", name:"玉茜丝绸帘", icon:"icons/jyjj/image166.png", fs:"2"},
+  {cat:"古风典雅", name:"月斜碧纱帘", icon:"icons/jyjj/image167.png", fs:"1"},
+]},
+{type:"地砖", items:[
+  {cat:"甜美可爱", name:"公主地板", icon:"icons/jyjj/image169.png", fs:"4"},
+  {cat:"时光魔法", name:"魔法地板", icon:"icons/jyjj/image170.png", fs:"4"},
+  {cat:"哥特风情", name:"哥特地板", icon:"icons/jyjj/image171.png", fs:"4"},
+  {cat:"节日限定", name:"圣诞西瓜地板", icon:"icons/jyjj/image172.png", fs:"4"},
+  {cat:"海洋系列", name:"海洋地板", icon:"icons/jyjj/image173.png", fs:"4"},
+  {cat:"古风典雅", name:"基础地板", icon:"icons/jyjj/image174.png", fs:"0"},
+]},
+{type:"墙纸", items:[
+  {cat:"甜美可爱", name:"甜美壁纸", icon:"icons/jyjj/image176.png", fs:"4"},
+  {cat:"时光魔法", name:"魔法墙纸", icon:"icons/jyjj/image177.png", fs:"4"},
+  {cat:"哥特风情", name:"哥特墙纸", icon:"icons/jyjj/image178.png", fs:"4"},
+  {cat:"海洋系列", name:"海洋墙纸", icon:"icons/jyjj/image179.png", fs:"4"},
+  {cat:"古风典雅", name:"锦绣墙纸", icon:"icons/jyjj/image180.png", fs:"3"},
+  {cat:"古风典雅", name:"富丽墙纸", icon:"icons/jyjj/image181.png", fs:"2"},
+  {cat:"古风典雅", name:"耐用墙纸", icon:"icons/jyjj/image182.png", fs:"0"},
+]},
+{type:"储物柜（暂未开放）", items:[
+  {cat:"甜美可爱", name:"豪华储物柜", icon:"icons/jyjj/image184.png", fs:"4"},
+  {cat:"甜美可爱", name:"豪华宠物窝", icon:"icons/jyjj/image185.png", fs:"4"},
+  {cat:"甜美可爱", name:"实用储物箱", icon:"icons/jyjj/image186.png", fs:"3"},
+  {cat:"甜美可爱", name:"爱心宠物窝", icon:"icons/jyjj/image187.png", fs:"3"},
+  {cat:"田园风光", name:"萌动储物箱", icon:"icons/jyjj/image188.png", fs:"3"},
+  {cat:"古风典雅", name:"精致收纳盒", icon:"icons/jyjj/image189.png", fs:"2"},
+  {cat:"古风典雅", name:"精致宠物窝", icon:"icons/jyjj/image190.png", fs:"3"},
+]},
+{type:"房屋（暂未开放）", items:[
+  {cat:"甜美可爱", name:"浪漫满屋", icon:"icons/jyjj/image192.png", fs:"20"},
+  {cat:"时光魔法", name:"魔法秘堡", icon:"icons/jyjj/image193.png", fs:"20"},
+  {cat:"哥特风情", name:"暗黑圣堂", icon:"icons/jyjj/image194.png", fs:"20"},
+  {cat:"海洋系列", name:"海洋宫殿", icon:"icons/jyjj/image195.png", fs:"20"},
+]},
+];
+
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// House level scores
+(function(){
+  var wrap = document.getElementById('house-level-table');
+  if(!wrap) return;
+  var rows = '';
+  houseLevels.forEach(function(h){
+    rows += '<tr>'
+      + '<td class="td-style">' + h[0] + ' 级</td>'
+      + '<td class="td-fs">' + h[1] + '</td>'
+      + '</tr>';
+  });
+  wrap.innerHTML = '<table><thead><tr><th>房屋等级</th><th>评分</th></tr></thead><tbody>' + rows + '</tbody></table>';
+})();
+
+// Fengshui caps
+(function(){
+  var wrap = document.getElementById('fengshui-table');
+  if(!wrap) return;
+  var rows = '';
+  fengshuiData.forEach(function(r){
+    rows += '<tr>'
+      + '<td class="td-style">' + esc(r[0]) + '</td>'
+      + '<td class="td-fs">' + esc(r[1]) + ' 件</td>'
+      + '<td>' + esc(r[2]) + '</td>'
+      + '</tr>';
+  });
+  wrap.innerHTML = '<table><thead><tr><th>种类</th><th>风水计算件数</th><th>获取途径</th></tr></thead><tbody>' + rows + '</tbody></table>';
+})();
+
+// Style scores
+(function(){
+  var wrap = document.getElementById('style-score-table');
+  if(!wrap) return;
+  var rows = '';
+  styleScores.forEach(function(s){
+    var st = s[0];
+    var tiers = s[1];
+    tiers.forEach(function(t, ti){
+      rows += '<tr>'
+        + (ti === 0 ? '<td rowspan="' + tiers.length + '" class="td-style">' + esc(st) + '</td>' : '')
+        + '<td>' + esc(t[0]) + ' 件</td>'
+        + '<td class="td-fs">' + t[1] + '</td>'
+        + '</tr>';
+    });
+  });
+  wrap.innerHTML = '<table><thead><tr><th>风格</th><th>件数</th><th>评分</th></tr></thead><tbody>' + rows + '</tbody></table>';
+})();
+
+// Furniture catalog: one sub-header + table per type
+(function(){
+  var list = document.getElementById('furniture-list');
+  if(!list) return;
+  var html = '';
+  furnitureData.forEach(function(sec){
+    var rows = '';
+    sec.items.forEach(function(it){
+      rows += '<tr>'
+        + '<td>' + esc(it.cat) + '</td>'
+        + '<td>' + esc(it.name) + '</td>'
+        + '<td class="td-icon"><img class="jj-icon" src="' + esc(it.icon) + '" alt="' + esc(it.name) + '" loading="lazy"></td>'
+        + '<td class="td-fs">' + esc(it.fs) + '</td>'
+        + '</tr>';
+    });
+    html += '<div class="sub-header">' + esc(sec.type) + '</div>'
+      + '<div class="table-wrap"><table><thead><tr><th>类别</th><th>名称</th><th>图标</th><th>风水值</th></tr></thead><tbody>' + rows + '</tbody></table></div>';
+  });
+  list.innerHTML = html;
+})();
+
+// Collapsible section banners
+(function(){
+  document.querySelectorAll('.hs-toggle-header').forEach(function(header){
+    var panel = header.nextElementSibling;
+    var btn = header.querySelector('.hs-expand-btn');
+    if(!panel || !panel.classList.contains('hs-collapsible') || !btn) return;
+    function toggle(){
+      var open = panel.classList.toggle('open');
+      btn.textContent = open ? '收起 ∧' : '展开 ∨';
+      header.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    header.addEventListener('click', toggle);
+    header.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+  });
+})();
+</script>
+
+<script>
+document.addEventListener('copy',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('contextmenu',function(e){e.preventDefault();});
+</script>
+
+</body>
+</html>

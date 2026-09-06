@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>轮回天书 — 九小卿攻略站</title>
+<meta name="description" content="九小卿轮回天书攻略">
+<link rel="icon" type="image/jpeg" href="art/favicon.jpg">
+<style>
+  :root{
+    --bg:#fff;--ink:#16130f;--muted:#6f675c;--card:#ffffff;
+    --pink:#ff4d8d;--blue:#4d7cff;--violet:#8b5cf6;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scrollbar-gutter:stable}
+  body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.8;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  button{font-family:inherit}
+  .wrap{max-width:960px;margin:0 auto;padding:32px 24px 60px}
+  .back-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;background:var(--card);border:1.5px solid rgba(22,19,15,.12);color:var(--ink);font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s}
+  .back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(22,19,15,.12);border-color:var(--pink)}
+  .back-btn svg{width:18px;height:18px}
+  .page-title{text-align:center;margin:40px 0 48px}
+  .page-title h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;letter-spacing:.02em;background:linear-gradient(135deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .footer{text-align:center;padding:40px 0;color:var(--muted);font-size:.85rem}
+  .footer .heart{color:var(--pink)}
+  .section{margin-bottom:16px}
+  .sub-header{background:#e8f4fd;border-left:3px solid #4d7cff;padding:6px 14px;margin:24px 0 14px;font-size:1.05rem;font-weight:700;color:var(--ink)}
+  .section ul{padding-left:0;margin-bottom:16px;list-style:none}
+  .section li{margin-bottom:10px;font-size:.95rem;line-height:1.8;color:#333}
+  .section li.img-li{margin:6px 0 18px}
+  .hs-toggle-header{background:#f3e8ff;border-left-color:#8b5cf6;font-size:1.25rem;margin:16px 0 0;display:flex;justify-content:space-between;align-items:center;gap:12px;cursor:pointer;user-select:none}
+  .hs-toggle-header:hover{background:#ece4fb}
+  .hs-expand-btn{background:none;border:none;font-family:inherit;font-size:1rem;font-weight:700;color:#d43a3a;cursor:pointer;padding:2px 8px;flex:none}
+  .hs-collapsible{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+  .hs-collapsible.open{grid-template-rows:1fr}
+  .hs-collapsible-inner{overflow:hidden;min-height:0;padding-top:20px}
+  .tut-img{max-width:min(640px,100%);border-radius:10px;border:1px solid rgba(22,19,15,.08);box-shadow:0 4px 14px rgba(22,19,15,.08);margin:8px auto 4px}
+  .data-table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:.88rem;border:1px solid rgba(22,19,15,.1);border-radius:10px;overflow:hidden}
+  .data-table th{background:linear-gradient(135deg,#8b5cf6,#ff4d8d);color:#fff;font-weight:700;padding:10px 12px;text-align:left;white-space:nowrap}
+  .data-table td{padding:9px 12px;border-bottom:1px solid rgba(22,19,15,.06);color:#333;line-height:1.6}
+  .data-table tr:nth-child(even) td{background:rgba(139,92,246,.03)}
+  .table-wrap{overflow-x:auto;margin:8px 0 16px}
+  @media (max-width:640px){
+    .wrap{padding:24px 16px}
+    .page-title{margin:24px 0 32px}
+    .section li{font-size:.85rem}
+    .hs-toggle-header{font-size:1.05rem}
+    .data-table{font-size:.78rem}
+    .data-table th,.data-table td{padding:7px 8px}
+  }
+
+  /* 全屏水印 */
+  .site-watermark{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99999;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22220%22%20height%3D%22160%22%3E%0A%20%20%3Ctext%20x%3D%2220%22%20y%3D%2280%22%20font-size%3D%2212%22%20fill%3D%22%23000000%22%20fill-opacity%3D%220.05%22%20font-family%3D%22Microsoft%20YaHei%2C%20sans-serif%22%20transform%3D%22rotate%2825%2C%20110%2C%2080%29%22%3E%E4%B9%9D%E5%B0%8F%E5%8D%BF%E6%94%BB%E7%95%A5%E7%AB%99%3C/text%3E%0A%3C/svg%3E");background-repeat:repeat;opacity:1}
+
+  /* 禁止复制 */
+  body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+  input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+
+</style>
+</head>
+<body>
+<div class="site-watermark"></div>
+<div class="wrap">
+  <a href="index.html?skipIntro=1#character" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    返回首页
+  </a>
+  <a href="conv_8.html" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    智能客服
+  </a>
+  <div class="page-title">
+    <h1>轮回天书</h1>
+  </div>
+  <div class="section" id="sec-0">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>系统介绍</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">等级限制：人物等级达到 60级在技能→修炼处查看[轮回天书]</p><p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">人物每升 2 级获得 1 点轮回点 ，适用轮回石额外增加轮回点</p><ul><li class="img-li"><img class="tut-img" src="art/lunhui_tutorial/image1.webp" alt="系统介绍"></li></ul><div class="sub-header">优先级</div><p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">优先级推荐：个人建议 ，不喜勿喷 ，感谢理解</p><ul><li class="img-li"><img class="tut-img" src="art/lunhui_tutorial/lunhui_priority.webp" alt="轮回优先级" loading="lazy"></li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <p>九小卿攻略站</p>
+
+</div>
+<script>
+(function(){
+  document.querySelectorAll('.hs-toggle-header').forEach(function(header){
+    var panel = header.nextElementSibling;
+    var btn = header.querySelector('.hs-expand-btn');
+    if(!panel || !panel.classList.contains('hs-collapsible') || !btn) return;
+    function toggle(){
+      var open = panel.classList.toggle('open');
+      btn.textContent = open ? '收起 ∧' : '展开 ∨';
+    }
+    header.addEventListener('click', toggle);
+    header.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+  });
+})();
+</script>
+
+<script>
+document.addEventListener('copy',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('contextmenu',function(e){e.preventDefault();});
+</script>
+
+</body>
+</html>

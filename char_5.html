@@ -1,0 +1,2710 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>法宝介绍 — 九小卿攻略站</title>
+<meta name="description" content="九小卿法宝介绍攻略">
+<link rel="icon" type="image/jpeg" href="art/favicon.jpg">
+<style>
+  :root{
+    --bg:#fff;--ink:#16130f;--muted:#6f675c;--card:#ffffff;
+    --pink:#ff4d8d;--blue:#4d7cff;--violet:#8b5cf6;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scrollbar-gutter:stable}
+  body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.8;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  button{font-family:inherit}
+  .wrap{max-width:960px;margin:0 auto;padding:32px 24px 60px}
+  .back-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;background:var(--card);border:1.5px solid rgba(22,19,15,.12);color:var(--ink);font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s}
+  .back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(22,19,15,.12);border-color:var(--pink)}
+  .back-btn svg{width:18px;height:18px}
+  .page-title{text-align:center;margin:40px 0 48px}
+  .page-title h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;letter-spacing:.02em;background:linear-gradient(135deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .footer{text-align:center;padding:40px 0;color:var(--muted);font-size:.85rem}
+  .footer .heart{color:var(--pink)}
+  .section{margin-bottom:16px}
+  .sub-header{background:#e8f4fd;border-left:3px solid #4d7cff;padding:6px 14px;margin:24px 0 14px;font-size:1.05rem;font-weight:700;color:var(--ink)}
+  .section ul{padding-left:0;margin-bottom:16px;list-style:none}
+  .section li{margin-bottom:10px;font-size:.95rem;line-height:1.8;color:#333}
+  .section li.img-li{margin:6px 0 18px}
+  .hs-toggle-header{background:#f3e8ff;border-left-color:#8b5cf6;font-size:1.25rem;margin:16px 0 0;display:flex;justify-content:space-between;align-items:center;gap:12px;cursor:pointer;user-select:none}
+  .hs-toggle-header:hover{background:#ece4fb}
+  .hs-expand-btn{background:none;border:none;font-family:inherit;font-size:1rem;font-weight:700;color:#d43a3a;cursor:pointer;padding:2px 8px;flex:none}
+  .hs-collapsible{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+  .hs-collapsible.open{grid-template-rows:1fr}
+  .hs-collapsible-inner{overflow:hidden;min-height:0;padding-top:20px}
+  .tut-img{max-width:min(640px,100%);border-radius:10px;border:1px solid rgba(22,19,15,.08);box-shadow:0 4px 14px rgba(22,19,15,.08);margin:8px auto 4px}
+  .data-table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:.88rem;border:1px solid rgba(22,19,15,.1);border-radius:10px;overflow:hidden}
+  .data-table th{background:linear-gradient(135deg,#8b5cf6,#ff4d8d);color:#fff;font-weight:700;padding:10px 12px;text-align:left;white-space:nowrap}
+  .data-table td{padding:9px 12px;border-bottom:1px solid rgba(22,19,15,.06);color:#333;line-height:1.6}
+  .data-table tr:nth-child(even) td{background:rgba(139,92,246,.03)}
+  .table-wrap{overflow-x:auto;margin:8px 0 16px}
+  @media (max-width:640px){
+    .wrap{padding:24px 16px}
+    .page-title{margin:24px 0 32px}
+    .section li{font-size:.85rem}
+    .hs-toggle-header{font-size:1.05rem}
+    .data-table{font-size:.78rem}
+    .data-table th,.data-table td{padding:7px 8px}
+  }
+
+  /* 全屏水印 */
+  .site-watermark{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99999;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22220%22%20height%3D%22160%22%3E%0A%20%20%3Ctext%20x%3D%2220%22%20y%3D%2280%22%20font-size%3D%2212%22%20fill%3D%22%23000000%22%20fill-opacity%3D%220.05%22%20font-family%3D%22Microsoft%20YaHei%2C%20sans-serif%22%20transform%3D%22rotate%2825%2C%20110%2C%2080%29%22%3E%E4%B9%9D%E5%B0%8F%E5%8D%BF%E6%94%BB%E7%95%A5%E7%AB%99%3C/text%3E%0A%3C/svg%3E");background-repeat:repeat;opacity:1}
+
+  /* 禁止复制 */
+  body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+  input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+
+</style>
+</head>
+<body>
+<div class="site-watermark"></div>
+<div class="wrap">
+  <a href="index.html?skipIntro=1#character" class="back-btn">
+    
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      
+<path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    返回首页
+  </a>
+  <a href="conv_8.html" class="back-btn">
+    
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    智能客服
+  </a>
+  
+<div class="page-title">
+    
+<h1>法宝介绍</h1>
+  </div>
+  
+<div class="section" id="sec-0">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>系统介绍</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">等级限制：人物等级达到 60 级</p>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">每位玩家目前可以佩戴 6个法宝 ，每样法宝对应的属性都不相同 ，可以全面提升玩家的战力，花费法宝灵髓和法宝经验丹可以对法宝进行升级 ，升级后可以提升法宝自身属性。</p>
+<ul>
+<li class="img-li">
+<img class="tut-img" src="art/fabao_tutorial/image2.webp" alt="系统介绍"></li>
+</ul>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">每个法宝下方都有 3个格子 ，可以镶嵌对应的龙晶 ，龙晶可以通过商会购买 ，建议输出职业优先提升浮屠金钵的晶石等级 ，因为可以最直观的提升输出能力； 辅助职业建议优先提升防御能力 ，可以先从封抗、气血、物防、法防这些晶石镶嵌。</p>
+<ul>
+<li class="img-li">
+<img class="tut-img" src="art/fabao_tutorial/image3.webp" alt="系统介绍" loading="lazy"></li>
+</ul>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">除此之外 ，还可以消耗同类型法宝或碎片提升法宝星级 ，提升星级不仅可以增加法宝属性 ，同时也可以激活更多的法宝技能呢。</p>
+<ul>
+<li class="img-li">
+<img class="tut-img" src="art/fabao_tutorial/image4.webp" alt="系统介绍" loading="lazy"></li>
+</ul>
+<div class="sub-header">成长介绍</div>
+<ul>
+<li class="img-li">
+<img class="tut-img" src="art/fabao_tutorial/image6.png" alt="系统介绍" loading="lazy"></li>
+<li class="img-li">
+<video class="tut-img" src="art/fabao_tutorial/fbczjc.mp4" poster="art/fabao_tutorial/fbczjc_poster.webp" controls style="width:100%;max-width:640px;border-radius:10px;display:block;margin:8px auto;" preload="none"></video>
+</li>
+</ul>
+<div class="sub-header">所需经验</div>
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>法宝等级</th>
+<th>升级所需法宝经验</th>
+<th>法宝等级</th>
+<th>升级所需法宝经验</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2 级</td>
+<td>500</td>
+<td>12 级</td>
+<td>5500</td>
+</tr>
+<tr>
+<td>3 级</td>
+<td>1000</td>
+<td>13 级</td>
+<td>6000</td>
+</tr>
+<tr>
+<td>4 级</td>
+<td>1500</td>
+<td>14 级</td>
+<td>6500</td>
+</tr>
+<tr>
+<td>5 级</td>
+<td>2000</td>
+<td>15 级</td>
+<td>7000</td>
+</tr>
+<tr>
+<td>6 级</td>
+<td>2500</td>
+<td>16 级</td>
+<td>7500</td>
+</tr>
+<tr>
+<td>7 级</td>
+<td>3000</td>
+<td>17 级</td>
+<td>8000</td>
+</tr>
+<tr>
+<td>8 级</td>
+<td>3500</td>
+<td>18 级</td>
+<td>8500</td>
+</tr>
+<tr>
+<td>9 级</td>
+<td>4000</td>
+<td>19 级</td>
+<td>9000</td>
+</tr>
+<tr>
+<td>10 级</td>
+<td>4500</td>
+<td>20 级</td>
+<td>9500</td>
+</tr>
+<tr>
+<td>11 级</td>
+<td>5000</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sub-header">限制介绍</div>
+<ul>
+<li>0-13 级：所需人物等级 60</li>
+<li>14 级：所需人物等级 65</li>
+<li>15 级：所需人物等级 70</li>
+<li>16 级：所需人物等级 75</li>
+<li>17 级：所需人物等级 80</li>
+<li>18 级：所需人物等级 85</li>
+<li>19 级：所需人物等级 90</li>
+<li>20 级：所需人物等级 95</li>
+</ul>
+<ul>
+<li>被作为材料消耗掉的法宝内的积分会被清空。一键升星优先消耗法宝 ，不足的部分再用法宝碎片补足</li>
+<li>8 星及 8 星以上星级法宝不能使用一键升星。一键升星不会用已装备的法宝作为材料来升星。浮屠金钵和獠牙无法通过元宝补足获得。</li>
+<li class="img-li">
+<video class="tut-img" src="art/fabao_tutorial/fbsxjc.mp4" poster="art/fabao_tutorial/fbsxjc_poster.webp" controls style="width:100%;max-width:640px;border-radius:10px;display:block;margin:8px auto;" preload="none"></video>
+</li>
+</ul>
+<div class="sub-header">星级积分消耗</div>
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>星级等级</th>
+<th>所需星级积分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2★</td>
+<td>100</td>
+</tr>
+<tr>
+<td>3★</td>
+<td>300</td>
+</tr>
+<tr>
+<td>4★</td>
+<td>900</td>
+</tr>
+<tr>
+<td>5★</td>
+<td>2700</td>
+</tr>
+<tr>
+<td>6★</td>
+<td>8100</td>
+</tr>
+<tr>
+<td>7★</td>
+<td>24300</td>
+</tr>
+<tr>
+<td>8★</td>
+<td>48600</td>
+</tr>
+<tr>
+<td>9★</td>
+<td>97200</td>
+</tr>
+<tr>
+<td>10★</td>
+<td>194400</td>
+</tr>
+<tr>
+<td>血炼 1★</td>
+<td>291600</td>
+</tr>
+<tr>
+<td>血炼 2★</td>
+<td>388800</td>
+</tr>
+<tr>
+<td>血炼 3★</td>
+<td>486000</td>
+</tr>
+<tr>
+<td>血炼 4★</td>
+<td>631800</td>
+</tr>
+<tr>
+<td>血炼 5★</td>
+<td>777600</td>
+</tr>
+<tr>
+<td>血炼 6★</td>
+<td>972000</td>
+</tr>
+<tr>
+<td>血炼 7★</td>
+<td>1968300</td>
+</tr>
+<tr>
+<td>血炼 8★</td>
+<td>2361960</td>
+</tr>
+<tr>
+<td>血炼 9★</td>
+<td>2755620</td>
+</tr>
+<tr>
+<td>血炼 10★</td>
+<td>3149280</td>
+</tr>
+<tr>
+<td>血炼 11★</td>
+<td>3542940</td>
+</tr>
+<tr>
+<td>血炼 12★</td>
+<td>3936600</td>
+</tr>
+<tr>
+<td>血炼 13★</td>
+<td>5136600</td>
+</tr>
+<tr>
+<td>血炼 14★</td>
+<td>6336600</td>
+</tr>
+<tr>
+<td>血炼 15★</td>
+<td>7536600</td>
+</tr>
+<tr>
+<td>血炼 17★</td>
+<td>10000000</td>
+</tr>
+<tr>
+<td>血炼 18★</td>
+<td>10000000</td>
+</tr>
+<tr>
+<td>血炼 19★</td>
+<td>10000000</td>
+</tr>
+<tr>
+<td>血炼 20★</td>
+<td>10000000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sub-header">星级升阶消耗</div>
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>法宝星级</th>
+<th>升星所需材料</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2★</td>
+<td>聚星丹 × 1</td>
+</tr>
+<tr>
+<td>3★</td>
+<td>聚星丹 × 1</td>
+</tr>
+<tr>
+<td>4★</td>
+<td>聚星丹 × 3</td>
+</tr>
+<tr>
+<td>5★</td>
+<td>聚星丹 × 5</td>
+</tr>
+<tr>
+<td>6★</td>
+<td>聚星丹 × 10</td>
+</tr>
+<tr>
+<td>7★</td>
+<td>高级聚星丹 × 20</td>
+</tr>
+<tr>
+<td>8★</td>
+<td>高级聚星丹 × 50</td>
+</tr>
+<tr>
+<td>9★</td>
+<td>高级聚星丹 × 100</td>
+</tr>
+<tr>
+<td>10★</td>
+<td>高级聚星丹 × 200</td>
+</tr>
+<tr>
+<td>血炼 1★</td>
+<td>6★法宝 × 1</td>
+</tr>
+<tr>
+<td>血炼 2★</td>
+<td>高级聚星丹 × 50</td>
+</tr>
+<tr>
+<td>血炼 3★</td>
+<td>高级聚星丹 × 50</td>
+</tr>
+<tr>
+<td>血炼 4★</td>
+<td>高级聚星丹 × 100</td>
+</tr>
+<tr>
+<td>血炼 5★</td>
+<td>高级聚星丹 × 150</td>
+</tr>
+<tr>
+<td>血炼 6★</td>
+<td>高级聚星丹 × 200</td>
+</tr>
+<tr>
+<td>血炼 7★</td>
+<td>高级聚星丹 × 250</td>
+</tr>
+<tr>
+<td>血炼 8★</td>
+<td>高级聚星丹 × 300</td>
+</tr>
+<tr>
+<td>血炼 9★</td>
+<td>高级聚星丹 × 350</td>
+</tr>
+<tr>
+<td>血炼 10★</td>
+<td>高级聚星丹 × 400</td>
+</tr>
+<tr>
+<td>血炼 11★</td>
+<td>高级聚星丹 × 500</td>
+</tr>
+<tr>
+<td>血炼 12★</td>
+<td>高级聚星丹 × 600</td>
+</tr>
+<tr>
+<td>血炼 13★</td>
+<td>高级聚星丹 × 700</td>
+</tr>
+<tr>
+<td>血炼 14★</td>
+<td>高级聚星丹 × 800</td>
+</tr>
+<tr>
+<td>血炼 15★</td>
+<td>高级聚星丹 × 900</td>
+</tr>
+<tr>
+<td>血炼 17★</td>
+<td>高级聚星丹 × 1000</td>
+</tr>
+<tr>
+<td>血炼 18★</td>
+<td>高级聚星丹 × 1000</td>
+</tr>
+<tr>
+<td>血炼 19★</td>
+<td>高级聚星丹 × 1000</td>
+</tr>
+<tr>
+<td>血炼 20★</td>
+<td>高级聚星丹 × 1000</td>
+</tr>
+</tbody>
+</table>
+</div>
+      </div>
+    </div>
+  </div>
+  
+<div class="section" id="sec-1">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>套装介绍</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<ul>
+<li>套装属性生效判定： 以 6 件法宝的最低星级为准</li>
+<li>属性增幅规则：所有套装基础属性数值 ，会随角色等级提升而增加</li>
+<li>血炼相关：法宝完成血炼后 ，不会新增血炼星级的套装属性 ，套装效果依旧沿用原星级的属性加成</li>
+</ul>
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>套装星级</th>
+<th>激活条件</th>
+<th>套装额外属性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4★套</td>
+<td>穿戴 6 件不同相性、 ≥4 星法宝</td>
+<td>气血 + 910</td>
+</tr>
+<tr>
+<td>5★套</td>
+<td>穿戴 6 件不同相性、 ≥5 星法宝</td>
+<td>气血 + 910 物攻 + 260、法攻 + 260、封印 + 260</td>
+</tr>
+<tr>
+<td>6★套</td>
+<td>穿戴 6 件不同相性、 ≥6 星法宝</td>
+<td>气血 + 910 物攻 + 260、法攻 + 260、封印 + 260 物防 + 130</td>
+</tr>
+<tr>
+<td>7★套</td>
+<td>穿戴 6 件不同相性、 ≥7 星法宝</td>
+<td>气血 + 910 物攻 + 260、法攻 + 260、封印 + 260 物防 + 130、法防 + 130</td>
+</tr>
+<tr>
+<td>8★套</td>
+<td>穿戴 6 件不同相性、 ≥8 星法宝</td>
+<td>气血 + 910 物攻 + 260、法攻 + 260、封印 + 260 物防 + 130、法防 + 130、物暴效果 + 15.0%、法暴效果 +
+15.0%</td>
+</tr>
+<tr>
+<td>9★套</td>
+<td>穿戴 6 件不同相性、 ≥9 星法宝</td>
+<td>气血 + 910 物攻 + 260、法攻 + 260、封印 + 260 物防 + 130、法防 + 130、物暴效果 + 25.0%、法暴效果 +
+25.0%</td>
+</tr>
+<tr>
+<td>10★套</td>
+<td>穿戴 6 件不同相性、 ≥10 星法宝</td>
+<td>气血 + 910 物攻 + 260、法攻 + 260、封印 + 260 物防 + 130、法防 + 130、物暴效果 + 35.0%、法暴效果 +
+35.0%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sub-header">特技介绍</div>
+<ul>
+<li>法宝洗炼不改变法宝属性</li>
+<li>洗炼可随出另一个特技来选择是否替换</li>
+<li>替换后之前拥有的特技将会消失</li>
+<li class="img-li">
+<video class="tut-img" src="art/fabao_tutorial/fbtjxl.mp4" poster="art/fabao_tutorial/fbtjxl_poster.webp" controls style="width:100%;max-width:640px;border-radius:10px;display:block;margin:8px auto;" preload="none"></video>
+</li>
+</ul>
+<div class="sub-header">用来重置法宝的特技类型</div>
+<ul>
+<li class="img-li">
+<img class="tut-img" src="art/fabao_tutorial/image18.png" alt="系统介绍" loading="lazy"></li>
+</ul>
+<div class="sub-header">单次重置消耗的数量</div>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">1★至 2★均消耗 1 个</p>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">3★至 4★均消耗 2 个</p>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">5★至 6★均消耗 3 个</p>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">7★至 8★均消耗 4 个</p>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">9★及更高星级均消耗 5 个   </p>
+<div class="sub-header">轮回珠</div>
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>名称/等级</th>
+<th>效果/描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1级隐遁</td>
+<td>使己方目标隐身 2回合并增加逃跑成功率。</td>
+</tr>
+<tr>
+<td>2级隐遁</td>
+<td>使己方目标隐身 2回合并增加逃跑成功率。</td>
+</tr>
+<tr>
+<td>3级隐遁</td>
+<td>使己方目标隐身 2回合并增加逃跑成功率。</td>
+</tr>
+<tr>
+<td>4级隐遁</td>
+<td>使己方目标隐身 3回合并增加逃跑成功率。</td>
+</tr>
+<tr>
+<td>5级隐遁</td>
+<td>使己方目标隐身 3回合并增加逃跑成功率。</td>
+</tr>
+<tr>
+<td>6级隐遁</td>
+<td>使己方目标隐身 3回合并增加逃跑成功率。</td>
+</tr>
+<tr>
+<td>7级隐遁</td>
+<td>使己方目标隐身 4回合并增加逃跑成功率。</td>
+</tr>
+<tr>
+<td>8级隐遁</td>
+<td>使己方目标隐身 4回合并增加逃跑成功率。</td>
+</tr>
+<tr>
+<td>9级隐遁</td>
+<td>使己方目标隐身 4回合并增加逃跑成功率。</td>
+</tr>
+<tr>
+<td>10级隐遁</td>
+<td>使己方目标隐身 5回合并增加逃跑成功率。</td>
+</tr>
+<tr>
+<td>1级金甲</td>
+<td>提高己方单体目标物理防御 5% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>2级金甲</td>
+<td>提高己方单体目标物理防御 6% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>3级金甲</td>
+<td>提高己方单体目标物理防御 7% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>4级金甲</td>
+<td>提高己方单体目标物理防御 8% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>5级金甲</td>
+<td>提高己方单体目标物理防御 9% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>6级金甲</td>
+<td>提高己方单体目标物理防御 10% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>7级金甲</td>
+<td>提高己方单体目标物理防御 11% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>8级金甲</td>
+<td>提高己方单体目标物理防御 12% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>9级金甲</td>
+<td>提高己方单体目标物理防御 13% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>10级金甲</td>
+<td>提高己方单体目标物理防御 14% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>1级狮吼</td>
+<td>提高己方单体目标物理伤害 5% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>2级狮吼</td>
+<td>提高己方单体目标物理伤害 6% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>3级狮吼</td>
+<td>提高己方单体目标物理伤害 7% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>4级狮吼</td>
+<td>提高己方单体目标物理伤害 8% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>5级狮吼</td>
+<td>提高己方单体目标物理伤害 9% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>6级狮吼</td>
+<td>提高己方单体目标物理伤害10% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>7级狮吼</td>
+<td>提高己方单体目标物理伤害11% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>8级狮吼</td>
+<td>提高己方单体目标物理伤害12% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>9级狮吼</td>
+<td>提高己方单体目标物理伤害13% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>10级狮吼</td>
+<td>提高己方单体目标物理伤害14% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>1级护卫</td>
+<td>自己的宠物在主人遭受到攻击时 ，10%概率会执行保护动作 1次 ，效果持续 8回合。</td>
+</tr>
+<tr>
+<td>2级护卫</td>
+<td>自己的宠物在主人遭受到攻击时 ，20%概率会执行保护动作 2次 ，效果持续 8回合。</td>
+</tr>
+<tr>
+<td>3级护卫</td>
+<td>自己的宠物在主人遭受到攻击时 ，30%概率会执行保护动作 3次 ，效果持续 8回合。</td>
+</tr>
+<tr>
+<td>4级护卫</td>
+<td>自己的宠物在主人遭受到攻击时 ，40%概率会执行保护动作 4次 ，效果持续 8回合。</td>
+</tr>
+<tr>
+<td>5级护卫</td>
+<td>自己的宠物在主人遭受到攻击时 ，50%概率会执行保护动作 5次 ，效果持续 8回合。</td>
+</tr>
+<tr>
+<td>6级护卫</td>
+<td>自己的宠物在主人遭受到攻击时 ，60%概率会执行保护动作 6次 ，效果持续 8回合。</td>
+</tr>
+<tr>
+<td>7级护卫</td>
+<td>自己的宠物在主人遭受到攻击时 ，70%概率会执行保护动作 7次 ，效果持续 8回合。</td>
+</tr>
+<tr>
+<td>8级护卫</td>
+<td>自己的宠物在主人遭受到攻击时 ，80%概率会执行保护动作 8次 ，效果持续 8回合。</td>
+</tr>
+<tr>
+<td>9级护卫</td>
+<td>自己的宠物在主人遭受到攻击时 ，90%概率会执行保护动作 9次 ，效果持续 8回合。</td>
+</tr>
+<tr>
+<td>10级护卫</td>
+<td>自己的宠物在主人遭受到攻击时 ，100%概率会执行保护动作 10次 ，效果持续 8回合。</td>
+</tr>
+<tr>
+<td>1级回蓝</td>
+<td>恢复自身法力上限 10%点法力值。</td>
+</tr>
+<tr>
+<td>2级回蓝</td>
+<td>恢复自身法力上限 12%点法力值。</td>
+</tr>
+<tr>
+<td>3级回蓝</td>
+<td>恢复自身法力上限 14%点法力值。</td>
+</tr>
+<tr>
+<td>4级回蓝</td>
+<td>恢复自身法力上限 16%点法力值。</td>
+</tr>
+<tr>
+<td>5级回蓝</td>
+<td>恢复自身法力上限 18%点法力值。</td>
+</tr>
+<tr>
+<td>6级回蓝</td>
+<td>恢复自身法力上限 20%点法力值。</td>
+</tr>
+<tr>
+<td>7级回蓝</td>
+<td>恢复自身法力上限 22%点法力值。</td>
+</tr>
+<tr>
+<td>8级回蓝</td>
+<td>恢复自身法力上限 24%点法力值。</td>
+</tr>
+<tr>
+<td>9级回蓝</td>
+<td>恢复自身法力上限 26%点法力值。</td>
+</tr>
+<tr>
+<td>10级回蓝</td>
+<td>恢复自身法力上限 28%点法力值。</td>
+</tr>
+<tr>
+<td>1级治愈</td>
+<td>恢复己方单体目标气血上限 1.5%+100点气血值。</td>
+</tr>
+<tr>
+<td>2级治愈</td>
+<td>恢复己方单体目标气血上限 3%+200点气血值。</td>
+</tr>
+<tr>
+<td>3级治愈</td>
+<td>恢复己方单体目标气血上限 4.5%+300点气血值。</td>
+</tr>
+<tr>
+<td>4级治愈</td>
+<td>恢复己方单体目标气血上限 6%+400点气血值。</td>
+</tr>
+<tr>
+<td>5级治愈</td>
+<td>恢复己方单体目标气血上限 7.5%+500点气血值。</td>
+</tr>
+<tr>
+<td>6级治愈</td>
+<td>恢复己方单体目标气血上限 9%+600点气血值。</td>
+</tr>
+<tr>
+<td>7级治愈</td>
+<td>恢复己方单体目标气血上限 10.5%+700点气血值。</td>
+</tr>
+<tr>
+<td>8级治愈</td>
+<td>恢复己方单体目标气血上限 12%+800点气血值。</td>
+</tr>
+<tr>
+<td>9级治愈</td>
+<td>恢复己方单体目标气血上限 13.5%+900点气血值。</td>
+</tr>
+<tr>
+<td>10级治愈</td>
+<td>恢复己方单体目标气血上限 15%+1000点气血值。</td>
+</tr>
+<tr>
+<td>1级重伤</td>
+<td>减少敌方单体目标气血上限 2%的气血值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>2级重伤</td>
+<td>减少敌方单体目标气血上限 4%的气血值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>3级重伤</td>
+<td>减少敌方单体目标气血上限 6%的气血值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>4级重伤</td>
+<td>减少敌方单体目标气血上限 8%的气血值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>5级重伤</td>
+<td>减少敌方单体目标气血上限 10%的气血值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>6级重伤</td>
+<td>减少敌方单体目标气血上限 12%的气血值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>7级重伤</td>
+<td>减少敌方单体目标气血上限 14%的气血值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>8级重伤</td>
+<td>减少敌方单体目标气血上限 16%的气血值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>9级重伤</td>
+<td>减少敌方单体目标气血上限 18%的气血值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>10级重伤</td>
+<td>减少敌方单体目标气血上限 20%的气血值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>1级技巧</td>
+<td>使己方单体目标免疫物理与法术反击 ，持续 3回合。</td>
+</tr>
+<tr>
+<td>2级技巧</td>
+<td>使己方单体目标免疫物理与法术反击 ，持续 3回合。</td>
+</tr>
+<tr>
+<td>3级技巧</td>
+<td>使己方单体目标免疫物理与法术反击 ，持续 3回合。</td>
+</tr>
+<tr>
+<td>4级技巧</td>
+<td>使己方单体目标免疫物理与法术反击 ，持续 5回合。</td>
+</tr>
+<tr>
+<td>5级技巧</td>
+<td>使己方单体目标免疫物理与法术反击 ，持续 5回合。</td>
+</tr>
+<tr>
+<td>6级技巧</td>
+<td>使己方单体目标免疫物理与法术反击 ，持续 5回合。</td>
+</tr>
+<tr>
+<td>7级技巧</td>
+<td>使己方单体目标免疫物理与法术反击 ，持续 8回合。</td>
+</tr>
+<tr>
+<td>8级技巧</td>
+<td>使己方单体目标免疫物理与法术反击 ，持续 8回合。</td>
+</tr>
+<tr>
+<td>9级技巧</td>
+<td>使己方单体目标免疫物理与法术反击 ，持续 8回合。</td>
+</tr>
+<tr>
+<td>10级技巧</td>
+<td>使己方单体目标免疫物理与法术反击 ，持续 8回合。</td>
+</tr>
+<tr>
+<td>1级乾坤</td>
+<td>当自身气血值不低于 30%时 ，与敌方单体目标交换生命和法力的百分比 ，只能对玩家使用 ，使用后休息 1回合。</td>
+</tr>
+<tr>
+<td>2级乾坤</td>
+<td>当自身气血值不低于 27%时 ，与敌方单体目标交换生命和法力的百分比 ，只能对玩家使用 ，使用后休息 1回合。</td>
+</tr>
+<tr>
+<td>3级乾坤</td>
+<td>当自身气血值不低于 24%时 ，与敌方单体目标交换生命和法力的百分比 ，只能对玩家使用 ，使用后休息 1回合。</td>
+</tr>
+<tr>
+<td>4级乾坤</td>
+<td>当自身气血值不低于 21%时 ，与敌方单体目标交换生命和法力的百分比 ，只能对玩家使用 ，使用后休息 1回合。</td>
+</tr>
+<tr>
+<td>5级乾坤</td>
+<td>当自身气血值不低于 18%时 ，与敌方单体目标交换生命和法力的百分比 ，只能对玩家使用 ，使用后休息 1回合。</td>
+</tr>
+<tr>
+<td>6级乾坤</td>
+<td>当自身气血值不低于 15%时 ，与敌方单体目标交换生命和法力的百分比 ，只能对玩家使用 ，使用后休息 1回合。</td>
+</tr>
+<tr>
+<td>7级乾坤</td>
+<td>当自身气血值不低于 12%时 ，与敌方单体目标交换生命和法力的百分比 ，只能对玩家使用 ，使用后休息 1回合。</td>
+</tr>
+<tr>
+<td>8级乾坤</td>
+<td>当自身气血值不低于 9%时 ，与敌方单体目标交换生命和法力的百分比 ，只能对玩家使用 ，使用后休息 1回合。</td>
+</tr>
+<tr>
+<td>9级乾坤</td>
+<td>当自身气血值不低于 7%时 ，与敌方单体目标交换生命和法力的百分比 ，只能对玩家使用 ，使用后休息 1回合。</td>
+</tr>
+<tr>
+<td>10级乾坤</td>
+<td>当自身气血值不低于 5%时 ，与敌方单体目标交换生命和法力的百分比 ，只能对玩家使用 ，使用后休息 1回合。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sub-header">神木骰</div>
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>名称/等级</th>
+<th>效果/描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1级自疗</td>
+<td>恢复自身气血上限 5%的气血值 ，但不超过被恢复者等级 *15。</td>
+</tr>
+<tr>
+<td>2级自疗</td>
+<td>恢复自身气血上限 10%的气血值 ，但不超过被恢复者等级 *30。</td>
+</tr>
+<tr>
+<td>3级自疗</td>
+<td>恢复自身气血上限 15%的气血值 ，但不超过被恢复者等级 *45。</td>
+</tr>
+<tr>
+<td>4级自疗</td>
+<td>恢复自身气血上限 20%的气血值 ，但不超过被恢复者等级 *60。</td>
+</tr>
+<tr>
+<td>5级自疗</td>
+<td>恢复自身气血上限 25%的气血值 ，但不超过被恢复者等级 *75。</td>
+</tr>
+<tr>
+<td>6级自疗</td>
+<td>恢复自身气血上限 30%的气血值 ，但不超过被恢复者等级 *90。</td>
+</tr>
+<tr>
+<td>7级自疗</td>
+<td>恢复自身气血上限 35%的气血值 ，但不超过被恢复者等级*105。</td>
+</tr>
+<tr>
+<td>8级自疗</td>
+<td>恢复自身气血上限 40%的气血值 ，但不超过被恢复者等级*120。</td>
+</tr>
+<tr>
+<td>9级自疗</td>
+<td>恢复自身气血上限 45%的气血值 ，但不超过被恢复者等级*135。</td>
+</tr>
+<tr>
+<td>10级自疗</td>
+<td>恢复自身气血上限 50%的气血值 ，但不超过被恢复者等级*150。</td>
+</tr>
+<tr>
+<td>1级破法</td>
+<td>降低敌方单体法术防御 5% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>2级破法</td>
+<td>降低敌方单体法术防御 6% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>3级破法</td>
+<td>降低敌方单体法术防御 7% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>4级破法</td>
+<td>降低敌方单体法术防御 8% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>5级破法</td>
+<td>降低敌方单体法术防御 9% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>6级破法</td>
+<td>降低敌方单体法术防御 10% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>7级破法</td>
+<td>降低敌方单体法术防御 11% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>8级破法</td>
+<td>降低敌方单体法术防御 12% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>9级破法</td>
+<td>降低敌方单体法术防御 13% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>10级破法</td>
+<td>降低敌方单体法术防御 14% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>1级破防</td>
+<td>降低敌方单体物理防御 5% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>2级破防</td>
+<td>降低敌方单体物理防御 6% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>3级破防</td>
+<td>降低敌方单体物理防御 7% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>4级破防</td>
+<td>降低敌方单体物理防御 8% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>5级破防</td>
+<td>降低敌方单体物理防御 9% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>6级破防</td>
+<td>降低敌方单体物理防御 10% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>7级破防</td>
+<td>降低敌方单体物理防御 11% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>8级破防</td>
+<td>降低敌方单体物理防御 12% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>9级破防</td>
+<td>降低敌方单体物理防御 13% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>10级破防</td>
+<td>降低敌方单体物理防御 14% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>1级龙吼</td>
+<td>提高己方全体目标物理伤害 4% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>2级龙吼</td>
+<td>提高己方全体目标物理伤害 4.5% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>3级龙吼</td>
+<td>提高己方全体目标物理伤害 5% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>4级龙吼</td>
+<td>提高己方全体目标物理伤害 5.5% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>5级龙吼</td>
+<td>提高己方全体目标物理伤害 6% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>6级龙吼</td>
+<td>提高己方全体目标物理伤害 6.5% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>7级龙吼</td>
+<td>提高己方全体目标物理伤害 7% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>8级龙吼</td>
+<td>提高己方全体目标物理伤害 7.5% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>9级龙吼</td>
+<td>提高己方全体目标物理伤害 8% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>10级龙吼</td>
+<td>提高己方全体目标物理伤害 8.5% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>1级精妙</td>
+<td>对敌方单体目标进行两次法术攻击 ，伤害结果降低 45%。</td>
+</tr>
+<tr>
+<td>2级精妙</td>
+<td>对敌方单体目标进行两次法术攻击 ，伤害结果降低 40%。</td>
+</tr>
+<tr>
+<td>3级精妙</td>
+<td>对敌方单体目标进行两次法术攻击 ，伤害结果降低 35%。</td>
+</tr>
+<tr>
+<td>4级精妙</td>
+<td>对敌方单体目标进行两次法术攻击 ，伤害结果降低 30%。</td>
+</tr>
+<tr>
+<td>5级精妙</td>
+<td>对敌方单体目标进行两次法术攻击 ，伤害结果降低 25%。</td>
+</tr>
+<tr>
+<td>6级精妙</td>
+<td>对敌方单体目标进行两次法术攻击 ，伤害结果降低 20%。</td>
+</tr>
+<tr>
+<td>7级精妙</td>
+<td>对敌方单体目标进行两次法术攻击 ，伤害结果降低 15%。</td>
+</tr>
+<tr>
+<td>8级精妙</td>
+<td>对敌方单体目标进行两次法术攻击 ，伤害结果降低 10%。</td>
+</tr>
+<tr>
+<td>9级精妙</td>
+<td>对敌方单体目标进行两次法术攻击 ，伤害结果降低 5%。</td>
+</tr>
+<tr>
+<td>10级精妙</td>
+<td>对敌方单体目标进行两次法术攻击。</td>
+</tr>
+<tr>
+<td>1级迟钝</td>
+<td>降低敌方单体目标速度 2% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>2级迟钝</td>
+<td>降低敌方单体目标速度 4% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>3级迟钝</td>
+<td>降低敌方单体目标速度 6% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>4级迟钝</td>
+<td>降低敌方单体目标速度 8% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>5级迟钝</td>
+<td>降低敌方单体目标速度 10% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>6级迟钝</td>
+<td>降低敌方单体目标速度 12% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>7级迟钝</td>
+<td>降低敌方单体目标速度 14% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>8级迟钝</td>
+<td>降低敌方单体目标速度 16% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>9级迟钝</td>
+<td>降低敌方单体目标速度 18% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>10级迟钝</td>
+<td>降低敌方单体目标速度 20% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>1级坚定</td>
+<td>自身免疫一切毒、负面、 封印和辅助效果 ，持续 2回合。</td>
+</tr>
+<tr>
+<td>2级坚定</td>
+<td>自身免疫一切毒、负面、 封印和辅助效果 ，持续 2回合。</td>
+</tr>
+<tr>
+<td>3级坚定</td>
+<td>自身免疫一切毒、负面、 封印和辅助效果 ，持续 2回合。</td>
+</tr>
+<tr>
+<td>4级坚定</td>
+<td>自身免疫一切毒、负面、 封印和辅助效果 ，持续 3回合。</td>
+</tr>
+<tr>
+<td>5级坚定</td>
+<td>自身免疫一切毒、负面、 封印和辅助效果 ，持续 3回合。</td>
+</tr>
+<tr>
+<td>6级坚定</td>
+<td>自身免疫一切毒、负面、 封印和辅助效果 ，持续 3回合。</td>
+</tr>
+<tr>
+<td>7级坚定</td>
+<td>自身免疫一切毒、负面、 封印和辅助效果 ，持续 3回合。</td>
+</tr>
+<tr>
+<td>8级坚定</td>
+<td>自身免疫一切毒、负面、 封印和辅助效果 ，持续 4回合。</td>
+</tr>
+<tr>
+<td>9级坚定</td>
+<td>自身免疫一切毒、负面、 封印和辅助效果 ，持续 4回合。</td>
+</tr>
+<tr>
+<td>10级坚定</td>
+<td>自身免疫一切毒、负面、 封印和辅助效果 ，持续 4回合。</td>
+</tr>
+<tr>
+<td>1级吸血</td>
+<td>减少敌方单体目标气血上限 2%的气血值 ，同时恢复自身气血上限 2%的气血值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>2级吸血</td>
+<td>减少敌方单体目标气血上限 4%的气血值 ，同时恢复自身气血上限 4%的气血值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>3级吸血</td>
+<td>减少敌方单体目标气血上限 6%的气血值 ，同时恢复自身气血上限 6%的气血值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>4级吸血</td>
+<td>减少敌方单体目标气血上限 8%的气血值 ，同时恢复自身气血上限 8%的气血值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>5级吸血</td>
+<td>减少敌方单体目标气血上限 10%的气血值 ，同时恢复自身气血上限 10%的气血值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>6级吸血</td>
+<td>减少敌方单体目标气血上限 12%的气血值 ，同时恢复自身气血上限 12%的气血值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>7级吸血</td>
+<td>减少敌方单体目标气血上限 14%的气血值 ，同时恢复自身气血上限 14%的气血值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>8级吸血</td>
+<td>减少敌方单体目标气血上限 16%的气血值 ，同时恢复自身气血上限 16%的气血值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>9级吸血</td>
+<td>减少敌方单体目标气血上限 18%的气血值 ，同时恢复自身气血上限 18%的气血值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>10级吸血</td>
+<td>减少敌方单体目标气血上限 20%的气血值 ，同时恢复自身气血上限 20%的气血值 ，不能对怪物使用。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sub-header">浮屠金钵</div>
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>名称/等级</th>
+<th>效果/描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1级驱鬼</td>
+<td>攻击拥有鬼魅技能宠物时增加一定伤害并将其打出战斗外 ，持续2回合。</td>
+</tr>
+<tr>
+<td>2级驱鬼</td>
+<td>攻击拥有鬼魅技能宠物时增加一定伤害并将其打出战斗外 ，持续2回合。</td>
+</tr>
+<tr>
+<td>3级驱鬼</td>
+<td>攻击拥有鬼魅技能宠物时增加一定伤害并将其打出战斗外 ，持续3回合。</td>
+</tr>
+<tr>
+<td>4级驱鬼</td>
+<td>攻击拥有鬼魅技能宠物时增加一定伤害并将其打出战斗外 ，持续3回合。</td>
+</tr>
+<tr>
+<td>5级驱鬼</td>
+<td>攻击拥有鬼魅技能宠物时增加一定伤害并将其打出战斗外 ，持续4回合。</td>
+</tr>
+<tr>
+<td>6级驱鬼</td>
+<td>攻击拥有鬼魅技能宠物时增加一定伤害并将其打出战斗外 ，持续4回合。</td>
+</tr>
+<tr>
+<td>7级驱鬼</td>
+<td>攻击拥有鬼魅技能宠物时增加一定伤害并将其打出战斗外 ，持续5回合。</td>
+</tr>
+<tr>
+<td>8级驱鬼</td>
+<td>攻击拥有鬼魅技能宠物时增加一定伤害并将其打出战斗外 ，持续6回合。</td>
+</tr>
+<tr>
+<td>9级驱鬼</td>
+<td>攻击拥有鬼魅技能宠物时增加一定伤害并将其打出战斗外 ，持续7回合。</td>
+</tr>
+<tr>
+<td>10级驱鬼</td>
+<td>攻击拥有鬼魅技能宠物时增加一定伤害并将其打出战斗外 ，持续8回合。</td>
+</tr>
+<tr>
+<td>1级恐吓</td>
+<td>降低敌方单个召唤兽 1.5%的伤害效果 ，效果持续 4回合 ，并且首回合有 3%概率使其逃跑。</td>
+</tr>
+<tr>
+<td>2级恐吓</td>
+<td>降低敌方单个召唤兽 3%的伤害效果 ，效果持续 4回合 ，并且首回合有 6%概率使其逃跑。</td>
+</tr>
+<tr>
+<td>3级恐吓</td>
+<td>降低敌方单个召唤兽 4.5%的伤害效果 ，效果持续 4回合 ，并且首回合有 9%概率使其逃跑。</td>
+</tr>
+<tr>
+<td>4级恐吓</td>
+<td>降低敌方单个召唤兽 6%的伤害效果 ，效果持续 4回合 ，并且首回合有 12%概率使其逃跑。</td>
+</tr>
+<tr>
+<td>5级恐吓</td>
+<td>降低敌方单个召唤兽 7.5%的伤害效果 ，效果持续 4回合 ，并且首回合有 15%概率使其逃跑。</td>
+</tr>
+<tr>
+<td>6级恐吓</td>
+<td>降低敌方单个召唤兽 9%的伤害效果 ，效果持续 4回合 ，并且首回合有 18%概率使其逃跑。</td>
+</tr>
+<tr>
+<td>7级恐吓</td>
+<td>降低敌方单个召唤兽 10.5%的伤害效果 ，效果持续 4回合 ，并且首回合有 21%概率使其逃跑。</td>
+</tr>
+<tr>
+<td>8级恐吓</td>
+<td>降低敌方单个召唤兽 12%的伤害效果 ，效果持续 4回合 ，并且首回合有 24%概率使其逃跑。</td>
+</tr>
+<tr>
+<td>9级恐吓</td>
+<td>降低敌方单个召唤兽 13.5%的伤害效果 ，效果持续 4回合 ，并且首回合有 27%概率使其逃跑。</td>
+</tr>
+<tr>
+<td>10级恐吓</td>
+<td>降低敌方单个召唤兽 15%的伤害效果 ，效果持续 4回合 ，并且有 30%概率使其逃跑。</td>
+</tr>
+<tr>
+<td>1级咆哮</td>
+<td>提高己方单体目标法术伤害 5% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>2级咆哮</td>
+<td>提高己方单体目标法术伤害 6% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>3级咆哮</td>
+<td>提高己方单体目标法术伤害 7% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>4级咆哮</td>
+<td>提高己方单体目标法术伤害 8% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>5级咆哮</td>
+<td>提高己方单体目标法术伤害 9% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>6级咆哮</td>
+<td>提高己方单体目标法术伤害10% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>7级咆哮</td>
+<td>提高己方单体目标法术伤害11% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>8级咆哮</td>
+<td>提高己方单体目标法术伤害12% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>9级咆哮</td>
+<td>提高己方单体目标法术伤害13% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>10级咆哮</td>
+<td>提高己方单体目标法术伤害14% ，效果持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>1级治疗</td>
+<td>恢复己方单体目标气血上限 1%+100点气血值。</td>
+</tr>
+<tr>
+<td>2级治疗</td>
+<td>恢复己方单体目标气血上限 2%+200点气血值。</td>
+</tr>
+<tr>
+<td>3级治疗</td>
+<td>恢复己方单体目标气血上限 3%+300点气血值。</td>
+</tr>
+<tr>
+<td>4级治疗</td>
+<td>恢复己方单体目标气血上限 4%+400点气血值。</td>
+</tr>
+<tr>
+<td>5级治疗</td>
+<td>恢复己方单体目标气血上限 5%+500点气血值。</td>
+</tr>
+<tr>
+<td>6级治疗</td>
+<td>恢复己方单体目标气血上限 6%+600点气血值。</td>
+</tr>
+<tr>
+<td>7级治疗</td>
+<td>恢复己方单体目标气血上限 7%+700点气血值。</td>
+</tr>
+<tr>
+<td>8级治疗</td>
+<td>恢复己方单体目标气血上限 8%+800点气血值。</td>
+</tr>
+<tr>
+<td>9级治疗</td>
+<td>恢复己方单体目标气血上限 9%+900点气血值。</td>
+</tr>
+<tr>
+<td>10级治疗</td>
+<td>恢复己方单体目标气血上限 10%+1000点气血值。</td>
+</tr>
+<tr>
+<td>1级猛击</td>
+<td>临时提高自身 5%攻击力攻击目标 1次。</td>
+</tr>
+<tr>
+<td>2级猛击</td>
+<td>临时提高自身 10%攻击力攻击目标 1次。</td>
+</tr>
+<tr>
+<td>3级猛击</td>
+<td>临时提高自身 15%攻击力攻击目标 1次。</td>
+</tr>
+<tr>
+<td>4级猛击</td>
+<td>临时提高自身 20%攻击力攻击目标 1次。</td>
+</tr>
+<tr>
+<td>5级猛击</td>
+<td>临时提高自身 25%攻击力攻击目标 1次。</td>
+</tr>
+<tr>
+<td>6级猛击</td>
+<td>临时提高自身 30%攻击力攻击目标 1次。</td>
+</tr>
+<tr>
+<td>7级猛击</td>
+<td>临时提高自身 35%攻击力攻击目标 1次。</td>
+</tr>
+<tr>
+<td>8级猛击</td>
+<td>临时提高自身 40%攻击力攻击目标 1次。</td>
+</tr>
+<tr>
+<td>9级猛击</td>
+<td>临时提高自身 45%攻击力攻击目标 1次。</td>
+</tr>
+<tr>
+<td>10级猛击</td>
+<td>临时提高自身 50%攻击力攻击目标 1次。</td>
+</tr>
+<tr>
+<td>1级群疗</td>
+<td>恢复己方队友气血上限 5%的气血值 ，但不超过被恢复者等级*15。</td>
+</tr>
+<tr>
+<td>2级群疗</td>
+<td>恢复己方队友气血上限 10%的气血值 ，但不超过被恢复者等级*30。</td>
+</tr>
+<tr>
+<td>3级群疗</td>
+<td>恢复己方队友气血上限 15%的气血值 ，但不超过被恢复者等级*45。</td>
+</tr>
+<tr>
+<td>4级群疗</td>
+<td>恢复己方队友气血上限 20%的气血值 ，但不超过被恢复者等级*60。</td>
+</tr>
+<tr>
+<td>5级群疗</td>
+<td>恢复己方队友气血上限 25%的气血值 ，但不超过被恢复者等级*75。</td>
+</tr>
+<tr>
+<td>6级群疗</td>
+<td>恢复己方队友气血上限 30%的气血值 ，但不超过被恢复者等级*90。</td>
+</tr>
+<tr>
+<td>7级群疗</td>
+<td>恢复己方队友气血上限 35%的气血值 ，但不超过被恢复者等级*105。</td>
+</tr>
+<tr>
+<td>8级群疗</td>
+<td>恢复己方队友气血上限 40%的气血值 ，但不超过被恢复者等级*120。</td>
+</tr>
+<tr>
+<td>9级群疗</td>
+<td>恢复己方队友气血上限 45%的气血值 ，但不超过被恢复者等级*135。</td>
+</tr>
+<tr>
+<td>10级群疗</td>
+<td>恢复己方队友气血上限 50%的气血值 ，但不超过被恢复者等级*150。</td>
+</tr>
+<tr>
+<td>1级丧志</td>
+<td>减少敌方单体目标 10点怒气值。</td>
+</tr>
+<tr>
+<td>2级丧志</td>
+<td>减少敌方单体目标 20点怒气值。</td>
+</tr>
+<tr>
+<td>3级丧志</td>
+<td>减少敌方单体目标 30点怒气值。</td>
+</tr>
+<tr>
+<td>4级丧志</td>
+<td>减少敌方单体目标 40点怒气值。</td>
+</tr>
+<tr>
+<td>5级丧志</td>
+<td>减少敌方单体目标 50点怒气值。</td>
+</tr>
+<tr>
+<td>6级丧志</td>
+<td>减少敌方单体目标 60点怒气值。</td>
+</tr>
+<tr>
+<td>7级丧志</td>
+<td>减少敌方单体目标 70点怒气值。</td>
+</tr>
+<tr>
+<td>8级丧志</td>
+<td>减少敌方单体目标 80点怒气值。</td>
+</tr>
+<tr>
+<td>9级丧志</td>
+<td>减少敌方单体目标 90点怒气值。</td>
+</tr>
+<tr>
+<td>10级丧志</td>
+<td>减少敌方单体目标 100点怒气值。</td>
+</tr>
+<tr>
+<td>1级解封</td>
+<td>解除己方目标所有中毒状态并恢复 2%气血值 ，最多不超过角色等级 *4。</td>
+</tr>
+<tr>
+<td>2级解封</td>
+<td>解除己方目标所有中毒状态并恢复 4%气血值 ，最多不超过角色等级 *8。</td>
+</tr>
+<tr>
+<td>3级解封</td>
+<td>解除己方目标所有中毒状态并恢复 6%气血值 ，最多不超过角色等级 *12。</td>
+</tr>
+<tr>
+<td>4级解封</td>
+<td>解除己方目标所有中毒状态并恢复 8%气血值 ，最多不超过角色等级 *16。</td>
+</tr>
+<tr>
+<td>5级解封</td>
+<td>解除己方目标所有中毒、负面状态并恢复 10%气血值 ，最多不超过角色等级 *20。</td>
+</tr>
+<tr>
+<td>6级解封</td>
+<td>解除己方目标所有中毒、负面状态并恢复 12%气血值 ，最多不超过角色等级 *24。</td>
+</tr>
+<tr>
+<td>7级解封</td>
+<td>解除己方目标所有中毒、负面状态并恢复 14%气血值 ，最多不超过角色等级 *28。</td>
+</tr>
+<tr>
+<td>8级解封</td>
+<td>解除己方目标所有中毒、负面、 封印状态并恢复 16%气血值 ，最多不超过角色等级 *32。</td>
+</tr>
+<tr>
+<td>9级解封</td>
+<td>解除己方目标所有中毒、负面、 封印状态并恢复 18%气血值 ，最多不超过角色等级 *36。</td>
+</tr>
+<tr>
+<td>10级解封</td>
+<td>解除己方目标所有中毒、负面、 封印状态并恢复 20%气血值 ，最多不超过角色等级 *40。</td>
+</tr>
+<tr>
+<td>1级嘲讽</td>
+<td>嘲讽敌方单体目标 ，有 30%几率让敌方对自己进行物理攻击 ，效果持续 2回合。</td>
+</tr>
+<tr>
+<td>2级嘲讽</td>
+<td>嘲讽敌方单体目标 ，有 35%几率让敌方对自己进行物理攻击 ，效果持续 2回合。</td>
+</tr>
+<tr>
+<td>3级嘲讽</td>
+<td>嘲讽敌方单体目标 ，有 40%几率让敌方对自己进行物理攻击 ，效果持续 2回合。</td>
+</tr>
+<tr>
+<td>4级嘲讽</td>
+<td>嘲讽敌方单体目标 ，有 50%几率让敌方对自己进行物理攻击 ，效果持续 2回合。</td>
+</tr>
+<tr>
+<td>5级嘲讽</td>
+<td>嘲讽敌方单体目标 ，有 55%几率让敌方对自己进行物理攻击 ，效果持续 2回合。</td>
+</tr>
+<tr>
+<td>6级嘲讽</td>
+<td>嘲讽敌方单体目标 ，有 60%几率让敌方对自己进行物理攻击 ，效果持续 2回合。</td>
+</tr>
+<tr>
+<td>7级嘲讽</td>
+<td>嘲讽敌方单体目标 ，有 65%几率让敌方对自己进行物理攻击 ，效果持续 2回合。</td>
+</tr>
+<tr>
+<td>8级嘲讽</td>
+<td>嘲讽敌方单体目标 ，有 70%几率让敌方对自己进行物理攻击 ，效果持续 2回合。</td>
+</tr>
+<tr>
+<td>9级嘲讽</td>
+<td>嘲讽敌方单体目标 ，有 75%几率让敌方对自己进行物理攻击 ，效果持续 2回合。</td>
+</tr>
+<tr>
+<td>10级嘲讽</td>
+<td>嘲讽敌方单体目标 ，有 80%几率让敌方对自己进行物理攻击 ，效果持续 2回合。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sub-header">木鱼</div>
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>名称/等级</th>
+<th>效果/描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1级波动</td>
+<td>小幅度改变己方单体目标的伤害波动范围 91%-112% ，持续 6回合。</td>
+</tr>
+<tr>
+<td>2级波动</td>
+<td>小幅度改变己方单体目标的伤害波动范围 92%-114% ，持续 6回合。</td>
+</tr>
+<tr>
+<td>3级波动</td>
+<td>小幅度改变己方单体目标的伤害波动范围 93%-116% ，持续 6回合。</td>
+</tr>
+<tr>
+<td>4级波动</td>
+<td>小幅度改变己方单体目标的伤害波动范围 94%-118% ，持续 6回合。</td>
+</tr>
+<tr>
+<td>5级波动</td>
+<td>小幅度改变己方单体目标的伤害波动范围 95%-120% ，持续 6回合。</td>
+</tr>
+<tr>
+<td>6级波动</td>
+<td>小幅度改变己方单体目标的伤害波动范围 96%-122% ，持续 6回合。</td>
+</tr>
+<tr>
+<td>7级波动</td>
+<td>小幅度改变己方单体目标的伤害波动范围 97%-124% ，持续 6回合。</td>
+</tr>
+<tr>
+<td>8级波动</td>
+<td>小幅度改变己方单体目标的伤害波动范围 98%-126% ，持续 6回合。</td>
+</tr>
+<tr>
+<td>9级波动</td>
+<td>小幅度改变己方单体目标的伤害波动范围 99%-128% ，持续 6回合。</td>
+</tr>
+<tr>
+<td>10级波动</td>
+<td>小幅度改变己方单体目标的伤害波动范围100%-130% ，持续 6回合。</td>
+</tr>
+<tr>
+<td>1级法抗</td>
+<td>己方单体目标受到的法术伤害降低 5% ，效果持续 3回合 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>2级法抗</td>
+<td>己方单体目标受到的法术伤害降低 13% ，效果持续 3回合 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>3级法抗</td>
+<td>己方单体目标受到的法术伤害降低 21% ，效果持续 3回合 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>4级法抗</td>
+<td>己方单体目标受到的法术伤害降低 29% ，效果持续 3回合 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>5级法抗</td>
+<td>己方单体目标受到的法术伤害降低 37% ，效果持续 3回合 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>6级法抗</td>
+<td>己方单体目标受到的法术伤害降低 45% ，效果持续 3回合 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>7级法抗</td>
+<td>己方单体目标受到的法术伤害降低 53% ，效果持续 3回合 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>8级法抗</td>
+<td>己方单体目标受到的法术伤害降低 61% ，效果持续 3回合 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>9级法抗</td>
+<td>己方单体目标受到的法术伤害降低 69% ，效果持续 3回合 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>10级法抗</td>
+<td>己方单体目标受到的法术伤害降低 77% ，效果持续 3回合 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>1级自愈</td>
+<td>恢复自身气血上限 10%的气血值 ，但不超过被恢复者等级 *30。</td>
+</tr>
+<tr>
+<td>2级自愈</td>
+<td>恢复自身气血上限 20%的气血值 ，但不超过被恢复者等级 *60。</td>
+</tr>
+<tr>
+<td>3级自愈</td>
+<td>恢复自身气血上限 30%的气血值 ，但不超过被恢复者等级 *90。</td>
+</tr>
+<tr>
+<td>4级自愈</td>
+<td>恢复自身气血上限 40%的气血值 ，但不超过被恢复者等级*120。</td>
+</tr>
+<tr>
+<td>5级自愈</td>
+<td>恢复自身气血上限 50%的气血值 ，但不超过被恢复者等级*150。</td>
+</tr>
+<tr>
+<td>6级自愈</td>
+<td>恢复自身气血上限 60%的气血值 ，但不超过被恢复者等级*180。</td>
+</tr>
+<tr>
+<td>7级自愈</td>
+<td>恢复自身气血上限 70%的气血值 ，但不超过被恢复者等级*210。</td>
+</tr>
+<tr>
+<td>8级自愈</td>
+<td>恢复自身气血上限 80%的气血值 ，但不超过被恢复者等级*240。</td>
+</tr>
+<tr>
+<td>9级自愈</td>
+<td>恢复自身气血上限 90%的气血值 ，但不超过被恢复者等级*270。</td>
+</tr>
+<tr>
+<td>10级自愈</td>
+<td>恢复自身气血上限 100%的气血值 ，但不超过被恢复者等级*300。</td>
+</tr>
+<tr>
+<td>1级损耗</td>
+<td>50%几率使敌方单体目标使用技能和特技的消耗增加10% ，持续 5回合。</td>
+</tr>
+<tr>
+<td>2级损耗</td>
+<td>55%几率使敌方单体目标使用技能和特技的消耗增加 20% ，持续 5回合。</td>
+</tr>
+<tr>
+<td>3级损耗</td>
+<td>60%几率使敌方单体目标使用技能和特技的消耗增加 30% ，持续 5回合。</td>
+</tr>
+<tr>
+<td>4级损耗</td>
+<td>65%几率使敌方单体目标使用技能和特技的消耗增加 40% ，持续 5回合。</td>
+</tr>
+<tr>
+<td>5级损耗</td>
+<td>70%几率使敌方单体目标使用技能和特技的消耗增加 50% ，持续 5回合。</td>
+</tr>
+<tr>
+<td>6级损耗</td>
+<td>75%几率使敌方单体目标使用技能和特技的消耗增加 60% ，持续 5回合。</td>
+</tr>
+<tr>
+<td>7级损耗</td>
+<td>80%几率使敌方单体目标使用技能和特技的消耗增加 70% ，持续 5回合。</td>
+</tr>
+<tr>
+<td>8级损耗</td>
+<td>85%几率使敌方单体目标使用技能和特技的消耗增加 80% ，持续 5回合。</td>
+</tr>
+<tr>
+<td>9级损耗</td>
+<td>90%几率使敌方单体目标使用技能和特技的消耗增加 90% ，持续 5回合。</td>
+</tr>
+<tr>
+<td>10级损耗</td>
+<td>100%几率使敌方单体目标使用技能和特技的消耗增加100%，持续 5回合。</td>
+</tr>
+<tr>
+<td>1级狂暴</td>
+<td>对敌方单体目标进行两次物理攻击 ，伤害结果降低 45%。</td>
+</tr>
+<tr>
+<td>2级狂暴</td>
+<td>对敌方单体目标进行两次物理攻击 ，伤害结果降低 40%。</td>
+</tr>
+<tr>
+<td>3级狂暴</td>
+<td>对敌方单体目标进行两次物理攻击 ，伤害结果降低 35%。</td>
+</tr>
+<tr>
+<td>4级狂暴</td>
+<td>对敌方单体目标进行两次物理攻击 ，伤害结果降低 30%。</td>
+</tr>
+<tr>
+<td>5级狂暴</td>
+<td>对敌方单体目标进行两次物理攻击 ，伤害结果降低 25%。</td>
+</tr>
+<tr>
+<td>6级狂暴</td>
+<td>对敌方单体目标进行两次物理攻击 ，伤害结果降低 20%。</td>
+</tr>
+<tr>
+<td>7级狂暴</td>
+<td>对敌方单体目标进行两次物理攻击 ，伤害结果降低 15%。</td>
+</tr>
+<tr>
+<td>8级狂暴</td>
+<td>对敌方单体目标进行两次物理攻击 ，伤害结果降低 10%。</td>
+</tr>
+<tr>
+<td>9级狂暴</td>
+<td>对敌方单体目标进行两次物理攻击 ，伤害结果降低 5%。</td>
+</tr>
+<tr>
+<td>10级狂暴</td>
+<td>对敌方单体目标进行两次物理攻击。</td>
+</tr>
+<tr>
+<td>1级竭力</td>
+<td>减少敌方单体目标法力上限 1%的法力值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>2级竭力</td>
+<td>减少敌方单体目标法力上限 3%的法力值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>3级竭力</td>
+<td>减少敌方单体目标法力上限 5%的法力值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>4级竭力</td>
+<td>减少敌方单体目标法力上限 7%的法力值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>5级竭力</td>
+<td>减少敌方单体目标法力上限 9%的法力值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>6级竭力</td>
+<td>减少敌方单体目标法力上限 11%的法力值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>7级竭力</td>
+<td>减少敌方单体目标法力上限 13%的法力值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>8级竭力</td>
+<td>减少敌方单体目标法力上限 15%的法力值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>9级竭力</td>
+<td>减少敌方单体目标法力上限 17%的法力值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>10级竭力</td>
+<td>减少敌方单体目标法力上限 19%的法力值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>1级卸力</td>
+<td>减少敌方单体目标少量的气血和法力值 ，目标物攻越高减少得越多。</td>
+</tr>
+<tr>
+<td>2级卸力</td>
+<td>减少敌方单体目标少量的气血和法力值 ，目标物攻越高减少得越多。</td>
+</tr>
+<tr>
+<td>3级卸力</td>
+<td>减少敌方单体目标少量的气血和法力值 ，目标物攻越高减少得越多。</td>
+</tr>
+<tr>
+<td>4级卸力</td>
+<td>减少敌方单体目标少量的气血和法力值 ，目标物攻越高减少得越多。</td>
+</tr>
+<tr>
+<td>5级卸力</td>
+<td>减少敌方单体目标少量的气血和法力值 ，目标物攻越高减少得越多。</td>
+</tr>
+<tr>
+<td>6级卸力</td>
+<td>减少敌方单体目标少量的气血和法力值 ，目标物攻越高减少得越多。</td>
+</tr>
+<tr>
+<td>7级卸力</td>
+<td>减少敌方单体目标少量的气血和法力值 ，目标物攻越高减少得越多。</td>
+</tr>
+<tr>
+<td>8级卸力</td>
+<td>减少敌方单体目标少量的气血和法力值 ，目标物攻越高减少得越多。</td>
+</tr>
+<tr>
+<td>9级卸力</td>
+<td>减少敌方单体目标少量的气血和法力值 ，目标物攻越高减少得越多。</td>
+</tr>
+<tr>
+<td>10级卸力</td>
+<td>减少敌方单体目标少量的气血和法力值 ，目标物攻越高减少得越多。</td>
+</tr>
+<tr>
+<td>1级御风</td>
+<td>提高己方单体目标速度 2% ，效果会持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>2级御风</td>
+<td>提高己方单体目标速度 4% ，效果会持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>3级御风</td>
+<td>提高己方单体目标速度 6% ，效果会持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>4级御风</td>
+<td>提高己方单体目标速度 8% ，效果会持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>5级御风</td>
+<td>提高己方单体目标速度 10% ，效果会持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>6级御风</td>
+<td>提高己方单体目标速度 12% ，效果会持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>7级御风</td>
+<td>提高己方单体目标速度 14% ，效果会持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>8级御风</td>
+<td>提高己方单体目标速度 16% ，效果会持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>9级御风</td>
+<td>提高己方单体目标速度 18% ，效果会持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+<tr>
+<td>10级御风</td>
+<td>提高己方单体目标速度 20% ，效果会持续到战斗结束 ，效果可以被驱散。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sub-header">毒血幡</div>
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>名称/等级</th>
+<th>效果/描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1级丧胆</td>
+<td>降低敌方单体目标物理伤害 5% ，效果持续到战斗结束。</td>
+</tr>
+<tr>
+<td>2级丧胆</td>
+<td>降低敌方单体目标物理伤害 6% ，效果持续到战斗结束。</td>
+</tr>
+<tr>
+<td>3级丧胆</td>
+<td>降低敌方单体目标物理伤害 7% ，效果持续到战斗结束。</td>
+</tr>
+<tr>
+<td>4级丧胆</td>
+<td>降低敌方单体目标物理伤害 8% ，效果持续到战斗结束。</td>
+</tr>
+<tr>
+<td>5级丧胆</td>
+<td>降低敌方单体目标物理伤害 9% ，效果持续到战斗结束。</td>
+</tr>
+<tr>
+<td>6级丧胆</td>
+<td>降低敌方单体目标物理伤害10% ，效果持续到战斗结束。</td>
+</tr>
+<tr>
+<td>7级丧胆</td>
+<td>降低敌方单体目标物理伤害11% ，效果持续到战斗结束。</td>
+</tr>
+<tr>
+<td>8级丧胆</td>
+<td>降低敌方单体目标物理伤害12% ，效果持续到战斗结束。</td>
+</tr>
+<tr>
+<td>9级丧胆</td>
+<td>降低敌方单体目标物理伤害13% ，效果持续到战斗结束。</td>
+</tr>
+<tr>
+<td>10级丧胆</td>
+<td>降低敌方单体目标物理伤害14% ，效果持续到战斗结束。</td>
+</tr>
+<tr>
+<td>1级渎神</td>
+<td>降低敌方单体目标使用治疗或复活类技能的效果 5% ，效果持续5回合。</td>
+</tr>
+<tr>
+<td>2级渎神</td>
+<td>降低敌方单体目标使用治疗或复活类技能的效果 10% ，效果持续5回合。</td>
+</tr>
+<tr>
+<td>3级渎神</td>
+<td>降低敌方单体目标使用治疗或复活类技能的效果 15% ，效果持续5回合。</td>
+</tr>
+<tr>
+<td>4级渎神</td>
+<td>降低敌方单体目标使用治疗或复活类技能的效果 20% ，效果持续5回合。</td>
+</tr>
+<tr>
+<td>5级渎神</td>
+<td>降低敌方单体目标使用治疗或复活类技能的效果 25% ，效果持续5回合。</td>
+</tr>
+<tr>
+<td>6级渎神</td>
+<td>降低敌方单体目标使用治疗或复活类技能的效果 30% ，效果持续5回合。</td>
+</tr>
+<tr>
+<td>7级渎神</td>
+<td>降低敌方单体目标使用治疗或复活类技能的效果 35% ，效果持续5回合。</td>
+</tr>
+<tr>
+<td>8级渎神</td>
+<td>降低敌方单体目标使用治疗或复活类技能的效果 40% ，效果持续5回合。</td>
+</tr>
+<tr>
+<td>9级渎神</td>
+<td>降低敌方单体目标使用治疗或复活类技能的效果 45% ，效果持续5回合。</td>
+</tr>
+<tr>
+<td>10级渎神</td>
+<td>降低敌方单体目标使用治疗或复活类技能的效果 50% ，效果持续5回合。</td>
+</tr>
+<tr>
+<td>1级眷顾</td>
+<td>提高己方单体目标受到技能和药品的治疗量增加 4% ，效果持续4回合。</td>
+</tr>
+<tr>
+<td>2级眷顾</td>
+<td>提高己方单体目标受到技能和药品的治疗量增加 8% ，效果持续4回合。</td>
+</tr>
+<tr>
+<td>3级眷顾</td>
+<td>提高己方单体目标受到技能和药品的治疗量增加12% ，效果持续4回合。</td>
+</tr>
+<tr>
+<td>4级眷顾</td>
+<td>提高己方单体目标受到技能和药品的治疗量增加16% ，效果持续4回合。</td>
+</tr>
+<tr>
+<td>5级眷顾</td>
+<td>提高己方单体目标受到技能和药品的治疗量增加 20% ，效果持续4回合。</td>
+</tr>
+<tr>
+<td>6级眷顾</td>
+<td>提高己方单体目标受到技能和药品的治疗量增加 24% ，效果持续4回合。</td>
+</tr>
+<tr>
+<td>7级眷顾</td>
+<td>提高己方单体目标受到技能和药品的治疗量增加 28% ，效果持续4回合。</td>
+</tr>
+<tr>
+<td>8级眷顾</td>
+<td>提高己方单体目标受到技能和药品的治疗量增加 32% ，效果持续4回合。</td>
+</tr>
+<tr>
+<td>9级眷顾</td>
+<td>提高己方单体目标受到技能和药品的治疗量增加 36% ，效果持续4回合。</td>
+</tr>
+<tr>
+<td>10级眷顾</td>
+<td>提高己方单体目标受到技能和药品的治疗量增加 40% ，效果持续4回合。</td>
+</tr>
+<tr>
+<td>1级碎心</td>
+<td>降低敌方全体物理伤害 4% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>2级碎心</td>
+<td>降低敌方全体物理伤害 4.5% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>3级碎心</td>
+<td>降低敌方全体物理伤害 5% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>4级碎心</td>
+<td>降低敌方全体物理伤害 5.5% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>5级碎心</td>
+<td>降低敌方全体物理伤害 6% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>6级碎心</td>
+<td>降低敌方全体物理伤害 6.5% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>7级碎心</td>
+<td>降低敌方全体物理伤害 7% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>8级碎心</td>
+<td>降低敌方全体物理伤害 7.5% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>9级碎心</td>
+<td>降低敌方全体物理伤害 8% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>10级碎心</td>
+<td>降低敌方全体物理伤害 8.5% ，效果会持续到战斗结束。</td>
+</tr>
+<tr>
+<td>1级无常</td>
+<td>法术攻击敌方单体目标 ，50%几率造成 2倍伤害 ，50%几率治疗目标。</td>
+</tr>
+<tr>
+<td>2级无常</td>
+<td>法术攻击敌方单体目标 ，55%几率造成 2倍伤害 ，45%几率治疗目标。</td>
+</tr>
+<tr>
+<td>3级无常</td>
+<td>法术攻击敌方单体目标 ，60%几率造成 2倍伤害 ，40%几率治疗目标。</td>
+</tr>
+<tr>
+<td>4级无常</td>
+<td>法术攻击敌方单体目标 ，65%几率造成 2倍伤害 ，35%几率治疗目标。</td>
+</tr>
+<tr>
+<td>5级无常</td>
+<td>法术攻击敌方单体目标 ，70%几率造成 2倍伤害 ，30%几率治疗目标。</td>
+</tr>
+<tr>
+<td>6级无常</td>
+<td>法术攻击敌方单体目标 ，75%几率造成 2倍伤害 ，25%几率治疗目标。</td>
+</tr>
+<tr>
+<td>7级无常</td>
+<td>法术攻击敌方单体目标 ，80%几率造成 2倍伤害 ，20%几率治疗目标。</td>
+</tr>
+<tr>
+<td>8级无常</td>
+<td>法术攻击敌方单体目标 ，85%几率造成 2倍伤害 ，15%几率治疗目标。</td>
+</tr>
+<tr>
+<td>9级无常</td>
+<td>法术攻击敌方单体目标 ，90%几率造成 2倍伤害 ，10%几率治疗目标。</td>
+</tr>
+<tr>
+<td>10级无常</td>
+<td>法术攻击敌方单体目标 ，95%几率造成 2倍伤害 ，5%几率治疗目标。</td>
+</tr>
+<tr>
+<td>1级普渡</td>
+<td>复活全体队友并回复气血上限 10%的气血值 ，自己的气血值变为 1 ，法力变为 0 ，最多复活 5个单位 ，5回合内无法再次使用。</td>
+</tr>
+<tr>
+<td>2级普渡</td>
+<td>复活全体队友并回复气血上限 20%的气血值 ，自己的气血值变为 1 ，法力变为 0 ，最多复活 5个单位 ，5回合内无法再次使用。</td>
+</tr>
+<tr>
+<td>3级普渡</td>
+<td>复活全体队友并回复气血上限 30%的气血值 ，自己的气血值变为 1 ，法力变为 0 ，最多复活 5个单位 ，5回合内无法再次使用。</td>
+</tr>
+<tr>
+<td>4级普渡</td>
+<td>复活全体队友并回复气血上限 40%的气血值 ，自己的气血值变为 1 ，法力变为 0 ，最多复活 5个单位 ，5回合内无法再次使用。</td>
+</tr>
+<tr>
+<td>5级普渡</td>
+<td>复活全体队友并回复气血上限 50%的气血值 ，自己的气血值变为 1 ，法力变为 0 ，最多复活 5个单位 ，5回合内无法再次使用。</td>
+</tr>
+<tr>
+<td>6级普渡</td>
+<td>复活全体队友并回复气血上限 60%的气血值 ，自己的气血值变为 1 ，法力变为 0 ，最多复活 5个单位 ，5回合内无法再次使用。</td>
+</tr>
+<tr>
+<td>7级普渡</td>
+<td>复活全体队友并回复气血上限 70%的气血值 ，自己的气血值变为 1 ，法力变为 0 ，最多复活 5个单位 ，5回合内无法再次使用。</td>
+</tr>
+<tr>
+<td>8级普渡</td>
+<td>复活全体队友并回复气血上限 80%的气血值 ，自己的气血值变为 1 ，法力变为 0 ，最多复活 5个单位 ，5回合内无法再次使用。</td>
+</tr>
+<tr>
+<td>9级普渡</td>
+<td>复活全体队友并回复气血上限 90%的气血值 ，自己的气血值变为 1 ，法力变为 0 ，最多复活 5个单位 ，5回合内无法再次使用。</td>
+</tr>
+<tr>
+<td>10级普渡</td>
+<td>复活全体队友并回复气血上限 100%的气血值 ，自己的气血值变为 1 ，法力变为 0 ，最多复活 5个单位 ，5回合内无法再次使用。</td>
+</tr>
+<tr>
+<td>1级残月</td>
+<td>减少敌方单体目标法力上限 1%的法力值 ，同时恢复自身法力上限 1%的法力值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>2级残月</td>
+<td>减少敌方单体目标法力上限 4%的法力值 ，同时恢复自身法力上限 4%的法力值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>3级残月</td>
+<td>减少敌方单体目标法力上限 7%的法力值 ，同时恢复自身法力上限 7%的法力值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>4级残月</td>
+<td>减少敌方单体目标法力上限 10%的法力值 ，同时恢复自身法力上限 10%的法力值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>5级残月</td>
+<td>减少敌方单体目标法力上限 13%的法力值 ，同时恢复自身法力上限 13%的法力值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>6级残月</td>
+<td>减少敌方单体目标法力上限 16%的法力值 ，同时恢复自身法力上限 16%的法力值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>7级残月</td>
+<td>减少敌方单体目标法力上限 19%的法力值 ，同时恢复自身法力上限 19%的法力值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>8级残月</td>
+<td>减少敌方单体目标法力上限 22%的法力值 ，同时恢复自身法力上限 22%的法力值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>9级残月</td>
+<td>减少敌方单体目标法力上限 25%的法力值 ，同时恢复自身法力上限 25%的法力值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>10级残月</td>
+<td>减少敌方单体目标法力上限 28%的法力值 ，同时恢复自身法力上限 28%的法力值 ，不能对怪物使用。</td>
+</tr>
+<tr>
+<td>1级复活</td>
+<td>复活己方单体并回复气血上限 4%的气血值。</td>
+</tr>
+<tr>
+<td>2级复活</td>
+<td>复活己方单体并回复气血上限 8%的气血值。</td>
+</tr>
+<tr>
+<td>3级复活</td>
+<td>复活己方单体并回复气血上限 12%的气血值。</td>
+</tr>
+<tr>
+<td>4级复活</td>
+<td>复活己方单体并回复气血上限 16%的气血值。</td>
+</tr>
+<tr>
+<td>5级复活</td>
+<td>复活己方单体并回复气血上限 20%的气血值。</td>
+</tr>
+<tr>
+<td>6级复活</td>
+<td>复活己方单体并回复气血上限 24%的气血值。</td>
+</tr>
+<tr>
+<td>7级复活</td>
+<td>复活己方单体并回复气血上限 28%的气血值。</td>
+</tr>
+<tr>
+<td>8级复活</td>
+<td>复活己方单体并回复气血上限 32%的气血值。</td>
+</tr>
+<tr>
+<td>9级复活</td>
+<td>复活己方单体并回复气血上限 36%的气血值。</td>
+</tr>
+<tr>
+<td>10级复活</td>
+<td>复活己方单体并回复气血上限 40%的气血值。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sub-header">獠牙</div>
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>名称/等级</th>
+<th>效果/描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1级天眼</td>
+<td>使己方单体目标获得反隐能力 ，持续 2回合。</td>
+</tr>
+<tr>
+<td>2级天眼</td>
+<td>使己方单体目标获得反隐能力 ，持续 2回合。</td>
+</tr>
+<tr>
+<td>3级天眼</td>
+<td>使己方单体目标获得反隐能力 ，持续 2回合。</td>
+</tr>
+<tr>
+<td>4级天眼</td>
+<td>使己方单体目标获得反隐能力 ，持续 3回合。</td>
+</tr>
+<tr>
+<td>5级天眼</td>
+<td>使己方单体目标获得反隐能力 ，持续 3回合。</td>
+</tr>
+<tr>
+<td>6级天眼</td>
+<td>使己方单体目标获得反隐能力 ，持续 3回合。</td>
+</tr>
+<tr>
+<td>7级天眼</td>
+<td>使己方单体目标获得反隐能力 ，持续 4回合。</td>
+</tr>
+<tr>
+<td>8级天眼</td>
+<td>使己方单体目标获得反隐能力 ，持续 4回合。</td>
+</tr>
+<tr>
+<td>9级天眼</td>
+<td>使己方单体目标获得反隐能力 ，持续 4回合。</td>
+</tr>
+<tr>
+<td>10级天眼</td>
+<td>使己方单体目标获得反隐能力 ，持续 5回合。</td>
+</tr>
+<tr>
+<td>1级驾驭</td>
+<td>增加己方所有召唤兽 5%的伤害效果 ，并且不会逃跑 ，效果持续5回合。</td>
+</tr>
+<tr>
+<td>2级驾驭</td>
+<td>增加己方所有召唤兽 7%的伤害效果 ，并且不会逃跑 ，效果持续5回合。</td>
+</tr>
+<tr>
+<td>3级驾驭</td>
+<td>增加己方所有召唤兽 9%的伤害效果 ，并且不会逃跑 ，效果持续5回合。</td>
+</tr>
+<tr>
+<td>4级驾驭</td>
+<td>增加己方所有召唤兽 11%的伤害效果 ，并且不会逃跑 ，效果持续 5回合。</td>
+</tr>
+<tr>
+<td>5级驾驭</td>
+<td>增加己方所有召唤兽 13%的伤害效果 ，并且不会逃跑 ，效果持续 5回合。</td>
+</tr>
+<tr>
+<td>6级驾驭</td>
+<td>增加己方所有召唤兽 15%的伤害效果 ，并且不会逃跑 ，效果持续 5回合。</td>
+</tr>
+<tr>
+<td>7级驾驭</td>
+<td>增加己方所有召唤兽 17%的伤害效果 ，并且不会逃跑 ，效果持续 5回合。</td>
+</tr>
+<tr>
+<td>8级驾驭</td>
+<td>增加己方所有召唤兽 18%的伤害效果 ，并且不会逃跑 ，效果持续 5回合。</td>
+</tr>
+<tr>
+<td>9级驾驭</td>
+<td>增加己方所有召唤兽 19%的伤害效果 ，并且不会逃跑 ，效果持续 5回合。</td>
+</tr>
+<tr>
+<td>10级驾驭</td>
+<td>增加己方所有召唤兽 20%的伤害效果 ，并且不会逃跑 ，效果持续 5回合。</td>
+</tr>
+<tr>
+<td>1级怒吼</td>
+<td>降低敌方单体目标法术伤害 5% ，效果持续到战斗结束。</td>
+</tr>
+<tr>
+<td>2级怒吼</td>
+<td>降低敌方单体目标法术伤害 6% ，效果持续到战斗结束。</td>
+</tr>
+<tr>
+<td>3级怒吼</td>
+<td>降低敌方单体目标法术伤害 7% ，效果持续到战斗结束。</td>
+</tr>
+<tr>
+<td>4级怒吼</td>
+<td>降低敌方单体目标法术伤害 8% ，效果持续到战斗结束。</td>
+</tr>
+<tr>
+<td>5级怒吼</td>
+<td>降低敌方单体目标法术伤害 9% ，效果持续到战斗结束。</td>
+</tr>
+<tr>
+<td>6级怒吼</td>
+<td>降低敌方单体目标法术伤害10% ，效果持续到战斗结束。</td>
+</tr>
+<tr>
+<td>7级怒吼</td>
+<td>降低敌方单体目标法术伤害11% ，效果持续到战斗结束。</td>
+</tr>
+<tr>
+<td>8级怒吼</td>
+<td>降低敌方单体目标法术伤害12% ，效果持续到战斗结束。</td>
+</tr>
+<tr>
+<td>9级怒吼</td>
+<td>降低敌方单体目标法术伤害13% ，效果持续到战斗结束。</td>
+</tr>
+<tr>
+<td>10级怒吼</td>
+<td>降低敌方单体目标法术伤害14% ，效果持续到战斗结束。</td>
+</tr>
+<tr>
+<td>1级破碎</td>
+<td>物理攻击敌方目标 ，减少目标少量法力值 ，敌方物攻越高法力值减少得越多。</td>
+</tr>
+<tr>
+<td>2级破碎</td>
+<td>物理攻击敌方目标 ，减少目标少量法力值 ，敌方物攻越高法力值减少得越多。</td>
+</tr>
+<tr>
+<td>3级破碎</td>
+<td>物理攻击敌方目标 ，减少目标少量法力值 ，敌方物攻越高法力值减少得越多。</td>
+</tr>
+<tr>
+<td>4级破碎</td>
+<td>物理攻击敌方目标 ，减少目标少量法力值 ，敌方物攻越高法力值减少得越多。</td>
+</tr>
+<tr>
+<td>5级破碎</td>
+<td>物理攻击敌方目标 ，减少目标少量法力值 ，敌方物攻越高法力值减少得越多。</td>
+</tr>
+<tr>
+<td>6级破碎</td>
+<td>物理攻击敌方目标 ，减少目标少量法力值 ，敌方物攻越高法力值减少得越多。</td>
+</tr>
+<tr>
+<td>7级破碎</td>
+<td>物理攻击敌方目标 ，减少目标少量法力值 ，敌方物攻越高法力值减少得越多。</td>
+</tr>
+<tr>
+<td>8级破碎</td>
+<td>物理攻击敌方目标 ，减少目标少量法力值 ，敌方物攻越高法力值减少得越多。</td>
+</tr>
+<tr>
+<td>9级破碎</td>
+<td>物理攻击敌方目标 ，减少目标少量法力值 ，敌方物攻越高法力值减少得越多。</td>
+</tr>
+<tr>
+<td>10级破碎</td>
+<td>物理攻击敌方目标 ，减少目标少量法力值 ，敌方物攻越高法力值减少得越多。</td>
+</tr>
+<tr>
+<td>1级驱邪</td>
+<td>解除全体队友一切中毒状态并恢复部分气血值。</td>
+</tr>
+<tr>
+<td>2级驱邪</td>
+<td>解除全体队友一切中毒状态并恢复部分气血值。</td>
+</tr>
+<tr>
+<td>3级驱邪</td>
+<td>解除全体队友一切中毒状态并恢复部分气血值。</td>
+</tr>
+<tr>
+<td>4级驱邪</td>
+<td>解除全体队友一切中毒状态并恢复部分气血值。</td>
+</tr>
+<tr>
+<td>5级驱邪</td>
+<td>解除全体队友一切中毒、负面状态并恢复部分气血值。</td>
+</tr>
+<tr>
+<td>6级驱邪</td>
+<td>解除全体队友一切中毒、负面状态并恢复部分气血值。</td>
+</tr>
+<tr>
+<td>7级驱邪</td>
+<td>解除全体队友一切中毒、负面状态并恢复部分气血值。</td>
+</tr>
+<tr>
+<td>8级驱邪</td>
+<td>解除全体队友一切中毒、负面、 封印状态并恢复部分气血值。</td>
+</tr>
+<tr>
+<td>9级驱邪</td>
+<td>解除全体队友一切中毒、负面、 封印状态并恢复部分气血值。</td>
+</tr>
+<tr>
+<td>10级驱邪</td>
+<td>解除全体队友一切中毒、负面、 封印状态并恢复部分气血值。</td>
+</tr>
+<tr>
+<td>1级痊愈</td>
+<td>恢复己方单体目标气血上限 2%+100点气血值。</td>
+</tr>
+<tr>
+<td>2级痊愈</td>
+<td>恢复己方单体目标气血上限 4%+200点气血值。</td>
+</tr>
+<tr>
+<td>3级痊愈</td>
+<td>恢复己方单体目标气血上限 6%+300点气血值。</td>
+</tr>
+<tr>
+<td>4级痊愈</td>
+<td>恢复己方单体目标气血上限 8%+400点气血值。</td>
+</tr>
+<tr>
+<td>5级痊愈</td>
+<td>恢复己方单体目标气血上限 10%+500点气血值。</td>
+</tr>
+<tr>
+<td>6级痊愈</td>
+<td>恢复己方单体目标气血上限 12%+600点气血值。</td>
+</tr>
+<tr>
+<td>7级痊愈</td>
+<td>恢复己方单体目标气血上限 14%+700点气血值。</td>
+</tr>
+<tr>
+<td>8级痊愈</td>
+<td>恢复己方单体目标气血上限 16%+800点气血值。</td>
+</tr>
+<tr>
+<td>9级痊愈</td>
+<td>恢复己方单体目标气血上限 18%+900点气血值。</td>
+</tr>
+<tr>
+<td>10级痊愈</td>
+<td>恢复己方单体目标气血上限 20%+1000点气血值。</td>
+</tr>
+<tr>
+<td>1级卸灵</td>
+<td>减少敌方单体目标少量的气血和法力值 ，目标法攻越高减少得越多。</td>
+</tr>
+<tr>
+<td>2级卸灵</td>
+<td>减少敌方单体目标少量的气血和法力值 ，目标法攻越高减少得越多。</td>
+</tr>
+<tr>
+<td>3级卸灵</td>
+<td>减少敌方单体目标少量的气血和法力值 ，目标法攻越高减少得越多。</td>
+</tr>
+<tr>
+<td>4级卸灵</td>
+<td>减少敌方单体目标少量的气血和法力值 ，目标法攻越高减少得越多。</td>
+</tr>
+<tr>
+<td>5级卸灵</td>
+<td>减少敌方单体目标少量的气血和法力值 ，目标法攻越高减少得越多。</td>
+</tr>
+<tr>
+<td>6级卸灵</td>
+<td>减少敌方单体目标少量的气血和法力值 ，目标法攻越高减少得越多。</td>
+</tr>
+<tr>
+<td>7级卸灵</td>
+<td>减少敌方单体目标少量的气血和法力值 ，目标法攻越高减少得越多。</td>
+</tr>
+<tr>
+<td>8级卸灵</td>
+<td>减少敌方单体目标少量的气血和法力值 ，目标法攻越高减少得越多。</td>
+</tr>
+<tr>
+<td>9级卸灵</td>
+<td>减少敌方单体目标少量的气血和法力值 ，目标法攻越高减少得越多。</td>
+</tr>
+<tr>
+<td>10级卸灵</td>
+<td>减少敌方单体目标少量的气血和法力值 ，目标法攻越高减少得越多。</td>
+</tr>
+<tr>
+<td>1级金钟</td>
+<td>己方全体目标受到的法术伤害降低 5% ，效果持续 2回合。</td>
+</tr>
+<tr>
+<td>2级金钟</td>
+<td>己方全体目标受到的法术伤害降低 13% ，效果持续 2回合。</td>
+</tr>
+<tr>
+<td>3级金钟</td>
+<td>己方全体目标受到的法术伤害降低 21% ，效果持续 2回合。</td>
+</tr>
+<tr>
+<td>4级金钟</td>
+<td>己方全体目标受到的法术伤害降低 29% ，效果持续 2回合。</td>
+</tr>
+<tr>
+<td>5级金钟</td>
+<td>己方全体目标受到的法术伤害降低 37% ，效果持续 2回合。</td>
+</tr>
+<tr>
+<td>6级金钟</td>
+<td>己方全体目标受到的法术伤害降低 45% ，效果持续 2回合。</td>
+</tr>
+<tr>
+<td>7级金钟</td>
+<td>己方全体目标受到的法术伤害降低 53% ，效果持续 2回合。</td>
+</tr>
+<tr>
+<td>8级金钟</td>
+<td>己方全体目标受到的法术伤害降低 61% ，效果持续 2回合。</td>
+</tr>
+<tr>
+<td>9级金钟</td>
+<td>己方全体目标受到的法术伤害降低 69% ，效果持续 2回合。</td>
+</tr>
+<tr>
+<td>10级金钟</td>
+<td>己方全体目标受到的法术伤害降低 77% ，效果持续 2回合。</td>
+</tr>
+<tr>
+<td>1级镇压</td>
+<td>80%概率使敌方单体目标无法使用法宝特技 ，效果持续 3回合。</td>
+</tr>
+<tr>
+<td>2级镇压</td>
+<td>80%概率使敌方单体目标无法使用法宝特技 ，效果持续 3回合。</td>
+</tr>
+<tr>
+<td>3级镇压</td>
+<td>80%概率使敌方单体目标无法使用法宝特技 ，效果持续 3回合。</td>
+</tr>
+<tr>
+<td>4级镇压</td>
+<td>80%概率使敌方单体目标无法使用法宝特技 ，效果持续 4回合。</td>
+</tr>
+<tr>
+<td>5级镇压</td>
+<td>80%概率使敌方单体目标无法使用法宝特技 ，效果持续 4回合。</td>
+</tr>
+<tr>
+<td>6级镇压</td>
+<td>80%概率使敌方单体目标无法使用法宝特技 ，效果持续 4回合。</td>
+</tr>
+<tr>
+<td>7级镇压</td>
+<td>80%概率使敌方单体目标无法使用法宝特技 ，效果持续 5回合。</td>
+</tr>
+<tr>
+<td>8级镇压</td>
+<td>80%概率使敌方单体目标无法使用法宝特技 ，效果持续 5回合。</td>
+</tr>
+<tr>
+<td>9级镇压</td>
+<td>80%概率使敌方单体目标无法使用法宝特技 ，效果持续 5回合。</td>
+</tr>
+<tr>
+<td>10级镇压</td>
+<td>80%概率使敌方单体目标无法使用法宝特技 ，效果持续 6回合。</td>
+</tr>
+</tbody>
+</table>
+</div>
+      </div>
+    </div>
+  </div>
+  
+<div class="footer">
+    
+<p>九小卿攻略站</p>
+
+</div>
+<script>
+(function(){
+  document.querySelectorAll('.hs-toggle-header').forEach(function(header){
+    var panel = header.nextElementSibling;
+    var btn = header.querySelector('.hs-expand-btn');
+    if(!panel || !panel.classList.contains('hs-collapsible') || !btn) return;
+    function toggle(){
+      var open = panel.classList.toggle('open');
+      btn.textContent = open ? '收起 ∧' : '展开 ∨';
+    }
+    header.addEventListener('click', toggle);
+    header.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+  });
+})();
+</script>
+
+<script>
+document.addEventListener('copy',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('contextmenu',function(e){e.preventDefault();});
+</script>
+
+</body>
+</html>

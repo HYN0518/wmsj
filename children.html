@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>子女介绍 — 九小卿攻略站</title>
+<meta name="description" content="九小卿子女系统攻略 - 子女获得、性格、门派技能、装备培养">
+<link rel="icon" type="image/jpeg" href="art/favicon.jpg">
+<style>
+  :root{
+    --bg:#fff;
+    --ink:#16130f;
+    --muted:#6f675c;
+    --card:#ffffff;
+    --pink:#ff4d8d;
+    --blue:#4d7cff;
+    --violet:#8b5cf6;
+    --lime:#cdf05a;
+    --orange:#ff8a3d;
+    --gold:#f59e0b;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scrollbar-gutter:stable}
+  body{
+    font-family:var(--font);
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.8;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--pink);color:#fff}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  button{font-family:inherit}
+
+  .wrap{max-width:960px;margin:0 auto;padding:32px 24px 60px}
+
+  .back-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:10px 20px;border-radius:999px;
+    background:var(--card);
+    border:1.5px solid rgba(22,19,15,.12);
+    color:var(--ink);font-weight:700;font-size:.9rem;
+    cursor:pointer;transition:all .2s;
+  }
+  .back-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(22,19,15,.12);
+    border-color:var(--pink);
+  }
+  .back-btn svg{width:18px;height:18px}
+
+  .page-title{
+    text-align:center;margin:40px 0 48px;
+  }
+  .page-title h1{
+    font-size:clamp(2rem,5vw,3rem);
+    font-weight:900;letter-spacing:.02em;
+    background:linear-gradient(135deg,var(--violet),var(--pink));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .page-title p{
+    margin-top:12px;color:var(--muted);font-size:1rem;
+  }
+
+  .footer{
+    text-align:center;padding:40px 0;
+    color:var(--muted);font-size:.85rem;
+  }
+  .footer .heart{color:var(--pink)}
+
+  .section { margin-bottom:16px; }
+  .sub-header { background:#e8f4fd; border-left:3px solid #4d7cff; padding:6px 14px; margin:24px 0 14px; font-size:1.05rem; font-weight:700; color:var(--ink); }
+  .section ul { padding-left:0; margin-bottom:16px; list-style:none; }
+  .section li { margin-bottom:10px; font-size:.95rem; line-height:1.8; color:#333; padding-left:0; }
+  .section li.img-li { margin:6px 0 18px; }
+  .hs-toggle-header { background:#f3e8ff; border-left-color:#8b5cf6; font-size:1.25rem; margin:16px 0 0; display:flex; justify-content:space-between; align-items:center; gap:12px; cursor:pointer; user-select:none; }
+  .hs-toggle-header:hover { background:#ece4fb }
+  .hs-toggle-header:focus-visible { outline:2px solid #8b5cf6;outline-offset:2px }
+  .section > .hs-toggle-header:first-child { margin-top:0 }
+  .hs-expand-btn { background:none; border:none; font-family:inherit; font-size:1rem; font-weight:700; color:#d43a3a; cursor:pointer; padding:2px 8px; flex:none; }
+  .hs-collapsible { display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease }
+  .hs-collapsible.open { grid-template-rows:1fr }
+  .hs-collapsible-inner { overflow:hidden;min-height:0;padding-top:20px }
+
+  .tut-img{
+    max-width:min(640px,100%);
+    border-radius:10px;
+    border:1px solid rgba(22,19,15,.08);
+    box-shadow:0 4px 14px rgba(22,19,15,.08);
+    margin:8px 0 4px;
+  }
+
+  .note{
+    background:rgba(139,92,246,.06);
+    border-left:4px solid var(--violet);
+    padding:12px 16px;border-radius:0 10px 10px 0;
+    margin:16px 0;font-size:.95rem;
+  }
+
+  .table-wrap { overflow-x:auto;margin:16px 0; border:1px solid #e5e7eb; border-radius:8px; }
+  .table-wrap th { background:#f3f4f6; font-weight:700;padding:10px 14px; text-align:left;white-space:nowrap; border-bottom:2px solid #e5e7eb; }
+  .table-wrap td { padding:10px 14px; border-bottom:1px solid #f3f4f6; color:#333;vertical-align:top; }
+  .table-wrap tr:last-child td { border-bottom:none }
+  .td-name { font-weight:700; color:#4c1d95; white-space:nowrap; }
+  .td-fs { font-weight:700; color:#b45309; white-space:nowrap; }
+  .td-style { font-weight:700; white-space:nowrap; color:#4c1d95; }
+  .td-cond { white-space:nowrap; }
+
+  .p-name { font-weight:900; }
+  .p-gk { color:#15803d; }
+  .p-tq { color:#b45309; }
+  .p-px { color:#c2410c; }
+  .p-zs { color:#dc2626; }
+
+  .tag { display:inline-block; padding:1px 10px; border-radius:999px; font-size:.78rem; font-weight:700; white-space:nowrap; }
+  .tag-in { background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0; }
+  .tag-out { background:#fef2f2; color:#dc2626; border:1px solid #fecaca; }
+  .tag-on { background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe; }
+
+  @media (max-width:640px){
+    .wrap{padding:24px 16px}
+    .page-title{margin:24px 0 32px}
+    .section li { font-size:.85rem;word-wrap:break-word;overflow-wrap:break-word }
+    .table-wrap td, .table-wrap th { padding:8px 10px; font-size:.82rem }
+    .hs-toggle-header { font-size:1.05rem }
+    #sect-list thead { display:none }
+    #sect-list table,
+    #sect-list tbody,
+    #sect-list tr,
+    #sect-list td {
+      display:block;
+      width:auto;
+    }
+    #sect-list tr {
+      border-bottom:1px solid #f3f4f6;
+    }
+    #sect-list tr:last-child {
+      border-bottom:none;
+    }
+    #sect-list td {
+      border-bottom:none;
+      padding:2px 10px;
+      font-size:.85rem;
+    }
+    #sect-list .td-name {
+      font-size:.95rem;
+      padding-top:8px;
+    }
+    #sect-list .td-cond {
+      white-space:normal;
+      color:#6f675c;
+      padding-bottom:8px;
+    }
+    #sect-list .td-cond::before {
+      content:"限制 / 条件：";
+      font-weight:700;
+      color:#b45309;
+    }
+  }
+
+  /* 全屏水印 */
+  .site-watermark{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99999;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22220%22%20height%3D%22160%22%3E%0A%20%20%3Ctext%20x%3D%2220%22%20y%3D%2280%22%20font-size%3D%2212%22%20fill%3D%22%23000000%22%20fill-opacity%3D%220.05%22%20font-family%3D%22Microsoft%20YaHei%2C%20sans-serif%22%20transform%3D%22rotate%2825%2C%20110%2C%2080%29%22%3E%E4%B9%9D%E5%B0%8F%E5%8D%BF%E6%94%BB%E7%95%A5%E7%AB%99%3C/text%3E%0A%3C/svg%3E");background-repeat:repeat;opacity:1}
+
+  /* 禁止复制 */
+  body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+  input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+
+</style>
+</head>
+<body>
+<div class="site-watermark"></div>
+
+<div class="wrap">
+
+  <a href="index.html?skipIntro=1#card-children" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    返回首页
+  </a>
+  <a href="conv_8.html" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    智能客服
+  </a>
+
+  <div class="page-title">
+    <h1>子女介绍</h1>
+  </div>
+
+  <div class="section" id="sec-intro">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>系统介绍</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li>子女是战斗中的重要伙伴，可在战斗中被<strong>召唤上场</strong>协助父母作战，拥有独立的<strong>性格、门派技能、装备、成长与资质</strong>等培养体系。</li>
+        </ul>
+        <div class="note">
+          <strong>等级限制：</strong>人物等级达到 <strong>50 级</strong>，且<strong>解锁家园系统</strong>后。
+        </div>
+        <ul>
+          <li>前往<strong>商会 → 便捷 → 便民系列</strong>，购买<strong>「一键获得‖子女」</strong>，即可一键获得一个成年子女（性别随机，获得后可在<strong>家园</strong>中查看）。</li>
+          <li class="img-li"><img class="tut-img" src="art/children_tutorial/image2.webp" alt="商会购买一键获得子女" loading="lazy"></li>
+          <li>要先<strong>激活家园</strong>才能孕育子女。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-personality">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>子女性格</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li>孩子长大后有自己的<strong>性格</strong>，性格值不同，孩子战斗内表现也不同。</li>
+        </ul>
+        <div class="table-wrap" id="personality-table"></div>
+        <ul>
+          <li>孩子的性格值<strong>每次战斗会减少 1 点</strong>，若孩子在战斗中<strong>死亡减少 5 点</strong>；通过使用<strong>糖果</strong>（+20 点）、<strong>七彩糖果</strong>（+50 点）均可以增加孩子的性格值。</li>
+          <li class="img-li"><img class="tut-img" src="art/children_tutorial/image3.webp" alt="糖果与七彩糖果" loading="lazy"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-skills">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>子女门派技能</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li>子女成年后可拜入门派，学习对应门派技能；部分技能需<strong>所有子女装备达到 30 / 40 级</strong>后才激活。</li>
+        </ul>
+        <div id="sect-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-skillup">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>门派技能提升</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li>使用<strong>阴阳仙书</strong>可升级子女门派技能，各等级消耗数量如下：</li>
+          <li class="img-li"><img class="tut-img" src="art/children_tutorial/image4.png" alt="阴阳仙书" loading="lazy"></li>
+        </ul>
+        <div class="table-wrap" id="skillup-table"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-equip">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>子女装备提升</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li><strong>地元石</strong>（100 点装备经验，用于 1-60 级子女装备）与<strong>天元石</strong>（100 点装备经验，可用于所有等级子女装备）可用于提升子女装备经验。</li>
+          <li class="img-li"><img class="tut-img" src="art/children_tutorial/image6.webp" alt="地元石与天元石" loading="lazy"></li>
+        </ul>
+        <div class="sub-header">装备经验消耗</div>
+        <div class="table-wrap" id="equipexp-table"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-stage">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>装备升阶消耗</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li><strong>融灵精华</strong>用于 1-60 级子女装备升阶，<strong>升灵精魄</strong>用于 61-139 级子女装备升阶。各阶消耗数量如下：</li>
+          <li class="img-li"><img class="tut-img" src="art/children_tutorial/image7.webp" alt="融灵精华与升灵精魄" loading="lazy"></li>
+        </ul>
+        <div class="table-wrap" id="stage-table"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-reset">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>子女装备属性重置</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li><strong>转灵玉</strong>用于重置子女装备的随机属性。</li>
+          <li class="img-li"><img class="tut-img" src="art/children_tutorial/image9.png" alt="转灵玉" loading="lazy"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-growth">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>子女成长</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li><strong>成长快乐</strong>：子女成长值 1.1~1.25 时每次增加 0.002 点，1.25~1.3 时每次增加 0.001 点。</li>
+          <li><strong>大瓶成长快乐</strong>：成长效果相同，使用后<strong>不消耗</strong>成长道具使用次数。</li>
+          <li class="img-li"><img class="tut-img" src="art/children_tutorial/image10.webp" alt="成长快乐与大瓶成长快乐" loading="lazy"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-aptitude">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>子女资质</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li><strong>灵窍丹</strong>：用于增加 2 点子女资质。</li>
+          <li><strong>七窍玲珑丹</strong>：用于增加 5 点子女资质。</li>
+          <li class="img-li"><img class="tut-img" src="art/children_tutorial/image11.webp" alt="灵窍丹与七窍玲珑丹" loading="lazy"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-slots">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>子女开格</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li><strong>龙纹凤鸣</strong>用于解锁第 5、6、7 个技能栏位，<strong>帝心丹</strong>用于解锁第 8、9、10 个技能栏位。</li>
+          <li class="img-li"><img class="tut-img" src="art/children_tutorial/image12.webp" alt="龙纹凤鸣与帝心丹" loading="lazy"></li>
+        </ul>
+        <div class="table-wrap" id="slot-table"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-secret">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>子女秘籍</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li>子女秘籍为子女的被动技能，分为<strong>入场技能</strong>（被召唤上场时触发）、<strong>离场技能</strong>（死亡离场时触发）与<strong>在场技能</strong>（在场时持续生效）三类，效果如下：</li>
+        </ul>
+        <div class="table-wrap" id="secret-table"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>九小卿攻略站</p>
+
+</div>
+
+<script>
+var personalityData = [
+["乖巧", "750~1000", "战斗中正常攻击敌人"],
+["淘气", "500~749", "战斗中 10% 概率混乱自己攻击友军"],
+["叛逆", "250~499", "战斗中提升 20% 物理攻击、5% 法术攻击，双防降低 10%，30% 概率混乱自己攻击友军"],
+["作死", "0~249", "在战斗中 100% 混乱自己，只攻击友军"]
+];
+
+var sectSkills = [
+{sect:"鬼王", skills:[
+  ["乱鬼斩", "物理攻击 2 个目标，技能等级 3/6 级时各增加 1 个目标；升级提升技能伤害", "当前气血≥气血上限的 10%"],
+  ["狂鬼击", "物理攻击敌方单个目标 2 次，6 级后攻击 3 次；升级提升技能伤害，使用后休息 1 回合", "当前气血≥气血上限的 10%；所有子女装备达到 30 级激活"],
+  ["后发先至", "本回合待机，下回合提高速度和伤害并自动物理攻击单个目标；使用后本回合获得抗死效果，升级提升技能伤害", "当前气血≥气血上限的 10%；所有子女装备达到 40 级激活"],
+  ["先发制人", "提升自身速度、降低伤害，物理攻击敌方单个目标；升级提升技能伤害", "当前气血≥气血上限的 10%"]
+]},
+{sect:"青云", skills:[
+  ["神剑御雷真诀", "法术攻击 3 个目标，技能等级 3/6 级时各增加 1 个目标；升级提升技能伤害", "无额外限制"],
+  ["天灵剑诀", "法术攻击单个目标，目标血量越少伤害越高；升级提升技能伤害", "所有子女装备达到 30 级激活"],
+  ["醉风望月", "为自己 / 父母增加御魔状态，降低受到的法术伤害，持续 3 回合，冷却 3 回合", "所有子女装备达到 40 级激活"],
+  ["净秽诀", "解除单体负面状态（无法解封印、毒），并为目标恢复一定气血", "无额外限制"]
+]},
+{sect:"天音", skills:[
+  ["醍醐灌顶", "恢复友方 2 个目标少量气血，且持续回血；技能等级 3/6/9 级时，持续回合数各 + 1；升级 + 法术伤害可增加治疗量", "无额外限制"],
+  ["往生咒", "复活友方单个目标，并为其恢复一定气血；升级 + 法术伤害可增加治疗量", "所有子女装备达到 30 级激活"],
+  ["无相咒", "为友方单体增加护盾（有吸收上限），吸收伤害持续 2 回合；护盾上限随技能等级提升", "所有子女装备达到 40 级激活"],
+  ["驱魔咒", "解除友方单个目标所有封印状态，并恢复一定气血；升级增加气血回复量", "无额外限制"]
+]},
+{sect:"焚香", skills:[
+  ["八荒玄火阵", "法术攻击 2 个目标，技能等级 3/6 级时各增加 1 个目标；升级提升技能伤害", "无额外限制"],
+  ["双龙旋", "法术攻击目标 2 次；升级提升技能伤害", "所有子女装备达到 30 级激活"],
+  ["火眼金睛", "给友方角色增加反隐状态，持续 3 回合，升级增加额外伤害；5 级时可作用于 2 个目标", "所有子女装备达到 40 级激活"],
+  ["炙阳律令", "为自己 / 父母增加御气状态，降低受到的物理伤害，持续 3 回合，冷却 3 回合", "无额外限制"]
+]},
+{sect:"合欢", skills:[
+  ["百花缭乱", "物理攻击 2 个目标，技能等级 3/6 级时各增加 1 个目标；升级提升技能伤害", "无额外限制"],
+  ["移花接木", "物理攻击 2 个目标，技能等级 3/6 级时各增加 1 个目标；升级提升技能伤害，使用后休息 1 回合", "所有子女装备达到 30 级激活"],
+  ["落花听雨", "物理攻击单体目标 4 次；升级提升技能伤害，使用后休息 1 回合", "所有子女装备达到 40 级激活"],
+  ["清灵神目", "给单体友方释放持续回蓝 buff，持续 3 回合；升级提升回蓝量", "无额外限制"]
+]},
+{sect:"圣巫", skills:[
+  ["禁灵锁", "一定概率使敌方单个目标无法使用技能，持续 2 回合；升级提升封印概率", "无额外限制"],
+  ["焚魄炎", "单体法术攻击目标，每回合持续降低目标法力；升级增加技能伤害", "所有子女装备达到 30 级激活"],
+  ["御魔之镜", "给友方增加护盾持续 2 回合，可将第一次受到的法术伤害反弹给施法者；等级越高反弹伤害越高", "所有子女装备达到 40 级激活"],
+  ["魔入膏肓", "驱散敌方目标所有增益效果；升级提升驱散概率", "无额外限制"]
+]},
+{sect:"苍羽", skills:[
+  ["寒柳分烟箭", "物理攻击 2 个目标，技能等级 3/6 级时各增加 1 个目标；升级提升技能伤害", "无额外限制"],
+  ["劲烈爆炎箭", "物理攻击同一排 4 个目标，对宠物 / 子女额外附加目标 10% 气血上限的伤害；升级提升伤害，使用后休息 1 回合", "所有子女装备达到 30 级激活"],
+  ["玄冥追魂箭", "1 回合蓄势，第 2 回合释放物理攻击目标，目标血量越低伤害越高且无法闪避；升级提升伤害", "所有子女装备达到 40 级激活"],
+  ["化雪穿甲箭", "玄冰意境射箭，对一列目标进行穿透式物理攻击", "无额外限制"]
+]},
+{sect:"灵音", skills:[
+  ["碧海潮生曲", "法术攻击 2 个目标，技能等级 3/6 级时各增加 1 个目标；升级提升技能伤害", "无额外限制"],
+  ["广陵散", "法术攻击单个目标，目标血量越高伤害越高；升级提升技能伤害", "所有子女装备达到 30 级激活"],
+  ["大风歌", "法术攻击单体目标 2~5 次；升级提升技能伤害，使用后休息 1 回合", "所有子女装备达到 40 级激活"],
+  ["万象大音", "降低敌方 3 个目标 10% 治疗量，持续 3 回合；每升 1 级治疗量降低效果 + 2%", "无额外限制"]
+]},
+{sect:"异能", skills:[
+  ["原子核裂变", "物理攻击目标，技能等级 3/6 级时各增加 1 个目标；升级提升技能伤害", "无额外限制"],
+  ["加农粒子炮", "对目标造成 2 次物理攻击", "所有子女装备达到 30 级激活"],
+  ["引力塌陷", "为友方指定目标 + 敌方随机目标施加黑洞效果，友方受第一次伤害直接转移给敌方黑洞目标，黑洞持续 2 回合", "所有子女装备达到 40 级激活"],
+  ["响尾蛇导弹", "对 3 个目标造成巨额物理伤害；使用后休息 1 回合", "无额外限制"]
+]},
+{sect:"万毒", skills:[
+  ["毒步天下", "召唤巫毒娃娃法术攻击目标，技能等级 3/6 级时各增加 1 个目标；升级提升技能伤害", "无额外限制"],
+  ["破碎冰晶", "法术攻击 2 个目标，技能等级 3/6 级时各增加 1 个目标；升级提升伤害，使用后休息 1 回合", "所有子女装备达到 30 级激活"],
+  ["曼珠沙华", "为 2 个目标恢复一定气血和法力；升级 + 法术伤害可增加恢复效果", "所有子女装备达到 40 级激活"],
+  ["五彩迷晶", "对友方 3 个角色 / 仙侣增加 1% 封抗，持续 5 回合；每升 1 级封抗效果 + 1%", "无额外限制"]
+]},
+{sect:"丹青", skills:[
+  ["墨洒青山", "物理攻击 2 个目标，技能等级 3/6 级时各增加 1 个目标；升级提升技能伤害", "无额外限制"],
+  ["画龙点睛", "群体物理攻击 3 个目标；升级提升伤害，使用后休息 1 回合", "所有子女装备达到 30 级激活"],
+  ["铁画银钩", "单体物理攻击目标，概率附加禁怒状态（受伤害不涨怒气），持续 3 回合；升级提升伤害", "所有子女装备达到 40 级激活"],
+  ["写意山河", "增加友方 4 个单位法术攻击力 = 技能等级 × 15，持续 5 回合，副目标优先法攻高的，效果可与人物技能叠加", "无额外限制"]
+]},
+{sect:"阴阳", skills:[
+  ["百鬼夜行", "法术攻击 2 个目标，技能等级 3/6 级时各增加 1 个目标；升级提升伤害，使用后 + 1 点能量", "无额外限制"],
+  ["贪婪之噬", "召唤二口女法术攻击目标 2 次，临时增加抗封等级 2 回合；升级提升伤害，使用后 + 1 点能量", "所有子女装备达到 30 级激活"],
+  ["痛饮狂歌", "召唤酒吞童子对目标位置施放十字斩并溅射周围伤害；升级提升伤害，消耗 3 点能量", "所有子女装备达到 40 级激活"],
+  ["付丧之扇", "本回合提速 50%，召唤付丧神加持友方目标 2 回合，目标被封印时大概率反弹封印给施法者；升级提升反弹概率，冷却 3 回合", "无额外限制"]
+]},
+{sect:"黄金", skills:[
+  ["沙暴送葬", "攻击 2 个目标，概率降低敌方速度，技能等级 3/6 级时各增加 1 个目标；升级提升技能伤害", "无额外限制"],
+  ["阿蒙祈祷", "祈求神迹，回复 4 名友方单位气血；升级增加气血回复量", "所有子女装备达到 30 级激活"],
+  ["木乃伊束缚", "对敌方：禁锢 3 回合，无法普攻 / 用技能；对己方：解封；不触发法术连击类效果；升级提升封印命中率", "所有子女装备达到 40 级激活"],
+  ["亡者之书", "复活友方单个目标，并为其附加 1 回合隐身状态；升级增加气血回复量", "无额外限制"]
+]},
+{sect:"妖盟", skills:[
+  ["横扫千军", "物理攻击 2 个目标，技能等级 3/6 级时各增加 1 个目标；升级提升技能伤害", "无额外限制"],
+  ["金睛火眼", "临时提高暴击率，物理攻击单体目标，附加「火眼」状态（可攻击隐身目标，30% 概率驱散隐身）；升级提升伤害", "所有子女装备达到 30 级激活"],
+  ["分形化影", "分化 4 个幽影随机攻击目标，同目标多次命中则每次伤害减 30%；升级提升伤害，使用后休息 1 回合", "所有子女装备达到 40 级激活"],
+  ["腾云驾雾", "为己方单体目标提升 10% 物法闪避率，持续 3 回合；升级提升闪避值", "无额外限制"]
+]},
+{sect:"陈塘", skills:[
+  ["烈火横扫", "法术攻击 2 个目标，技能等级 3/6 级时各增加 1 个目标；升级提升技能伤害", "无额外限制"],
+  ["缚妖索", "为 2 个友方单位附加审判状态（攻击重生类目标增伤，击败后禁止触发重生），持续 3 回合；升级提升增伤效果", "所有子女装备达到 30 级激活"],
+  ["乾坤圈", "法术攻击 2 个目标并附加 1 层无间冰焰，技能等级 3/6 级时各增加 1 个目标；升级提升伤害，使用后休息 1 回合", "所有子女装备达到 40 级激活"],
+  ["火焰护体", "对自身使用，提速 100%，本回合提升双防，攻击自身的单位会被附加 1 层无间冰焰；升级提升双防数值", "无额外限制"]
+]}
+];
+
+var skillUpCost = [
+[2,10],
+[3,20],
+[4,30],
+[5,50],
+[6,100],
+[7,200],
+[8,300],
+[9,500],
+[10,800]
+];
+
+var equipExpCost = [
+[1,100],
+[2,100],
+[3,100],
+[4,200],
+[5,200],
+[6,200],
+[7,300],
+[8,400],
+[9,400],
+[10,500],
+[11,600],
+[12,700],
+[13,800],
+[14,900],
+[15,1000],
+[16,1100],
+[17,1300],
+[18,1400],
+[19,1500],
+[20,1700],
+[21,1900],
+[22,2000],
+[23,2200],
+[24,2400],
+[25,2600],
+[26,2800],
+[27,3000],
+[28,3200],
+[29,3500],
+[30,3700],
+[31,3900],
+[32,4200],
+[33,4500],
+[34,4700],
+[35,5000],
+[36,5300],
+[37,5600],
+[38,5900],
+[39,6200],
+[40,6500],
+[41,6800],
+[42,7200],
+[43,7500],
+[44,7800],
+[45,8200],
+[46,8600],
+[47,8900],
+[48,9300],
+[49,9700],
+[50,10100],
+[51,10500],
+[52,10900],
+[53,11300],
+[54,11800],
+[55,12200],
+[56,12600],
+[57,13100],
+[58,13600],
+[59,14000],
+[60,14500],
+[61,15000],
+[62,15500],
+[63,16000],
+[64,16500],
+[65,17000],
+[66,17500],
+[67,18100],
+[68,18600],
+[69,19100],
+[70,19700],
+[71,20300],
+[72,20800],
+[73,21400],
+[74,22000],
+[75,22600],
+[76,23200],
+[77,23800],
+[78,24400],
+[79,25100],
+[80,25700],
+[81,26300],
+[82,27000],
+[83,27700],
+[84,28300],
+[85,29000],
+[86,29700],
+[87,30400],
+[88,31100],
+[89,31800],
+[90,32500],
+[91,33200],
+[92,34000],
+[93,34700],
+[94,35400],
+[95,36200],
+[96,37000],
+[97,37700],
+[98,38500],
+[99,39300],
+[100,40100],
+[101,40900],
+[102,41700],
+[103,42500],
+[104,43400],
+[105,44200],
+[106,45000],
+[107,45900],
+[108,46800],
+[109,47600],
+[110,48500],
+[111,49400],
+[112,50300],
+[113,51200],
+[114,52100],
+[115,53000],
+[116,53900],
+[117,54900],
+[118,55800],
+[119,56700],
+[120,57700],
+[121,58700],
+[122,59600],
+[123,60600],
+[124,61600],
+[125,62600],
+[126,63600],
+[127,64600],
+[128,65600],
+[129,66700],
+[130,67700],
+[131,68700],
+[132,69800],
+[133,70900],
+[134,71900],
+[135,73000],
+[136,74100],
+[137,75200],
+[138,76300],
+[139,77400]
+];
+
+var stageCost = [
+[1,1],
+[2,3],
+[3,5],
+[4,7],
+[5,9],
+[6,11],
+[7,14],
+[8,18],
+[9,23],
+[10,28],
+[11,35],
+[12,45],
+[13,60]
+];
+
+var slotCost = [
+[5,5],
+[6,10],
+[7,20],
+[8,15],
+[9,20],
+[10,30]
+];
+
+var secretSkills = [
+["破天一剑", "入场技能", "被成功召唤后立即对敌方血量最少的目标进行一次物理攻击。"],
+["熊孩子之力", "离场技能", "死亡时对目标进行一次物理复仇攻击，一场战斗只能触发 1 次。"],
+["蚩尤战气（物）", "在场技能", "每次使用物理技能后增加自身 30% 物理伤害，可叠加 3 层，虚弱状态下无效。"],
+["蚩尤战气（法）", "在场技能", "每次使用法术技能后增加自身 30% 法术伤害，可叠加 3 层，虚弱状态下无效。"],
+["破天一怒", "入场技能", "被成功召唤后立即对敌方血量最少的目标进行一次法术攻击。"],
+["熊孩子之怒", "离场技能", "死亡时对目标进行一次法术复仇攻击，一场战斗只能触发 1 次。"],
+["回天息", "入场技能", "被成功召唤后立即对我方血量最少的目标进行一次治疗，治疗值与自身法术攻击有关。"],
+["滋天露", "入场技能", "被成功召唤后随机清除友方 3 个目标的所有负面状态。"],
+["庆余音", "离场技能", "死亡时立即对我方血量最少的目标进行一次治疗，治疗值与自身法术攻击有关，一场战斗只能触发 1 次。"],
+["生生不息", "离场技能", "死亡时随机清除友方 3 个目标的所有负面状态，一场战斗只能触发 1 次。"],
+["风清诀", "入场技能", "入场时，为召唤自己的父母解除封印状态，并增加免疫封印状态，持续 2 回合。"],
+["纠缠不休", "离场技能", "死亡时，有概率使攻击者无法使用法术，持续 3 回合，一场战斗只能触发 1 次。"],
+["碎甲破", "离场技能", "死亡时，给目标附加受到的伤害增加 10% 的状态，持续 3 回合，不可驱散，一场战斗只能触发 1 次。"],
+["凝身决", "离场技能", "死亡时，给目标附加速度降低 10% 的状态，持续 3 回合，不可驱散，一场战斗只能触发 1 次。"],
+["轮回怒", "离场技能", "死亡时，给目标附加伤害降低 10% 的状态，持续 3 回合，不可驱散，一场战斗只能触发 1 次。"],
+["拘魂令", "离场技能", "死亡时，给目标附加受到的治疗量降低 20% 的状态，持续 3 回合，不可驱散，一场战斗只能触发 1 次。"],
+["初生牛犊", "在场技能", "在场时，每回合增加伤害 5%，上限 60%，鬼魅无法触发。"],
+["伏龙息", "在场技能", "在场时，为召唤自己的父母增加 5% 的伤害。"],
+["太极护", "在场技能", "在场时，为召唤自己的父母增加 5% 减伤效果。"],
+["药神附体", "在场技能", "在场时，为召唤自己的父母增加 10% 被治疗效果。"],
+["慧心术", "在场技能", "在场时，为召唤自己的父母增加 5% 封印抗性。"]
+];
+
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+var P_CLASS = {'乖巧':'p-gk','淘气':'p-tq','叛逆':'p-px','作死':'p-zs'};
+
+// Personality table
+(function(){
+  var wrap = document.getElementById('personality-table');
+  if(!wrap) return;
+  var rows = '';
+  personalityData.forEach(function(p){
+    rows += '<tr>'
+      + '<td class="p-name ' + (P_CLASS[p[0]] || '') + '">' + esc(p[0]) + '</td>'
+      + '<td class="td-fs">' + esc(p[1]) + '</td>'
+      + '<td>' + esc(p[2]) + '</td>'
+      + '</tr>';
+  });
+  wrap.innerHTML = '<table><thead><tr><th>性格</th><th>性格值范围</th><th>战斗表现</th></tr></thead><tbody>' + rows + '</tbody></table>';
+})();
+
+// Sect skill tables: one sub-header + table per sect
+(function(){
+  var list = document.getElementById('sect-list');
+  if(!list) return;
+  var html = '';
+  sectSkills.forEach(function(sec){
+    var rows = '';
+    sec.skills.forEach(function(k){
+      rows += '<tr>'
+        + '<td class="td-name">' + esc(k[0]) + '</td>'
+        + '<td>' + esc(k[1]) + '</td>'
+        + '<td class="td-cond">' + esc(k[2]) + '</td>'
+        + '</tr>';
+    });
+    html += '<div class="sub-header">' + esc(sec.sect) + '</div>'
+      + '<div class="table-wrap"><table><thead><tr><th>技能名称</th><th>技能效果</th><th>使用限制 / 激活条件</th></tr></thead><tbody>' + rows + '</tbody></table></div>';
+  });
+  list.innerHTML = html;
+})();
+
+// Skill upgrade cost
+(function(){
+  var wrap = document.getElementById('skillup-table');
+  if(!wrap) return;
+  var rows = '';
+  skillUpCost.forEach(function(c){
+    rows += '<tr>'
+      + '<td class="td-style">' + c[0] + ' 级</td>'
+      + '<td class="td-fs">' + c[1] + ' 个</td>'
+      + '</tr>';
+  });
+  wrap.innerHTML = '<table><thead><tr><th>技能等级</th><th>消耗数量（阴阳仙书）</th></tr></thead><tbody>' + rows + '</tbody></table>';
+})();
+
+// Equipment exp cost: 4 pairs per row
+(function(){
+  var wrap = document.getElementById('equipexp-table');
+  if(!wrap) return;
+  var rows = '';
+  for(var i = 0; i < equipExpCost.length; i += 4){
+    rows += '<tr>';
+    for(var j = i; j < i + 4; j++){
+      if(j < equipExpCost.length){
+        rows += '<td class="td-style">' + equipExpCost[j][0] + ' 级</td>'
+          + '<td class="td-fs">' + equipExpCost[j][1] + '</td>';
+      } else {
+        rows += '<td></td><td></td>';
+      }
+    }
+    rows += '</tr>';
+  }
+  var head = '';
+  for(var k = 0; k < 4; k++){ head += '<th>等级</th><th>所需经验</th>'; }
+  wrap.innerHTML = '<table><thead><tr>' + head + '</tr></thead><tbody>' + rows + '</tbody></table>';
+})();
+
+// Stage cost
+(function(){
+  var wrap = document.getElementById('stage-table');
+  if(!wrap) return;
+  var rows = '';
+  stageCost.forEach(function(c){
+    rows += '<tr>'
+      + '<td class="td-style">' + c[0] + ' 阶</td>'
+      + '<td class="td-fs">' + c[1] + ' 个</td>'
+      + '</tr>';
+  });
+  wrap.innerHTML = '<table><thead><tr><th>升阶等级</th><th>消耗数量</th></tr></thead><tbody>' + rows + '</tbody></table>';
+})();
+
+// Slot cost
+(function(){
+  var wrap = document.getElementById('slot-table');
+  if(!wrap) return;
+  var rows = '';
+  slotCost.forEach(function(c){
+    rows += '<tr>'
+      + '<td class="td-style">第 ' + c[0] + ' 个</td>'
+      + '<td class="td-fs">' + c[1] + ' 个</td>'
+      + '</tr>';
+  });
+  wrap.innerHTML = '<table><thead><tr><th>技能栏位</th><th>消耗数量</th></tr></thead><tbody>' + rows + '</tbody></table>';
+})();
+
+// Secret skills
+(function(){
+  var wrap = document.getElementById('secret-table');
+  if(!wrap) return;
+  var T_CLASS = {'入场技能':'tag-in','离场技能':'tag-out','在场技能':'tag-on'};
+  var rows = '';
+  secretSkills.forEach(function(s){
+    rows += '<tr>'
+      + '<td class="td-name">' + esc(s[0]) + '</td>'
+      + '<td><span class="tag ' + (T_CLASS[s[1]] || '') + '">' + esc(s[1]) + '</span></td>'
+      + '<td>' + esc(s[2]) + '</td>'
+      + '</tr>';
+  });
+  wrap.innerHTML = '<table><thead><tr><th>技能名称</th><th>类型</th><th>技能描述</th></tr></thead><tbody>' + rows + '</tbody></table>';
+})();
+
+// Collapsible section banners
+(function(){
+  document.querySelectorAll('.hs-toggle-header').forEach(function(header){
+    var panel = header.nextElementSibling;
+    var btn = header.querySelector('.hs-expand-btn');
+    if(!panel || !panel.classList.contains('hs-collapsible') || !btn) return;
+    function toggle(){
+      var open = panel.classList.toggle('open');
+      btn.textContent = open ? '收起 ∧' : '展开 ∨';
+      header.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    header.addEventListener('click', toggle);
+    header.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+  });
+})();
+</script>
+
+<script>
+document.addEventListener('copy',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('contextmenu',function(e){e.preventDefault();});
+</script>
+
+</body>
+</html>

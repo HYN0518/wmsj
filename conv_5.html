@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>性别重生 — 九小卿攻略站</title>
+<meta name="description" content="九小卿性别重生攻略">
+<link rel="icon" type="image/jpeg" href="art/favicon.jpg">
+<style>:root{
+    --bg:#faf6ef;--ink:#16130f;--muted:#6f675c;--card:#ffffff;
+    --pink:#ff4d8d;--blue:#4d7cff;--violet:#8b5cf6;
+    --lime:#cdf05a;--orange:#ff8a3d;--gold:#f59e0b;
+    --radius:24px;--shadow:0 12px 32px rgba(22,19,15,.10);
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scrollbar-gutter:stable}
+  body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.8;overflow-x:hidden}
+  ::selection{background:var(--pink);color:#fff}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  button{font-family:inherit}
+  .wrap{max-width:1200px;margin:0 auto;padding:40px 24px}
+  .back-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:10px 20px;border-radius:999px;
+    background:var(--card);border:1.5px solid rgba(22,19,15,.08);
+    color:var(--ink);font-weight:700;font-size:.9rem;
+    cursor:pointer;transition:all .2s;
+    box-shadow:0 4px 12px rgba(22,19,15,.06);
+  }
+  .back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(22,19,15,.12);border-color:var(--pink)}
+  .back-btn svg{width:18px;height:18px}
+  .page-title{text-align:center;margin:40px 0 48px}
+  .page-title h1{
+    font-size:clamp(2rem,5vw,3rem);font-weight:900;letter-spacing:.02em;
+    background:linear-gradient(135deg,var(--violet),var(--pink));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .page-title p{margin-top:12px;color:var(--muted);font-size:1rem}
+  .hero-img{
+    width:100%;max-width:800px;margin:0 auto 40px;
+    border-radius:var(--radius);overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  .hero-img img{width:100%;height:auto}
+  .info-section{
+    background:var(--card);border-radius:var(--radius);
+    border:1.5px solid rgba(22,19,15,.06);
+    padding:36px 40px;margin-bottom:32px;box-shadow:var(--shadow);
+  }
+  .info-section h2{
+    font-size:1.5rem;font-weight:800;margin-bottom:20px;padding-bottom:12px;
+    border-bottom:2px solid rgba(139,92,246,.15);
+    display:flex;align-items:center;gap:12px;
+  }
+  .info-section h2 .icon{
+    width:36px;height:36px;border-radius:10px;
+    display:grid;place-items:center;font-size:1.2rem;
+    background:linear-gradient(135deg,var(--violet),var(--pink));
+    color:#fff;flex-shrink:0;
+  }
+  .info-section p{margin-bottom:14px;color:#3a3530}
+  .info-section .note{
+    background:rgba(139,92,246,.06);border-left:4px solid var(--violet);
+    padding:12px 16px;border-radius:0 10px 10px 0;margin:16px 0;font-size:.95rem;
+  }
+  .info-section ul{margin:12px 0 12px 20px;color:#3a3530}
+  .info-section ul li{margin-bottom:6px}
+  .footer{text-align:center;padding:40px 0;color:var(--muted);font-size:.85rem}
+  .footer .heart{color:var(--pink)}
+  @media (max-width:640px){
+    .wrap{padding:24px 16px}
+    .info-section{padding:24px 20px}
+    .page-title{margin:24px 0 32px}
+  }
+  /* 全屏水印 */
+  .site-watermark{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99999;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22220%22%20height%3D%22160%22%3E%0A%20%20%3Ctext%20x%3D%2220%22%20y%3D%2280%22%20font-size%3D%2212%22%20fill%3D%22%23000000%22%20fill-opacity%3D%220.05%22%20font-family%3D%22Microsoft%20YaHei%2C%20sans-serif%22%20transform%3D%22rotate%2825%2C%20110%2C%2080%29%22%3E%E4%B9%9D%E5%B0%8F%E5%8D%BF%E6%94%BB%E7%95%A5%E7%AB%99%3C/text%3E%0A%3C/svg%3E");background-repeat:repeat;opacity:1}
+
+  /* 禁止复制 */
+  body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+  input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+
+</style>
+</head>
+<body>
+<div class="site-watermark"></div>
+<div class="wrap">
+  <a href="index.html?skipIntro=1#convenient" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    返回首页
+  </a>
+  <a href="conv_8.html" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    智能客服
+  </a>
+  <div class="page-title">
+    <h1>性别重生</h1>
+    </div>
+  <div class="info-section">
+    <h2><span class="icon">🔄</span>功能介绍</h2>
+    <p><strong>性别重生</strong> — 角色性别转换流程与注意事项，重塑角色形象。转换后外观、时装、称号等自动适配。</p>
+  </div>
+
+  <div class="info-section">
+    <h2><span class="icon">📋</span>使用指南</h2>
+    <p><ul>
+      <li>性别转换流程</li>
+      <li>费用与冷却时间</li>
+      <li>转换后影响说明</li>
+    </ul></p>
+    <div class="note"><strong>提示：</strong>性别重生详细攻略持续整理中，敬请期待。</div>
+  </div>
+
+  <div class="footer">
+    <p>九小卿攻略站</p>
+
+</div>
+
+<script>
+document.addEventListener('copy',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('contextmenu',function(e){e.preventDefault();});
+</script>
+
+</body>
+</html>

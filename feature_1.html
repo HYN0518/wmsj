@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>云梦经验 — 九小卿攻略站</title>
+<meta name="description" content="九小卿云梦经验攻略">
+<link rel="icon" type="image/jpeg" href="art/favicon.jpg">
+<style>
+  :root{
+    --bg:#fff;--ink:#16130f;--muted:#6f675c;--card:#ffffff;
+    --pink:#ff4d8d;--blue:#4d7cff;--violet:#8b5cf6;--lime:#cdf05a;
+    --orange:#ff8a3d;--gold:#f59e0b;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scrollbar-gutter:stable}
+  body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.8;overflow-x:hidden}
+  ::selection{background:var(--pink);color:#fff}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:960px;margin:0 auto;padding:32px 24px 60px}
+  .back-btn{display:inline-flex;flex-direction:row;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;background:var(--card);border:1.5px solid rgba(22,19,15,.12);color:var(--ink);font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s;white-space:nowrap;width:auto;align-self:flex-start}
+  .back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(22,19,15,.12);border-color:var(--pink)}
+  .back-btn svg{width:18px;height:18px}
+  .page-title{text-align:center;margin:40px 0 48px}
+  .page-title h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;letter-spacing:.02em;background:linear-gradient(135deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .footer{text-align:center;padding:40px 0;color:var(--muted);font-size:.85rem}
+  .footer .heart{color:var(--pink)}
+  .purple-header{background:#f3e8ff;border-left:4px solid #8b5cf6;padding:12px 18px;margin:28px 0 16px;font-size:1.2rem;font-weight:700;color:var(--ink);border-radius:0 8px 8px 0}
+  .blue-header{background:#e8f4fd;border-left:4px solid #4d7cff;padding:10px 16px;margin:20px 0 12px;font-size:1.05rem;font-weight:700;color:var(--ink);border-radius:0 6px 6px 0}
+  .doc-p{margin:10px 0;font-size:.95rem;line-height:1.8;color:#333}
+  .doc-img{margin:16px 0;text-align:center}
+  .doc-img img{max-width:100%;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.1);display:inline-block}
+  ul{padding-left:0;margin:12px 0;list-style:none}
+  li{margin-bottom:8px;font-size:.95rem;line-height:1.8;color:#333;padding-left:20px;position:relative}
+  li::before{content:"•";position:absolute;left:0;color:var(--violet);font-weight:700}
+  .note{background:#fffbeb;border-left:3px solid #f59e0b;padding:12px 16px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.92rem;color:#78350f}
+  .note strong{color:#92400e}
+  .doc-table-wrap{margin:16px 0;overflow-x:auto}
+  .doc-table{width:100%;border-collapse:collapse;font-size:.85rem}
+  .doc-table th{background:#f3e8ff;color:#6d28d9;padding:10px 12px;text-align:left;border:1px solid #e9d5ff;font-weight:700}
+  .doc-table td{padding:8px 12px;border:1px solid #e5e7eb;color:#374151;vertical-align:top}
+  .doc-table tr:nth-child(even){background:#fafafa}
+  @media (max-width:640px){
+    .wrap{padding:24px 16px}
+    .page-title{margin:24px 0 32px}
+    .doc-p,li{font-size:.85rem}
+    .doc-table{font-size:.75rem}
+  }
+
+  /* 全屏水印 */
+  .site-watermark{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99999;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22220%22%20height%3D%22160%22%3E%0A%20%20%3Ctext%20x%3D%2220%22%20y%3D%2280%22%20font-size%3D%2212%22%20fill%3D%22%23000000%22%20fill-opacity%3D%220.05%22%20font-family%3D%22Microsoft%20YaHei%2C%20sans-serif%22%20transform%3D%22rotate%2825%2C%20110%2C%2080%29%22%3E%E4%B9%9D%E5%B0%8F%E5%8D%BF%E6%94%BB%E7%95%A5%E7%AB%99%3C/text%3E%0A%3C/svg%3E");background-repeat:repeat;opacity:1}
+
+  /* 禁止复制 */
+  body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+  input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+
+</style>
+</head>
+<body>
+<div class="site-watermark"></div>
+<div class="wrap">
+  <a href="index.html?skipIntro=1#features" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    返回首页
+  </a>
+  <a href="conv_8.html" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    智能客服
+  </a>
+  <div class="page-title"><h1>云梦经验</h1></div>
+  <div class="purple-header">经验介绍</div>
+<div class="blue-header">空经验瓶的获取方式</div>
+<p class="doc-p">待正式上线后 ，少侠可以前往万宝阁找到  “仙贝通行证” ，购买到账后即可获得经验瓶装填资格和空经验瓶。</p>
+<p class="doc-p">需要注意的是 ，通行证到期后 ，经验瓶会停止继续灌注 ，此外空经验瓶将直接进入经验瓶专属包裹 ，不会占用普通背包空间。</p>
+<div class="blue-header">通过仙贝通行证获得装填资格与空经验瓶</div>
+<div class="blue-header">空经验瓶的装载方式</div>
+<p class="doc-p">获得空经验瓶后 ，少侠可通过角色界面进入经验瓶功能 ，点击  “装载” 。</p>
+<p class="doc-p">装载成功后 ，界面会显⽰当前经验和最大经验。经验瓶未灌满前无法卸下 ，需要等待经验积累完成。</p>
+<div class="doc-img"><img src="art/yunmeng_jingyan/img_0.webp" alt="截图"></div>
+<div class="blue-header">从角色界面进入经验瓶功能</div>
+<div class="doc-img"><img src="art/yunmeng_jingyan/img_1.png" alt="截图" loading="lazy"></div>
+<div class="purple-header">查看当前经验与最大经验</div>
+<div class="blue-header">自动装填功能说明</div>
+<p class="doc-p">开启  “ 自动装填”  后 ， 当前经验瓶灌满时会自动卸下 ，并继续装载新的空经验瓶。</p>
+<p class="doc-p">只要少侠拥有空经验瓶 ，并且专属包裹中有足够空间 ，即可持续积累经验。</p>
+<div class="blue-header">经验装填规则说明</div>
+<p class="doc-p">少侠参与日常玩法并获得基础经验时 ，系统会将一定比例的基础经验扣除并装填到经验瓶中 ，具体比例以游戏内实际设置为准。</p>
+<div class="purple-header">举个例子：</div>
+<p class="doc-p">扣除比例为 10% 时 ，少侠获得 100 点基础经验 ，其中 90 点作为角色正常经验 ，并享受服务器加成等效果；剩余 10点装填进经验瓶 ，该部分经验不享受额外加成。</p>
+<p class="doc-p">经验装填仅适用于日常玩法产出的基础经验 ，不包括主线任务、支线任务、经验道具、灵器封印、 回流活动、指引任务、青云志、经验雨等来源。</p>
+<div class="doc-img"><img src="art/yunmeng_jingyan/img_2.png" alt="截图" loading="lazy"></div>
+<div class="blue-header">经验瓶装填进度</div>
+<div class="blue-header">满经验瓶的交易行流转</div>
+<p class="doc-p">交易行采用  “ 买方发布订单、卖方主动满足”  的交易方式进行经验瓶的交易 ，少侠可以按个人需求发布订单。</p>
+<p class="doc-p">买方可在交易行发布满经验瓶的求购需求 ，并设置求购数量和单价。发布订单后 ，系统会冻结对应的交易币。卖方选择合适的求购订单后 ，即可出售手中的满经验瓶。</p>
+<div class="doc-img"><img src="art/yunmeng_jingyan/img_3.webp" alt="截图" loading="lazy"></div>
+<div class="blue-header">交易行求购列表</div>
+<div class="blue-header">发布求购</div>
+<p class="doc-p">少侠进入交易行后 ，打开  “ 我要求购”  页签 ，选择需要求购的商品规格。</p>
+<p class="doc-p">设置求购单价和数量后 ，系统会计算本次订单所需的交易币。确认发布后 ，对应交易币将被冻结 ，求购订单有效期为 24 小时。</p>
+<div class="doc-img"><img src="art/yunmeng_jingyan/img_4.png" alt="截图" loading="lazy"></div>
+<div class="purple-header">设置求购单价与数量</div>
+<div class="blue-header">出售满经验瓶</div>
+<p class="doc-p">卖方进入商品求购列表后 ，可以查看不同价格的求购订单。</p>
+<p class="doc-p">求购单价越高的订单优先显⽰； 相同价格下 ，发布时间更早的订单优先成交。选择订单后 ，可输入出售数量 ，也可以使用一键出售功能 ，快速满足符合条件的求购订单。</p>
+<div class="doc-img"><img src="art/yunmeng_jingyan/img_5.png" alt="截图" loading="lazy"></div>
+<div class="blue-header">选择求购订单并出售满经验瓶</div>
+<div class="blue-header">成交后的领取与订单查看</div>
+<div class="blue-header">订单成交后 ，少侠可以这样查看：</div>
+<ul><li>买方获得绑定的满经验瓶 ，领取至背包后可自行使用；</li><li>卖方获得扣除手续费后的待结算交易币；</li></ul>
+<div class="blue-header">· 订单同步更新已成交数量与剩余数量。</div>
+<p class="doc-p">兜妹提醒：买方需要在订单详情中手动领取已成交的商品哦。</p>
+<div class="doc-img"><img src="art/yunmeng_jingyan/img_6.png" alt="截图" loading="lazy"></div>
+<div class="blue-header">订单成交与商品领取</div>
+<p class="doc-p">在  “ 我的订单”  中 ，少侠可以查看订单的求购数量、单价、成交数量和剩余时间。订单状态包括  “ 求购中”  “ 已完成”和  “ 已过期” 。</p>
+<p class="doc-p">订单取消或过期后 ，未成交部分对应的冻结交易币会返还给买方。</p>
+<div class="doc-img"><img src="art/yunmeng_jingyan/img_7.webp" alt="截图" loading="lazy"></div>
+<div class="blue-header">查看求购订单状态与成交进度</div>
+<div class="blue-header">满经验瓶的使用方式</div>
+<p class="doc-p">看懂流转方式后 ，接下来就是少侠最关心的使用部分：满经验瓶中的经验 ，可用于角色升级或境界提升。</p>
+<div class="blue-header">用于角色升级</div>
+<p class="doc-p">使用满经验瓶后 ，少侠可获得其中储存的经验 ，并用于角色升级提升。</p>
+<p class="doc-p">满经验瓶提供的角色经验可以享受服务器加成 ，并且不会受到服务器经验衰减影响。兜妹特别提醒 ，这一点在追赶成长进度时会比较关键哦。</p>
+<div class="purple-header">⽰例一：</div>
+<p class="doc-p">当角色等级为99 级、服务器等级为 135 级时 ，从 99 级提升至 126 级可享受 5 倍服务器加成 ，共需 1,094,879,903点经验。正常升级约需90 天 ，使用经验瓶约需 3,650 个。</p>
+<div class="purple-header">⽰例二：</div>
+<p class="doc-p">126 级之后 ，服务器加成会逐渐衰减。角色从 135 级提升至 139 级 ，共需 378,369,258 点经验。正常升级约需300天 ，使用经验瓶约需 1,260 个。</p>
+<p class="doc-p">需要注意的是 ，经验瓶会受到每日使用次数、角色等级和服务器等级等规则限制。 当角色等级超过服务器等级一定范围后 ，将无法继续使用经验瓶。</p>
+<p class="doc-p">举个例子： 服务器等级为90 级、角色等级达到 94 级时 ，少侠将无法使用经验瓶。</p>
+<div class="doc-img"><img src="art/yunmeng_jingyan/img_8.png" alt="截图" loading="lazy"></div>
+<div class="blue-header">满经验瓶使用界面</div>
+<div class="blue-header">用于境界提升</div>
+<p class="doc-p">满经验瓶中的经验也可用于境界提升。少侠可根据当前成长需求 ，在角色经验与境界经验之间进行选择。</p>
+<div class="blue-header">交易币和兑换内容说明</div>
+<p class="doc-p">对于出售满经验瓶的少侠来说 ，成交后获得的交易币会进入结算流程 ，后续可用于兑换相关内容。</p>
+<div class="blue-header">交易币结算规则</div>
+<p class="doc-p">卖方成交后获得的交易币 ，会先进入待结算状态。满足结算条件后 ，即可提取为可用交易币。</p>
+<p class="doc-p">每日可提取的交易币数量会受到相关规则限制 ，具体额度以游戏内显⽰为准。</p>
+<div class="doc-img"><img src="art/yunmeng_jingyan/img_9.png" alt="截图" loading="lazy"></div>
+<div class="blue-header">待结算交易币与每日可提取额度</div>
+<div class="blue-header">交易币兑换内容</div>
+<p class="doc-p">获得可用交易币后 ，少侠可前往积分商城兑换云梦集市兑换券及超值养成资源。</p>
+<div class="doc-img"><img src="art/yunmeng_jingyan/img_10.webp" alt="截图" loading="lazy"></div>
+<div class="purple-header">积分商城兑换内容</div>
+<div class="blue-header">云梦集市兑换说明</div>
+<p class="doc-p">每月可通过仙贝商店获得最多 2 张云梦集市兑换券 ，用于兑换返场商城中的往期外显。</p>
+<p class="doc-p">云梦集市每月更新 ，每种外显类型将更新 2 件可兑换内容。少侠记得按需查看兑换内容呀。</p>
+<div class="doc-img"><img src="art/yunmeng_jingyan/img_11.webp" alt="截图" loading="lazy"></div>
+  <div class="footer">九小卿攻略站
+</div>
+
+<script>
+document.addEventListener('copy',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('contextmenu',function(e){e.preventDefault();});
+</script>
+
+</body>
+</html>

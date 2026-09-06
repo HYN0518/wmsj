@@ -1,0 +1,11 @@
+{
+  "name": "mhzz-wiki",
+  "version": "1.0.0",
+  "private": true,
+  "description": "九小卿攻略站 — 门派、装备、宠物、仙侣等全方位攻略",
+  "scripts": {
+    "dev": "npx -y serve -l 5173 .",
+    "start": "npx -y serve -l 5173 .",
+    "build": "node -e \"const fs=require('fs'),path=require('path');const src='.',out='dist';fs.rmSync(out,{recursive:true,force:true});fs.mkdirSync(out,{recursive:true});fs.readdirSync(src).filter(f=>!['node_modules','.git','dist','dist.zip'].includes(f)).forEach(f=>{const s=path.join(src,f),d=path.join(out,f);fs.statSync(s).isDirectory()?fs.cpSync(s,d,{recursive:true}):fs.copyFileSync(s,d)})\""
+  }
+}

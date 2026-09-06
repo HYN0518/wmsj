@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>叠加介绍 — 九小卿攻略站</title>
+<meta name="description" content="九小卿叠加系统攻略 - 头像、头衔、称谓叠加开启方法与等级限制">
+<link rel="icon" type="image/jpeg" href="art/favicon.jpg">
+<style>
+  :root{
+    --bg:#fff;
+    --ink:#16130f;
+    --muted:#6f675c;
+    --card:#ffffff;
+    --pink:#ff4d8d;
+    --blue:#4d7cff;
+    --violet:#8b5cf6;
+    --lime:#cdf05a;
+    --orange:#ff8a3d;
+    --gold:#f59e0b;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scrollbar-gutter:stable}
+  body{
+    font-family:var(--font);
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.8;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--pink);color:#fff}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  button{font-family:inherit}
+
+  .wrap{max-width:960px;margin:0 auto;padding:32px 24px 60px}
+
+  .back-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:10px 20px;border-radius:999px;
+    background:var(--card);
+    border:1.5px solid rgba(22,19,15,.12);
+    color:var(--ink);font-weight:700;font-size:.9rem;
+    cursor:pointer;transition:all .2s;
+  }
+  .back-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(22,19,15,.12);
+    border-color:var(--pink);
+  }
+  .back-btn svg{width:18px;height:18px}
+
+  .page-title{
+    text-align:center;margin:40px 0 48px;
+  }
+  .page-title h1{
+    font-size:clamp(2rem,5vw,3rem);
+    font-weight:900;letter-spacing:.02em;
+    background:linear-gradient(135deg,var(--violet),var(--pink));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .page-title p{
+    margin-top:12px;color:var(--muted);font-size:1rem;
+  }
+
+  .footer{
+    text-align:center;padding:40px 0;
+    color:var(--muted);font-size:.85rem;
+  }
+  .footer .heart{color:var(--pink)}
+
+  .section { margin-bottom:16px; }
+  .sub-header { background:#e8f4fd; border-left:3px solid #4d7cff; padding:6px 14px; margin:24px 0 14px; font-size:1.05rem; font-weight:700; color:var(--ink); }
+  .section ul { padding-left:0; margin-bottom:16px; list-style:none; }
+  .section li { margin-bottom:10px; font-size:.95rem; line-height:1.8; color:#333; padding-left:0; }
+  .section li.img-li { margin:6px 0 18px; }
+  .hs-toggle-header { background:#f3e8ff; border-left-color:#8b5cf6; font-size:1.25rem; margin:16px 0 0; display:flex; justify-content:space-between; align-items:center; gap:12px; cursor:pointer; user-select:none; }
+  .hs-toggle-header:hover { background:#ece4fb }
+  .hs-toggle-header:focus-visible { outline:2px solid #8b5cf6;outline-offset:2px }
+  .section > .hs-toggle-header:first-child { margin-top:0 }
+  .hs-expand-btn { background:none; border:none; font-family:inherit; font-size:1rem; font-weight:700; color:#d43a3a; cursor:pointer; padding:2px 8px; flex:none; }
+  .hs-collapsible { display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease }
+  .hs-collapsible.open { grid-template-rows:1fr }
+  .hs-collapsible-inner { overflow:hidden;min-height:0;padding-top:20px }
+
+  .tut-img{
+    max-width:min(640px,100%);
+    border-radius:10px;
+    border:1px solid rgba(22,19,15,.08);
+    box-shadow:0 4px 14px rgba(22,19,15,.08);
+    margin:8px auto 4px;
+  }
+
+  .tut-vid{
+    width:min(640px,100%);
+    border-radius:10px;
+    border:1px solid rgba(22,19,15,.08);
+    box-shadow:0 4px 14px rgba(22,19,15,.08);
+    margin:8px auto 4px;
+    display:block;
+    background:#000;
+  }
+
+  .note{
+    background:rgba(139,92,246,.06);
+    border-left:4px solid var(--violet);
+    padding:12px 16px;border-radius:0 10px 10px 0;
+    margin:16px 0;font-size:.95rem;
+  }
+
+  .steps { padding-left:0; margin:0 0 16px; list-style:none; counter-reset:step; }
+  .steps li {
+    position:relative;
+    padding-left:36px;
+    margin-bottom:12px;
+    font-size:.95rem;
+    line-height:1.8;
+    color:#333;
+  }
+  .steps li::before {
+    counter-increment:step;
+    content:counter(step);
+    position:absolute;
+    left:0;
+    top:6px;
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    background:#f3e8ff;
+    color:#8b5cf6;
+    font-weight:700;
+    font-size:.85rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  @media (max-width:640px){
+    .wrap{padding:24px 16px}
+    .page-title{margin:24px 0 32px}
+    .section li { font-size:.85rem;word-wrap:break-word;overflow-wrap:break-word }
+    .steps li { font-size:.85rem }
+    .hs-toggle-header { font-size:1.05rem }
+  }
+
+  /* 全屏水印 */
+  .site-watermark{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99999;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22220%22%20height%3D%22160%22%3E%0A%20%20%3Ctext%20x%3D%2220%22%20y%3D%2280%22%20font-size%3D%2212%22%20fill%3D%22%23000000%22%20fill-opacity%3D%220.05%22%20font-family%3D%22Microsoft%20YaHei%2C%20sans-serif%22%20transform%3D%22rotate%2825%2C%20110%2C%2080%29%22%3E%E4%B9%9D%E5%B0%8F%E5%8D%BF%E6%94%BB%E7%95%A5%E7%AB%99%3C/text%3E%0A%3C/svg%3E");background-repeat:repeat;opacity:1}
+
+  /* 禁止复制 */
+  body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+  input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+
+</style>
+</head>
+<body>
+<div class="site-watermark"></div>
+
+<div class="wrap">
+
+  <a href="index.html?skipIntro=1#character" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    返回首页
+  </a>
+  <a href="conv_8.html" class="back-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    智能客服
+  </a>
+
+  <div class="page-title">
+    <h1>叠加介绍</h1>
+  </div>
+
+  <div class="section" id="sec-intro">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>系统介绍</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li>叠加系统可以让已激活的<strong>头像、头衔、称谓</strong>效果<strong>同时生效</strong>：先用「一键穿戴」道具激活背包内所有未拥有的头像 / 头衔 / 称谓，再在叠加界面把所有效果全部勾选，即可获得全部属性加成。</li>
+        </ul>
+        <div class="note">
+          <strong>等级限制：</strong>头像叠加需人物等级达到 <strong>35 级</strong>；头衔 / 称谓叠加需人物等级达到 <strong>1 级</strong>。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-avatar">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>头像叠加</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li class="img-li"><video class="tut-vid" src="art/diejia_tutorial/touxiang.mp4" poster="art/diejia_tutorial/touxiang_poster.webp" controls muted playsinline preload="none"></video></li>
+        </ul>
+        <div class="note">
+          <strong>等级限制：</strong>人物等级达到 <strong>35 级</strong>。
+        </div>
+        <div class="sub-header">使用方法</div>
+        <ol class="steps">
+          <li>前往<strong>金币商城</strong>，往下拉找到「便捷」板块中的「穿戴系列」，购买一个<strong>「一键‖穿戴头像」</strong>，使用后可一键激活背包内所有未拥有的头像。</li>
+          <li>点开右上角<strong>人物头像</strong> → 点击<strong>头像</strong> → 点击<strong>效果</strong> → 点击<strong>叠加</strong>，把所有的都勾选上即可！</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-title">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>头衔叠加</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li class="img-li"><video class="tut-vid" src="art/diejia_tutorial/touxian.mp4" poster="art/diejia_tutorial/touxian_poster.webp" controls muted playsinline preload="none"></video></li>
+        </ul>
+        <div class="note">
+          <strong>等级限制：</strong>人物等级达到 <strong>1 级</strong>。
+        </div>
+        <div class="sub-header">使用方法</div>
+        <ol class="steps">
+          <li>前往<strong>金币商城</strong>，往下拉找到「便捷」板块中的「穿戴系列」，购买一个<strong>「一键‖穿戴头衔」</strong>，使用后可一键激活背包内所有未拥有的头衔。</li>
+          <li>点开右上角<strong>人物头像</strong> → 点击<strong>信息</strong> → 点击<strong>查看</strong> → <strong>查看属性</strong> → 点击<strong>叠加</strong>，把所有的都勾选上即可！</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-appellation">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>称谓叠加</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li class="img-li"><video class="tut-vid" src="art/diejia_tutorial/chengwei.mp4" poster="art/diejia_tutorial/chengwei_poster.webp" controls muted playsinline preload="none"></video></li>
+        </ul>
+        <div class="note">
+          <strong>等级限制：</strong>人物等级达到 <strong>1 级</strong>。
+        </div>
+        <div class="sub-header">使用方法</div>
+        <ol class="steps">
+          <li>前往<strong>金币商城</strong>，往下拉找到「便捷」板块中的「穿戴系列」，购买一个<strong>「一键‖穿戴称谓」</strong>，使用后可一键激活背包内所有未拥有的称谓。</li>
+          <li>点开右上角<strong>人物头像</strong> → 点击<strong>信息</strong> → 点击<strong>查看</strong> → <strong>查看属性</strong> → 点击<strong>叠加</strong>，把所有的都勾选上即可！</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>九小卿攻略站</p>
+
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('.hs-toggle-header').forEach(function(header){
+    var panel = header.nextElementSibling;
+    var btn = header.querySelector('.hs-expand-btn');
+    if(!panel || !panel.classList.contains('hs-collapsible') || !btn) return;
+    function toggle(){
+      var open = panel.classList.toggle('open');
+      btn.textContent = open ? '收起 ∧' : '展开 ∨';
+      header.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    header.addEventListener('click', toggle);
+    header.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+  });
+})();
+</script>
+
+<script>
+document.addEventListener('copy',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('contextmenu',function(e){e.preventDefault();});
+</script>
+
+</body>
+</html>
