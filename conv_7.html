@@ -90,9 +90,9 @@
     .sub-node{font-size:.75rem;padding:5px 8px}
   }
 
-  /* 移动端横屏展示：紧凑布局 */
+  /* 移动端横屏版式（真横屏与竖屏强制横显共用）：紧凑样式 */
   .landscape-hint{display:none}
-  @media (max-width:926px) and (orientation:landscape){
+  @media (max-width:926px) and (orientation:landscape), (max-width:768px) and (orientation:portrait){
     .wrap{padding:14px 14px 32px}
     .page-title{margin:12px 0 16px}
     .page-title h1{font-size:1.5rem}
@@ -100,32 +100,39 @@
     .page-title .landscape-hint{display:block;margin-top:4px;color:var(--pink);font-size:.78rem;font-weight:700}
     .back-btn{padding:6px 14px;font-size:.8rem}
     .mindmap-container{padding:14px 10px 26px;overflow:auto;-webkit-overflow-scrolling:touch}
+    .mindmap{min-width:640px}
     .center-node .node-box{padding:10px 18px;font-size:.95rem;min-width:110px;border-radius:12px}
     .branch{max-width:300px}
     .branch-header{padding:6px 11px;font-size:.78rem}
     .branch-header .icon{font-size:.9rem}
     .sub-node{font-size:.7rem;padding:4px 8px;line-height:1.45}
-    .branches-left,.branches-right{gap:8px}
+    .branches-left{gap:8px}
+    .branches-right{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(7,auto);grid-auto-flow:column;gap:8px 20px;justify-items:start;align-items:start}
+    .branches-right .branch:nth-child(n+8)::before{display:none}
     .sub-nodes{margin-top:5px;gap:4px}
     .legend{margin-top:12px;padding:10px;gap:8px}
     .legend-item{font-size:.68rem}
     .footer{padding:20px 0 8px}
   }
 
-  /* 竖屏横屏提示遮罩 */
-  .rotate-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:99998;background:rgba(22,19,15,.94);flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:32px;color:#fff;animation:overlayIn .3s ease}
-  @keyframes overlayIn{from{opacity:0}to{opacity:1}}
-  .rotate-overlay .phone-anim{width:52px;height:88px;border:3px solid rgba(255,255,255,.9);border-radius:12px;position:relative;animation:phoneRotate 2.2s ease-in-out infinite}
-  .rotate-overlay .phone-anim::before,.rotate-overlay .phone-anim::after{content:'';position:absolute;left:50%;transform:translateX(-50%);width:16px;height:3px;border-radius:2px;background:rgba(255,255,255,.9)}
-  .rotate-overlay .phone-anim::before{top:6px}
-  .rotate-overlay .phone-anim::after{bottom:7px}
-  @keyframes phoneRotate{0%,18%{transform:rotate(0)}55%,82%{transform:rotate(-90deg)}100%{transform:rotate(-90deg)}}
-  .rotate-overlay h2{font-size:1.25rem;font-weight:800;letter-spacing:.04em}
-  .rotate-overlay p{font-size:.85rem;opacity:.72;line-height:1.7;margin:0}
-  .rotate-overlay .keep-btn{margin-top:8px;padding:10px 28px;border-radius:999px;border:1.5px solid rgba(255,255,255,.45);background:rgba(255,255,255,.1);color:#fff;font-weight:700;font-size:.88rem;cursor:pointer;font-family:inherit}
-  .rotate-overlay .keep-btn:active{background:rgba(255,255,255,.22)}
+  /* 移动端竖屏：整页旋转90°，直接以横屏版式展示 */
   @media (max-width:768px) and (orientation:portrait){
-    .rotate-overlay:not(.dismissed){display:flex}
+    html,body{width:100%;height:100%;overflow:hidden}
+    body{position:fixed;top:0;left:0;margin:0}
+    .wrap{
+      position:absolute;
+      top:0;
+      left:100%;
+      width:100vh;
+      width:100dvh;
+      height:100vw;
+      margin:0;
+      transform:rotate(90deg);
+      transform-origin:left top;
+      overflow-y:auto;
+      overflow-x:hidden;
+      -webkit-overflow-scrolling:touch;
+    }
   }
 
   /* 全屏水印 */
@@ -139,14 +146,6 @@
 </head>
 <body>
 <div class="site-watermark"></div>
-
-<div class="rotate-overlay" id="rotateOverlay" role="dialog" aria-label="横屏查看提示">
-  <div class="phone-anim"></div>
-  <h2>建议横屏查看</h2>
-  <p>本页为思维导图样式，竖屏无法完整展示<br>请将手机横过来浏览，左右滑动即可查看全部内容</p>
-  <button class="keep-btn" id="keepPortraitBtn" type="button">仍要竖屏查看</button>
-</div>
-
 <div class="wrap">
   <a href="index.html?skipIntro=1#features" class="back-btn">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -163,7 +162,7 @@
   <div class="page-title">
     <h1>赛季说明</h1>
     <p>点击分支可展开/收起子节点</p>
-    <p class="landscape-hint">↔ 左右滑动查看完整导图 · 点击分支展开/收起</p>
+    <p class="landscape-hint">滑动查看完整导图 · 点击分支可展开/收起</p>
   </div>
 
   <div class="mindmap-container">
@@ -342,28 +341,6 @@
       this.parentElement.classList.toggle('collapsed');
     });
   });
-</script>
-
-<script>
-  // 移动端竖屏时提示横屏查看思维导图
-  (function(){
-    var overlay=document.getElementById('rotateOverlay');
-    var btn=document.getElementById('keepPortraitBtn');
-    if(!overlay||!btn) return;
-    var mq=window.matchMedia('(max-width:768px) and (orientation:portrait)');
-    function refresh(){
-      var show=mq.matches&&!overlay.classList.contains('dismissed');
-      overlay.style.display=show?'flex':'none';
-      overlay.setAttribute('aria-hidden',show?'false':'true');
-    }
-    btn.addEventListener('click',function(){
-      overlay.classList.add('dismissed');
-      refresh();
-    });
-    if(mq.addEventListener){mq.addEventListener('change',refresh);}
-    else if(mq.addListener){mq.addListener(refresh);}
-    refresh();
-  })();
 </script>
 
 <script>
