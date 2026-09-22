@@ -440,7 +440,7 @@
       window.scrollTo(0,0)
     }).catch(function(){
       if(token!==loadToken)return;
-      location.href=file
+      hardOpen(file,'','')
     })
   }
   function navigateWiki(file,push){
@@ -511,8 +511,14 @@
       if(!link||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
       var file=link.getAttribute('data-wiki-file');
       if(!isWikiFile(file))return;
+      var label=link.getAttribute('data-wiki-label')||'';
+      var cat=link.getAttribute('data-wiki-cat')||'';
       event.preventDefault();
-      openChapter(file,link.getAttribute('data-wiki-label')||'',link.getAttribute('data-wiki-cat')||'');
+      if(file===activeFile){
+        openChapter(file,label,cat);
+        return;
+      }
+      hardOpen(file,label,cat);
     });
     card.addEventListener('pointerenter',function(event){
       var link=event.target.closest&&event.target.closest('a[data-wiki-file]');
@@ -644,6 +650,20 @@
   function toggleMenu(){
     if(menuOpen) closeMenu();
     else openMenu();
+  }
+  function hardOpen(file,label,cat){
+    var url=new URL(wikiHref(file,label),location.href);
+    if(cat) url.searchParams.set('cat',cat);
+    location.assign(url.href);
+  }
+  function applyCatQuery(){
+    var cat='';
+    try{cat=new URLSearchParams(location.search).get('cat')||''}catch(e){return}
+    if(!cat)return;
+    var side=Array.from(document.querySelectorAll('.ency-side-btn')).find(function(btn){
+      return btn.getAttribute('data-cat')===cat
+    });
+    if(side&&!side.classList.contains('active')) side.click();
   }
   function openChapter(file,label,cat){
     closeMenu();
@@ -799,6 +819,7 @@
     addBottomNav();
     bindWikiNav();
     setupTabs();
+    applyCatQuery();
     var file=currentFile();
     if(isWikiFile(file)){
       activeFile=file;
