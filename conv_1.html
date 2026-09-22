@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>智能战斗 — 九小卿攻略站</title>
-<meta name="description" content="九小卿智能战斗攻略">
+<title>便捷功能 — 九小卿攻略站</title>
+<meta name="description" content="九小卿便捷功能攻略：智能战斗、智能组队、智能理包、门派转换、性别重生、调整速度">
 <link rel="icon" type="image/jpeg" href="art/favicon.jpg">
 <style>
   :root{
@@ -19,7 +19,7 @@
   ::selection{background:var(--pink);color:#fff}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
-  .wrap{max-width:960px;margin:0 auto;padding:32px 24px 60px}
+  .wrap{max-width:960px;margin:0 auto;padding:76px 24px 12px}
   .back-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;background:var(--card);border:1.5px solid rgba(22,19,15,.12);color:var(--ink);font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s}
   .back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(22,19,15,.12);border-color:var(--pink)}
   .back-btn svg{width:18px;height:18px}
@@ -31,24 +31,26 @@
   .doc-text{margin:8px 0 0 0;font-size:.95rem;line-height:1.8;color:#333}
   .doc-img{margin:0 0 12px 0;text-align:center}
   .doc-img img{max-width:100%;border-radius:8px;display:inline-block}
+  .section ul{padding-left:0;margin-bottom:16px;list-style:none}
+  .section li{margin-bottom:10px;font-size:.95rem;line-height:1.8;color:#333;padding-left:20px;position:relative}
+  .note{background:#fffbeb;border-left:3px solid #f59e0b;padding:12px 16px;border-radius:0 6px 6px 0;margin:16px 0;font-size:.92rem;color:#78350f}
+  .steps{counter-reset:step;padding-left:0;list-style:none;margin:16px 0}
+  .steps li{counter-increment:step;position:relative;padding-left:36px;margin-bottom:14px;font-size:.95rem;line-height:1.8;color:#333}
   @media (max-width:640px){
-    .wrap{padding:24px 16px}
+    .wrap{padding:64px 16px 12px}
     .page-title{margin:24px 0 32px}
     .doc-text{font-size:.85rem}
   }
-
-  /* 全屏水印 */
   .site-watermark{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99999;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22220%22%20height%3D%22160%22%3E%0A%20%20%3Ctext%20x%3D%2220%22%20y%3D%2280%22%20font-size%3D%2212%22%20fill%3D%22%23000000%22%20fill-opacity%3D%220.05%22%20font-family%3D%22Microsoft%20YaHei%2C%20sans-serif%22%20transform%3D%22rotate%2825%2C%20110%2C%2080%29%22%3E%E4%B9%9D%E5%B0%8F%E5%8D%BF%E6%94%BB%E7%95%A5%E7%AB%99%3C/text%3E%0A%3C/svg%3E");background-repeat:repeat;opacity:1}
-
-  /* 禁止复制 */
   body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
   input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
-
 </style>
+<style id="wiki-nosb">html{scrollbar-width:none;-ms-overflow-style:none}html::-webkit-scrollbar,body::-webkit-scrollbar{width:0;height:0;display:none}</style>
+<link rel="stylesheet" href="wiki-detail.css">
 </head>
-<body>
+<body class="wiki-detail-page">
 <div class="site-watermark"></div>
-<div class="wrap">
+<div class="wrap" data-wiki-tabs="wrap">
   <a href="index.html?skipIntro=1#convenient" class="back-btn">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
       <path d="M19 12H5M12 19l-7-7 7-7"/>
@@ -61,22 +63,91 @@
     </svg>
     智能客服
   </a>
-  <div class="page-title"><h1>智能战斗</h1></div>
+  <div class="page-title wiki-title-art">
+    <img src="art/convenient_title.webp" alt="便捷功能">
+    <h1>便捷功能</h1>
+  </div>
 
-  <div class="section">
+  <div class="section" data-wiki-label="智能战斗">
     <div class="purple-header">功能介绍</div>
     <p class="doc-text">勾选智能战斗后可以会更加智能的释放技能</p>
     <div class="doc-img"><img src="art/zhineng_zhandou/zhandou_2.webp" alt="功能介绍"></div>
-  </div>
-
-  <div class="section">
     <div class="purple-header">战斗面板</div>
     <p class="doc-text">全新的战斗面板，可以指挥仙侣封印、集火，使其战斗更加具有操作性（目前只在PVP和部分挑战活动中可使用）</p>
     <div class="doc-img"><img src="art/zhineng_zhandou/zhandou_4.png" alt="战斗面板" loading="lazy"></div>
   </div>
 
-  <div class="footer">九小卿攻略站
-</div>
+  <div class="section" data-wiki-label="智能组队">
+    <div class="purple-header">系统介绍</div>
+    <ul>
+      <li>我有特殊的能力能快速召集处于<strong>离线挂机状态</strong>的单人玩家进入你的队伍！请注意，<strong>必须组队</strong>，才能匹配！</li>
+      <li>在<strong>京城擂台右侧</strong>可以找到我哦~</li>
+    </ul>
+    <div class="doc-img"><img src="art/zhineng_zudui/img_1.webp" alt="智能组队截图"></div>
+  </div>
+
+  <div class="section" data-wiki-label="智能理包">
+    <div class="purple-header">功能介绍</div>
+    <p class="doc-text">先点击左侧小齿轮，进去后勾选需要的功能，勾选好后保存在点右侧的整理即可</p>
+    <div class="doc-img"><img src="art/zhineng_libao/libao_2.png" alt="功能介绍"></div>
+    <div class="purple-header">功能优化</div>
+    <p class="doc-text">修复了智能整理的功能，勾选后在整理更便捷</p>
+    <div class="doc-img"><img src="art/zhineng_libao/libao_3.png" alt="功能优化" loading="lazy"></div>
+    <div class="purple-header">新增物品栏</div>
+    <p class="doc-text">新增了很多单独的物品栏，后续获得对应类的物品会直接存到对应的背包中！</p>
+    <div class="doc-img"><img src="art/zhineng_libao/libao_4.png" alt="新增物品栏" loading="lazy"></div>
+  </div>
+
+  <div class="section" data-wiki-label="门派转换">
+    <div class="purple-header">功能介绍</div>
+    <div class="lv-banner">等级限制：人物等级达到 50 级</div>
+    <ul>
+      <li>开启新门派<strong>无需等待</strong>、切换门派<strong>无需等待</strong></li>
+      <li>转换门派后，角色等级、技能等级、修炼、法宝、龙晶、坐骑等<strong>不会受到影响</strong></li>
+      <li>新门派下角色需要<strong>重新加点</strong>；羽翼将新增一套方案；可以继续使用旧门派的部分装备，穿戴新装备时会自动继承旧门派对应部位的<strong>启灵等级</strong>；龙晶可兑换成新门派需要的属性；时装的染色方案无法携带至新的门派，只能同当前门派绑定</li>
+      <li>法宝和坐骑为<strong>所有门派通用</strong></li>
+      <li>开启新门派时，当前穿戴的羽翼方案会复制为新开启的羽翼方案；之后新获得的羽翼技能（升阶或新外观获得）在各方案间是<strong>相互独立</strong>的，即在当前方案获得新技能时，其他已开启但未使用的方案中也会获得一个技能，但可能与当前方案不同。在当前方案中重置羽翼技能不会影响其他已开启但未使用的方案。玩家可以自由切换穿戴各种方案</li>
+    </ul>
+    <div class="doc-img"><img src="art/menpai_zhuanhuan/img_1.png" alt="门派转换截图"></div>
+  </div>
+
+  <div class="section" data-wiki-label="性别重生">
+    <div class="purple-header">功能介绍</div>
+    <div class="lv-banner">等级限制：人物等级达到 70 级</div>
+    <ul>
+      <li>角色等级达到 <strong>70级</strong> 可进行性别重生</li>
+      <li>性别重生<strong>无需等待</strong></li>
+      <li>性别重生后，角色等级、门派、技能等级、修炼、法宝、龙晶、坐骑、羽翼等<strong>不会受到影响</strong></li>
+      <li>新性别下角色<strong>新增一套装备方案</strong>；在新性别下切换已有门派也会新增一套装备方案；可以继续使用旧性别的部分装备，穿戴新装备时会自动继承旧性别对应部位的<strong>启灵等级</strong></li>
+      <li>性别重生后，所有开启的时装将转换成对应的性别外观，但<strong>大部分时装染色方案不会保留</strong></li>
+      <li>处于<strong>姻缘关系</strong>中的玩家不能进行性别重生</li>
+      <li>参与<strong>帮派宝贝</strong>的女性角色进行性别重生后，会自动退出本次竞选</li>
+    </ul>
+    <div class="doc-img"><img src="art/xingbie_chongsheng/img_1.png" alt="性别重生截图"></div>
+  </div>
+
+  <div class="section" data-wiki-label="调整速度">
+    <div class="purple-header">系统介绍</div>
+    <div class="note">
+      <strong>注意：</strong>当前速度不能调为 <strong>0</strong>，0速度不生效。同时与对方当前速度相同时，则通过<strong>原速度</strong>来判断谁快谁慢。<br>
+      例：当前速度均为1的情况下，A玩家原速度为1000，B玩家原速度为1200，则 <strong>B比A快</strong>！
+    </div>
+    <div class="purple-header">使用方法</div>
+    <ol class="steps">
+      <li>在人物面板处点击 <strong>"加点"</strong>
+        <div class="doc-img"><img src="art/tiaozheng_sudu/img_0.png" alt="点击加点"></div>
+      </li>
+      <li>点击 <strong>"调整速度"</strong>
+        <div class="doc-img"><img src="art/tiaozheng_sudu/img_1.webp" alt="点击调整速度" loading="lazy"></div>
+      </li>
+      <li>调整速度，<strong>不能为0</strong>，当前速度为0无效！
+        <div class="doc-img"><img src="art/tiaozheng_sudu/img_2.png" alt="调整速度数值" loading="lazy"></div>
+      </li>
+      <li>完成调整
+        <div class="doc-img"><img src="art/tiaozheng_sudu/img_3.png" alt="完成调整" loading="lazy"></div>
+      </li>
+    </ol>
+  </div>
 </div>
 
 <script>
@@ -84,6 +155,7 @@ document.addEventListener('copy',function(e){e.preventDefault();alert('禁止复
 document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复制');});
 document.addEventListener('contextmenu',function(e){e.preventDefault();});
 </script>
-
+<script>if(window.self!==window.top){document.documentElement.classList.add("embedded");var _s=document.createElement("style");_s.textContent=".back-btn{display:none!important}";document.head.appendChild(_s);}</script>
+<script src="wiki-detail.js"></script>
 </body>
 </html>

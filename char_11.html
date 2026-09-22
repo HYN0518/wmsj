@@ -18,7 +18,7 @@
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
   button{font-family:inherit}
-  .wrap{max-width:960px;margin:0 auto;padding:32px 24px 60px}
+  .wrap{max-width:960px;margin:0 auto;padding:76px 24px 12px}
   .back-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;background:var(--card);border:1.5px solid rgba(22,19,15,.12);color:var(--ink);font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s}
   .back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(22,19,15,.12);border-color:var(--pink)}
   .back-btn svg{width:18px;height:18px}
@@ -44,7 +44,7 @@
   .data-table tr:nth-child(even) td{background:rgba(139,92,246,.03)}
   .table-wrap{overflow-x:auto;margin:8px 0 16px}
   @media (max-width:640px){
-    .wrap{padding:24px 16px}
+    .wrap{padding:64px 16px 12px}
     .page-title{margin:24px 0 32px}
     .section li{font-size:.85rem}
     .hs-toggle-header{font-size:1.05rem}
@@ -59,9 +59,18 @@
   body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
   input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
 
-</style>
+
+
+  .note{
+    background:rgba(139,92,246,.06);
+    border-left:4px solid var(--violet);
+    padding:12px 16px;border-radius:0 10px 10px 0;
+    margin:16px 0;font-size:.95rem;
+  }
+  </style>
+<style id="wiki-nosb">html{scrollbar-width:none;-ms-overflow-style:none}html::-webkit-scrollbar,body::-webkit-scrollbar{width:0;height:0;display:none}</style><link rel="stylesheet" href="wiki-detail.css">
 </head>
-<body>
+<body class="wiki-detail-page">
 <div class="site-watermark"></div>
 <div class="wrap">
   <a href="index.html?skipIntro=1#character" class="back-btn">
@@ -79,9 +88,9 @@
     智能客服
   </a>
   
-<div class="page-title">
-    
-<h1>神兵介绍</h1>
+<div class="page-title wiki-title-art">
+    <img src="art/shenbing_title.webp" alt="神兵介绍">
+    <h1>神兵介绍</h1>
   </div>
   
 <div class="section" id="sec-0">
@@ -96,7 +105,7 @@
       
 <div class="hs-collapsible-inner">
         
-<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">等级限制：人物等级达到 90 级</p>
+<div class="lv-banner">等级限制：人物等级达到 90 级</div>
 <ul>
 <li>神兵境界提升 ，可提升神兵等级上限、灵石孔数和灵石等级上限</li>
 <li>神兵等级提升 ，会有可观的属性加成</li>
@@ -254,26 +263,173 @@
 <li>开启神兵装备后可在装备打造部分对装备祝福进行提升</li>
 <li>祝福等级上限 80 级</li>
 </ul>
-<div style="text-align:center;margin:12px 0;">
-<video class="tut-img" src="art/shenbing_tutorial/zfsy.mp4" poster="art/shenbing_tutorial/zfsy_poster.webp" controls style="width:100%;max-width:640px;border-radius:10px;" preload="none"></video>
-</div>
 <ul>
 <li>各种祝福券可通过[技能]→ [生活技能]提升锻造符的等级来获取 ，等级越高锻造符星级越高加成越多</li>
 <li>人物每 10 级可打造下一阶段祝福券</li>
 <li>可用活力药补充活力</li>
 </ul>
 <div style="text-align:center;margin:12px 0;">
+<video class="tut-img" src="art/shenbing_tutorial/zfsy.mp4" poster="art/shenbing_tutorial/zfsy_poster.webp" controls style="width:100%;max-width:640px;border-radius:10px;" preload="none"></video>
+</div>
+<div style="text-align:center;margin:12px 0;">
 <video class="tut-img" src="art/shenbing_tutorial/zfza.mp4" poster="art/shenbing_tutorial/zfza_poster.webp" controls style="width:100%;max-width:640px;border-radius:10px;" preload="none"></video>
 </div>
       </div>
     </div>
+<div class="section" id="sec-intro">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>灵石介绍</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li>灵石系统用于神兵镶嵌，通过镶嵌灵石可大幅提升角色各项属性。</li>
+          <li>灵石可以镶嵌在神兵上用于提升属性。</li>
+          <li>灵石的等级上限由相应部位神兵的境界决定。</li>
+          <li>两颗同类型同等级的灵石可以合成一颗高等级的灵石。</li>
+          <li>具体升阶所需和属性加成可看游戏内的神兵介绍。</li>
+        </ul>
+        <div class="lv-banner">等级限制：人物等级达到 90 级。</div>
+        <ul>
+          <li class="img-li"><img class="tut-img" src="art/lingshi_tutorial/shenbing.webp" alt="神兵灵石界面"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-lvlimit">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>灵石等级限制</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li><strong>12 级</strong>需要装备神兵达 <strong>2 阶</strong></li>
+          <li><strong>13 级</strong>需要装备神兵达 <strong>3 阶</strong></li>
+          <li><strong>14 级</strong>需要装备神兵达 <strong>4 阶</strong></li>
+          <li><strong>16 级</strong>需要装备神兵达 <strong>5 阶</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-convert">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>灵石转换说明</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li>京城地图 <strong>[438.124]</strong> 处，<strong>[神石志您]</strong> 处进行转换。</li>
+        </ul>
+        <div class="sub-header">规则说明</div>
+        <ul>
+          <li>只有不低于 <strong>5 级</strong>的灵石可以转换。</li>
+          <li>灵石必须拆下来放在背包才可以转换。</li>
+          <li>每次转换会根据转换前后灵石的价值差收取或返还差价（金币）。</li>
+          <li>高价格转换低价格灵石，返回的金币会绑定到灵石转换界面，无法取出。</li>
+          <li>低价格转换高价格灵石，会优先消耗灵石转换界面的金币。</li>
+          <li>灵石的价值取决于当前服务器商会的灵石价格进行换算。</li>
+          <li>每次门派转换后有 <strong>999 次</strong>转化灵石的机会。</li>
+        </ul>
+        <ul>
+          <li class="img-li"><img class="tut-img" src="art/lingshi_tutorial/zhuanhuan.png" alt="灵石转换界面" loading="lazy"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-growth">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>成长属性介绍</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>灵石名称</th>
+                <th>作用部位</th>
+                <th>属性类型</th>
+                <th>1-10 级成长公式</th>
+                <th>11-16 级成长公式</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>虎眼灵石</td><td>武器</td><td>物攻</td><td>物攻 = 灵石等级×10</td><td>物攻 =（灵石等级 -10）×50+100</td></tr>
+              <tr><td>蓝玉灵石</td><td>武器</td><td>法攻</td><td>法攻 = 灵石等级×10</td><td>法攻 =（灵石等级 -10）×50+100</td></tr>
+              <tr><td>天地灵石</td><td>武器</td><td>封印</td><td>封印 = 灵石等级×10</td><td>封印 =（灵石等级 -10）×50+100</td></tr>
+              <tr><td>寿山灵石</td><td>帽子</td><td>血量</td><td>血量 = 灵石等级×72</td><td>血量 =（灵石等级 -10）×360+720</td></tr>
+              <tr><td>紫耀灵石</td><td>帽子</td><td>法力</td><td>法力 = 灵石等级×36</td><td>法力 =（灵石等级 -10）×180+360</td></tr>
+              <tr><td>泰山灵石</td><td>衣服</td><td>物防</td><td>物防 = 灵石等级×5</td><td>物防 =（灵石等级 -10）×25+50</td></tr>
+              <tr><td>熔岩灵石</td><td>衣服</td><td>物抗</td><td>物抗 = 灵石等级×10</td><td>物抗 =（灵石等级 -10）×50+100</td></tr>
+              <tr><td>火魂灵石</td><td>护腕</td><td>物暴</td><td>物暴 = 灵石等级×10</td><td>物暴 =（灵石等级 -10）×50+100</td></tr>
+              <tr><td>海蓝灵石</td><td>护腕</td><td>法暴</td><td>法暴 = 灵石等级×10</td><td>法暴 =（灵石等级 -10）×50+100</td></tr>
+              <tr><td>月光灵石</td><td>腰带</td><td>法防</td><td>法防 = 灵石等级×5</td><td>法防 =（灵石等级 -10）×25+50</td></tr>
+              <tr><td>蔷薇灵石</td><td>腰带</td><td>法抗</td><td>法抗 = 灵石等级×10</td><td>法抗 =（灵石等级 -10）×50+100</td></tr>
+              <tr><td>琥珀灵石</td><td>鞋子</td><td>速度</td><td>速度 = 灵石等级×7</td><td>速度 =（灵石等级 -10）×35+70</td></tr>
+              <tr><td>白玉灵石</td><td>鞋子</td><td>封抗</td><td>封抗 = 灵石等级×5</td><td>封抗 =（灵石等级 -10）×25+50</td></tr>
+              <tr><td>混元灵石</td><td>护腕</td><td>气血</td><td>气血 = 灵石等级×36</td><td>气血 =（灵石等级 -10）×180+360</td></tr>
+              <tr><td>混元灵石</td><td>护腕</td><td>封抗</td><td>封抗 = 灵石等级×4</td><td>封抗 =（灵石等级 -10）×20+40</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-ratio">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>灵石等级换算比例</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li><strong>2 级灵石</strong> = 1 级灵石 × 2</li>
+          <li><strong>3 级灵石</strong> = 1 级灵石 × 4</li>
+          <li>其余级别灵石换算：可通过对应等级灵石数量 ÷2 或 ÷4 得出结果。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-cost">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>各阶所需 1 级灵石数量</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li><strong>1 阶：</strong>1 级灵石 × 1</li>
+          <li><strong>2 阶：</strong>1 级灵石 × 1</li>
+          <li><strong>3 阶：</strong>1 级灵石 × 2</li>
+          <li><strong>4 阶：</strong>1 级灵石 × 4</li>
+          <li><strong>5 阶：</strong>1 级灵石 × 8</li>
+          <li><strong>6 阶：</strong>1 级灵石 × 16</li>
+          <li><strong>7 阶：</strong>1 级灵石 × 32</li>
+          <li><strong>8 阶：</strong>1 级灵石 × 64</li>
+          <li><strong>9 阶：</strong>1 级灵石 × 128</li>
+          <li><strong>10 阶：</strong>1 级灵石 × 256</li>
+          <li><strong>11 阶：</strong>1 级灵石 × 512</li>
+          <li><strong>12 阶：</strong>1 级灵石 × 1024</li>
+          <li><strong>13 阶：</strong>1 级灵石 × 2048</li>
+          <li><strong>14 阶：</strong>1 级灵石 × 4096</li>
+          <li><strong>15 阶：</strong>1 级灵石 × 8192</li>
+          <li><strong>16 阶：</strong>1 级灵石 × 16384</li>
+        </ul>
+      </div>
+    </div>
+  </div>
   </div>
   
-<div class="footer">
-    
-<p>九小卿攻略站</p>
 
-</div>
 <script>
 (function(){
   document.querySelectorAll('.hs-toggle-header').forEach(function(header){
@@ -298,5 +454,75 @@ document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复�
 document.addEventListener('contextmenu',function(e){e.preventDefault();});
 </script>
 
+<script>if(window.self!==window.top){document.documentElement.classList.add("embedded");var _s=document.createElement("style");_s.textContent=".back-btn{display:none!important}";document.head.appendChild(_s);}</script><script>
+/* 手风琴转标签栏：与门派页 sect-tab 同款视觉 */
+(function(){
+  var hs=[].slice.call(document.querySelectorAll('.hs-toggle-header'));
+  if(!hs.length) return;
+  var st=document.createElement('style');
+  st.textContent='.wtab-bar{display:flex;gap:8px;overflow-x:auto;padding:6px 2px 10px;scrollbar-width:none;-ms-overflow-style:none}.wtab-bar::-webkit-scrollbar{display:none}.wtab{flex:0 0 auto;display:inline-flex;align-items:center;background:#fff;border:1.5px solid rgba(22,19,15,.08);border-radius:999px;padding:8px 14px;font-size:.85rem;font-weight:800;color:#57534e;cursor:pointer;font-family:inherit;white-space:nowrap;transition:background .2s,color .2s,border-color .2s,box-shadow .2s}.wtab.active{background:#fff;border-color:#f59e0b;color:#c77b2e;box-shadow:0 0 0 2.5px rgba(245,158,11,.28),0 6px 14px rgba(245,158,11,.2)}@media(min-width:961px){.wtab{padding:9px 18px;font-size:.9rem}}';
+  document.head.appendChild(st);
+  var units=hs.map(function(h){
+    var nx=h.nextElementSibling;
+    var box=document.createElement('div');
+    h.parentNode.insertBefore(box,h);
+    box.appendChild(h);
+    if(nx) box.appendChild(nx);
+    h.style.display='none';
+    var c=box.querySelector('.hs-collapsible');
+    if(c) c.classList.add('open');
+    return box;
+  });
+  var bar=document.createElement('div'); bar.className='wtab-bar';
+  units.forEach(function(u,i){
+    var sp=u.querySelector('.hs-toggle-header span');
+    var b=document.createElement('button');
+    b.type='button'; b.className='wtab';
+    b.textContent=sp?sp.textContent.trim():('栏目'+(i+1));
+    b.addEventListener('click',function(){
+      units.forEach(function(x,j){ x.style.display=(j===i)?'':'none'; });
+      [].forEach.call(bar.children,function(x){ x.classList.remove('active'); });
+      b.classList.add('active');
+      /* 只滚标签栏自身，避免波及页面滚动 */
+      (function(){
+        var edge=8,r=b.getBoundingClientRect(),h=bar.getBoundingClientRect();
+        if(r.left>=h.left+edge && r.right<=h.right-edge) return;
+        var tabLeft=r.left-h.left+bar.scrollLeft;
+        bar.scrollTo({left:Math.max(0,tabLeft-(bar.clientWidth-b.offsetWidth)/2),behavior:'auto'});
+      })();
+    });
+    bar.appendChild(b);
+  });
+  /* 鼠标左键按住拖动横向滚动 */
+  bar.style.cursor='grab';
+  var dragging=false,startX=0,startL=0,moved=0;
+  bar.addEventListener('mousedown',function(e){
+    dragging=true;moved=0;startX=e.pageX;startL=bar.scrollLeft;
+    bar.style.cursor='grabbing';
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove',function(e){
+    if(!dragging) return;
+    var dx=e.pageX-startX;
+    moved=Math.max(moved,Math.abs(dx));
+    bar.scrollLeft=startL-dx;
+  });
+  window.addEventListener('mouseup',function(){
+    if(!dragging) return;
+    dragging=false;bar.style.cursor='grab';
+    /* click 事件在 mouseup 后同步触发，异步复位避免拦截后续点击 */
+    setTimeout(function(){moved=0},0);
+  });
+  /* 拖动超过 6px 时拦截 click，避免松手误切标签 */
+  bar.addEventListener('click',function(e){
+    if(moved>6){e.stopPropagation();e.preventDefault();}
+  },true);
+  var anchor=units[0].closest('.section')||units[0];
+  var holder=document.createElement('div');
+  anchor.parentNode.insertBefore(holder,anchor);
+  holder.appendChild(bar);
+  units.forEach(function(u,i){ holder.appendChild(u); if(i) u.style.display='none'; });
+  bar.firstChild.classList.add('active');
+})();
+</script><script src="wiki-detail.js"></script>
 </body>
-</html>

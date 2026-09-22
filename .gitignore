@@ -29,3 +29,9 @@ backup_*/
 *_backup*.html
 _tmp_*.py
 format_*.py
+
+# 本地工作副本与工具缓存，不进仓库
+xinziyuan/
+.workbuddy/
+.playwright-cli/
+tmp/

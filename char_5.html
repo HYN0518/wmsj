@@ -18,7 +18,7 @@
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
   button{font-family:inherit}
-  .wrap{max-width:960px;margin:0 auto;padding:32px 24px 60px}
+  .wrap{max-width:960px;margin:0 auto;padding:76px 24px 12px}
   .back-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;background:var(--card);border:1.5px solid rgba(22,19,15,.12);color:var(--ink);font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s}
   .back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(22,19,15,.12);border-color:var(--pink)}
   .back-btn svg{width:18px;height:18px}
@@ -44,7 +44,7 @@
   .data-table tr:nth-child(even) td{background:rgba(139,92,246,.03)}
   .table-wrap{overflow-x:auto;margin:8px 0 16px}
   @media (max-width:640px){
-    .wrap{padding:24px 16px}
+    .wrap{padding:64px 16px 12px}
     .page-title{margin:24px 0 32px}
     .section li{font-size:.85rem}
     .hs-toggle-header{font-size:1.05rem}
@@ -60,8 +60,9 @@
   input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
 
 </style>
+<style id="wiki-nosb">html{scrollbar-width:none;-ms-overflow-style:none}html::-webkit-scrollbar,body::-webkit-scrollbar{width:0;height:0;display:none}</style><link rel="stylesheet" href="wiki-detail.css">
 </head>
-<body>
+<body class="wiki-detail-page">
 <div class="site-watermark"></div>
 <div class="wrap">
   <a href="index.html?skipIntro=1#character" class="back-btn">
@@ -79,9 +80,9 @@
     智能客服
   </a>
   
-<div class="page-title">
-    
-<h1>法宝介绍</h1>
+<div class="page-title wiki-title-art">
+    <img src="art/fabao_title.webp" alt="法宝介绍">
+    <h1>法宝介绍</h1>
   </div>
   
 <div class="section" id="sec-0">
@@ -96,7 +97,7 @@
       
 <div class="hs-collapsible-inner">
         
-<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">等级限制：人物等级达到 60 级</p>
+<div class="lv-banner">等级限制：人物等级达到 60 级</div>
 <p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">每位玩家目前可以佩戴 6个法宝 ，每样法宝对应的属性都不相同 ，可以全面提升玩家的战力，花费法宝灵髓和法宝经验丹可以对法宝进行升级 ，升级后可以提升法宝自身属性。</p>
 <ul>
 <li class="img-li">
@@ -112,6 +113,23 @@
 <li class="img-li">
 <img class="tut-img" src="art/fabao_tutorial/image4.webp" alt="系统介绍" loading="lazy"></li>
 </ul>
+      </div>
+    </div>
+  </div>
+  
+
+<div class="section" id="sec-growth">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>成长介绍</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
 <div class="sub-header">成长介绍</div>
 <ul>
 <li class="img-li">
@@ -206,6 +224,23 @@
 <li>19 级：所需人物等级 90</li>
 <li>20 级：所需人物等级 95</li>
 </ul>
+      </div>
+    </div>
+  </div>
+  
+
+<div class="section" id="sec-star">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>星级介绍</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
 <ul>
 <li>被作为材料消耗掉的法宝内的积分会被清空。一键升星优先消耗法宝 ，不足的部分再用法宝碎片补足</li>
 <li>8 星及 8 星以上星级法宝不能使用一键升星。一键升星不会用已装备的法宝作为材料来升星。浮屠金钵和獠牙无法通过元宝补足获得。</li>
@@ -2675,13 +2710,583 @@
 </div>
       </div>
     </div>
+<div class="section" id="sec-0">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>龙晶介绍</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<div class="lv-banner">等级限制：人物等级达到 60 级</div>
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>龙晶名称</th>
+<th>每次升阶属性加成</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>天枢龙晶</td>
+<td>物攻 +10</td>
+</tr>
+<tr>
+<td>天璇龙晶</td>
+<td>法攻 +10</td>
+</tr>
+<tr>
+<td>天玑龙晶</td>
+<td>封印+10</td>
+</tr>
+<tr>
+<td>天枪龙晶</td>
+<td>气血 +72</td>
+</tr>
+<tr>
+<td>天权龙晶</td>
+<td>物防+5</td>
+</tr>
+<tr>
+<td>开衡龙晶</td>
+<td>物抗 +10</td>
+</tr>
+<tr>
+<td>开阳龙晶</td>
+<td>物暴 +10</td>
+</tr>
+<tr>
+<td>摇光龙晶</td>
+<td>法暴 +10</td>
+</tr>
+<tr>
+<td>右枢龙晶</td>
+<td>封抗+5</td>
+</tr>
+<tr>
+<td>左枢龙晶</td>
+<td>法防+5</td>
+</tr>
+<tr>
+<td>上宰龙晶</td>
+<td>法抗 +10</td>
+</tr>
+<tr>
+<td>诩卫龙晶</td>
+<td>法力 +36</td>
+</tr>
+<tr>
+<td>下宰龙晶</td>
+<td>速度+7</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sub-header">龙晶转换说明</div>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">京城地图[438.124]处 ，[神石志您]处进行转换</p>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">规则说明：只有不低于 5 级的龙晶可以转换龙晶必须拆下来放在背包才可以转换每次转换会根据转换前后龙晶的价值差您收取或返还差价（金币） 高价格转换低价格龙晶 ，返回的金币会绑定到龙晶转换界面 ，无法取出低价格转换高价格龙晶 ，会优先消耗龙晶转换界面的金币龙晶的价值取决于当前服务器商会的龙晶价格进行换算每次门派转换后有 999 次转化龙晶的机会</p>
+<ul>
+<li class="img-li">
+<img class="tut-img" src="art/longjing_tutorial/image3.png" alt="系统介绍"></li>
+</ul>
+<div class="sub-header">龙晶等级换算比例说明</div>
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>龙晶等级</th>
+<th>等价 1 级龙晶数量</th>
+<th>换算公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 级龙晶</td>
+<td>1 个</td>
+<td>基础单位</td>
+</tr>
+<tr>
+<td>2 级龙晶</td>
+<td>2 个</td>
+<td>2 级 = 1 级 × 2</td>
+</tr>
+<tr>
+<td>3 级龙晶</td>
+<td>4 个</td>
+<td>3 级 = 1 级 × 4</td>
+</tr>
+<tr>
+<td>4 级龙晶</td>
+<td>8 个</td>
+<td>上一级数量 ÷2 反向推算 / 本级 = 1 级 ×8</td>
+</tr>
+<tr>
+<td>5 级龙晶</td>
+<td>16 个</td>
+<td>本级 = 1 级 ×16</td>
+</tr>
+<tr>
+<td>所有高阶龙晶</td>
+<td>-</td>
+<td>高阶龙晶数量→ 低阶： ÷2 / ÷4 即可得出对应等价数量</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sub-header">单一龙晶消耗</div>
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>龙晶阶数</th>
+<th>所需人物等级</th>
+<th>所需 1 级龙晶数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 阶</td>
+<td>60 级</td>
+<td>×1</td>
+</tr>
+<tr>
+<td>2 阶</td>
+<td>60 级</td>
+<td>×1</td>
+</tr>
+<tr>
+<td>3 阶</td>
+<td>60 级</td>
+<td>×2</td>
+</tr>
+<tr>
+<td>4 阶</td>
+<td>60 级</td>
+<td>×4</td>
+</tr>
+<tr>
+<td>5 阶</td>
+<td>60 级</td>
+<td>×8</td>
+</tr>
+<tr>
+<td>6 阶</td>
+<td>60 级</td>
+<td>×16</td>
+</tr>
+<tr>
+<td>7 阶</td>
+<td>70 级</td>
+<td>×32</td>
+</tr>
+<tr>
+<td>8 阶</td>
+<td>80 级</td>
+<td>×64</td>
+</tr>
+<tr>
+<td>9 阶</td>
+<td>90 级</td>
+<td>×128</td>
+</tr>
+<tr>
+<td>10 阶</td>
+<td>100 级</td>
+<td>×256</td>
+</tr>
+<tr>
+<td>11 阶</td>
+<td>110 级</td>
+<td>×512</td>
+</tr>
+<tr>
+<td>12 阶</td>
+<td>110 级</td>
+<td>×1024</td>
+</tr>
+<tr>
+<td>13 阶</td>
+<td>110 级</td>
+<td>×2048</td>
+</tr>
+<tr>
+<td>14 阶</td>
+<td>110 级</td>
+<td>×4096</td>
+</tr>
+<tr>
+<td>15 阶</td>
+<td>110 级</td>
+<td>×8192</td>
+</tr>
+<tr>
+<td>16 阶</td>
+<td>110 级</td>
+<td>×16384</td>
+</tr>
+</tbody>
+</table>
+</div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="section" id="sec-0">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>灵器介绍</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<div class="lv-banner">等级限制：人物等级达到 61 级</div>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">属性提升消耗[灵器潜力符]</p>
+<ul>
+<li class="img-li">
+<img class="tut-img" src="art/lingqi_tutorial/image2.png" alt="系统介绍"></li>
+</ul>
+<div class="sub-header">单一灵器所需</div>
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>灵器等级</th>
+<th>消耗</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>8</td>
+</tr>
+<tr>
+<td>6</td>
+<td>16</td>
+</tr>
+<tr>
+<td>7</td>
+<td>16</td>
+</tr>
+<tr>
+<td>8</td>
+<td>16</td>
+</tr>
+<tr>
+<td>9</td>
+<td>32</td>
+</tr>
+<tr>
+<td>10</td>
+<td>64</td>
+</tr>
+<tr>
+<td>11</td>
+<td>64</td>
+</tr>
+<tr>
+<td>12</td>
+<td>96</td>
+</tr>
+<tr>
+<td>13</td>
+<td>128</td>
+</tr>
+<tr>
+<td>14</td>
+<td>128</td>
+</tr>
+<tr>
+<td>15</td>
+<td>192</td>
+</tr>
+<tr>
+<td>16</td>
+<td>192</td>
+</tr>
+<tr>
+<td>17</td>
+<td>192</td>
+</tr>
+<tr>
+<td>18</td>
+<td>288</td>
+</tr>
+<tr>
+<td>19</td>
+<td>288</td>
+</tr>
+<tr>
+<td>20</td>
+<td>416</td>
+</tr>
+<tr>
+<td>合计</td>
+<td>2144</td>
+</tr>
+</tbody>
+</table>
+</div>
+      </div>
+    </div>
+  
+<div class="section" id="sec-1">
+    
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>灵器特技</span>
+      
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    
+<div class="hs-collapsible">
+      
+<div class="hs-collapsible-inner">
+        
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>名称/等级</th>
+<th>效果/描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 级审判</td>
+<td>使目标攻击时获得审判状态 ，将敌人击倒时 ，其重生类技能或效果无效 ，对拥有重生、高级重生、超级重生的目标伤害结果增加 5% ，持续 2 回合 ，3 回合内无法再次使用 ，升级降低怒气消耗 8 点 ，最低降至 40 点</td>
+</tr>
+<tr>
+<td>2 级审判</td>
+<td>使目标攻击时获得审判状态 ，将敌人击倒时 ，其重生类技能或效果无效 ，对拥有重生、高级重生、超级重生的目标伤害结果增加10% ，持续 2 回合 ，3 回合内无法再次使用 ，升级降低怒气消耗 8 点 ，最低降至 40 点</td>
+</tr>
+<tr>
+<td>3 级审判</td>
+<td>使目标攻击时获得审判状态 ，将敌人击倒时 ，其重生类技能或效果无效 ，对拥有重生、高级重生、超级重生的目标伤害结果增加15% ，持续 2 回合 ，3 回合内无法再次使用 ，升级降低怒气消耗 8 点 ，最低降至 40 点</td>
+</tr>
+<tr>
+<td>4 级审判</td>
+<td>使目标攻击时获得审判状态 ，将敌人击倒时 ，其重生类技能或效果无效 ，对拥有重生、高级重生、超级重生的目标伤害结果增加 20% ，持续 2 回合 ，3 回合内无法再次使用 ，升级降低怒气消耗 8 点 ，最低降至 40 点</td>
+</tr>
+<tr>
+<td>5 级审判</td>
+<td>使目标攻击时获得审判状态 ，将敌人击倒时 ，其重生类技能或效果无效 ，对拥有重生、高级重生、超级重生的目标伤害结果增加 25% ，持续 2 回合 ，3 回合内无法再次使用 ，升级降低怒气消耗 8 点 ，最低降至 40 点</td>
+</tr>
+<tr>
+<td>6 级审判</td>
+<td>使目标攻击时获得审判状态 ，将敌人击倒时 ，其重生类技能或效果无效 ，对拥有重生、高级重生、超级重生的目标伤害结果增加 30% ，持续 2 回合 ，3 回合内无法再次使用 ，升级降低怒气消耗 8 点 ，最低降至 40 点</td>
+</tr>
+<tr>
+<td>7 级审判</td>
+<td>使目标攻击时获得审判状态 ，将敌人击倒时 ，其重生类技能或效果无效 ，对拥有重生、高级重生、超级重生的目标伤害结果增加 35% ，持续 3 回合 ，3 回合内无法再次使用 ，升级降低怒气消耗 8 点 ，最低降至 40 点</td>
+</tr>
+<tr>
+<td>8 级审判</td>
+<td>使目标攻击时获得审判状态 ，将敌人击倒时 ，其重生类技能或效果无效 ，对拥有重生、高级重生、超级重生的目标伤害结果增加 40% ，持续 3 回合 ，3 回合内无法再次使用 ，升级降低怒气消耗 8 点 ，最低降至 40 点</td>
+</tr>
+<tr>
+<td>9 级审判</td>
+<td>使目标攻击时获得审判状态 ，将敌人击倒时 ，其重生类技能或效果无效 ，对拥有重生、高级重生、超级重生的目标伤害结果增加 45% ，持续 3 回合 ，3 回合内无法再次使用 ，升级降低怒气消耗 8 点 ，最低降至 40 点</td>
+</tr>
+<tr>
+<td>10 级审判</td>
+<td>使目标攻击时获得审判状态 ，将敌人击倒时 ，其重生类技能或效果无效 ，对拥有重生、高级重生、超级重生的目标伤害结果增加 50% ，持续 4 回合 ，3 回合内无法再次使用 ，升级降低怒气消耗 8 点 ，最低降至 40 点</td>
+</tr>
+<tr>
+<td>1 级灵虚御空</td>
+<td>提升己方所有角色和仙侣速度 1% ，持续 5 回合 ，升级提升增加的速度的效果</td>
+</tr>
+<tr>
+<td>2 级灵虚御空</td>
+<td>提升己方所有角色和仙侣速度 2% ，持续 5 回合 ，升级提升增加的速度的效果</td>
+</tr>
+<tr>
+<td>3 级灵虚御空</td>
+<td>提升己方所有角色和仙侣速度 3% ，持续 5 回合 ，升级提升增加的速度的效果</td>
+</tr>
+<tr>
+<td>4 级灵虚御空</td>
+<td>提升己方所有角色和仙侣速度 4% ，持续 5 回合 ，升级提升增加的速度的效果</td>
+</tr>
+<tr>
+<td>5 级灵虚御空</td>
+<td>提升己方所有角色和仙侣速度 5% ，持续 5 回合 ，升级提升增加的速度的效果</td>
+</tr>
+<tr>
+<td>6 级灵虚御空</td>
+<td>提升己方所有角色和仙侣速度 6% ，持续 5 回合 ，升级提升增加的速度的效果</td>
+</tr>
+<tr>
+<td>7 级灵虚御空</td>
+<td>提升己方所有角色和仙侣速度 7% ，持续 5 回合 ，升级提升增加的速度的效果</td>
+</tr>
+<tr>
+<td>8 级灵虚御空</td>
+<td>提升己方所有角色和仙侣速度 8% ，持续 5 回合 ，升级提升增加的速度的效果</td>
+</tr>
+<tr>
+<td>9 级灵虚御空</td>
+<td>提升己方所有角色和仙侣速度 9% ，持续 5 回合 ，升级提升增加的速度的效果</td>
+</tr>
+<tr>
+<td>10 级灵虚御空</td>
+<td>提升己方所有角色和仙侣速度 10% ，持续 5 回合 ，升级提升增加的速度的效果</td>
+</tr>
+<tr>
+<td>1 级灵犀术</td>
+<td>恢复己方所有单位 20% 法力值 ，5 回合内无法再次使用</td>
+</tr>
+<tr>
+<td>2 级灵犀术</td>
+<td>恢复己方所有单位 23% 法力值 ，5 回合内无法再次使用</td>
+</tr>
+<tr>
+<td>3 级灵犀术</td>
+<td>恢复己方所有单位 26% 法力值 ，5 回合内无法再次使用</td>
+</tr>
+<tr>
+<td>4 级灵犀术</td>
+<td>恢复己方所有单位 29% 法力值 ，5 回合内无法再次使用</td>
+</tr>
+<tr>
+<td>5 级灵犀术</td>
+<td>恢复己方所有单位 32% 法力值 ，5 回合内无法再次使用</td>
+</tr>
+<tr>
+<td>6 级灵犀术</td>
+<td>恢复己方所有单位 35% 法力值 ，5 回合内无法再次使用</td>
+</tr>
+<tr>
+<td>7 级灵犀术</td>
+<td>恢复己方所有单位 38% 法力值 ，5 回合内无法再次使用</td>
+</tr>
+<tr>
+<td>8 级灵犀术</td>
+<td>恢复己方所有单位 41% 法力值 ，5 回合内无法再次使用</td>
+</tr>
+<tr>
+<td>9 级灵犀术</td>
+<td>恢复己方所有单位 44% 法力值 ，5 回合内无法再次使用</td>
+</tr>
+<tr>
+<td>10 级灵犀术</td>
+<td>恢复己方所有单位 47% 法力值 ，5 回合内无法再次使用</td>
+</tr>
+<tr>
+<td>1 级散灵诀</td>
+<td>驱散敌方目标所有增益效果。</td>
+</tr>
+<tr>
+<td>2 级散灵诀</td>
+<td>驱散敌方目标所有增益效果。</td>
+</tr>
+<tr>
+<td>3 级散灵诀</td>
+<td>驱散敌方目标所有增益效果。</td>
+</tr>
+<tr>
+<td>4 级散灵诀</td>
+<td>驱散敌方目标所有增益效果。</td>
+</tr>
+<tr>
+<td>5 级散灵诀</td>
+<td>驱散敌方目标所有增益效果。</td>
+</tr>
+<tr>
+<td>6 级散灵诀</td>
+<td>驱散敌方目标所有增益效果。</td>
+</tr>
+<tr>
+<td>7 级散灵诀</td>
+<td>驱散敌方目标所有增益效果。</td>
+</tr>
+<tr>
+<td>8 级散灵诀</td>
+<td>驱散敌方目标所有增益效果。</td>
+</tr>
+<tr>
+<td>9 级散灵诀</td>
+<td>驱散敌方目标所有增益效果。</td>
+</tr>
+<tr>
+<td>10 级散灵诀</td>
+<td>驱散敌方目标所有增益效果。</td>
+</tr>
+<tr>
+<td>1 级冥魂咒</td>
+<td>使目标 5 回合内无法获得正面效果 ，5 回合内无法再次使用。</td>
+</tr>
+<tr>
+<td>2 级冥魂咒</td>
+<td>使目标 5 回合内无法获得正面效果 ，5 回合内无法再次使用。</td>
+</tr>
+<tr>
+<td>3 级冥魂咒</td>
+<td>使目标 5 回合内无法获得正面效果 ，5 回合内无法再次使用。</td>
+</tr>
+<tr>
+<td>4 级冥魂咒</td>
+<td>使目标 5 回合内无法获得正面效果 ，5 回合内无法再次使用。</td>
+</tr>
+<tr>
+<td>5 级冥魂咒</td>
+<td>使目标 5 回合内无法获得正面效果 ，5 回合内无法再次使用。</td>
+</tr>
+<tr>
+<td>6 级冥魂咒</td>
+<td>使目标 5 回合内无法获得正面效果 ，5 回合内无法再次使用。</td>
+</tr>
+<tr>
+<td>7 级冥魂咒</td>
+<td>使目标 5 回合内无法获得正面效果 ，5 回合内无法再次使用。</td>
+</tr>
+<tr>
+<td>8 级冥魂咒</td>
+<td>使目标 5 回合内无法获得正面效果 ，5 回合内无法再次使用。</td>
+</tr>
+<tr>
+<td>9 级冥魂咒</td>
+<td>使目标 5 回合内无法获得正面效果 ，5 回合内无法再次使用。</td>
+</tr>
+<tr>
+<td>10 级冥魂咒</td>
+<td>使目标 5 回合内无法获得正面效果 ，5 回合内无法再次使用。</td>
+</tr>
+</tbody>
+</table>
+</div>
+      </div>
+    </div>
+  </div>
+  </div>
+
   </div>
   
-<div class="footer">
-    
-<p>九小卿攻略站</p>
 
-</div>
 <script>
 (function(){
   document.querySelectorAll('.hs-toggle-header').forEach(function(header){
@@ -2706,5 +3311,75 @@ document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复�
 document.addEventListener('contextmenu',function(e){e.preventDefault();});
 </script>
 
+<script>if(window.self!==window.top){document.documentElement.classList.add("embedded");var _s=document.createElement("style");_s.textContent=".back-btn{display:none!important}";document.head.appendChild(_s);}</script><script>
+/* 手风琴转标签栏：与门派页 sect-tab 同款视觉 */
+(function(){
+  var hs=[].slice.call(document.querySelectorAll('.hs-toggle-header'));
+  if(!hs.length) return;
+  var st=document.createElement('style');
+  st.textContent='.wtab-bar{display:flex;gap:8px;overflow-x:auto;padding:6px 2px 10px;scrollbar-width:none;-ms-overflow-style:none}.wtab-bar::-webkit-scrollbar{display:none}.wtab{flex:0 0 auto;display:inline-flex;align-items:center;background:#fff;border:1.5px solid rgba(22,19,15,.08);border-radius:999px;padding:8px 14px;font-size:.85rem;font-weight:800;color:#57534e;cursor:pointer;font-family:inherit;white-space:nowrap;transition:background .2s,color .2s,border-color .2s,box-shadow .2s}.wtab.active{background:#fff;border-color:#f59e0b;color:#c77b2e;box-shadow:0 0 0 2.5px rgba(245,158,11,.28),0 6px 14px rgba(245,158,11,.2)}@media(min-width:961px){.wtab{padding:9px 18px;font-size:.9rem}}';
+  document.head.appendChild(st);
+  var units=hs.map(function(h){
+    var nx=h.nextElementSibling;
+    var box=document.createElement('div');
+    h.parentNode.insertBefore(box,h);
+    box.appendChild(h);
+    if(nx) box.appendChild(nx);
+    h.style.display='none';
+    var c=box.querySelector('.hs-collapsible');
+    if(c) c.classList.add('open');
+    return box;
+  });
+  var bar=document.createElement('div'); bar.className='wtab-bar';
+  units.forEach(function(u,i){
+    var sp=u.querySelector('.hs-toggle-header span');
+    var b=document.createElement('button');
+    b.type='button'; b.className='wtab';
+    b.textContent=sp?sp.textContent.trim():('栏目'+(i+1));
+    b.addEventListener('click',function(){
+      units.forEach(function(x,j){ x.style.display=(j===i)?'':'none'; });
+      [].forEach.call(bar.children,function(x){ x.classList.remove('active'); });
+      b.classList.add('active');
+      /* 只滚标签栏自身，避免波及页面滚动 */
+      (function(){
+        var edge=8,r=b.getBoundingClientRect(),h=bar.getBoundingClientRect();
+        if(r.left>=h.left+edge && r.right<=h.right-edge) return;
+        var tabLeft=r.left-h.left+bar.scrollLeft;
+        bar.scrollTo({left:Math.max(0,tabLeft-(bar.clientWidth-b.offsetWidth)/2),behavior:'auto'});
+      })();
+    });
+    bar.appendChild(b);
+  });
+  /* 鼠标左键按住拖动横向滚动 */
+  bar.style.cursor='grab';
+  var dragging=false,startX=0,startL=0,moved=0;
+  bar.addEventListener('mousedown',function(e){
+    dragging=true;moved=0;startX=e.pageX;startL=bar.scrollLeft;
+    bar.style.cursor='grabbing';
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove',function(e){
+    if(!dragging) return;
+    var dx=e.pageX-startX;
+    moved=Math.max(moved,Math.abs(dx));
+    bar.scrollLeft=startL-dx;
+  });
+  window.addEventListener('mouseup',function(){
+    if(!dragging) return;
+    dragging=false;bar.style.cursor='grab';
+    /* click 事件在 mouseup 后同步触发，异步复位避免拦截后续点击 */
+    setTimeout(function(){moved=0},0);
+  });
+  /* 拖动超过 6px 时拦截 click，避免松手误切标签 */
+  bar.addEventListener('click',function(e){
+    if(moved>6){e.stopPropagation();e.preventDefault();}
+  },true);
+  var anchor=units[0].closest('.section')||units[0];
+  var holder=document.createElement('div');
+  anchor.parentNode.insertBefore(holder,anchor);
+  holder.appendChild(bar);
+  units.forEach(function(u,i){ holder.appendChild(u); if(i) u.style.display='none'; });
+  bar.firstChild.classList.add('active');
+})();
+</script><script src="wiki-detail.js"></script>
 </body>
-</html>

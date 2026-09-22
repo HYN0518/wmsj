@@ -1,0 +1,4427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>门派介绍 — 九小卿攻略站</title>
+<meta name="description" content="九小卿门派介绍">
+<link rel="icon" type="image/jpeg" href="art/favicon.jpg">
+<style>
+  :root{
+    --bg:#ffffff;
+    --ink:#16130f;
+    --muted:#6f675c;
+    --card:#ffffff;
+    --pink:#ff4d8d;
+    --blue:#4d7cff;
+    --violet:#8b5cf6;
+    --lime:#cdf05a;
+    --orange:#ff8a3d;
+    --gold:#f59e0b;
+    --radius:24px;
+    --shadow:0 12px 32px rgba(22,19,15,.10);
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scrollbar-gutter:stable;background:var(--bg)}
+  body{
+    font-family:var(--font);
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--pink);color:#fff}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  button{font-family:inherit}
+
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+  .grad{
+    background:linear-gradient(92deg,#ff9ec6 10%,#c4b5fd 45%,#93c5fd 90%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:13px 28px;border-radius:999px;border:none;cursor:pointer;
+    font-weight:700;font-size:.95rem;line-height:1;
+    transition:transform .2s, box-shadow .2s, background .2s;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn:active{transform:translateY(0)}
+  .btn-dark{background:var(--ink);color:#fff;box-shadow:0 6px 18px rgba(22,19,15,.25)}
+  .btn-dark:hover{box-shadow:0 10px 24px rgba(22,19,15,.3)}
+  .btn-ghost{background:transparent;border:2px solid var(--ink);color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:#fff}
+  .btn-lime{background:var(--lime);color:var(--ink);box-shadow:0 8px 22px rgba(205,240,90,.5)}
+  .btn-orange{background:var(--orange);color:#fff;box-shadow:0 6px 18px rgba(255,138,61,.35)}
+
+  /* ===== 新功能·横幅卡 ===== */
+  /* 首页四卡（面饰/腰饰/天命/悟道） */
+  .feature-showcase{max-width:920px;margin:0 auto;padding:8px 0}
+  .showcase-character{min-width:0}
+  .showcase-character .char-figure{width:min(460px,78vw)}
+  @media (max-width:768px){
+    .feature-showcase{padding:0}
+  }
+  /* ===== 跑马灯 ===== */
+  .marquee{
+    border-top:1.5px solid rgba(22,19,15,.08);
+    border-bottom:1.5px solid rgba(22,19,15,.08);
+    overflow:hidden;padding:14px 0;background:#fff;
+  }
+  .marquee-track{display:flex;width:max-content;animation:mqScroll 32s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  @keyframes mqScroll{to{transform:translateX(-50%)}}
+  .marquee-group{display:flex;align-items:center;gap:32px;padding-right:32px;font-weight:800;font-size:1rem;letter-spacing:.02em;white-space:nowrap}
+  .marquee-group i{font-style:normal;color:var(--pink)}
+  .mq-item{display:inline-flex;align-items:center;gap:6px}
+  .mq-item img{width:22px;height:22px;object-fit:contain;vertical-align:middle}
+
+  /* 首页板块标题与优化痛点 */
+  .home-banner-wrap{position:relative}
+  .home-banner{display:block;width:100%;height:auto;margin:0}
+  .bag-egg-hotspot{
+    position:absolute;left:3.4%;top:69%;z-index:4;
+    width:11.2%;height:16%;min-width:44px;min-height:44px;
+    padding:0;border:0;border-radius:14px;appearance:none;
+    background:transparent;cursor:pointer;outline:none;
+  }
+  .bag-egg-modal{
+    position:fixed;inset:0;z-index:260;display:grid;place-items:center;padding:20px;
+    background:rgba(16,38,61,.56);backdrop-filter:blur(5px);
+    opacity:0;pointer-events:none;transition:opacity .24s ease;
+  }
+  .bag-egg-modal.show{opacity:1;pointer-events:auto}
+  .bag-egg-card{
+    position:relative;width:min(430px,calc(100vw - 32px));box-sizing:border-box;
+    padding:34px 34px 28px;border:1px solid rgba(67,150,221,.38);border-radius:8px;
+    background:linear-gradient(180deg,#fff 0%,#f4fbff 100%);
+    box-shadow:0 24px 70px rgba(8,42,76,.32);
+    color:#173754;text-align:center;
+    transform:translateY(18px) scale(.94);opacity:0;
+    transition:transform .3s cubic-bezier(.2,.8,.2,1),opacity .24s ease;
+  }
+  .bag-egg-modal.show .bag-egg-card{transform:translateY(0) scale(1);opacity:1}
+  .bag-egg-card::before{
+    content:"";position:absolute;inset:7px;border:1px solid rgba(87,167,228,.2);
+    border-radius:5px;pointer-events:none;
+  }
+  .bag-egg-close{
+    position:absolute;top:10px;right:10px;z-index:2;width:34px;height:34px;
+    display:grid;place-items:center;padding:0;border:0;background:transparent;
+    color:#66839a;font-size:1.4rem;line-height:1;cursor:pointer;
+    transition:color .2s,transform .2s;
+  }
+  .bag-egg-close:hover{color:#176eb0;transform:rotate(90deg)}
+  .bag-egg-mark{
+    width:58px;height:58px;margin:0 auto 12px;display:grid;place-items:center;
+    border-radius:50%;background:#e8f6ff;border:1px solid #b8ddf7;
+    font-size:1.85rem;box-shadow:0 8px 22px rgba(48,139,207,.16);
+  }
+  .bag-egg-kicker{font-size:.7rem;font-weight:800;color:#3286c7;letter-spacing:.14em}
+  .bag-egg-card h2{margin:7px 0 12px;font-size:1.42rem;letter-spacing:0;color:#173754}
+  .bag-egg-copy{margin:0;color:#61788a;font-size:.9rem;line-height:1.75}
+  .bag-egg-note{
+    margin:16px 0;padding:13px 14px;border-left:3px solid #57aee8;
+    background:rgba(222,243,255,.65);color:#315b79;font-size:.88rem;line-height:1.7;text-align:left;
+  }
+  .bag-egg-loot{display:flex;justify-content:center;flex-wrap:wrap;gap:7px;margin:0 0 10px}
+  .bag-egg-loot span{
+    padding:5px 9px;border:1px solid #c9e6f8;border-radius:999px;
+    background:#fff;color:#2d739f;font-size:.72rem;font-weight:800;
+  }
+  .bag-egg-disclaimer{margin:0 0 17px;color:#8aa0af;font-size:.68rem}
+  .bag-egg-accept{
+    position:relative;z-index:1;min-width:140px;padding:10px 20px;border:0;border-radius:6px;
+    background:#217fbe;color:#fff;font-family:inherit;font-size:.88rem;font-weight:800;
+    cursor:pointer;box-shadow:0 8px 18px rgba(33,127,190,.25);
+    transition:background .2s,transform .2s;
+  }
+  .bag-egg-accept:hover{background:#176ba4;transform:translateY(-1px)}
+  /* 下滑指示（仅 PC 端，悬于横幅底部） */
+  .hero-scroll{
+    display:none;
+    position:absolute;left:50%;bottom:calc(2vh + 88px);transform:translateX(-50%);z-index:3;
+    width:max-content;
+    flex-direction:column;align-items:center;gap:7px;
+    background:none;border:none;cursor:pointer;padding:6px 18px;
+    color:#fff;font-weight:700;font-size:clamp(14px,1.3vw,19px);
+    letter-spacing:.35em;text-indent:.35em;
+    text-shadow:0 2px 12px rgba(0,0,0,.55);
+    font-family:inherit;
+  }
+  .hs-row{display:flex;align-items:center;gap:16px}
+  .hs-line{
+    width:clamp(80px,9vw,140px);height:8px;
+    background-image:radial-gradient(circle,rgba(255,255,255,.95) 2px,transparent 2.6px);
+    background-size:12px 8px;background-repeat:repeat-x;
+  }
+  .hs-l{animation:dotMarchL 1.1s linear infinite}
+  .hs-r{animation:dotMarchR 1.1s linear infinite}
+  @keyframes dotMarchL{from{background-position-x:0}to{background-position-x:12px}}
+  @keyframes dotMarchR{from{background-position-x:12px}to{background-position-x:0}}
+  .hs-chevron{
+    width:14px;height:14px;margin-top:2px;
+    border-right:3px solid #fff;border-bottom:3px solid #fff;
+    transform:rotate(45deg);
+    filter:drop-shadow(0 2px 8px rgba(0,0,0,.5));
+    animation:chevBob 1.4s ease-in-out infinite;
+  }
+  @keyframes chevBob{
+    0%,100%{opacity:.45;transform:rotate(45deg) translate(0,0)}
+    50%{opacity:1;transform:rotate(45deg) translate(3px,3px)}
+  }
+  @media (min-width:961px){
+    .hero-scroll{display:flex}
+  }
+  .home-sec-title-img{display:block;width:min(520px,76vw);height:auto;margin:0 auto 18px}
+  .home-guide-row{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:clamp(4px,1.5vw,18px);max-width:1180px;margin:0 auto clamp(24px,4vw,42px)
+  }
+  .home-guide-card{
+    display:block;min-width:0;overflow:hidden;
+    filter:drop-shadow(0 8px 18px rgba(22,19,15,.12));
+    transition:transform .25s ease,filter .25s ease
+  }
+  .home-guide-card img{display:block;width:100%;height:auto;aspect-ratio:2/1;object-fit:contain}
+  .home-guide-card:hover{transform:translateY(-5px);filter:drop-shadow(0 13px 25px rgba(22,19,15,.2))}
+  .home-guide-card:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+  @media (max-width:600px){
+    .home-guide-row{gap:4px;margin-bottom:24px}
+    .home-guide-card{filter:drop-shadow(0 4px 8px rgba(22,19,15,.1))}
+  }
+  .char-figure{position:relative;width:min(460px,78vw);margin:0 auto}
+  .char-standing{position:relative;z-index:1;display:block;width:min(340px,62vw);height:auto;margin:0 auto 8px}
+  .char-guide{position:absolute;z-index:3;display:flex;align-items:center;color:#c9448f;font-size:.88rem;font-weight:800;white-space:nowrap;pointer-events:none}
+  .char-guide.right{flex-direction:row}
+  .cg-preview{width:68px;height:68px;flex:0 0 68px;display:grid;place-items:center;overflow:hidden;border:3px solid #cf5a9d;border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(201,68,143,.18)}
+  .cg-preview img{display:block;width:82%;height:82%;object-fit:contain}
+  a.cg-preview{pointer-events:auto;cursor:pointer;transition:transform .2s,box-shadow .2s}
+  a.cg-preview:hover{transform:scale(1.08);box-shadow:0 6px 18px rgba(201,68,143,.32)}
+  .cg-line{width:76px;height:2px;background:#cf5a9d}
+  .cg-label{position:absolute;bottom:calc(50% + 5px);width:76px;text-align:center;text-shadow:0 1px #fff}
+  .char-guide:not(.right) .cg-label{left:68px}
+  .char-guide.right .cg-label{right:68px}
+  .cg-head{right:11px;top:4%}
+  .cg-hand{left:-12px;top:22%}
+  .cg-waist{right:22px;top:46%}
+  .cg-rank{left:-18px;bottom:-63px}
+  @media (max-width:768px){
+    .char-guide{display:flex;transform:scale(.72)}
+    .cg-head,.cg-waist{transform-origin:right center}
+    .cg-hand,.cg-rank{transform-origin:left center}
+    .cg-head{right:-4px}
+    .cg-hand{left:-18px}
+    .cg-waist{right:0}
+    .cg-rank{left:-20px;bottom:-48px}
+  }
+  .char-nameplate{display:flex;align-items:center;justify-content:center;gap:9px;margin:0 auto 20px}
+  .cn-label{width:72px;height:auto;display:block}
+  .cn-name{font-size:1.5rem;font-weight:900;color:#3ddc3d;letter-spacing:.08em;
+    text-shadow:0 0 10px rgba(61,220,61,.55),0 1px 2px rgba(0,0,0,.4)}
+  .home-sec-title{max-width:920px;margin:0 auto 16px;font-size:1.12rem;font-weight:900;color:#4a3319;letter-spacing:.06em;display:flex;align-items:center;gap:10px}
+  .home-sec-title::before{content:"";flex-shrink:0;width:4px;height:18px;border-radius:2px;background:linear-gradient(180deg,#f0b13e,#dd8f1f)}
+  .home-sec-title.pain-mt{margin-top:36px}
+  .pain-title-img{display:block;width:min(520px,76vw);height:auto;margin:36px auto 18px}
+  .pain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1180px;margin:0 auto}
+  .pain-card{background:#fff;border:1.5px solid rgba(180,140,80,.28);border-radius:12px;padding:13px 14px 12px;box-shadow:0 3px 10px rgba(150,110,60,.08)}
+  .pain-card h4{font-size:.92rem;font-weight:800;color:#4a3319;display:flex;align-items:center;gap:7px;margin-bottom:8px;padding-bottom:7px;border-bottom:1px dashed rgba(180,140,80,.35)}
+  .pain-card .pc-ic{font-size:1.05rem;line-height:1}
+  .pain-card ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+  .pain-card li{font-size:.78rem;color:#7a5b36;line-height:1.6;padding-left:12px;position:relative}
+  .pain-card li::before{content:"";position:absolute;left:0;top:.6em;width:5px;height:5px;border-radius:50%;background:var(--pc,#f59e0b)}
+  .pain-card b{color:#4a3319}
+  @media (max-width:960px){.pain-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:600px){
+    .pain-grid{
+      grid-template-columns:none;
+      grid-auto-flow:column;
+      grid-auto-columns:calc(100% - 40px);
+      align-items:start;
+      gap:10px;
+      overflow-x:auto;
+      overscroll-behavior-inline:contain;
+      scroll-snap-type:x mandatory;
+      scroll-padding-inline:2px;
+      padding:2px 2px 10px;
+      scrollbar-width:none;
+      -ms-overflow-style:none;
+      -webkit-overflow-scrolling:touch;
+    }
+    .pain-grid::-webkit-scrollbar{display:none}
+    .pain-card{scroll-snap-align:start;scroll-snap-stop:always}
+    .pain-card li{font-size:.8rem}
+  }
+
+  .nf-head,.ch-head,.cv-head{display:block;width:min(345px,57vw);height:auto;margin:0 auto 26px;
+    filter:drop-shadow(0 10px 20px rgba(31,148,160,.35))}
+  .nf-wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;max-width:1180px;margin:0 auto}
+  .nf-card{text-decoration:none;color:inherit;display:block;flex:0 1 calc((100% - 40px)/3);min-width:240px;cursor:pointer;
+    filter:drop-shadow(0 10px 22px rgba(22,19,15,.16));
+    transition:transform .35s cubic-bezier(.34,1.56,.64,1),filter .3s ease}
+  .nf-card img{display:block;width:100%;height:auto;aspect-ratio:428/291}
+  .nf-card:hover{transform:translateY(-8px);filter:drop-shadow(0 18px 36px rgba(22,19,15,.26))}
+  .nf-hint{text-align:center;margin-top:16px;font-size:.85rem;color:var(--muted);font-weight:600}
+  .nf-extra-wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;max-width:900px;margin:0 auto 24px}
+  .nf-extra-card{text-decoration:none;color:inherit;display:block;flex:0 1 400px;min-width:0;cursor:pointer;
+    filter:drop-shadow(0 10px 22px rgba(22,19,15,.16));
+    transition:transform .35s cubic-bezier(.34,1.56,.64,1),filter .3s ease}
+  .nf-extra-card img{display:block;width:100%;height:auto}
+  .nf-extra-card:hover{transform:translateY(-8px);filter:drop-shadow(0 18px 36px rgba(22,19,15,.26))}
+  @media (max-width:768px){
+    .nf-extra-wrap{gap:12px;max-width:100%}
+    .nf-extra-card{flex:0 1 calc((100% - 12px)/2)}
+  }
+
+  /* 新功能·移动端轮播 */
+  .nf-carousel{display:none}
+  .nf-stage{position:relative;overflow:hidden;touch-action:pan-y;cursor:grab}
+  .nf-stage:active{cursor:grabbing}
+  .nf-slide{position:absolute;top:0;left:0;width:86%;will-change:transform;
+    transition:transform .5s cubic-bezier(.4,0,.2,1),filter .45s ease,opacity .35s ease}
+  .nf-slide img{display:block;width:100%;height:auto}
+  .nf-meta{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px;min-height:34px}
+  .nf-meta b{font-size:2rem;font-weight:900;color:#ef6a5f;line-height:1;letter-spacing:.02em}
+  .nf-meta span{font-weight:800;color:#1c2740;font-size:.95rem}
+  .nf-dots{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 12px;margin-top:8px;max-width:100%}
+  .nf-dot{background:none;border:0;padding:2px 4px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;font-family:inherit}
+  .nf-dot i{width:12px;height:12px;border-radius:50%;border:2px solid #f0b429;background:transparent;transition:background .25s,transform .25s}
+  .nf-dot.on i{background:#f0b429;transform:scale(1.12)}
+  .nf-dot span{font-size:.58rem;color:#8a97a8;font-weight:700;white-space:nowrap}
+  .nf-dot.on span{color:#1c2740}
+  @media (prefers-reduced-motion:reduce){.nf-slide{transition:none}}
+
+  /* ===== 玩法入口横幅 ===== */
+  .cat-row{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;max-width:1180px;margin:0 auto}
+  .cat-card{text-decoration:none;color:inherit;display:block;flex:0 1 calc((100% - 60px)/4);min-width:200px;
+    filter:drop-shadow(0 10px 22px rgba(22,19,15,.16));
+    transition:transform .35s cubic-bezier(.34,1.56,.64,1),filter .3s ease}
+  .cat-card img{display:block;width:100%;height:auto;aspect-ratio:1440/2560}
+  .cat-card:hover{transform:translateY(-8px);filter:drop-shadow(0 18px 36px rgba(22,19,15,.26))}
+
+  /* ===== 活动日程 ===== */
+  .evt-panel{max-width:1080px;margin:0 auto}
+  .evt-head-img{
+    display:block;width:100%;height:auto;
+    filter:drop-shadow(0 8px 18px rgba(22,19,15,.2));
+    position:relative;z-index:2}
+  .evt-frame{
+    margin-top:-8px;position:relative;
+    background:linear-gradient(180deg,#fbf3e0,#f6ecd4);
+    border:2px solid #d8b98c;border-radius:12px;
+    box-shadow:0 18px 44px rgba(22,19,15,.14);
+    padding:18px;display:flex;gap:16px}
+  .evt-frame::before{content:"";position:absolute;inset:6px;border:1px solid rgba(180,140,80,.35);border-radius:8px;pointer-events:none}
+  .evt-sidebar{flex-shrink:0;width:150px;display:flex;flex-direction:column;gap:6px;position:relative;z-index:1}
+  /* 分组通排标题（活动页无侧栏版式） */
+  .evt-sec-h{margin:20px 2px 10px;font-weight:800;font-size:.95rem;color:#7a5b36;display:flex;align-items:center;gap:10px;letter-spacing:.05em}
+  .evt-sec-h::after{content:"";flex:1;height:1px;background:rgba(180,140,80,.35)}
+  .evt-main-wrap .evt-sec-h:first-child{margin-top:2px}
+  .evt-side-btn{
+    appearance:none;border:1.5px solid #d8b98c;border-radius:10px;cursor:pointer;
+    background:linear-gradient(180deg,#fffaf0,#f7ecd2);
+    color:#7a5b36;font-weight:800;font-size:.88rem;letter-spacing:.06em;
+    padding:11px 10px;text-align:left;display:flex;align-items:center;justify-content:space-between;
+    box-shadow:0 2px 5px rgba(150,110,60,.15),inset 0 1px 0 #fff;
+    transition:transform .22s cubic-bezier(.34,1.56,.64,1),box-shadow .22s,background .22s,color .22s}
+  .evt-side-btn:hover{transform:translateX(3px);border-color:#e8b04b;box-shadow:0 4px 10px rgba(150,110,60,.2)}
+  .evt-side-btn.active{
+    background:linear-gradient(180deg,#f4737f,#e04052 60%,#c93243);
+    border-color:#f9b4c0;color:#fff;text-shadow:0 1px 2px rgba(120,20,25,.4);
+    box-shadow:0 4px 10px rgba(224,64,82,.3),inset 0 1px 0 rgba(255,255,255,.3)}
+  .evt-side-count{font-size:.7rem;font-weight:700;opacity:.7}
+  .evt-main-wrap{flex:1;min-width:0;position:relative;z-index:1;display:flex;flex-direction:column;gap:12px}
+  .evt-search-bar input{
+    width:100%;padding:10px 16px;border:1.5px solid #e2c9a0;border-radius:10px;
+    background:linear-gradient(180deg,#fffef8,#fdf6e6);color:#4a3319;font-size:.9rem;
+    outline:none;transition:border-color .2s,box-shadow .2s}
+  .evt-search-bar input:focus{border-color:#e8a33d;box-shadow:0 0 0 3px rgba(232,163,61,.15)}
+  .evt-search-bar input::placeholder{color:#b8a080}
+  .evt-main{
+    background:linear-gradient(180deg,#fefaf0,#faf2de);
+    border:1.5px solid #e2c9a0;border-radius:10px;
+    padding:14px;height:420px;overflow-y:auto;
+    scrollbar-width:thin;scrollbar-color:#d8b98c transparent;
+    animation:evtFade .3s ease}
+  .evt-main::-webkit-scrollbar{width:8px}
+  .evt-main::-webkit-scrollbar-thumb{background:#d8b98c;border-radius:99px}
+  .evt-main::-webkit-scrollbar-track{background:transparent}
+  @keyframes evtFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .evt-icon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:16px 10px}
+  .evt-icon-item{display:flex;flex-direction:column;align-items:center;cursor:pointer;transition:transform .2s;gap:6px}
+  .evt-icon-item:hover{transform:translateY(-3px)}
+  .evt-icon-avatar{
+    width:72px;height:72px;border-radius:50%;
+    background:linear-gradient(135deg,#fff5e0,#f5e6c8);
+    border:2px solid #e2c9a0;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 3px 8px rgba(150,110,60,.2);transition:box-shadow .2s,border-color .2s}
+  .evt-icon-item:hover .evt-icon-avatar{box-shadow:0 5px 14px rgba(150,110,60,.3);border-color:#e8a33d}
+  .evt-icon-avatar img{width:70%;height:70%;object-fit:contain}
+  .evt-icon-name{font-size:.8rem;font-weight:700;color:#4a3319;text-align:center;line-height:1.3}
+  .evt-icon-tag{font-size:.62rem;font-weight:800;color:#fff;background:linear-gradient(180deg,#8fbf6a,#6da24c);padding:1px 7px;border-radius:999px}
+  .evt-icon-tag.limit{background:linear-gradient(180deg,#f4737f,#e04052)}
+  .evt-weekwrap{overflow-x:auto;scrollbar-width:thin;scrollbar-color:#d8b98c transparent}
+  .evt-weekwrap::-webkit-scrollbar{height:8px}
+  .evt-weekwrap::-webkit-scrollbar-thumb{background:#d8b98c;border-radius:99px}
+  .evt-weekwrap::-webkit-scrollbar-track{background:transparent}
+  .evt-week{border-collapse:separate;border-spacing:3px;width:100%}
+  .evt-week th{font-size:.78rem;color:#8a5a28;letter-spacing:.04em;padding:8px 6px;border-radius:6px;
+    background:linear-gradient(180deg,#f7e3b8,#eecf98);border:1px solid #e2c9a0;white-space:nowrap}
+  .evt-week th.today{color:#fff;border-color:#dd8f1f;
+    background:linear-gradient(180deg,#f0b13e,#dd8f1f);
+    box-shadow:0 0 10px rgba(240,177,62,.55)}
+  .evt-week td{font-size:.74rem;color:#7a5b36;text-align:center;padding:10px 6px;border-radius:6px;
+    background:rgba(255,255,255,.5);border:1px solid #ecd9b4;min-width:80px}
+  .evt-week tr:nth-child(even) td{background:rgba(240,177,62,.14)}
+  .evt-week td.evt-wt{font-weight:800;color:#a3683a;white-space:nowrap;background:rgba(240,177,62,.2)}
+  .evt-week td.today{border-color:#e8a33d;box-shadow:0 0 0 1.5px #e8a33d,0 0 8px rgba(240,177,62,.4)}
+  .evt-today-list{display:flex;flex-direction:column;gap:8px}
+  .evt-td{
+    position:relative;
+    background:url(art/evt_row_bg.webp);background-size:100% 100%;
+    display:flex;align-items:center;gap:10px;
+    padding:10px 12px 10px 64px;min-height:60px;cursor:pointer;
+    transition:transform .2s,filter .2s}
+  .evt-td:hover{transform:translateX(3px);filter:brightness(1.03)}
+  .evt-td>img{position:absolute;left:12px;top:50%;transform:translateY(-50%);
+    width:40px;height:40px;object-fit:contain;
+    filter:drop-shadow(0 2px 4px rgba(150,110,60,.25))}
+  .evt-td time{font-size:.82rem;font-weight:900;color:#c77b2e;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .evt-td div b{font-size:.88rem;color:#4a3319;display:block;line-height:1.35}
+  .evt-td div span{font-size:.7rem;color:#8a6a40}
+  .evt-td.next{
+    background:linear-gradient(90deg,rgba(244,115,127,.18),rgba(244,115,127,0) 55%),url(art/evt_row_bg.webp);
+    background-size:100% 100%,100% 100%}
+  .evt-td.next time{color:#e04052}
+  .evt-next-badge{
+    margin-left:8px;font-size:.62rem;font-weight:800;color:#fff;
+    background:#e04052;border-radius:999px;padding:1px 7px;white-space:nowrap}
+  .evt-empty{text-align:center;padding:60px 20px;color:#b8a080;font-size:.95rem}
+  @media (max-width:768px){
+    .evt-frame{flex-direction:column;padding:12px}
+    .evt-sidebar{width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+    .evt-side-btn{padding:9px 8px;font-size:.78rem;justify-content:center}
+    .evt-side-count{display:none}
+    .evt-main{height:360px;padding:10px}
+    .evt-icon-grid{grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:12px 8px}
+    .evt-icon-avatar{width:58px;height:58px}
+    .evt-icon-name{font-size:.72rem}
+  }
+
+  /* ===== 门派介绍 ===== */
+  .sects-section{padding:60px 0 16px}
+
+  /* 门派详情面板（发现页式：横幅+标签+卡片流，单列）；纯白背景下不再做卡片容器 */
+  .sect-detail{
+    display:block;
+    align-items:start;margin-bottom:16px;
+    background:transparent;border:none;
+    padding:4px 0 0;position:relative;overflow:visible;
+  }
+  .sect-detail::before{
+    content:"";position:absolute;right:-80px;top:-80px;width:300px;height:300px;border-radius:50%;
+    background:radial-gradient(circle,rgba(139,92,246,.06),transparent 70%);
+    pointer-events:none;
+  }
+
+  .sect-right{position:relative;z-index:1}
+
+  /* 门派详情 — 信息块（人物立绘板块已移除） */
+  .sect-detail.expanded{grid-template-columns:1fr}
+  /* 右侧信息块 */
+  .sect-right.blocks{display:flex;flex-direction:column;gap:14px}
+  .ref-block{
+    border:1.5px solid rgba(22,19,15,.07);border-radius:14px;
+    background:rgba(139,92,246,.035);padding:14px 16px;
+  }
+  .ref-block-h{
+    display:flex;align-items:center;gap:9px;
+    font-weight:800;font-size:.95rem;margin-bottom:11px;
+  }
+  .ref-ico{
+    width:27px;height:27px;border-radius:8px;flex-shrink:0;
+    background:linear-gradient(135deg,var(--violet),var(--pink));
+    display:grid;place-items:center;font-size:.82rem;
+  }
+  .ref-ico-img{width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block}
+  .ref-ico:has(.ref-ico-img){background:none}
+  .ref-block-h .ref-note{font-size:.72rem;font-weight:600;color:var(--muted);margin-left:auto}
+
+  /* 横幅牌子弹出卡片 */
+  .banner-modal{
+    position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:24px;
+    background:rgba(28,20,12,.62);backdrop-filter:blur(3px);
+    opacity:0;pointer-events:none;transition:opacity .28s ease;
+    overscroll-behavior:contain;
+  }
+  .banner-modal.show{opacity:1;pointer-events:auto}
+  .bm-box{
+    position:relative;width:auto;max-width:640px;
+    background:linear-gradient(180deg,#fdfaf3,#f8f2e6);
+    border:1.5px solid rgba(180,140,80,.5);border-radius:8px;
+    box-shadow:0 24px 70px rgba(20,12,4,.45);
+    padding:38px 42px 34px;
+    transform:scale(.82) translateY(22px);opacity:0;
+    transition:transform .34s cubic-bezier(.34,1.56,.64,1),opacity .28s ease;
+  }
+  .banner-modal.show .bm-box{transform:scale(1) translateY(0);opacity:1}
+  .bm-box::before{
+    content:"";position:absolute;inset:7px;border:1px solid rgba(180,140,80,.32);
+    border-radius:5px;pointer-events:none;
+  }
+  .bm-close{
+    position:absolute;top:-48px;right:-4px;width:40px;height:40px;
+    background:none;border:none;cursor:pointer;color:#fff;
+    font-size:1.7rem;line-height:1;font-weight:300;
+    transition:transform .25s ease;
+  }
+  .bm-close:hover{transform:rotate(90deg) scale(1.1)}
+  .bm-title{display:flex;align-items:center;gap:16px;margin-bottom:22px}
+  .bm-title i{position:relative;flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(180,140,80,.55))}
+  .bm-title i:last-child{background:linear-gradient(90deg,rgba(180,140,80,.55),transparent)}
+  .bm-title i::after{
+    content:"";position:absolute;top:-3.5px;width:8px;height:8px;transform:rotate(45deg);
+    background:var(--gold);box-shadow:0 0 6px rgba(245,158,11,.6);
+  }
+  .bm-title i:first-child::after{right:0}
+  .bm-title i:last-child::after{left:0}
+  .bm-title span{
+    font-size:1.35rem;font-weight:900;letter-spacing:.06em;white-space:nowrap;
+    background:linear-gradient(135deg,#b45309,#d97706);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .bm-lead{
+    text-align:center;font-weight:800;font-size:1.02rem;color:var(--ink);
+    margin-bottom:14px;letter-spacing:.02em;
+  }
+  .bm-body p{font-size:.92rem;color:var(--muted);line-height:1.9;margin-bottom:10px;text-align:justify}
+  .bm-body{max-height:60vh;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#d8b98c transparent;-webkit-overflow-scrolling:touch}
+  .bm-body::-webkit-scrollbar{width:6px}
+  .bm-body::-webkit-scrollbar-thumb{background:#d8b98c;border-radius:99px}
+  .bm-equip-tabs{display:flex;gap:8px;margin-bottom:12px}
+  .bm-equip-tab{
+    padding:6px 16px;border-radius:999px;cursor:pointer;font-size:.85rem;font-weight:700;
+    border:1.5px solid rgba(180,140,80,.35);background:#fffaf0;color:#8a5a28;
+    transition:all .2s;
+  }
+  .bm-equip-tab:hover{border-color:#e8b04b;box-shadow:0 4px 10px rgba(150,110,60,.15)}
+  .bm-equip-tab.on{
+    background:linear-gradient(180deg,#f0b13e,#dd8f1f);color:#fff;border-color:#dd8f1f;
+    box-shadow:0 4px 10px rgba(221,143,31,.3);
+  }
+  .bm-equip-wrap{
+    overflow-x:auto;
+    margin:0 -4px;
+    max-width:calc(100% + 8px);
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    -ms-overflow-style:none
+  }
+  .bm-equip-wrap::-webkit-scrollbar{display:none}
+  .bm-equip-wrap.grab{cursor:grab}
+  .bm-equip-wrap.grabbing{cursor:grabbing}
+  .bm-equip-table{border-collapse:separate;border-spacing:0;width:100%;font-size:.82rem;min-width:560px}
+  .bm-equip-table th{
+    background:linear-gradient(180deg,#f7e3b8,#eecf98);color:#8a5a28;font-weight:800;
+    padding:8px 10px;text-align:center;white-space:nowrap;
+    border:1px solid #e2c9a0;border-bottom:1.5px solid #d8b98c;
+  }
+  .bm-equip-table td{
+    padding:7px 10px;text-align:center;color:#3a2a14;
+    border:1px solid #ecd9b4;background:rgba(255,255,255,.5);
+  }
+  .bm-equip-table tr:nth-child(even) td{background:rgba(240,177,62,.08)}
+  .bm-equip-table td.eq-name{font-weight:700;color:#4a3319;white-space:nowrap;min-width:5.5em}
+  .bm-equip-table td.eq-lv{font-weight:800;color:#c77b2e}
+  .bm-wing-table{min-width:520px}
+  .bm-wing-table th:nth-child(1),.bm-wing-table td:nth-child(1){width:80px;white-space:nowrap}
+  .bm-enchant-table{min-width:auto !important;font-size:.78rem}
+  .bm-enchant-table th,.bm-enchant-table td{padding:5px 14px}
+  .bm-wing-table th:nth-child(2),.bm-wing-table td:nth-child(2){white-space:nowrap;min-width:5em}
+  .bm-wing-table td.wing-desc{text-align:left;font-size:.8rem;line-height:1.6}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+  /* ===== 活动详情弹窗 ===== */
+  .evt-modal{
+    position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:24px;
+    background:rgba(25,21,17,.68);backdrop-filter:blur(8px);
+    opacity:0;pointer-events:none;transition:opacity .28s ease;
+    overscroll-behavior:contain;
+  }
+  .evt-modal.show{opacity:1;pointer-events:auto}
+  .evt-modal-box{
+    position:relative;width:min(580px,100%);
+    background:#fff;
+    border:1px solid rgba(91,65,35,.18);border-radius:8px;
+    box-shadow:0 28px 80px rgba(20,12,4,.38),0 4px 16px rgba(20,12,4,.16);
+    padding:30px 32px 28px;overflow:hidden;
+    transform:scale(.82) translateY(22px);opacity:0;
+    transition:transform .34s cubic-bezier(.34,1.56,.64,1),opacity .28s ease;
+    max-height:85vh;overflow-y:auto;
+    scrollbar-width:thin;scrollbar-color:#d8b98c transparent;
+  }
+  .evt-modal-box::-webkit-scrollbar{width:6px}
+  .evt-modal-box::-webkit-scrollbar-thumb{background:#d8b98c;border-radius:99px}
+  .evt-modal.show .evt-modal-box{transform:scale(1) translateY(0);opacity:1}
+  .evt-modal-box::before{
+    content:"";position:absolute;left:0;right:0;top:0;height:4px;
+    background:linear-gradient(90deg,#c94dcf 0 18%,#f0a625 18% 72%,#58a86b 72% 100%);
+    pointer-events:none;
+  }
+  .em-close{
+    position:absolute;z-index:2;top:14px;right:14px;width:34px;height:34px;
+    display:grid;place-items:center;background:#f7f4ef;border:1px solid #ebe4da;
+    border-radius:50%;cursor:pointer;color:#756a5e;
+    font-size:1.15rem;line-height:1;font-weight:500;
+    transition:transform .2s ease,background .2s ease,color .2s ease;
+  }
+  .em-close:hover{transform:rotate(90deg);background:#fff1f1;color:#c44747}
+  .em-close:focus-visible{outline:2px solid #c94dcf;outline-offset:2px}
+  .em-eyebrow{
+    display:flex;align-items:center;gap:8px;margin:0 48px 17px 0;
+    color:#9a6a29;font-size:.72rem;font-weight:900;letter-spacing:.16em;
+  }
+  .em-eyebrow::before{content:"";width:22px;height:2px;background:#f0a625;border-radius:2px}
+  .em-title{
+    display:flex;align-items:center;gap:16px;margin-bottom:22px;
+  }
+  .em-icon{
+    width:68px;height:68px;border-radius:8px;flex-shrink:0;
+    background:#fff7fb;
+    display:grid;place-items:center;overflow:hidden;
+    border:1px solid rgba(201,77,207,.28);
+    box-shadow:0 7px 18px rgba(109,73,36,.1);
+  }
+  .em-icon img{width:88%;height:88%;object-fit:contain;border-radius:6px}
+  .em-name{
+    color:#33281e;font-size:1.55rem;font-weight:900;letter-spacing:0;line-height:1.25;
+  }
+  .em-tag{
+    display:inline-flex;align-items:center;font-size:.68rem;font-weight:800;letter-spacing:.04em;
+    color:#397244;padding:3px 10px;border-radius:999px;margin-top:7px;
+    background:#eef8ef;border:1px solid #cce7d0;
+  }
+  .em-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:#58a86b;margin-right:6px}
+  .em-tag:empty{display:none}
+  .em-tag.limit{color:#ad414b;background:#fff0f1;border-color:#f3c9cd}
+  .em-tag.limit::before{background:#dc5360}
+  .em-meta{
+    display:grid;grid-template-columns:1fr 1fr;margin:0 -32px 24px;
+    padding:15px 32px;background:#faf8f5;border-top:1px solid #eee8df;border-bottom:1px solid #eee8df;
+  }
+  .em-meta-item{display:grid;grid-template-columns:30px 1fr;column-gap:10px;align-items:center;min-width:0}
+  .em-meta-item+.em-meta-item{border-left:1px solid #e5ded5;padding-left:22px}
+  .em-meta-icon{
+    grid-row:1/3;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;
+    background:#fff;color:#a7671e;font-size:1rem;box-shadow:0 2px 8px rgba(80,55,28,.08);
+  }
+  .em-info-label{color:#8b8176;font-size:.7rem;font-weight:700;line-height:1.3}
+  .em-info-val{color:#33281e;font-size:.88rem;font-weight:800;line-height:1.5;overflow-wrap:anywhere}
+  .em-section+.em-section{border-top:1px solid #eee8df;margin-top:21px;padding-top:20px}
+  .em-section-title{display:flex;align-items:center;gap:9px;margin-bottom:9px;color:#4b3a2a;font-size:.86rem;font-weight:900}
+  .em-section-title::before{content:"";width:3px;height:14px;border-radius:2px;background:#c94dcf}
+  .em-section-title small{margin-left:auto;color:#b6aca1;font-size:.59rem;font-weight:800;letter-spacing:.12em}
+  .em-desc{
+    margin:0;color:#665b50;font-size:.88rem;line-height:1.85;
+  }
+  .em-drop-list{display:flex;flex-wrap:wrap;gap:8px}
+  .em-reward-chip{
+    display:inline-flex;align-items:center;min-height:30px;padding:5px 11px;border-radius:6px;
+    color:#7d5118;background:#fff8e8;border:1px solid #efdaa9;font-size:.78rem;font-weight:800;
+  }
+  @media(max-width:600px){
+    .evt-modal{padding:14px}
+    .evt-modal-box{padding:24px 20px 22px;border-radius:8px}
+    .em-eyebrow{margin-bottom:14px}
+    .em-title{gap:13px;margin-bottom:18px}
+    .em-icon{width:56px;height:56px}
+    .em-name{font-size:1.28rem}
+    .em-meta{grid-template-columns:1fr;margin:0 -20px 20px;padding:13px 20px;gap:12px}
+    .em-meta-item+.em-meta-item{border-left:0;border-top:1px solid #e5ded5;padding:12px 0 0}
+    .em-section+.em-section{margin-top:17px;padding-top:16px}
+  }
+
+  /* 装备属性 · PC 男/女双列；移动端单列+男女切换 */
+  .skill-list>.equip-cols{grid-column:1/-1}
+  .equip-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+  .equip-col{display:flex;flex-direction:column;gap:10px}
+  .equip-col-h{
+    text-align:center;font-weight:800;font-size:.82rem;color:var(--ink);
+    background:linear-gradient(135deg,rgba(255,215,0,.12),rgba(139,92,246,.08));
+    border:1px solid rgba(245,158,11,.18);border-radius:999px;
+    padding:5px 0;margin-bottom:2px;
+  }
+  /* 男女切换按钮（仅移动端显示） */
+  .equip-gender-toggle{display:none;gap:8px;margin-bottom:12px}
+  .egt-btn{
+    flex:1;padding:9px 0;border-radius:999px;border:1.5px solid rgba(22,19,15,.08);
+    background:#fff;font-weight:800;font-size:.9rem;color:var(--ink);
+    cursor:pointer;font-family:inherit;transition:all .2s;
+  }
+  .egt-btn.active{
+    background:linear-gradient(135deg,var(--gold),#d97706);
+    border-color:transparent;color:#fff;
+    box-shadow:0 6px 14px rgba(245,158,11,.3);
+  }
+  @media (max-width:960px){
+    .equip-cols{grid-template-columns:1fr}
+    .equip-col{display:none}
+    .equip-cols.g-m .equip-col-m{display:flex}
+    .equip-cols.g-f .equip-col-f{display:flex}
+    .equip-col-h{display:none}
+    .equip-gender-toggle{display:flex}
+  }
+
+  /* 门派技能/轮回天书 · 名字+效果卡片（同款布局） */
+  .skill-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .skill-card{
+    padding:14px;border-radius:14px;
+    background:linear-gradient(135deg,rgba(255,215,0,.06),rgba(139,92,246,.06));
+    border:1px solid rgba(245,158,11,.12);
+  }
+  .skill-card .skill-c-head{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+  .skill-card .skill-c-ico{width:26px;height:26px;border-radius:50%;object-fit:cover;flex-shrink:0;box-shadow:0 2px 6px rgba(22,19,15,.18)}
+  .skill-card .skill-c-name{font-weight:800;font-size:.88rem;color:var(--gold)}
+  .skill-card .skill-c-limit{font-size:.62rem;font-weight:700;color:var(--gold);border:1px solid rgba(245,158,11,.4);border-radius:999px;padding:1px 8px;margin-left:auto;white-space:nowrap;flex-shrink:0}
+  .skill-card .skill-c-desc{font-size:.8rem;color:var(--muted);line-height:1.5}
+  @media (max-width:960px){
+    .skill-list{grid-template-columns:1fr}
+  }
+
+  /* 立绘区（门派切换栏已移除，改由左侧竖栏切换） */
+  /* ===== Bento 通用板块 ===== */
+  section{padding:70px 0}
+  .sec-head{max-width:600px;margin-bottom:40px}
+  .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+  .tag{
+    display:inline-block;background:var(--ink);color:var(--lime);
+    font-weight:800;font-size:.8rem;letter-spacing:.12em;
+    padding:6px 14px;border-radius:999px;margin-bottom:16px;
+  }
+  h2{font-size:clamp(1.7rem,3.8vw,2.6rem);font-weight:900;letter-spacing:-.02em;line-height:1.2}
+  .sec-head p{color:var(--muted);margin-top:10px}
+
+  .c4{grid-column:span 4}
+  .c3{grid-column:span 3}
+  .c2{grid-column:span 2}
+
+  /* ===== 便捷功能·卷轴面板 ===== */
+  .cv-scroll{position:relative;aspect-ratio:2504/546;
+    background:url('art/cv_panel.webp') center/100% 100% no-repeat;
+    filter:drop-shadow(0 12px 22px rgba(90,60,20,.18))}
+  .cv-items{position:absolute;left:10.2%;right:2.4%;top:7%;bottom:7.5%;
+    display:grid;grid-template-columns:repeat(6,1fr);align-items:center;
+    margin:0;padding:0;list-style:none}
+  .cv-items li{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;
+    padding:10px 6px;border-left:1px dashed rgba(150,100,50,.3);transition:transform .25s}
+  .cv-items li a{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;
+    text-decoration:none;color:inherit;width:100%;height:100%}
+  .cv-items li:first-child{border-left:none}
+  .cv-items li:hover{transform:translateY(-3px)}
+  .cv-items .cv-ic{font-size:1.55rem;line-height:1;filter:drop-shadow(0 2px 3px rgba(120,70,20,.3));display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px}
+  .cv-items .cv-ic img{width:36px;height:36px;object-fit:contain}
+  .cv-items h3{margin:0;font-size:.95rem;font-weight:800;color:#5a3a16;letter-spacing:.02em}
+  .cv-items p{margin:0;font-size:.7rem;line-height:1.5;color:#96754d;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .cv-items .chip{background:rgba(150,100,50,.14);color:#8a5a28;border-radius:999px;
+    padding:2px 10px;font-size:.62rem;font-weight:800;letter-spacing:.06em}
+
+  /* ===== 页脚 ===== */
+  footer{border-top:1.5px solid rgba(22,19,15,.08);padding:22px 0 20px}
+  @media (min-width:961px){
+    .main{padding-bottom:16px}
+  }
+  .foot-disclaimer-wrap{margin-top:36px}
+  .foot-disclaimer{max-width:1080px;margin:0 auto}
+  .foot-disclaimer h4{text-align:center;font-size:.9rem;font-weight:800;margin-bottom:12px}
+  .foot-disclaimer ol{
+    color:var(--muted);font-size:.82rem;line-height:1.85;
+    padding-left:18px;margin-left:auto;margin-right:auto;display:grid;gap:10px;max-width:1080px;
+  }
+  .copyright{
+    text-align:center;color:var(--muted);font-size:.82rem;
+  }
+
+  /* ===== 人物提升·星轨 ===== */
+  .orbit-panel{
+    position:relative;
+    aspect-ratio:1000/640;
+  }
+  .orbit-ring{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 0 5px rgba(110,175,255,.45))}
+  .orbit-nodes{position:absolute;inset:0}
+  .orbit-node{
+    text-decoration:none;
+    color:inherit;
+    position:absolute;
+    left:0;
+    top:0;
+    width:var(--node-s,54px);
+    height:var(--node-s,54px);
+    transform:translate(-50%,-50%);
+    cursor:pointer;
+    z-index:3;
+    will-change:transform
+  }
+  .on-disc{position:absolute;inset:0;display:grid;place-items:center;font-size:calc(var(--node-s,54px)*.62);
+    filter:drop-shadow(0 2px 6px rgba(30,50,90,.16));
+    transition:transform .22s ease,filter .22s ease}
+  .on-disc img{width:100%;height:100%;object-fit:contain;display:block}
+  .orbit-node:hover .on-disc{transform:scale(1.15);filter:drop-shadow(0 0 12px rgba(120,180,255,.6))}
+  .on-name{position:absolute;bottom:calc(100% + 24px);left:50%;transform:translateX(-50%);white-space:nowrap;
+    color:#1c2740;font-weight:800;font-size:.92rem;letter-spacing:.04em;text-shadow:0 1px 0 rgba(255,255,255,.7)}
+  .on-sub{position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);white-space:nowrap;
+    color:#5c7dab;font-size:.68rem;letter-spacing:.08em;text-shadow:0 1px 0 rgba(255,255,255,.6)}
+  .on-pillar{position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%);width:2px;height:44px;
+    background:linear-gradient(180deg,rgba(100,150,225,.55),rgba(100,150,225,0));border-radius:2px}
+  /* 人物提升·移动端条幅 */
+  .char-scroll{display:none;position:relative;max-width:400px;margin:0 auto}
+  .cs-bg{display:block;width:100%;height:auto;aspect-ratio:820/801}
+  .cs-cols{position:absolute;inset:0;pointer-events:none}
+  .cs-col{position:absolute;width:18%;display:flex;flex-direction:column;align-items:center;justify-content:space-evenly;pointer-events:auto}
+  .cs-col.c0{left:13.9%;top:17.5%;height:71%}
+  .cs-col.c1{left:42.2%;top:15.5%;height:70%}
+  .cs-col.c2{left:68.6%;top:15%;height:72%}
+  .cs-item{
+    text-decoration:none;
+    color:inherit;
+    background:none;
+    border:0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:2px;
+    cursor:pointer;
+    font-family:inherit;
+    -webkit-tap-highlight-color:transparent
+  }
+  .cs-ico{width:34px;height:34px;display:grid;place-items:center;font-size:22px;
+    filter:drop-shadow(0 2px 4px rgba(30,50,90,.18));transition:transform .2s ease}
+  .cs-ico img{width:100%;height:100%;object-fit:contain;display:block}
+  .cs-name{font-size:.6rem;font-weight:700;color:#3d5a86;white-space:nowrap;line-height:1.1;text-shadow:0 1px 0 rgba(255,255,255,.6)}
+  .cs-item:active .cs-ico{transform:scale(1.12)}
+  .orbit-core{position:absolute;left:50%;top:var(--core-y,60%);transform:translate(-50%,-50%);width:24%;aspect-ratio:1;z-index:2}
+  .core-halo{position:absolute;inset:-26%;border-radius:50%;
+    background:radial-gradient(circle,rgba(110,190,255,.28),rgba(110,190,255,.10) 46%,transparent 72%);
+    animation:corePulse 4.5s ease-in-out infinite}
+  @keyframes corePulse{0%,100%{opacity:.75;transform:scale(1)}50%{opacity:1;transform:scale(1.06)}}
+  .core-ring{position:absolute;inset:0;border-radius:50%;
+    border:2px solid rgba(110,160,230,.5);
+    background:radial-gradient(circle,rgba(130,190,255,.18),rgba(130,190,255,.06) 55%,transparent 78%);
+    box-shadow:0 0 30px rgba(110,165,240,.28),inset 0 0 26px rgba(110,165,240,.16)}
+  .core-char{position:absolute;left:50%;bottom:-6%;transform:translateX(-50%);height:135%;width:auto;max-width:none;
+    filter:drop-shadow(0 0 30px rgba(84,225,190,.4));z-index:2;pointer-events:none}
+  #ringDash{stroke-dasharray:5 9;animation:dashDrift 26s linear infinite}
+  @keyframes dashDrift{to{stroke-dashoffset:-140}}
+  .orbit-dot{position:absolute;left:0;top:0;width:9px;height:9px;border-radius:50%;pointer-events:none;z-index:2;will-change:transform}
+  .orbit-dot.d0{background:radial-gradient(circle at 35% 35%,#fff,#ffd27a 55%,#f59e0b);box-shadow:0 0 10px rgba(245,158,11,.75)}
+  .orbit-dot.d1{background:radial-gradient(circle at 35% 35%,#fff,#9cc4f8 55%,#5a94e8);box-shadow:0 0 10px rgba(90,148,232,.75)}
+  .orbit-dot.d2{background:radial-gradient(circle at 35% 35%,#fff,#8fe6d8 55%,#3fbfa8);box-shadow:0 0 10px rgba(63,191,168,.75)}
+
+  /* ===== 滚动入场 ===== */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+  }
+
+  /* ===== 平板 ===== */
+  @media (max-width:960px){
+    .c4,.c3,.c2{grid-column:span 3}
+    .card-dark{grid-column:span 6;min-height:200px}
+    .sect-detail{grid-template-columns:1fr;padding:4px 0 0;gap:24px}
+    .sect-detail.expanded{grid-template-columns:1fr}
+    .nf-card{flex-basis:calc((100% - 20px)/2)}
+    .cat-card{flex-basis:calc((100% - 20px)/2)}
+    .evt-frame{grid-template-columns:132px 1fr;grid-template-areas:"tabs main" "today today"}
+    .evt-tabs{grid-area:tabs}
+    .evt-main{grid-area:main}
+    .evt-today{grid-area:today}
+    .evt-today-list{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+    .evt-td{padding:8px 8px 8px 30%;min-height:64px}
+    .evt-td time{font-size:.62rem}
+    .evt-td div b{font-size:.72rem;line-height:1.3}
+    .evt-td div span{font-size:.58rem}
+    .evt-td .evt-next-badge{display:block;width:max-content;margin:3px 0 0;font-size:.5rem;padding:1px 6px}
+    .cv-scroll{aspect-ratio:auto;background:#fffaf0;filter:none;padding:12px;
+      border:2px solid #ddc093;border-radius:12px;
+      box-shadow:inset 0 0 0 3px rgba(255,255,255,.65),0 6px 16px rgba(90,60,20,.1)}
+    .cv-items{position:static;grid-template-columns:repeat(2,1fr);gap:10px}
+    .cv-items li{border-left:none;background:rgba(240,177,62,.1);border-radius:10px;padding:10px 8px}
+  }
+
+  /* ===== 手机 ===== */
+  @media (max-width:600px){
+    .wrap{padding:0 16px}
+    .intro-overlay{display:none !important}
+    section{padding:50px 0}
+    .c4,.c3,.c2{grid-column:span 6}
+    .cv-items{gap:8px}
+    .cv-items .cv-ic{font-size:1.3rem}
+    .cv-items h3{font-size:.8rem}
+    .cv-items p{font-size:.62rem}
+    .cv-items .chip{font-size:.56rem;padding:1px 8px}
+    .sect-detail{padding:4px 0 0}
+    .sect-detail.expanded{grid-template-columns:1fr}
+    .orbit-panel{display:none}
+    .char-scroll{display:block}
+    .nf-wrap{display:none}
+    .nf-hint{display:none}
+    .nf-carousel{display:block}
+    .nf-stage{height:calc((100vw - 96px)*.86*.68)}
+    .cat-card{flex:0 1 calc((100% - 20px)/2);min-width:0}
+    .cat-card:nth-child(1) img{aspect-ratio:1259/713}
+    .cat-card:nth-child(2) img{aspect-ratio:1230/699}
+    .cat-card:nth-child(3) img{aspect-ratio:1256/671}
+    .cat-card:nth-child(4) img{aspect-ratio:1259/702}
+    .evt-frame{grid-template-columns:1fr;grid-template-areas:"tabs" "main" "today";padding:12px;gap:10px}
+    .evt-tabs{flex-direction:row;overflow-x:auto;gap:8px;padding-bottom:2px;scrollbar-width:none}
+    .evt-tabs::-webkit-scrollbar{display:none}
+    .evt-tab{flex:0 0 auto;padding:10px 14px;font-size:.88rem}
+    .evt-main{max-height:56vh;padding:10px}
+    .evt-grid{grid-template-columns:repeat(3,1fr);gap:8px}
+    .evt-card-body>b{font-size:.78rem}
+    .evt-card-body p{font-size:.58rem;-webkit-line-clamp:2}
+    .evt-time{font-size:.62rem}
+    .evt-chip{font-size:.56rem;padding:2px 6px}
+    .evt-td{min-height:54px}
+    .evt-week td{font-size:.66rem;min-width:64px;padding:8px 2px}
+    .evt-week th{font-size:.68rem}
+    .banner-modal{padding:0}
+    .bm-box{padding:18px 12px 14px;border-radius:8px;width:100% !important;max-width:calc(100vw - 16px) !important;box-sizing:border-box;margin:8px}
+    .bm-close{top:-38px;right:-2px;width:34px;height:34px;font-size:1.3rem}
+    .bm-title span{font-size:1.05rem}
+    .bm-title{margin-bottom:14px;gap:8px}
+    .bm-lead{font-size:.82rem;margin-bottom:8px}
+    .bm-body{max-height:55vh}
+    .bm-equip-table{font-size:.66rem;min-width:auto}
+    .bm-wing-table{min-width:auto !important}
+    .bm-equip-table th,.bm-equip-table td{padding:4px 5px}
+    .bm-equip-wrap{max-width:100%}
+    .bm-equip-tab{padding:5px 12px;font-size:.78rem}
+    .bag-egg-card{padding:28px 20px 22px}
+    .bag-egg-mark{width:52px;height:52px;font-size:1.6rem}
+    .bag-egg-card h2{font-size:1.2rem}
+    .bag-egg-copy,.bag-egg-note{font-size:.82rem}
+  }
+
+  /* ===== 应用壳·左侧竖栏布局 ===== */
+  html{overflow-x:hidden}
+  .app{display:flex;min-height:100vh}
+  /* 首页（Hero）不显示左侧竖栏，全屏沉浸 */
+  body.rail-off .rail{display:none}
+  body.rail-off .main{margin-left:0}
+  @media (min-width:961px){
+    body.rail-off .main{margin-left:0}
+  }
+  /* 门派竖栏：底部选中「门派」时替换默认竖栏 */
+  #sectRail{display:none}
+  body.rail-sects #sectRail{display:flex}
+  body.rail-sects #rail{display:none}
+  /* 活动页：不显示左侧默认竖栏 */
+  body.rail-events #rail{display:none}
+  body.rail-events .main{margin-left:0}
+  @media (min-width:961px){
+    body.rail-events .main{margin-left:0}
+  }
+  /* 活动页：木牌框在可视区上下居中 */
+  #events{
+    display:flex;flex-direction:column;justify-content:center;
+    min-height:calc(100svh - 56px);box-sizing:border-box;padding:0;
+  }
+  @media (min-width:961px){
+    #events{min-height:calc(100svh - 60px)}
+  }
+  /* 修复移动端活动周历撑破屏幕：flex 链路允许收缩，周历表格在 .evt-weekwrap 内部横向滚动 */
+  #events .wrap,#events .evt-panel,#events .evt-frame,#events .evt-main{min-width:0}
+  #events .wrap{width:100%;box-sizing:border-box}
+  /* 移动端：左侧竖栏避开底部五栏导航，避免最下面的图标被遮住 */
+  @media (max-width:960px){
+    body:not(.rail-off) .rail{bottom:calc(56px + env(safe-area-inset-bottom,0px))}
+  }
+  .sect-emoji{font-size:26px;line-height:1;filter:drop-shadow(0 2px 4px rgba(22,19,15,.15))}
+  /* 门派头像：左侧栏用门派徽章；立绘裁头仅作无徽章时的回退 */
+  .sect-art{
+    width:34px;height:34px;border-radius:10px;overflow:hidden;position:relative;flex-shrink:0;display:block;
+    background:#fff6e8;
+    background:color-mix(in srgb,var(--sc,#f59e0b) 12%,#fff);
+    box-shadow:inset 0 0 0 1px rgba(22,19,15,.06);
+  }
+  #sectRail .sect-art img{
+    position:absolute;display:block;width:340%;max-width:none;height:auto;
+    left:-120%;top:-12%;          /* 放大后对准头部区域 */
+  }
+  #sectRail .sect-art:has(img.sect-badge){
+    background:transparent;box-shadow:none;
+  }
+  #sectRail .sect-art img.sect-badge{
+    position:static;width:100%;height:100%;max-width:100%;
+    left:auto;top:auto;object-fit:contain;
+  }
+  .sect-rail .rail-label{display:none}  /* 门派按钮只留头像，不显示文字 */
+  .sect-btn.active{
+    border-color:var(--sc,var(--gold));
+    box-shadow:0 0 0 2.5px rgba(245,158,11,.22),0 6px 14px rgba(22,19,15,.14);
+  }
+  @media (min-width:961px){
+    .sect-emoji{font-size:36px}
+    .sect-art{width:52px;height:52px;border-radius:14px}
+  }
+  /* 门派竖栏 PC 端紧凑化：15 个头像一屏放下，无需滚动（.rail 前缀防被后文 .rail 规则覆盖） */
+  @media (min-width:961px){
+    .rail.sect-rail{width:72px;padding:8px 0;gap:5px}
+    .rail.sect-rail .sect-btn{width:48px;height:48px;border-radius:14px;flex-direction:row;gap:0}
+    .rail.sect-rail .sect-art{width:36px;height:36px;border-radius:10px}
+    .rail.sect-rail .sect-emoji{font-size:24px}
+  }
+  /* 门派面板 · 发现页式布局：视频横幅 + 卡片流（点卡片直接在页内展开内容） */
+  .sect-hero{
+    position:relative;border-radius:18px;overflow:hidden;height:210px;
+    background:transparent;
+  }
+  .sect-hero-video{width:100%;height:100%;object-fit:cover;display:block;mix-blend-mode:multiply}
+  /* 分类标签栏：单行横向滑动，点击直接切换下方内容 */
+  .sect-tabs{
+    display:flex;flex-wrap:nowrap;gap:8px;padding:12px 2px 4px;
+    overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .sect-tabs::-webkit-scrollbar{display:none}
+  .sect-tab{
+    flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;
+    background:#fff;border:1.5px solid rgba(22,19,15,.08);border-radius:999px;
+    padding:8px 13px;font-size:.8rem;font-weight:800;color:var(--ink);
+    cursor:pointer;font-family:inherit;white-space:nowrap;
+    transition:background .2s,color .2s,border-color .2s,box-shadow .2s;
+  }
+  .sect-tab img{width:18px;height:18px;object-fit:contain}
+  .sect-tab.active{
+    background:#fff;
+    border-color:var(--gold);
+    color:#c77b2e;
+    box-shadow:0 0 0 2.5px rgba(245,158,11,.28),0 6px 14px rgba(245,158,11,.2);
+  }
+  /* 页内展开的板块内容 */
+  #sectCatPanel:empty{display:none}
+  .sect-cat-block{margin-top:16px;animation:fadeUp .3s ease}
+  .sect-cat-block .ref-block-h{margin-bottom:10px}
+  @media (min-width:961px){
+    .sect-hero{height:280px}
+    .sect-tabs{gap:10px;padding-top:14px}
+    .sect-tab{padding:9px 18px;font-size:.9rem}
+    .sect-tab img{width:20px;height:20px}
+  }
+  .rail{
+    position:fixed;left:0;top:0;bottom:0;width:64px;z-index:100;
+    background:#fff;
+    border-right:1.5px solid rgba(22,19,15,.08);
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    padding:14px 0;overflow-y:auto;overflow-x:hidden;
+    scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .rail::-webkit-scrollbar{display:none}
+  .rail-btn{
+    width:44px;height:44px;flex:0 0 auto;border-radius:14px;
+    background:#fff;border:1.5px solid rgba(22,19,15,.08);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;
+    box-shadow:0 3px 8px rgba(22,19,15,.06);
+    transition:transform .2s,box-shadow .2s,border-color .2s;
+    padding:0;font-family:inherit;text-decoration:none;color:inherit;
+  }
+  .rail-btn img{width:28px;height:28px;object-fit:contain;border-radius:8px;pointer-events:none}
+  .rail-btn:hover{transform:translateY(-2px);border-color:var(--gold)}
+  .rail-btn.active{
+    border-color:var(--gold);
+    box-shadow:0 0 0 2.5px rgba(245,158,11,.28),0 6px 14px rgba(245,158,11,.2);
+  }
+  .rail-label{display:none}
+  .rail-gap{flex:1;min-height:8px}
+  .main{flex:1;min-width:0;margin-left:64px}
+  .panel{display:none}
+  .panel.active{display:block;animation:panelIn .35s ease}
+  @keyframes panelIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  /* PC 端：竖栏加宽带文字，内容区小模块变宽 */
+  @media (min-width:961px){
+    .rail{width:112px;padding:22px 0;gap:16px}
+    .rail-btn{width:80px;height:76px;border-radius:20px;flex-direction:column;gap:6px}
+    .rail-btn img{width:38px;height:38px}
+    .rail-label{display:block;font-size:.68rem;font-weight:800;color:var(--muted);letter-spacing:.05em;line-height:1}
+    .rail-btn.active .rail-label{color:#c77b2e}
+    .main{margin-left:112px}
+    .main .wrap{max-width:1400px}
+    .main .nf-extra-wrap,.main .nf-wrap,.main .cat-row{max-width:1400px}
+    .main .nf-card{flex:0 1 calc((100% - 80px)/5);min-width:0}
+    .main .evt-panel{max-width:1400px}
+    .main .cat-card{flex:0 1 calc((100% - 60px)/4)}
+  }
+
+  /* ===== 底部五栏导航 ===== */
+  .bottom-nav{
+    position:fixed;left:0;right:0;bottom:0;z-index:120;
+    width:100%;max-width:100vw;box-sizing:border-box;
+    height:56px;                                   /* 兜底：不支持 env() 时生效 */
+    height:calc(56px + env(safe-area-inset-bottom,0px));
+    padding-bottom:0;
+    padding-bottom:env(safe-area-inset-bottom,0px);
+    transform:translateZ(0);                       /* 强制独立合成层，滚动时不抖动 */
+    background:#fff;
+    border-top:1.5px solid rgba(22,19,15,.08);
+    display:flex;align-items:stretch;
+    overflow:hidden;
+    box-shadow:0 -6px 18px rgba(22,19,15,.06);
+  }
+  .bn-item{
+    flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+    background:none;border:none;cursor:pointer;font-family:inherit;
+    text-decoration:none;color:var(--muted);padding:0;
+    transition:color .2s,transform .15s;
+  }
+  .bn-item:active{transform:scale(.94)}
+  .bn-item img{width:24px;height:24px;object-fit:contain;border-radius:6px;flex-shrink:0}
+  .bn-item span{
+    font-size:.62rem;font-weight:700;letter-spacing:.04em;line-height:1;
+    max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .bn-item.active{color:var(--gold)}
+  .bn-item.active span{color:#c77b2e;font-weight:800}
+  .main{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+  @media (min-width:961px){
+    .bottom-nav{
+      left:50%;transform:translateX(-50%);
+      width:min(720px,80vw);height:60px;padding-bottom:0;
+      border:1.5px solid rgba(22,19,15,.08);border-bottom:none;
+      border-radius:18px 18px 0 0;
+      box-shadow:0 -10px 30px rgba(22,19,15,.12);
+    }
+    .bn-item img{width:28px;height:28px}
+    .bn-item span{font-size:.7rem}
+    .main{padding-bottom:80px}
+  }
+
+  /* ===== 开场视频 ===== */
+  html.skip-intro .intro-overlay{display:none !important}
+  .intro-overlay{
+    position:fixed;inset:0;z-index:9999;background:transparent;
+    display:none;place-items:center;
+    transition:opacity .6s ease;cursor:pointer;
+  }
+  .intro-overlay.show{display:grid}
+  .intro-overlay.hide{opacity:0;pointer-events:none}
+  .intro-overlay video{width:100%;height:100%;object-fit:contain;position:relative;z-index:1;pointer-events:none}
+  .intro-skip{
+    position:absolute;top:24px;right:28px;z-index:999;pointer-events:auto;cursor:pointer;
+    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);
+    color:#fff;border-radius:999px;padding:7px 18px;
+    font-size:.82rem;font-weight:700;letter-spacing:2px;cursor:pointer;
+    backdrop-filter:blur(6px);transition:all .2s;
+  }
+  .intro-skip:hover{background:rgba(255,255,255,.25)}
+
+  /* 全屏水印 */
+  .site-watermark{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99999;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22220%22%20height%3D%22160%22%3E%0A%20%20%3Ctext%20x%3D%2220%22%20y%3D%2280%22%20font-size%3D%2212%22%20fill%3D%22%23000000%22%20fill-opacity%3D%220.05%22%20font-family%3D%22Microsoft%20YaHei%2C%20sans-serif%22%20transform%3D%22rotate%2825%2C%20110%2C%2080%29%22%3E%E4%B9%9D%E5%B0%8F%E5%8D%BF%E6%94%BB%E7%95%A5%E7%AB%99%3C/text%3E%0A%3C/svg%3E");background-repeat:repeat;opacity:1}
+
+  /* 禁止复制 */
+  body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+  input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+
+  body.rail-sects .main{margin-left:64px}
+  @media (min-width:961px){
+    body.rail-sects .main{margin-left:72px}
+  }
+  #panel-sects,.panel#panel-sects,.panel.active{display:block}
+</style>
+</head>
+<body class="rail-sects">
+<div class="site-watermark"></div>
+<div class="app">
+<aside class="rail sect-rail" id="sectRail" aria-label="门派切换"></aside>
+<main class="main">
+<div class="panel active" id="panel-sects" data-page-node-id="GaThd4YpNkIJuC6fvPgjMg">
+<section class="sects-section" id="sects" style="padding-top:0" data-page-node-id="pqDX2ZPsFFm0jTY72Bw0gH">
+  <div class="wrap" data-page-node-id="UcAOTzZmybdszYj2gnLEI6">
+    <div class="sect-detail" id="sectDetail" data-page-node-id="lirCsawCm9KCGg7O2koxwn"></div>
+  </div>
+</section>
+</div><!-- /panel-sects -->
+<footer>
+  <div class="wrap">
+    <div class="copyright">&copy; <span id="year">2026</span> 九小卿攻略站</div>
+  </div>
+</footer>
+</main>
+</div>
+<nav class="bottom-nav" id="bottomNav" aria-label="底部导航">
+  <a class="bn-item" href="index.html?skipIntro=1" aria-label="首页">
+    <img src="icons/nav_home.png" alt=""><span>首页</span>
+  </a>
+  <a class="bn-item active" href="sects.html" aria-label="门派">
+    <img src="icons/nav_sects.png" alt=""><span>门派</span>
+  </a>
+  <a class="bn-item" href="conv_8.html" aria-label="智能客服">
+    <img src="icons/nav_support.png" alt=""><span>智能客服</span>
+  </a>
+  <a class="bn-item" href="char_13.html" aria-label="百科">
+    <img src="icons/item_07358.png" alt=""><span>百科</span>
+  </a>
+  <a class="bn-item" href="index.html?skipIntro=1#events" aria-label="活动">
+    <img src="icons/nav_events.png" alt=""><span>活动</span>
+  </a>
+</nav>
+<script>
+if('scrollRestoration' in history) history.scrollRestoration='manual';
+const SECTS=[
+{
+    id: 'guiwang',
+    name: '鬼王',
+    slogan: '十方无敌勇者狂',
+    position: '物理门派',
+    tags: [
+      '擅长点杀',
+      '爆发力强',
+      '物理输出'
+    ],
+    chars: [
+      '👹',
+      '',
+      '👻',
+      '💀',
+      '',
+      '🤖',
+      '👽',
+      '',
+      '😈'
+    ],
+    charArt: '👹',
+    charName: '鬼厉',
+    skill: {
+      name: '为官之道',
+      intro: '战场如修罗，万事休鲁莽。精学为官道，万事皆无妄。',
+      effect: '鬼王宗基础技能，提升物理攻击与暴击率。',
+      upgrade: '0-120级 永久增加角色的物理伤害。'
+    },
+    arts: [
+      'art/sect/鬼王男1.webp',
+      'art/sect/鬼王女1.webp'
+    ],
+    icon: '👹',
+    color: '#8b5cf6',
+    detail: {
+      skills: [
+        {
+          'img': 'icons/gw_guidou.png',
+          'name': '鬼斗',
+          'desc': '连携技，当圣巫队友使用魔入膏肓时，有概率使用鬼斗攻击目标',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/gw_wing.png',
+          'name': '乱鬼斩',
+          'desc': '物理攻击2个目标，能攻击的目标数在技能等级30/60时会增加一个。使用限制：当前气血≥气血上限的10%',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/gw_liguiduopo.png',
+          'name': '厉鬼夺魄',
+          'desc': '有概率使目标进入混乱状态，随机普攻所有人，持续1回合。使用限制：当前气血≤气血上限的90%。',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/gw_kuangguiji.png',
+          'name': '狂鬼击',
+          'desc': '物理攻击敌方单个目标三次，使用后降低自身物理、法术防御，且虚弱一回合，提升技能等级会减少降防效果。使用限制：当前气血≥气血上限的30%',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/gw_houfaxianzhi.png',
+          'name': '后发先至',
+          'desc': '本回合待机，下回合提高速度和伤害，自动物理攻击单个目标，技能使用后减少本回合，第二回合技能施放前受到的伤害（冰冻、睡眠、石化状态第二回合无法出手）。使用限制：当前气血≥气血上限的10%',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/gw_xianfazhiren.png',
+          'name': '先发制人',
+          'desc': '临时提升速度，物理攻击敌方单个目标。使用限制：当前气血≥气血上限的10%',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/gw_guiyingchongchong.png',
+          'name': '鬼影重重',
+          'desc': '同时物理攻击3个目标，使用后虚弱一回合，并有概率使焚香队友施放星火攻击血量最少目标。使用限制:当前气血<气血上限50%',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/gw_tiangangzhanqi.png',
+          'name': '幽冥盾击',
+          'desc': '临时提升速度，增加1回合反击状态，当受到物理伤害时100%对目标进行反击。使用限制：当前气血≤气血上限的90%',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/gw_kuangmofuti.png',
+          'name': '狂魔附体',
+          'desc': '物理攻击3个目标，然后降低自身法术防御，增加自身30%物理攻击力，持续4回合，4回合冷却。',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/gw_guixiaolietiansui.png',
+          'name': '鬼啸裂天碎',
+          'desc': '终极奥义，对5个目标造成3次物理伤害，副目标优先攻击血少的单位，使用后虚弱1回合，且有10回合的冷却',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/gw_gwjx.png',
+          'name': '死亡追踪',
+          'desc': '噬魂追击！物理攻击单体目标，如果击杀目标，则继续追击其他单位，最多追击2次',
+          'limit': '不限'
+        },
+      ],
+      reincarnation: [
+        {
+          name: '满级·幽冥盾击',
+          desc: '使用限制：当前气血≤气血上限的100%。升级提升技能伤害10%。'
+        },
+        {
+          name: '满级·厉鬼夺魂',
+          desc: '厉鬼夺魂命中增加10%，使用限制：当前气血≤气血上限的100%。'
+        },
+        {
+          name: '满级·先发制人',
+          desc: '使用先发制人击杀目标后，会立即对随机敌人进行追击，升级提升追击伤害。'
+        },
+        {
+          name: '满级·后发先至',
+          desc: '提升后发先至提升的物理攻击力，升级天赋增加提升攻击力效果。'
+        },
+        {
+          name: '满级·鬼影重重',
+          desc: '使用限制：当前气血≤气血上限100%，有100%概率用休息来代替虚弱。'
+        },
+        {
+          name: '满级·狂鬼击',
+          desc: '使用狂鬼击时临时提升10%暴击率，满20级伤害次数+1。'
+        }
+      ]
+    }
+  },
+  {
+    id: 'qingyun',
+    name: '青云',
+    slogan: '御剑乘风天地宽',
+    position: '法术门派',
+    tags: [
+      '法术输出',
+      'AOE伤害',
+      '控制'
+    ],
+    chars: [
+      '☁️',
+      '⚡',
+      '️',
+      '🌊',
+      '🔥',
+      '️',
+      '💨',
+      '🌪️',
+      '✨'
+    ],
+    charArt: '☁️',
+    charName: '张小凡',
+    skill: {
+      name: '太极剑法',
+      intro: '御剑乘风来，除魔天地间。有酒乐逍遥，无酒我亦颠。',
+      effect: '青云门核心法术，群体伤害与控制。',
+      upgrade: '0-120级 永久增加角色的法术伤害。'
+    },
+    arts: [
+      'art/sect/青云男1.webp',
+      'art/sect/青云女1.webp'
+    ],
+    icon: '☁️',
+    color: '#4d7cff',
+    detail: {
+      'skills': [
+        {
+          'img': 'icons/qy_huanleijianjue.png',
+          'name': '唤雷剑诀',
+          'desc': '连携技，当焚香队友使用三昧真火时，有概率使用唤雷剑诀法术攻击目标',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/qy_shenjianyuleizhenjue.png',
+          'name': '神剑御雷真诀',
+          'desc': '同时法术攻击3个目标，能攻击的目标数在技能等级30/60/90时会增加一个',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/qy_tianlingjianjue.png',
+          'name': '天灵剑诀',
+          'desc': '大幅降低自身速度并法术攻击单个目标，目标剩余血量越少天灵剑诀的伤害越高',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/qy_tiaoyuejianjue.png',
+          'name': '挑月剑诀',
+          'desc': '同时法术攻击2个目标，附带降低目标速度3回合，并有概率使天音队友施放醉罗汉降低目标法术防御2回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/qy_xuanqingxinjing.png',
+          'name': '玄清心经',
+          'desc': '降低目标法力，并回复自身法力',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/qy_suiyujianjue.png',
+          'name': '碎玉剑诀',
+          'desc': '减少敌方全体目标法力，并附带减少等量气血',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/qy_jinghuijue.png',
+          'name': '净秽诀',
+          'desc': '解除友方3个目标的负面状态，副目标优先为中负面状态的单位，但无法解封印和毒',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/qy_zuifengwangyue.png',
+          'name': '醉风望月',
+          'desc': '给自身增加一个持续2回合的魔法盾，受到的50%伤害用1.5倍于伤害的法力值来代替，技能等级越高所需消耗的法力越低',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/qy_shengmingfangzhu.png',
+          'name': '生命放逐',
+          'desc': '有概率使目标进入冰冻状态，持续3回合，冰冻状态下无法行动，并且受到所有伤害变为1，施法者死亡后冰冻效果消失',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/qy_wanjianguizong.png',
+          'name': '万剑归宗',
+          'desc': '终极奥义，依次对5个目标造成大量法术伤害，使用后虚弱1回合，且有10回合的冷却',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/qy_xuqileiting.png',
+          'name': '蓄气雷霆',
+          'desc': '雷霆破灭！临时降低自身速度，法术攻击4个目标，优先攻击血量最低目标，使用后休息一回合',
+          'limit': '不限'
+        }
+      ],
+      'reincarnation': [
+        {
+          'name': '满级·生命放逐',
+          'desc': '生命放逐成功率增加20%。'
+        },
+        {
+          'name': '满级·碎玉剑决',
+          'desc': '碎玉剑决有概率使目标中毒，回合末减少当前气血的5%。升级增加中毒概率。'
+        },
+        {
+          'name': '满级·净秽诀',
+          'desc': '使用净秽诀时会为目标回复一定气血， 另为目标回复一定蓝量。净秽诀· 20级目标个数+2。'
+        },
+        {
+          'name': '满级·挑月剑诀',
+          'desc': '使用挑月剑诀后有100%概率再次释放挑月剑诀。'
+        },
+        {
+          'name': '满级·醉风望月',
+          'desc': '受到的100%伤害用法力值来替代。醉风望月· 20级持续回合数+2。'
+        },
+        {
+          'name': '满级·天灵剑诀',
+          'desc': '使用天灵剑决击杀目标后，会立即对随机敌人进行追击，升级提升追击伤害。'
+        }
+      ]
+    }
+  },
+  {
+    id: 'tianyin',
+    name: '天音',
+    slogan: '普度众生慈悲心',
+    position: '辅助门派',
+    tags: [
+      '治疗',
+      '辅助',
+      '增益'
+    ],
+    chars: [
+      '',
+      '🙏',
+      '✨',
+      '💫',
+      '🌟',
+      '⭐',
+      '🌙',
+      '☀️',
+      '💛'
+    ],
+    charArt: '🔔',
+    charName: '法相',
+    skill: {
+      name: '大梵般若',
+      intro: '慈悲为怀普度众，佛光普照净人心。',
+      effect: '天音寺核心治疗技能，恢复队友生命值。',
+      upgrade: '0-120级 永久增加角色的治疗效果。'
+    },
+    arts: [
+      'art/sect/天音男1.webp',
+      'art/sect/天音女1.webp'
+    ],
+    icon: '🔔',
+    color: '#f59e0b',
+    detail: {
+      'skills': [
+        {
+          'img': 'icons/ty_zuiluohan.png',
+          'name': '醉罗汉',
+          'desc': '连携技，青云队友使用挑月剑诀时，有概率使用醉罗汉降低目标法术防御，持续2回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/ty_wuliangjingshizhou.png',
+          'name': '无量净世咒',
+          'desc': '同时法术攻击2个目标（一部分法术伤害加固定伤害），能攻击的目标数在技能等级30/60/90时会增加一个',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/ty_foguangpuzhao.png',
+          'name': '佛光普照',
+          'desc': '恢复友方单个目标大量气血值，提升技能等级和法术伤害会增加治疗量',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/ty_tihuguanding.png',
+          'name': '醍醐灌顶',
+          'desc': '恢复友方2个目标少量气血值，并持续恢复气血，提升技能等级和法术伤害会增加治疗量，技能每提升35级持续回合数提升1回合，30/60级时可作用到4个目标',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/ty_wangshengzhou.png',
+          'name': '往生咒',
+          'desc': '复活队友单个目标，并为其恢复一定气血，提升技能等级和法术伤害会增加治疗量',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/ty_wuxiangzhou.png',
+          'name': '无相咒',
+          'desc': '为友方单体增加护盾，可吸收受到的伤害，持续两回合，护盾吸收的伤害有吸收上限，吸收上限随法术攻击提升而提升',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/ty_qumozhou.png',
+          'name': '驱魔咒',
+          'desc': '解除友方单个目标所受所有封印状态',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/ty_nuhunyin.png',
+          'name': '怒魂引',
+          'desc': '嘲讽单体目标，使目标当前回合普攻自己，并有概率使合欢队友施放疾空斩攻击目标',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/ty_shuijingzhijing.png',
+          'name': '水晶之镜',
+          'desc': '给友方单体增加护盾，持续2回合，可以将第一次受到的物理伤害100%反弹给攻击者',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/ty_niepanzhou.png',
+          'name': '涅盘咒',
+          'desc': '终极奥义，治疗全体所有单位，恢复一定蓝量，并驱散目标所有异常状态，使用后虚弱1回合，且有10回合的冷却',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/ty_sheshensimo.png',
+          'name': '舍身饲魔',
+          'desc': '我佛慈悲！给友方玩家增加buff，如果目标死亡，则为己方全体恢复10%血量。（3回合内只触发1次）',
+          'limit': '不限'
+        }
+      ],
+      'reincarnation': [
+        {
+          'name': '满级·驱魔咒',
+          'desc': '驱魔咒会提升目标速度20%，并提速10%释放该技能。'
+        },
+        {
+          'name': '满级·佛光普照',
+          'desc': '使用佛光普照时提升10%暴击率，和20%的治疗效果。'
+        },
+        {
+          'name': '满级·怒魂引',
+          'desc': '怒魂引释放后增加本回合20%的物理防御，和20%的法术防御。'
+        },
+        {
+          'name': '满级·醍醐灌顶',
+          'desc': '醍醐灌顶受到法术攻击增加的治疗量提高，20级时目标数量+1。'
+        },
+        {
+          'name': '满级·无相咒',
+          'desc': '无相咒吸收伤害提升，满20级会为目标增加驱鬼效果。'
+        },
+        {
+          'name': '满级·往生咒',
+          'desc': '使用往生咒成功复活目标后，有概率为目标增加水晶之镜状态，持续2回合+20级时复活的目标数量+1。'
+        }
+      ]
+    }
+  },
+  {
+    id: 'fenxiang',
+    name: '焚香',
+    slogan: '烈焰焚天灭万物',
+    position: '法术门派',
+    tags: [
+      'DOT伤害',
+      '持续输出',
+      '范围攻击'
+    ],
+    chars: [
+      '',
+      '💥',
+      '🌋',
+      '️',
+      '🔥',
+      '💥',
+      '',
+      '☄️',
+      '🔥'
+    ],
+    charArt: '🔥',
+    charName: '云易岚',
+    skill: {
+      name: '焚香玉册',
+      intro: '烈焰焚天灭万物，赤焰燎原净世间。',
+      effect: '焚香谷核心技能，持续伤害与范围攻击。',
+      upgrade: '0-120级 永久增加角色的DOT伤害。'
+    },
+    arts: [
+      'art/sect/焚香男1.webp',
+      'art/sect/焚香女1.webp'
+    ],
+    icon: '🔥',
+    color: '#ff4d4d',
+    detail: {
+      'skills': [
+        {
+          'img': 'icons/fx_xinghuo.png',
+          'name': '星火',
+          'desc': '连携技，当鬼王队友使用鬼影重重时，有概率使用星火攻击血最少的单位',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/fx_bahuangxuanhuozhen.png',
+          'name': '八荒玄火阵',
+          'desc': '同时法术攻击2个目标，能攻击的目标数在技能等级30/60/90/120时会增加一个。([炎龙觉醒]前后都可用)',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/fx_shuanglongxuan.png',
+          'name': '双龙旋',
+          'desc': '单体法术攻击目标2次。释放技能后有极大概率激活[炎龙觉醒]状态。且降低少量物理防御和法术防御，持续2回合，不可被驱散，死亡不消失。死亡时，攻击力会降低，持续到本回合。',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/fx_qiangshuanglongxuan.png',
+          'name': '强·双龙旋',
+          'desc': '单体法术攻击目标4次，技能无冷却，不休息。技能消耗百分比最大法力值。暴击时增加自身怒气。击杀角色后，50%概率增加1回合[炎龙觉醒]状态。增加[炎龙觉醒]的效果有2回合冷却，每回合最多生效1次，每场战斗最多生效3次。([炎龙觉醒]后可用)',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/fx_sanmeizhenhuo.png',
+          'name': '三昧真火',
+          'desc': '本回合增加一回合法术反击状态，受到法术攻击时100%法术普通攻击反击，第二回合优先自动出手对单体目标造成大量法术伤害（冰冻、睡眠、石化状态第二回合无法出手），并有概率使苍羽阁队友施放灵魂射击攻击目标。',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/fx_qiangsanmeizhenhuo.png',
+          'name': '强·三昧真火',
+          'desc': '本回合增加一回合反击状态，受到攻击时100%法术普通攻击反击，第二回合优先自动出手对单体目标造成大量法术伤害（冰冻、睡眠、石化状态第二回合无法出手），并有概率使苍羽阁队友施放灵魂射击攻击目标。([炎龙觉醒]后可用)',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/fx_yanlongxiao.png',
+          'name': '炎龙啸',
+          'desc': '单体法术攻击目标，有概率封印目标一回合，无法使用技能',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/fx_qiangyanlongxiao.png',
+          'name': '强·炎龙啸',
+          'desc': '单体法术攻击目标，有概率封印目标一回合，无法使用技能。冷却1回合。释放技能后，退出[炎龙觉醒]状态，恢复初始物理防御和法术防御，同时百分比增加物理防御和法术防御，持续至本回合。([炎龙觉醒]后可用)',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/fx_huoyanjinjing.png',
+          'name': '火眼金睛',
+          'desc': '给至多10个友方单位增加反隐状态，持续3回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/fx_qianghuoyanjinjing.png',
+          'name': '强·火眼金睛',
+          'desc': '给至多10个友方单位增加反隐状态，持续5回合。([炎龙觉醒]后可用)',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/fx_zhiyanglvling.png',
+          'name': '炙阳律令',
+          'desc': '给3个友方角色增加无视百分比物理防御和法术防御，持续2回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/fx_bahuangjuhuojue.png',
+          'name': '八荒聚火诀',
+          'desc': '给单体目标增加护盾，大幅降低受到的物理伤害和法术伤害，提高物理暴击率和法术暴击率，持续3回合，该效果无法被驱散。',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/fx_sanfenguiyuanqi.png',
+          'name': '三分归元气',
+          'desc': '给自身回复大量最大法力值百分比的法力值。([炎龙觉醒]前后都可用)',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/fx_lieyanwushuangji.png',
+          'name': '烈焰无双击',
+          'desc': '终极奥义，临时提高自身百分比伤害，法术攻击单个目标，伤害次数为5-8次，达到5次后每次伤害都有概率追加一次伤害，使用后虚弱1回合，且有10回合的冷却。([炎龙觉醒]前后都可用)',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/fx_fxjx.png',
+          'name': '焱龙狂舞',
+          'desc': '焱龙出击！法术攻击敌方5个目标，使用后休息一回合',
+          'limit': '不限'
+        }
+      ],
+      'reincarnation': [
+        {
+          'name': '满级·八荒聚火诀',
+          'desc': '使用八荒聚火诀时会为目标回复一定气血，升级天赋提升回复血量。八荒聚火诀· 10级持续回合数+1。'
+        },
+        {
+          'name': '满级·三分归元气',
+          'desc': '提升三分归元气增加法力值百分比'
+        },
+        {
+          'name': '满级·强·三昧真火',
+          'desc': '使用强·三昧真火时提升自身20%出手速度，增加反击伤害。'
+        },
+        {
+          'name': '满级·强·炎龙啸',
+          'desc': '提升强·炎龙啸出手速度提升20%和封印命中率20%'
+        },
+        {
+          'name': '满级·双龙旋',
+          'desc': '增加[炎龙觉醒]触发概率至100%。临时提升双龙旋或强·双龙旋的暴击率。'
+        },
+        {
+          'name': '满级·八荒玄火阵',
+          'desc': '八荒玄火阵伤害提升'
+        }
+      ]
+    }
+  },
+  {
+    id: 'hehuan',
+    name: '合欢',
+    slogan: '一笑倾城百媚生',
+    position: '物理门派',
+    tags: [
+      '暴击',
+      '爆发',
+      '速度'
+    ],
+    chars: [
+      '',
+      '💗',
+      '💖',
+      '💘',
+      '💝',
+      '❤️',
+      '',
+      '💛',
+      '💚'
+    ],
+    charArt: '💕',
+    charName: '金瓶儿',
+    skill: {
+      name: '魅惑众生',
+      intro: '一笑倾城百媚生，回眸一笑百媚横。',
+      effect: '合欢派核心技能，高暴击与爆发伤害。',
+      upgrade: '0-120级 永久增加角色的暴击率。'
+    },
+    arts: [
+      'art/sect/合欢男1.webp',
+      'art/sect/合欢女1.webp'
+    ],
+    icon: '💕',
+    color: '#ff4d8d',
+    detail: {
+      'skills': [
+        {
+          'img': 'icons/hh_jikongzhan.png',
+          'name': '疾空斩',
+          'desc': '连携技，当天音队友使用怒魂引时，有概率使用疾空斩攻击目标',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/hh_baihua.png',
+          'name': '百花缭乱',
+          'desc': '同时物理攻击2个目标，能攻击的目标数在技能等级30/60时会增加一个',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/hh_yanyuduanchang.png',
+          'name': '烟雨断肠',
+          'desc': '单体物理攻击目标，并降低目标物防，持续3回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/hh_huacanxufei.png',
+          'name': '落花听雨',
+          'desc': '物理攻击单体目标4次，使用后休息一回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/hh_mianlicangzhen.png',
+          'name': '绵里藏针',
+          'desc': '单体物理攻击目标并根据造成的伤害回复血量，使用后休息一回合并有概率使圣巫队友施放刀剑破降低目标物理防御，持续2回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/hh_yihuajiemu.png',
+          'name': '移花接木',
+          'desc': '同时物理攻击2个目标，能攻击的目标数在技能等级30/60/90时会增加一个，使用后休息一回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/hh_qinglingshenmu.png',
+          'name': '清灵神目',
+          'desc': '给单体友方释放持续回蓝buff，持续3回合。使用限制：当前气血≥气血上限的5%',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/hh_chiqingzhou.png',
+          'name': '痴情咒',
+          'desc': '复活一个友方目标，自身保留一点气血，3回合之内无法再次使用',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/hh_douzhuanxingyi.png',
+          'name': '斗转星移',
+          'desc': '为目标增加伤害免疫护盾，使得该状态下受到的第一次伤害转化为治疗',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/hh_kuangfengdianliu.png',
+          'name': '狂风点柳',
+          'desc': '终极奥义，物理攻击敌方一个目标5次，自身虚弱一回合，若击杀目标，则目标死亡后不能被复活，持续3回合，使用后虚弱1回合，且有10回合的冷却',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/hh_hhjx.png',
+          'name': '花谢花飞',
+          'desc': '昙花一现！攻击单体目标，如果目标有中毒状态，则忽视30%物理防御',
+          'limit': '不限'
+        }
+      ],
+      'reincarnation': [
+        {
+          'name': '满级·烟雨断肠',
+          'desc': '额外降低目标法术防御持续3回合，升级提升降低法术防御的效果并提技能伤害。'
+        },
+        {
+          'name': '满级·清灵神目',
+          'desc': '升级提升蓝量回复量，20级目标数量+1。'
+        },
+        {
+          'name': '满级·痴情咒',
+          'desc': '提升痴情咒使用后的剩余气血值增加。'
+        },
+        {
+          'name': '满级·绵里藏针',
+          'desc': '提升绵里藏针技能伤害，并有40%概率为目标增加禁疗效果，持续3回合'
+        },
+        {
+          'name': '满级·落花听雨',
+          'desc': '落花听雨概率不休息，提升等级提升不休息概率。'
+        },
+        {
+          'name': '满级·移花接木',
+          'desc': '升级移花接木伤害增加，20级目标数量+1。'
+        }
+      ]
+    }
+  },
+  {
+    id: 'shengwu',
+    name: '圣巫',
+    slogan: '万物有灵皆可御',
+    position: '控制门派',
+    tags: [
+      '封印',
+      '控制',
+      '辅助'
+    ],
+    chars: [
+      '🌿',
+      '🍃',
+      '',
+      '🌾',
+      '🌻',
+      '🌺',
+      '🌸',
+      '',
+      '🌷'
+    ],
+    charArt: '🌿',
+    charName: '巫妖王',
+    skill: {
+      name: '圣巫咒术',
+      intro: '万物有灵皆可御，天地为棋我为先。',
+      effect: '圣巫教核心技能，封印与控制敌方。',
+      upgrade: '0-120级 永久增加角色的封印成功率。'
+    },
+    arts: [
+      'art/sect/圣巫男1.webp',
+      'art/sect/圣巫女1.webp'
+    ],
+    icon: '🌿',
+    color: '#22c55e',
+    detail: {
+      'skills': [
+        {
+          'img': 'icons/sw_djp.png',
+          'name': '刀剑破',
+          'desc': '连携技，当合欢队友使用绵里藏针时，有概率使用刀剑破降低目标物理防御，持续2回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/sw_chixinlie.png',
+          'name': '痴心裂',
+          'desc': '同时攻击2个目标造成一部分法术伤害加固定伤害，能攻击的目标数在技能等级30/60/90时会增加一个，使目标本回合受到的伤害增加10%',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/sw_fenpoyan.png',
+          'name': '焚魄炎',
+          'desc': '单体法术攻击目标（一部分法术伤害加固定伤害），并且每回合持续降低目标法力',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/sw_mianguzhou.png',
+          'name': '绵骨咒',
+          'desc': '临时提高封印命中率封印目标物理和法术，持续3回合，该技能会有1回合冷却时间',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/sw_jinlingsuo.png',
+          'name': '禁灵锁',
+          'desc': '一定概率使敌方单个目标无法使用技能，并降低目标防御20%，持续3回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/sw_rml.png',
+          'name': '入梦令',
+          'desc': '一定概率使目标睡眠，持续4回合，受到伤害会解除睡眠效果，若命中后4回合内无法再次被入梦令命中',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/sw_morugaohuang.png',
+          'name': '魔入膏肓',
+          'desc': '驱散敌方目标所有增益效果，并有概率使鬼王队友施放鬼斗攻击目标',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/sw_tthr.png',
+          'name': '偷天换日',
+          'desc': '平均目标和施法者的生命的百分比，只能对其他玩家或仙侣使用，使用后虚弱2回合。使用限制：当前气血≥气血上限的5%',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/sw_yumozhijing.png',
+          'name': '御魔之镜',
+          'desc': '给友方增加护盾，持续2回合，可以将第一次受到的法术伤害100%反弹给施法者',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/sw_nsz.png',
+          'name': '凝石咒',
+          'desc': '终极奥义，使两个目标石化持续3回合，石化状态下不可行动，石化状态不可被驱散，不可闪避，使用后虚弱1回合，且有10回合的冷却',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/sw_swjx.png',
+          'name': '神虚巫法',
+          'desc': '虚空之术！增加友方单个目标50%的法术闪避，持续3回合',
+          'limit': '不限'
+        }
+      ],
+      'reincarnation': [
+        {
+          'name': '满级·魔入膏肓',
+          'desc': '提速20%对目标使用魔入膏肓后有100%概率使目标2回合内无法获得正面状态。'
+        },
+        {
+          'name': '满级·焚魄炎',
+          'desc': '焚魄炎伤害提升，提升降低法力的值，升级加强提升幅度'
+        },
+        {
+          'name': '满级·御魔之镜',
+          'desc': '使用御魔之镜时会为目标回复一定气血。升级天赋提升回复血量。御魔之镜·20级时反弹魔法伤害次数+1。'
+        },
+        {
+          'name': '满级·入梦令',
+          'desc': '被入梦令睡眠的角色双防降低40%，每10级封印成功可扣除目标5点怒气值，满级扣除10点怒气值。'
+        },
+        {
+          'name': '满级·偷天换日',
+          'desc': '偷天换日取消虚弱状态，但需要冷却3回合，偷天换日释放时速度提升20%。'
+        },
+        {
+          'name': '满级·禁灵锁',
+          'desc': '禁灵锁降低目标30%双防，每10级封印成功可扣除目标5点怒气值，满级扣除10点怒气值。'
+        }
+      ]
+    }
+  },
+  {
+    id: 'cangyu',
+    name: '苍羽',
+    slogan: '长空万里任翱翔',
+    position: '物理门派',
+    tags: [
+      '远程',
+      '物理',
+      '单体'
+    ],
+    chars: [
+      '',
+      '🦅',
+      '🦅',
+      '',
+      '🦅',
+      '🦅',
+      '',
+      '🦅',
+      '🦅'
+    ],
+    charArt: '🦅',
+    charName: '苍羽真人',
+    skill: {
+      name: '苍羽箭法',
+      intro: '长空万里任翱翔，一箭穿云破九霄。',
+      effect: '苍羽门核心技能，远程物理单体输出。',
+      upgrade: '0-120级 永久增加角色的远程物理伤害。'
+    },
+    arts: [
+      'art/sect/苍羽男1.webp',
+      'art/sect/苍羽女1.webp'
+    ],
+    icon: '🦅',
+    color: '#0ea5e9',
+    detail: {
+      'skills': [
+        {
+          'img': 'icons/CY_Skill010.png',
+          'name': '灵魂射击',
+          'desc': '连携技，当灵音队友使用魔音破灵时，有概率使用灵魂射击攻击目标',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/CY_Skill001.png',
+          'name': '寒柳分烟箭',
+          'desc': '气御箭矢，寒柳分烟，以分裂箭攻击2个目标，技能30/60级时增加一个目标',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/CY_Skill002.png',
+          'name': '化雪穿甲箭',
+          'desc': '柔水化冰，可穿金石，以玄冰意境射出箭矢，对一列目标进行穿透攻击，副目标受伤为主目标的50%',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/CY_Skill003.png',
+          'name': '劲烈爆炎箭',
+          'desc': '阴极而阳，冰极而火，攻击同排4个目标，攻击宠物和子女附加其10%气血上限的额外伤害，使用后休息1回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/CY_Skill004.png',
+          'name': '玄冥追魂箭',
+          'desc': '修罗魂术，灵魂锁定，第一回合蓄势，第二回合发动不可被闪避的强力攻击，目标血量越低伤害越高(冰冻、睡眠、石化状态第二回合无法出手)。并有概率使灵音队友施放仙乐御魂攻击目标。法使用限制:当前气血<气血上限80',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/CY_Skill005.png',
+          'name': '霜露之悲',
+          'desc': '瑞雪飘洒，净化鬼魅，给4名队友附加驱鬼状态，可将鬼魅宠物清除出场且增加对其伤害',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/CY_Skill006.png',
+          'name': '霜露之疾',
+          'desc': '飞花凌雪，心随流风，以疾风意境给目标附加提速状态，提升下回合出手速度，与万毒门的技能迷迭霜互斥',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/CY_Skill007.png',
+          'name': '霜露之病',
+          'desc': '极冰绽放，死亡蔓延，给目标附加致死状态，持续4回合，若其死亡，则对周围目标造成与致死伤害相关的伤害，且3回合只可触发一次',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/CY_Skill008.png',
+          'name': '霜露之辰',
+          'desc': '白露凝霜，冰雪复苏，给单体友方目标附加复活效果，持续2回合，若目标死亡则复活恢复一定气血并清除该效果，对亡魂状态也可触发',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/CY_Skill009.png',
+          'name': '飞雪连天',
+          'desc': '以身化雪，飞雪连天，终极技能，随机攻击敌方10次，打中相同目标伤害递减，附带吸血效果，使用后虚弱1回合，且有10回合的冷却',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/cy_cyjx.png',
+          'name': '虚空咒箭',
+          'desc': '诅咒之箭！给4个目标上毒，每回合末损失目标血量（损失血量与苍羽的物攻相关），无法被驱散，与其他毒叠加，持续4回合',
+          'limit': '不限'
+        }
+      ],
+      'reincarnation': [
+        {
+          'name': '满级·霜露之疾',
+          'desc': '霜露之疾额外附加提升40%伤害和20%封印命中率'
+        },
+        {
+          'name': '满级·霜露之辰',
+          'desc': '使用霜露之辰时增加回血量，20级时持续回合数+1。'
+        },
+        {
+          'name': '满级·霜露之病',
+          'desc': '升级增加霜露之病副目标受到的伤害。'
+        },
+        {
+          'name': '满级·化雪穿甲箭',
+          'desc': '升级增加化雪穿甲箭的伤害。'
+        },
+        {
+          'name': '满级·劲烈爆炎箭',
+          'desc': '劲烈爆炎箭对宠物和子女的附加伤害改为目标气血上限的20%，升级增加技能伤害。'
+        },
+        {
+          'name': '满级·玄冥追魂箭',
+          'desc': '升级提升玄冥追魂箭技能伤害。'
+        }
+      ]
+    }
+  },
+  {
+    id: 'lingyin',
+    name: '灵音',
+    slogan: '音律通神万物和',
+    position: '辅助门派',
+    tags: [
+      '音律',
+      '辅助',
+      '增益'
+    ],
+    chars: [
+      '🎵',
+      '🎶',
+      '🎼',
+      '🎹',
+      '🎸',
+      '🎺',
+      '🎷',
+      '🥁',
+      ''
+    ],
+    charArt: '🎵',
+    charName: '灵音仙子',
+    skill: {
+      name: '天籁之音',
+      intro: '音律通神万物和，曲终人散意未尽。',
+      effect: '灵音殿核心技能，音律攻击与团队增益。',
+      upgrade: '0-120级 永久增加角色的辅助效果。'
+    },
+    arts: [
+      'art/sect/灵音男1.webp',
+      'art/sect/灵音女1.webp'
+    ],
+    icon: '🎵',
+    color: '#a855f7',
+    detail: {
+      'skills': [
+        {
+          'img': 'icons/LY_Skill010.png',
+          'name': '仙乐御魂',
+          'desc': '连携技，当苍羽队友使用玄冥追魂箭时，有概率使用仙乐御魂攻击目标',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/LY_Skill001.png',
+          'name': '碧海潮生曲',
+          'desc': '回风拂柳，碧海潮生，法术攻击2个目标，技能等级30/60/90时增加一个目标',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/LY_Skill004.png',
+          'name': '广陵散',
+          'desc': '广陵绝音，以琴奏之，法术攻击单个目标，目标血量越高伤害越高',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/LY_Skill006.png',
+          'name': '魔音破灵',
+          'desc': '依次法术攻击4个目标，使用后虚弱一回合，并有概率使苍羽队友使用灵魂射击攻击目标。使用限制:当前气血≤气血上限50%',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/LY_Skill002.png',
+          'name': '大风歌',
+          'desc': '大风起兮云飞扬，法术攻击单体目标2-5次，使用后休息一回合。使用限制：当前气血≥气血上限的30%',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/LY_Skill003.png',
+          'name': '东海鲸波',
+          'desc': '对友方单位使用，代替其受到的第一次伤害，持续2回合，可以对死亡单位使用',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/LY_Skill012.png',
+          'name': '长恨歌',
+          'desc': '增加友方4个单位5%物理攻击，持续5回合，副目标优先物理攻击高的',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/LY_Skill008.png',
+          'name': '天魔无相',
+          'desc': '提速封印目标，使目标无法使用特技1回合，必定命中，3回合内无法再次使用',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/LY_Skill009.png',
+          'name': '万象大音',
+          'desc': '降低敌方5个目标受到的20%的治疗量，持续3回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/LY_Skill011.png',
+          'name': '一曲肝肠断',
+          'desc': '终极奥义，以悲凉心境演奏旷世乐曲，群体攻击敌方5个目标3次，并降低其物防30%，持续2回合，使用后虚弱1回合，且有10回合的冷却',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/ly_lyjx.png',
+          'name': '舞法舞天',
+          'desc': '靡靡之音！攻击单体目标，如果目标被封印，则忽视30%法术防御',
+          'limit': '不限'
+        }
+      ],
+      'reincarnation': [
+        {
+          'name': '满级·广陵散',
+          'desc': '广陵散技能伤害大幅提升。'
+        },
+        {
+          'name': '满级·长恨歌',
+          'desc': '增加的物理攻击力提升至20%。'
+        },
+        {
+          'name': '满级·东海鲸波',
+          'desc': '使用东海鲸波时自身代替目标承受的伤害降低100%，20级时可以代替目标承受次数+2。'
+        },
+        {
+          'name': '满级·万象大音',
+          'desc': '降低敌方5个目标受到的60%的治疗量，20级时持续回合+1。'
+        },
+        {
+          'name': '满级·魔音破灵',
+          'desc': '没有血量限制，有100%概率用休息来代替虚弱。'
+        },
+        {
+          'name': '满级·大风歌',
+          'desc': '大风歌每次攻击触发下一段攻击的概率增加40%。'
+        }
+      ]
+    }
+  },
+  {
+    id: 'yineng',
+    name: '异能',
+    slogan: '变异之力破苍穹',
+    position: '特殊门派',
+    tags: [
+      '特殊',
+      '变异',
+      '多面手'
+    ],
+    chars: [
+      '',
+      '⚡',
+      '⚡',
+      '',
+      '⚡',
+      '⚡',
+      '',
+      '⚡',
+      '⚡'
+    ],
+    charArt: '⚡',
+    charName: '异能者',
+    skill: {
+      name: '异能觉醒',
+      intro: '变异之力破苍穹，天地变色鬼神惊。',
+      effect: '异能者核心技能，特殊能力与变异技能。',
+      upgrade: '0-120级 永久增加角色的特殊属性。'
+    },
+    arts: [
+      'art/sect/异能男1.webp',
+      'art/sect/异能女1.webp'
+    ],
+    icon: '⚡',
+    color: '#eab308',
+    detail: {
+      'skills': [
+        {
+          'img': 'icons/YN_Skill013.png',
+          'name': '等离子炮',
+          'desc': '连携技，当青云队友使用挑月剑诀时，有概率使用等离子炮攻击目标',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YN_Skill015.png',
+          'name': '血镰之刃',
+          'desc': '连携技（死神形态触发），当青云队友使用挑月剑诀时，有概率使用血镰之刃攻击目标',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YN_Skill001.png',
+          'name': '原子核裂变',
+          'desc': '将重原子核分裂成轻原子核，从而释放能量发起猛烈的物理攻击，初始攻击2个目标，技能等级30/60时增加一个目标',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YN_Skill002.png',
+          'name': '镰刀飞舞',
+          'desc': '死神扔出镰刀，肆意斩杀2个目标，造成物理伤害，技能等级30/60时增加一个目标。（死神形态可用）',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YN_Skill007.png',
+          'name': '加农粒子炮',
+          'desc': '粒子炮轰，嘭嘭！忽略目标一定防御并对目标造成两次物理攻击',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YN_Skill008.png',
+          'name': '响尾蛇导弹',
+          'desc': '报告！报告！目标已锁定！请求空中支援！对三个目标造成巨额物理伤害，使用后休息一回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YN_Skill005.png',
+          'name': '光子束缚',
+          'desc': '发射光子弹降低伤害对单体目标发起物理攻击，并有概率封印其一回合，无法使用普攻、技能、特技',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YN_Skill003.png',
+          'name': '分子重组',
+          'desc': '通过时空倒流的力量，让场上任意玩家目标的血蓝回退到本回合初的状态，对死亡目标有效，怒气和状态不回退',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YN_Skill006.png',
+          'name': '克隆体',
+          'desc': '基因信息读取完毕，执行克隆程序，克隆其他玩家，克隆后能使用目标职业技能（终极奥义除外）持续4回合，变身则取消克隆状态',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YN_Skill004.png',
+          'name': '引力塌陷',
+          'desc': '黑洞，能量的吸收与转换，为友方指定目标和敌方随机目标施加黑洞效果，友方目标受到的第一次直接伤害转移给敌方拥有黑洞的目标，黑洞持续2回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YN_Skill011.png',
+          'name': '灵魂链接',
+          'desc': '释放灵魂之链连接自己与敌方指定目标2回合，当自己受到直接伤害时敌方目标也跟着掉血，掉血量为自己受到伤害的70%（转移的伤害不会再次转移），并有概率使天音队友施放醉罗汉降低目标法术防御，该技能使用后有1回合冷却',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YN_Skill009.png',
+          'name': '分裂击',
+          'desc': '死神的镰刀从不怜悯弱者，对目标发起物理攻击，其两侧目标会同时强制掉血，掉血量为主目标受到伤害的50%，无视两侧目标的防御、免伤、反伤等状态，使用后休息一回合（死神形态可用）',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YN_Skill010.png',
+          'name': '死神之镰',
+          'desc': '死神操控5把神兵对敌方单体目标发起5段攻击，如果目标死亡则会把剩余攻击次数转移到随机一个敌方目标身上，使用后虚弱一回合。（死神形态可用，使用限制：当前气血≥气血上限的50%）',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YN_Skill012.png',
+          'name': '等离子态放逐',
+          'desc': '终极奥义，异能者变身为死神形态，提升10%攻击，5%暴击率，并带有吸血效果，但双防大幅降低，持续5回合，变身后立即对目标释放死神之镰，有5回合的冷却',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/yn_ynjx.png',
+          'name': '崩坏一击',
+          'desc': '壁垒击破！单体攻击目标，如果目标防御，则忽视其防御状态攻击且必定暴击',
+          'limit': '不限'
+        }
+      ],
+      'reincarnation': [
+        {
+          'name': '满级·克隆体',
+          'desc': '克隆同时为自己恢复血量，升级提高恢复量。'
+        },
+        {
+          'name': '满级·灵魂链接',
+          'desc': '释放灵魂链接为自身恢复一定气血值，升级增加回血量。'
+        },
+        {
+          'name': '满级·分子重组',
+          'desc': '降低自身40%速度，20级时愤怒值亦可退回。'
+        },
+        {
+          'name': '满级·光子束缚',
+          'desc': '提升封印概率，并提升20%出手速度。'
+        },
+        {
+          'name': '满级·分裂击',
+          'desc': '升级增加分裂击本体伤害。'
+        },
+        {
+          'name': '满级·加农粒子炮',
+          'desc': '使用加农粒子炮击杀目标后，会立即对随机敌人进行追击，升级提升追击伤害。'
+        }
+      ]
+    }
+  },
+  {
+    id: 'wandu',
+    name: '万毒',
+    slogan: '毒行天下无人敌',
+    position: '法术门派',
+    tags: [
+      '毒系',
+      '削弱',
+      '持续伤害'
+    ],
+    chars: [
+      '☠️',
+      '️',
+      '☠️',
+      '☠️',
+      '️',
+      '☠️',
+      '☠️',
+      '️',
+      '☠️'
+    ],
+    charArt: '️',
+    charName: '毒神',
+    skill: {
+      name: '万毒心经',
+      intro: '毒行天下无人敌，万毒归一化无形。',
+      effect: '万毒门核心技能，毒系伤害与削弱敌方。',
+      upgrade: '0-120级 永久增加角色的毒系伤害。'
+    },
+    arts: [
+      'art/sect/万毒男1.webp',
+      'art/sect/万毒女1.webp'
+    ],
+    icon: '☠️',
+    color: '#16a34a',
+    detail: {
+      'skills': [
+        {
+          'img': 'icons/WD_Skill010.png',
+          'name': '晶陨',
+          'desc': '连携技，当鬼王队友使用鬼影重重时，有概率使用晶陨攻击目标',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/WD_Skill001.png',
+          'name': '毒步天下',
+          'desc': '万毒浸染，百里枯残，召唤巫毒娃娃法术攻击2个目标，技能等级30/60/90时增加一个目标',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/WD_Skill002.png',
+          'name': '破碎冰晶',
+          'desc': '冰晶绽放，破碎之力，法术攻击2个目标，技能30/60/90级时增加一个目标，使用后休息一回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/WD_Skill003.png',
+          'name': '瘟疫之触',
+          'desc': '攻击单体目标，同时附加持续4回合的瘟疫状态，目标在每回合末掉血，且瘟疫效果在回合末随机传给临近单位没有瘟疫状态的目标，继承回合数，瘟疫伤害与自身攻击相关。并有概率使焚香队友使用星火攻击血量最少的目标',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/WD_Skill004.png',
+          'name': '诛心灭',
+          'desc': '最毒诛心，法术攻击敌方单个目标三次，使用后降低自身物理、法术防御，且虚弱一回合，提升技能等级会减少降防效果，使用限制：当前气血≥气血上限的30%',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/WD_Skill005.png',
+          'name': '曼珠沙华',
+          'desc': '彼岸之毒，亦可为医，为两个目标恢复一定气血和法力，提升技能等级和法术伤害会增加恢复效果',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/WD_Skill006.png',
+          'name': '天妖镇魂',
+          'desc': '召唤巫毒娃娃镇住友方角色或仙侣的三魂七魄，镇魂效果持续3回合，目标在镇魂效果内死亡，会激活重生状态，死亡的下回合末复活（无视亡魂刻印效果），若下回合末是复活状态，则恢复一定气血',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/WD_Skill007.png',
+          'name': '迷迭霜',
+          'desc': '凝神静心，迷幻霜华，给友方单体目标施加迷迭霜，降低其出手速度，提升10%伤害，持续3回合，与苍羽阁的技能霜露之疾互斥',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/WD_Skill008.png',
+          'name': '五彩迷晶',
+          'desc': '五彩斑斓的晶石迷阵，增强友方封抗能力。对友方3个角色或仙侣使用，增加封抗10%，持续5回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/WD_Skill009.png',
+          'name': '恩赐解脱',
+          'desc': '终极奥义，以万毒之名，恩赐汝等解脱，单体高额法术伤害，必定暴击，附带法术吸血效果，使用后虚弱1回合，且有10回合冷却',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/WD_Skill012.png',
+          'name': '门派觉醒',
+          'desc': '觉醒万毒真力，门派技能效果全面升华。',
+          'limit': '不限'
+        }
+      ],
+      'reincarnation': [
+        {
+          'name': '满级·曼珠沙华',
+          'desc': '升级天书可提升曼珠沙华治疗量与回蓝量，20级时目标数量+1。'
+        },
+        {
+          'name': '满级·天妖镇魂',
+          'desc': '升级天书可增加复活时的气血百分比。'
+        },
+        {
+          'name': '满级·瘟疫之触',
+          'desc': '升级提高瘟疫毒的伤害，升至5级瘟疫持续回合+1，升至10级瘟疫持续回合+2，升至15级瘟疫持续回合+3，升至20瘟疫持续回合+4。'
+        },
+        {
+          'name': '满级·五彩迷晶',
+          'desc': '升级增加封印抗性。20级目标数+1。'
+        },
+        {
+          'name': '满级·诛心灭',
+          'desc': '使用诛心灭时临时提升1%暴击率，满20级伤害次数+1。'
+        },
+        {
+          'name': '满级·迷迭霜',
+          'desc': '迷迭霜增加的伤害提升至30%，暴击率增加20%。'
+        }
+      ]
+    }
+  },
+  {
+    id: 'danqing',
+    name: '丹青',
+    slogan: '画道通玄幻无穷',
+    position: '法术门派',
+    tags: [
+      '画道',
+      '幻术',
+      '控制'
+    ],
+    chars: [
+      '🎨',
+      '🎨',
+      '',
+      '🎨',
+      '🎨',
+      '',
+      '🎨',
+      '🎨',
+      ''
+    ],
+    charArt: '🎨',
+    charName: '丹青生',
+    skill: {
+      name: '画道真解',
+      intro: '画道通玄幻无穷，笔墨之间定乾坤。',
+      effect: '丹青阁核心技能，画道攻击与幻术控制。',
+      upgrade: '0-120级 永久增加角色的幻术效果。'
+    },
+    arts: [
+      'art/sect/丹青男1.webp',
+      'art/sect/丹青女1.webp'
+    ],
+    icon: '🎨',
+    color: '#ec4899',
+    detail: {
+      'skills': [
+        {
+          'img': 'icons/DQ_Skill006.png',
+          'name': '墨引香',
+          'desc': '连携技，当灵音队友使用魔音破灵时，有概率使用墨引香攻击目标',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/DQ_Skill005.png',
+          'name': '墨洒青山',
+          'desc': '书生意气，挥斥方遒，以水墨之道物理攻击2个目标，技能等级30/60时增加一个目标，有概率封印敌人一回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/DQ_Skill003.png',
+          'name': '妙笔生花',
+          'desc': '胸有沟壑，笔落惊鸿，单体物理攻击目标4次，每次造成伤害后有30%概率封印目标1回合，最多封印4回合，使用后休息1回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/DQ_Skill002.png',
+          'name': '画龙点睛',
+          'desc': '点睛之笔，群体物理攻击三个目标，有概率封印敌人一回合，使用后休息1回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/DQ_Skill007.png',
+          'name': '铁画银钩',
+          'desc': '书法之道， 刚则铁画，媚若银钩，单体物理攻击目标，附加禁怒状态，状态期间受到伤害无法增加怒气，持续3回合，并有概率使圣巫队友用刀剑破降低目标物理防御，持续2回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/DQ_Skill008.png',
+          'name': '写意山河',
+          'desc': '指点江山，激扬文字，增加友方4个单位5%法术攻击，持续5回合，副目标优先法术攻击高的',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/DQ_Skill009.png',
+          'name': '烟锁沧澜',
+          'desc': '笔走龙蛇，毫尖如雾，提速禁止对方本回合使用药品，如果目标本回合的操作为使用药品，则目标5回合内无法再使用药品，可以对死亡单位使用',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/DQ_Skill004.png',
+          'name': '墨染朱砂',
+          'desc': '一点墨香，染几重朱砂，给敌方1个子女或者宠物增加状态，使其遗忘保命、重生、抗拒、铁壁、幸运（包含高级和超级），持续3回合，冷却8回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/DQ_Skill001.png',
+          'name': '丹青画魂',
+          'desc': '丹青画魂，为敌方单体目标附加减怒状态（状态类型为中毒），每回合末降低10点怒气，持续5回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/DQ_Skill011.png',
+          'name': '一笔判阴阳',
+          'desc': '终极奥义，一笔判阴阳，落笔定生死，随机攻击敌方5次，第1次伤害必中且为物理伤害（若第一次伤害被完全吸收或被反弹、转移等，则没有后续4次伤害），之后的4次伤害值固定为前一次的伤害的1.2倍，且为真实伤害（无视防御、吸收、反弹、无敌等减伤，但可被闪避），使用后虚弱1回合，有10回合冷却',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/DQ_Skill010.png',
+          'name': '笔墨写春秋',
+          'desc': '春秋大义！使目标怒气消耗增加50%，无法被驱散，持续3回合',
+          'limit': '不限'
+        }
+      ],
+      'reincarnation': [
+        {
+          'name': '满级·墨染朱砂',
+          'desc': '每升两级天书墨染朱砂技能持续回合数+1，20级后墨染朱砂持续8回合。'
+        },
+        {
+          'name': '满级·铁画银钩',
+          'desc': '铁画银钩伤害提升20%。'
+        },
+        {
+          'name': '满级·丹青画魂',
+          'desc': '使丹青画魂持续时使目标持续掉血，升级增加掉血量。'
+        },
+        {
+          'name': '满级·写意山河',
+          'desc': '增加的法术攻击力提升至20%。'
+        },
+        {
+          'name': '满级·妙笔生花',
+          'desc': '妙笔生花伤害提升20%。'
+        },
+        {
+          'name': '满级·画龙点睛',
+          'desc': '如果目标是角色或者仙侣，则附加目标生命上限*10%的额外伤害。'
+        }
+      ]
+    }
+  },
+  {
+    id: 'yinyang',
+    name: '阴阳',
+    slogan: '阴阳调和天地顺',
+    position: '特殊门派',
+    tags: [
+      '平衡',
+      '双修',
+      '全能'
+    ],
+    chars: [
+      '️',
+      '☯️',
+      '☯️',
+      '️',
+      '☯️',
+      '☯️',
+      '️',
+      '☯️',
+      '☯️'
+    ],
+    charArt: '☯️',
+    charName: '阴阳先生',
+    skill: {
+      name: '阴阳真诀',
+      intro: '阴阳调和天地顺，太极流转万物生。',
+      effect: '阴阳家核心技能，阴阳平衡与双修。',
+      upgrade: '0-120级 永久增加角色的综合属性。'
+    },
+    arts: [
+      'art/sect/阴阳男1.webp',
+      'art/sect/阴阳女1.webp'
+    ],
+    icon: '️',
+    color: '#6366f1',
+    detail: {
+      'skills': [
+        {
+          'img': 'icons/YY.png',
+          'name': '注连绳',
+          'desc': '连携技，当圣巫队友使用魔入膏肓时，有概率使用注连绳攻击目标',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YY_Skill004.png',
+          'name': '百鬼夜行',
+          'desc': '阴风骤起，万鬼嚎哭，召唤众鬼同时法术攻击2个目标，能攻击的目标数在技能等级30/60/90时会增加1个，最高5个，同时增加1点能量',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YY_tanlan.png',
+          'name': '贪婪之噬',
+          'desc': '人心不足，蛇亦吞象，召唤二口女单体法术攻击目标2次，增加抗封等级2回合，同时增加1点能量',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YY_Skill006.png',
+          'name': '痛饮狂歌',
+          'desc': '酒酣狂鬼，怒喝疾行，势如破竹，气动山河，召唤酒吞童子向目标位置施放十字斩，对其造成伤害，目标前后与两侧亦受到一定伤害，消耗3点能量',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YY_Skill007.png',
+          'name': '惑心乱尾',
+          'desc': '九尾妖狐，娇颜媚骨，乱神惑心，攻其不备，召唤玉藻前单体法术攻击目标4次，若目标死亡，则把剩余攻击次数转移至随机敌方目标，消耗3点能量',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YY_Skill008.png',
+          'name': '象转流',
+          'desc': '怒海翻涌，波澜不息，将自己的怒气转移给一个友方目标，最多可转移80点，消耗1点能量',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YY_Skill009.png',
+          'name': '付丧之扇',
+          'desc': '日月逾迈，物亦有灵，积怨经年，凶险万分，本回合提速50%，召唤付丧神加持友方目标2回合，在其受到第一次封印时，100%将封印反弹给施法者，冷却3回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YY_Skill010.png',
+          'name': '血继式',
+          'desc': '以血为媒，重塑己身，献祭自己的宠物，回复角色30%的气血，同时增加1点能量',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YY_Skill011.png',
+          'name': '荆棘降生',
+          'desc': '木魅破土，荆棘横生。召唤藤蔓给一个友方目标施加反震buff（物理和法术攻击均会被反），持续两回合；同时，鬼王队友有概率使用鬼斗攻击被反震的敌方',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YY_Skill012.png',
+          'name': '天羽疾风斩',
+          'desc': '终极奥义，天羽羽斩，锐不可当，疾风狂舞，乱流激荡，召唤大天狗，斩击10次，随机在敌方与己方之间造成伤害，敌方受伤的几率为70%，己方为30%（不递减）',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YY_Skill013.png',
+          'name': '通灵惠泽',
+          'desc': '幽幽冥灵，熠熠福泽，以身为引，惠及四方。召唤座敷童子，重新分配己方生命，计算己方所有单位生命百分比之和，并将其平均分配给各单位，冷却10回合',
+          'limit': '不限'
+        }
+      ],
+      'reincarnation': [
+        {
+          'name': '满级·御灵狩魂',
+          'desc': '进入pvp战斗后立刻拥有4点能量,pve战斗后立刻拥有6点能量'
+        },
+        {
+          'name': '满级·荆棘降生',
+          'desc': '荆棘降生反震效果提升20%。20级时持续回合数+2。'
+        },
+        {
+          'name': '满级·付丧之扇',
+          'desc': '使用付丧之扇时为目标恢复气血，升级增加回血量。'
+        },
+        {
+          'name': '满级·血继式',
+          'desc': '使用血继式回复角色气血提升至70%。'
+        },
+        {
+          'name': '满级·痛饮狂歌',
+          'desc': '痛饮狂歌伤害结果提升10%，使用痛饮狂歌后有100%概率增加能量点。'
+        },
+        {
+          'name': '满级·惑心乱尾',
+          'desc': '使用惑心乱尾有100%概率增加能量点。'
+        }
+      ]
+    }
+  },
+  {
+    id: 'huangjin',
+    name: '黄金',
+    slogan: '金刚不坏万法侵',
+    position: '防御门派',
+    tags: [
+      '高防御',
+      '反伤',
+      '坦克'
+    ],
+    chars: [
+      '',
+      '🥇',
+      '🥇',
+      '',
+      '🥇',
+      '🥇',
+      '',
+      '🥇',
+      '🥇'
+    ],
+    charArt: '🥇',
+    charName: '黄金战士',
+    skill: {
+      name: '黄金战体',
+      intro: '金刚不坏万法侵，铜墙铁壁护苍生。',
+      effect: '黄金族核心技能，高防御与反伤。',
+      upgrade: '0-120级 永久增加角色的防御力。'
+    },
+    arts: [
+      'art/sect/黄金男1.webp',
+      'art/sect/黄金女1.webp'
+    ],
+    icon: '🥇',
+    color: '#ca8a04',
+    detail: {
+      'skills': [
+        {
+          'img': 'icons/HJ_Skill008.png',
+          'name': '神降',
+          'desc': '连携技，当阴阳师使用荆棘降生时，有概率使用神降降低目标防御两回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/HJ_Skill011.png',
+          'name': '沙暴送葬',
+          'desc': '飞沙扬砾，遮天蔽日，召唤沙砾同时攻击多个目标并有概率降低敌方速度2回合，能攻击的目标数在技能等级30/60/90时会增加1个，最高5个',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/HJ_Skill001.png',
+          'name': '阿蒙祈祷',
+          'desc': '日月重光，辉耀救世，祈求太阳神阿蒙拉降下神迹，回复四名友方单位的气血',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/HJ_Skill009.png',
+          'name': '梅丽赛格之吻',
+          'desc': '幽暗之蛇，不死不朽，对敌人造成伤害，伤害会在0.5到1倍波动，且吸取伤害等量的气血',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/HJ_Skill007.png',
+          'name': '金字塔的庇护',
+          'desc': '恢恢今古，承天之佑，为友方单位增加一个庇护状态，本回合以该单位为主目标的技能将随机选定目标。CD两回合！',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/HJ_mny.png',
+          'name': '木乃伊束缚',
+          'desc': '生灵不息，轮回不止，对敌方使用禁锢一个目标，使其无法使用普攻，技能，持续3回合。对己方使用则解除目标的封印状态',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/HJ_Skill006.png',
+          'name': '荷鲁斯之眼',
+          'desc': '鹰睨长空，莅临四野，诅咒敌方单位，本回合敌方使用的技能与特技将在4个回合内被锁定且不能使用，必定成功，无法解除，冷却2回合；同时，鬼王队友有概率使用鬼斗攻击敌方',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/HJ_Skill005.png',
+          'name': '孤立无援',
+          'desc': '万物皆虚，万事皆允，封印敌方单位，使其无法召唤，持续3回合，且冷却4回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/HJ_wz.png',
+          'name': '亡者之书',
+          'desc': '魂触黑暗，连接光明，亡者之书的力量将复活一名已死亡的队友，并使其隐身一回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/HJ_Skill002.png',
+          'name': '法老王的诅咒',
+          'desc': '终极奥义，生关死劫，已成定数，魂归幽暗，向死而生，惊扰法老王的两名敌方单位将被诅咒，造成伤害后将追加双倍的治疗，释放有效治疗后将追加双倍的伤害，且有10回合冷却',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/HJ_Skill003.png',
+          'name': '阿努比斯审判',
+          'desc': '邪恶违逆，洗净罪孽，召唤神之天秤进行审判，对单体目标使用，强制将目标当前的气血百分比跟蓝量百分比互换',
+          'limit': '不限'
+        }
+      ],
+      'reincarnation': [
+        {
+          'name': '满级·孤立无援',
+          'desc': '孤立无援持续回合+3。'
+        },
+        {
+          'name': '满级·金字塔的庇护',
+          'desc': '升级额外提升目标队友双防。'
+        },
+        {
+          'name': '满级·阿蒙祈祷',
+          'desc': '治疗效果提升40%，20级时目标数+1。'
+        },
+        {
+          'name': '满级·荷鲁斯之眼',
+          'desc': '额外降低目标40%双防。'
+        },
+        {
+          'name': '满级·梅丽赛格之吻',
+          'desc': '升级增加梅丽赛格之吻的伤害。'
+        },
+        {
+          'name': '满级·亡者之书',
+          'desc': '提升目标队友20%速度。'
+        }
+      ]
+    }
+  },
+  {
+    id: 'yaomeng',
+    name: '妖盟',
+    slogan: '万妖归宗势滔天',
+    position: '召唤门派',
+    tags: [
+      '妖族',
+      '召唤',
+      '宠物'
+    ],
+    chars: [
+      '',
+      '🐾',
+      '🐾',
+      '',
+      '🐾',
+      '🐾',
+      '',
+      '🐾',
+      '🐾'
+    ],
+    charArt: '🐾',
+    charName: '妖王',
+    skill: {
+      name: '万妖诀',
+      intro: '万妖归宗势滔天，百兽臣服听号令。',
+      effect: '妖盟核心技能，妖族技能与召唤。',
+      upgrade: '0-120级 永久增加召唤兽属性。'
+    },
+    arts: [
+      'art/sect/神木男1.webp',
+      'art/sect/神木女1.webp'
+    ],
+    icon: '',
+    color: '#84cc16',
+    detail: {
+      'skills': [
+        {
+          'img': 'icons/YM_Skill011.png',
+          'name': '妖临',
+          'desc': '连携技，当黄金城使用荷鲁斯之眼时，有概率使用妖临',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YM_Skill003.png',
+          'name': '横扫千军',
+          'desc': '妖蛮其身，千军易辟，携千钧之力冲向敌人，同时对2个目标造成群体物理伤害，能攻击的目标数在技能等级30/60/90时会增加1个，最高5个',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YM_lp.png',
+          'name': '力劈华山',
+          'desc': '势不可挡，崩天裂地，横扫目标及其左右两个单位后，跃起纵向劈砍目标后方单位，造成群体物理伤害，使用后虚弱1回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YM_Skill004.png',
+          'name': '金睛火眼',
+          'desc': '妖兽灵觉，无所遁形，临时提高暴击率对单体目标造成物理伤害，并随后为自己附加“火眼”状态，“火眼”状态下可攻击隐身单位并有30%概率驱散目标的隐身状态',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YM_Skill002.png',
+          'name': '分形化影',
+          'desc': '天光月华，深邃幽影，参悟光暗相生的妖族分化4个幽影攻击随机目标，每个目标独立选择，如果击中了相同的目标，每次伤害减少30%，使用后休息一回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YM_Skill009.png',
+          'name': '天妖图腾',
+          'desc': '苍茫神木，亘古妖族，为己方召唤天妖图腾持续3回合，图腾随机附加以下效果之一：物理伤害提高10%，法术伤害提高10%，每回合初恢复10%气血。场上一方同时只能存在一个图腾（新召唤的图腾会替换旧的图腾），冷却3回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YM_Skill012.png',
+          'name': '野兽速度',
+          'desc': '呼啸山野的自由生灵，向它的伙伴们传授技巧，为己方4个单位提速5%，持续2回合，冷却3回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YM_Skill008.png',
+          'name': '腾云驾雾',
+          'desc': '疾风飒飒，流云萧萧，召唤七彩祥云加持己方单体目标，提升其10%的物理和法术闪避率，持续3回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YM_Skill006.png',
+          'name': '乾坤一掷',
+          'desc': '仰观天相，俯察万物，悟得一缕天机的妖族遁入天地，对单体目标造成物理伤害的同时，自身进入遁形状态2回合，降低自身20%命中率提升20%暴击率，遁形状态自带隐身效果，无法使用门派技能和特技，只能普攻、召唤、吃药，受到攻击会解除遁形状态，冷却2回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YM_Skill001.png',
+          'name': '法天象地',
+          'desc': '终极奥义，煌煌天威，熔铸法身，进入狂暴状态，免疫所有封印和负面状态，自身不受玩家控制，持续4回合。下回合开始，每回合随机选择一个敌方单位连续物理攻击3次，并虚弱1回合；若目标死亡，会助长天威，诱发普攻追击，追击触发上限为2次；攻击附带20%吸血效果。具有10回合冷却',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/YM_Skill007.png',
+          'name': '石胎',
+          'desc': '使自己进入石胎状态，持续3回合，石胎状态下免疫伤害，每回合恢复20%气血20%法力和20点怒气，冷却5回合',
+          'limit': '不限'
+        }
+      ],
+      'reincarnation': [
+        {
+          'name': '满级·金睛火眼',
+          'desc': '对隐身单位伤害提升40%。'
+        },
+        {
+          'name': '满级·腾云驾雾',
+          'desc': '腾云驾雾物理和法术闪避提升20%。'
+        },
+        {
+          'name': '满级·野兽速度',
+          'desc': '野兽速度提升的速度到20%。'
+        },
+        {
+          'name': '满级·天妖图腾',
+          'desc': '图腾作用目标为7人。'
+        },
+        {
+          'name': '满级·分形化影',
+          'desc': '分形化影伤害提升20%。'
+        },
+        {
+          'name': '满级·力劈华山',
+          'desc': '增加受击目标前后左右单位受到的伤害继承本次伤害20%。'
+        }
+      ]
+    }
+  },
+  {
+    id: 'chentang',
+    name: '陈塘',
+    slogan: '水系法术镇四海',
+    position: '法术门派',
+    tags: [
+      '水系',
+      '增益',
+      '团队'
+    ],
+    chars: [
+      '🌊',
+      '🌊',
+      '',
+      '🌊',
+      '🌊',
+      '',
+      '🌊',
+      '🌊',
+      ''
+    ],
+    charArt: '🌊',
+    charName: '哪吒',
+    skill: {
+      name: '混天绫法',
+      intro: '水系法术镇四海，翻江倒海定乾坤。',
+      effect: '陈塘关核心技能，水系法术与团队增益。',
+      upgrade: '0-120级 永久增加角色的水系法术伤害。'
+    },
+    arts: [
+      'art/sect/陈塘男1.webp',
+      'art/sect/陈塘女1.webp'
+    ],
+    icon: '🌊',
+    color: '#0284c7',
+    detail: {
+      'skills': [
+        {
+          'img': 'icons/CT_Skill003.png',
+          'name': '斩妖击',
+          'desc': '连携技，当神木妖盟队友使用腾云驾雾时，有概率使用斩妖击',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/CT_Skill001.png',
+          'name': '烈火横扫',
+          'desc': '炎枪一挥，焚尽妖邪，对2个目标造成群体法术伤害，并给主目标附加1层无间冰焰，能攻击的目标数在技能等级30/60/90/120时会增加1个，最高6个',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/CT_HY.png',
+          'name': '火焰之身',
+          'desc': '自身增加5点怒气，并且变为火焰之身6回合，攻击时无视部分法防，击杀目标后刷新持续回合数。和莲花之身共用3回合冷却',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/CT_Skill007.png',
+          'name': '莲花之身',
+          'desc': '自身回复部分法力，并且变为莲花之身6回合，每回合初回复气血，击杀目标后刷新持续回合数。和火焰之身共用3回合冷却',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/CT_Skill009.png',
+          'name': '缚妖索',
+          'desc': '缚妖降魔，在此宣判，为2个友方单位附加审判状态：攻击带有重生类效果的单位时伤害提高，且击败目标时无法触发重生，持续3回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/CT_ZZ.png',
+          'name': '自在幻形',
+          'desc': '进入战斗时，立即变身为火焰之身(男)/极寒之身(女)',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/CT_Skill011.png',
+          'name': '乾坤圈',
+          'desc': '法器珍宝乾坤圈，对6个目标造成法术伤害，并附加1层无间冰焰，仅在变身状态下可以使用，冷却2回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/CT_Skill013.png',
+          'name': '炽焰灵珠',
+          'desc': '灵珠化身，对单体目标造成5次法术伤害，仅在变身状态下可以使用，使用后结束变身状态，并虚弱1回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/CT_BY.png',
+          'name': '冰焰护体',
+          'desc': '冰焰守身，提速50%对单体友方释放，本回合提升双防，且每次被攻击时会为攻击者附加1层无间冰焰。技能冷却2回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/CT_Skill017.png',
+          'name': '冰焰风暴',
+          'desc': '烈焰席卷，冰风怒号，引爆所有敌方身上的无间冰焰，无间冰焰数量越多伤害越高（每个目标分别计算数量），并附加真实伤害，目标已损失的气血越多伤害越高。使用后休息1回合，冷却4回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/CT_TD.png',
+          'name': '天地乾坤',
+          'desc': '终极奥义，乾坤无极，释放一次乾坤圈，且额外多附加1层无间冰焰。在非变身状态下也可以使用，冷却5回合',
+          'limit': '不限'
+        },
+        {
+          'img': 'icons/CT_Skill020.png',
+          'name': '元灵出窍',
+          'desc': '终极奥义，元灵显形，令自身的元灵出窍，法术攻击敌方单体，并附加不可驱散的震魄状态3回合：震魄状态的敌方对自身造成伤害后，元灵会进行反击并附加1层无间冰焰。每回合只能对每个目标反击1次',
+          'limit': '不限'
+        }
+      ],
+      'reincarnation': [
+        {
+          'name': '满级·缚妖索',
+          'desc': '审判状态攻击带有重生类效果的单位时伤害额外增加20%。技能目标数+2。'
+        },
+        {
+          'name': '满级·冰焰护体',
+          'desc': '出手速度额外增加50%，提升双防效果额外增加40%。'
+        },
+        {
+          'name': '满级·火焰之身',
+          'desc': '释放火焰之身时，自身增加的怒气提升至25点。'
+        },
+        {
+          'name': '满级·莲花之身',
+          'desc': '释放莲花之身时，自身回复的法力值提升，升级天书可增加回复量。'
+        },
+        {
+          'name': '满级·乾坤圈',
+          'desc': '乾坤圈伤害提升20%。'
+        },
+        {
+          'name': '满级·冰焰风暴',
+          'desc': '冰焰风暴伤害提升20%。'
+        }
+      ]
+    }
+  }
+];
+
+let currentSect=0;
+
+/* 无 detail 数据的门派：用 skill/tags 生成模板数据 */
+function deriveDetail(s){
+  const chars=s.chars.filter(Boolean);
+  const skills=[
+    {icon:s.charArt,name:s.skill.name,desc:s.skill.effect,limit:'门派主动'},
+    {icon:'📜',name:'门派心法',desc:s.skill.intro,limit:'被动'},
+    ...s.tags.map((t,i)=>({icon:chars[i%chars.length]||s.charArt,name:t,desc:`${s.name}弟子的核心成长特性：${t}。`,limit:'特性'})),
+    {icon:'🌟',name:s.skill.name+'·极',desc:(s.skill.upgrade||'').replace(/^0-120级\s*/,'')+'，满级后效果翻倍。',limit:'觉醒'}
+  ];
+  return {
+    skills,
+    reincarnation:skills.slice(0,6).map(k=>({name:'满级·'+k.name,desc:`${k.name}强化至圆满，效果显著提升。`}))
+  };
+}
+
+/* ===== 门派面板 · 发现页式布局（视频横幅 + 分类标签栏，点标签直接切换内容） ===== */
+const SECT_CATS=[
+  {key:'skills', name:'门派技能', icon:'icons/book_skill.png',    note:'技能效果一览'},
+  {key:'reinc',  name:'轮回天书', icon:'icons/scroll_tianshu.png', note:'满级技能强化'},
+  {key:'awaken', name:'觉醒时装', icon:'icons/shizhuang.png',     note:'集齐300碎片合成'},
+  {key:'wing',   name:'羽翼技能', icon:'icons/yuyi.png',          note:'技能搭配，仅供参考'},
+  {key:'enchant',name:'门派附魔', icon:'icons/fumo.png',          note:'各星级属性范围'},
+  {key:'equip',  name:'装备属性', icon:'icons/wuqi.png',          note:'属性数值范围'},
+];
+let curSectObj=null,curSectData=null,sectOpenCat=null;
+function renderSectDetail(idx){
+  const el=document.getElementById('sectDetail');
+  const s=SECTS[idx];
+  const d=s.detail||deriveDetail(s);
+  curSectObj=s;curSectData=d;sectOpenCat=null;
+  el.className='sect-detail in';
+  el.innerHTML=`
+      <div class="sect-hero">
+        <video class="sect-hero-video" src="art/sect_intro.mp4" autoplay muted loop playsinline></video>
+      </div>
+      <div class="sect-tabs" id="sectTabs"></div>
+      <div id="sectCatPanel"></div>`;
+  /* SECT_AWAKEN 等数据表声明在后方，延迟到脚本执行完毕再渲染 */
+  queueMicrotask(()=>{
+    const first=SECT_CATS.find(c=>sectCatCount(c.key)>0);
+    if(first) selectSectCat(first.key);
+  });
+}
+function sectCatCount(key){
+  const s=curSectObj,d=curSectData;
+  if(!s||!d) return 0;
+  if(key==='skills') return (d.skills||[]).length;
+  if(key==='reinc') return (d.reincarnation||[]).length;
+  const T={awaken:SECT_AWAKEN,wing:SECT_WING,enchant:SECT_ENCHANT,equip:SECT_EQUIP}[key];
+  const arr=T&&T[s.name];
+  return arr?arr.length:0;
+}
+function renderSectTabs(activeKey){
+  const bar=document.getElementById('sectTabs');
+  if(!bar) return;
+  bar.innerHTML=SECT_CATS.filter(c=>sectCatCount(c.key)>0).map(c=>
+    `<button class="sect-tab${activeKey===c.key?' active':''}" onclick="selectSectCat('${c.key}')">
+      <img src="${c.icon}" alt="" loading="lazy">${c.name}
+    </button>`).join('');
+}
+function sectCatBody(key){
+  const d=curSectData,s=curSectObj;
+  if(key==='skills'){
+    return `<div class="skill-list">${d.skills.map(sk=>`
+      <div class="skill-card">
+        <div class="skill-c-head">${sk.img?`<img class="skill-c-ico" src="${sk.img}" alt="" loading="lazy">`:''}<span class="skill-c-name">${sk.name}</span>${sk.limit&&sk.limit!=='不限'?`<span class="skill-c-limit">${sk.limit}</span>`:''}</div>
+        <div class="skill-c-desc">${sk.desc}</div>
+      </div>`).join('')}</div>`;
+  }
+  if(key==='reinc'){
+    return `<div class="skill-list">${buildReincItems(d).map(r=>`
+      <div class="skill-card">
+        <div class="skill-c-head"><img class="skill-c-ico" src="${r.img}" alt="" loading="lazy"><span class="skill-c-name">${r.name}</span><span class="skill-c-limit">满级</span></div>
+        <div class="skill-c-desc">${r.desc}</div>
+      </div>`).join('')}</div>`;
+  }
+  return buildExtrasHTML(key,s.name);
+}
+/* 点标签：直接切换到该板块内容，无需二次点击 */
+function selectSectCat(key){
+  const panel=document.getElementById('sectCatPanel');
+  if(!panel) return;
+  const c=SECT_CATS.find(x=>x.key===key);
+  const body=sectCatBody(key);
+  if(!c||!body) return;
+  sectOpenCat=key;
+  renderSectTabs(key);
+  /* 只对标签栏自身做横向滚动（scrollIntoView 会连带滚动页面容器导致页面左偏） */
+  requestAnimationFrame(()=>{
+    const bar=document.getElementById('sectTabs');
+    const ab=bar&&bar.querySelector('.sect-tab.active');
+    if(bar&&ab) bar.scrollTo({left:Math.max(0,ab.offsetLeft-(bar.clientWidth-ab.offsetWidth)/2),behavior:'smooth'});
+  });
+  panel.innerHTML=`
+    <div class="ref-block sect-cat-block">
+      <div class="ref-block-h"><span class="ref-ico"><img class="ref-ico-img" src="${c.icon}" alt="" loading="lazy"></span>${c.name}<span class="ref-note">${c.note}</span></div>
+      ${body}
+    </div>`;
+}
+
+/* ===== 觉醒时装/羽翼技能/门派附魔/装备属性 · 卡片 HTML（只留名字+效果，不带图标） ===== */
+const cardHead=(name,chip)=>`<div class="skill-c-head"><span class="skill-c-name">${name}</span>${chip?`<span class="skill-c-limit">${chip}</span>`:''}</div>`;
+function buildExtrasHTML(key,name){
+  if(key==='awaken'){
+    const aw=SECT_AWAKEN[name];
+    if(!aw||!aw.length) return '';
+    return `<div class="skill-list">${aw.map(r=>`
+      <div class="skill-card">${cardHead(r.name,r.tier)}<div class="skill-c-desc">${r.desc}</div></div>`).join('')}</div>`;
+  }
+  if(key==='wing'){
+    const wg=SECT_WING[name];
+    if(!wg||!wg.length) return '';
+    return `<div class="skill-list">${wg.map(r=>`
+      <div class="skill-card">${cardHead(r.name,r.lv?(r.lv+'').replace(/(阶|\s)+$/,'')+'阶':'')}<div class="skill-c-desc">${r.desc}</div></div>`).join('')}</div>`;
+  }
+  if(key==='enchant'){
+    const en=SECT_ENCHANT[name];
+    if(!en||!en.length) return '';
+    return `<div class="skill-list">${en.map(item=>`
+      <div class="skill-card">${cardHead(item.name,'')}<div class="skill-c-desc">${item.desc}${item.stars.map(s=>`<br><b>${s.star}</b>：${s.min} ~ ${s.max}`).join('')}</div></div>`).join('')}</div>`;
+  }
+  if(key==='equip'){
+    const eq=SECT_EQUIP[name];
+    if(!eq||!eq.length) return '';
+    const card=r=>`
+      <div class="skill-card">${cardHead(r.name,(+r.lv)+'级')}<div class="skill-c-desc">${r.type}<br>属性A：${r.aMin} ~ ${r.aMax}<br>属性B：${r.bMin} ~ ${r.bMax}</div></div>`;
+    const pick=g=>eq.filter(x=>x.char.endsWith(g)).sort((a,b)=>+a.lv-+b.lv);
+    /* PC 双列并排；移动端通过男女切换按钮单列显示 */
+    return `<div class="equip-gender-toggle">
+      <button class="egt-btn active" onclick="switchEquipGender(this,'m')">男</button>
+      <button class="egt-btn" onclick="switchEquipGender(this,'f')">女</button>
+    </div>
+    <div class="equip-cols g-m" id="equipCols">
+      <div class="equip-col equip-col-m"><div class="equip-col-h">男</div>${pick('男').map(card).join('')}</div>
+      <div class="equip-col equip-col-f"><div class="equip-col-h">女</div>${pick('女').map(card).join('')}</div>
+    </div>`;
+  }
+  return '';
+}
+/* 装备属性 男女切换（移动端） */
+function switchEquipGender(btn,g){
+  const cols=document.getElementById('equipCols');
+  if(!cols) return;
+  cols.classList.toggle('g-m',g==='m');
+  cols.classList.toggle('g-f',g==='f');
+  btn.parentElement.querySelectorAll('.egt-btn').forEach(b=>b.classList.toggle('active',b===btn));
+}
+
+/* ===== 轮回天书 · 名字+效果卡片（同门派技能样式，带技能图标） ===== */
+const REINC_ALIAS={'幽冥盾击':'icons/gw_tiangangzhanqi.png','厉鬼夺魂':'icons/gw_liguiduopo.png','碎玉剑决':'icons/qy_suiyujianjue.png','御灵狩魂':'icons/YY_Skill016.png'};
+function buildReincItems(d){
+  return (d.reincarnation||[]).map(r=>{
+    const base=r.name.replace(/^满级·/,'');
+    const hit=(d.skills||[]).find(s=>s.name===base);
+    return {name:base,desc:r.desc,img:hit&&hit.img?hit.img:(REINC_ALIAS[base]||'icons/scroll_tianshu.png')};
+  });
+}
+
+function switchSect(idx){
+  currentSect=idx;
+  currentSectName=SECTS[idx].name;
+  renderSectDetail(idx);
+  syncSectRail(idx);
+}
+
+/* ===== 门派竖栏（底部选「门派」时显示） ===== */
+function syncSectRail(idx){
+  const btns=document.querySelectorAll('#sectRail .sect-btn');
+  btns.forEach((b,i)=>b.classList.toggle('active',i===idx));
+  const act=btns[idx];
+  const rail=document.getElementById('sectRail');
+  if(act&&rail&&document.body.classList.contains('rail-sects')){
+    const top=act.offsetTop,bottom=top+act.offsetHeight;
+    if(top<rail.scrollTop||bottom>rail.scrollTop+rail.clientHeight){
+      rail.scrollTop=top-rail.clientHeight/2+act.offsetHeight/2;
+    }
+  }
+}
+/* 横构图立绘的裁剪覆盖（无徽章时回退用） */
+const SECT_CROP={'合欢':{left:'-62%',top:'-52%'}};
+/* 左侧栏门派徽章：缩写对应 icons/sect/*.png */
+const SECT_BADGE={
+  guiwang:'icons/sect/gw.png',
+  qingyun:'icons/sect/qy.png',
+  tianyin:'icons/sect/ty.png',
+  fenxiang:'icons/sect/fx.png',
+  hehuan:'icons/sect/hh.png',
+  shengwu:'icons/sect/sw.png',
+  cangyu:'icons/sect/cy.png',
+  lingyin:'icons/sect/ly.png',
+  yineng:'icons/sect/yn.png',
+  wandu:'icons/sect/wd.png',
+  danqing:'icons/sect/dq.png',
+  yinyang:'icons/sect/yy.png',
+  huangjin:'icons/sect/hj.png',
+  yaomeng:'icons/sect/ym.png',
+  chentang:'icons/sect/ct.png'
+};
+(function renderSectRail(){
+  const box=document.getElementById('sectRail');
+  if(!box) return;
+  SECTS.forEach((s,i)=>{
+    const b=document.createElement('button');
+    b.type='button';
+    b.className='rail-btn sect-btn';
+    b.title=s.name;
+    b.setAttribute('aria-label',s.name);
+    b.style.setProperty('--sc',s.color||'');
+    const emo=(s.icon&&/[^\uFE0E\uFE0F\u200D\s]/.test(s.icon))?s.icon:s.name.slice(0,1);
+    /* 图标：门派徽章；缺失或加载失败时回退立绘裁头 / emoji */
+    const art=document.createElement('span');
+    art.className='sect-art';
+    const emoFallback=document.createElement('span');
+    emoFallback.className='sect-emoji';
+    emoFallback.textContent=emo;
+    const badge=SECT_BADGE[s.id];
+    if(badge||(s.arts&&s.arts[0])){
+      const img=document.createElement('img');
+      img.src=badge||s.arts[0];
+      img.alt='';
+      img.loading='lazy';
+      if(badge){
+        img.className='sect-badge';
+      }else{
+        const crop=SECT_CROP[s.name];
+        if(crop){img.style.left=crop.left;img.style.top=crop.top;}
+      }
+      img.onerror=()=>{art.replaceChildren(emoFallback);};
+      art.appendChild(img);
+    }else{
+      art.appendChild(emoFallback);
+    }
+    const lab=document.createElement('span');
+    lab.className='rail-label';
+    lab.textContent=s.name;
+    b.appendChild(art);b.appendChild(lab);
+    b.addEventListener('click',()=>switchSect(i));
+    box.appendChild(b);
+  });
+})();
+
+/* ===== 滚动入场 ===== */
+
+const SECT_ENCHANT={
+  '鬼王':[{name:'防护符文',desc:'使用后可为护腕增加一定法防',stars:[{star:'1★',min:5,max:10},{star:'2★',min:8,max:17},{star:'3★',min:12,max:25},{star:'4★',min:16,max:32},{star:'5★',min:20,max:40},{star:'6★',min:23,max:47},{star:'7★',min:27,max:55},{star:'8★',min:31,max:62},{star:'9★',min:35,max:70},{star:'10★',min:38,max:77},{star:'11★',min:42,max:85},{star:'12★',min:46,max:92},{star:'13★',min:50,max:100},{star:'14★',min:53,max:107},{star:'15★',min:57,max:115}]}],
+  '青云':[{name:'坚韧符文',desc:'使用后可为帽子增加一定物防',stars:[{star:'1★',min:5,max:10},{star:'2★',min:8,max:17},{star:'3★',min:12,max:25},{star:'4★',min:16,max:32},{star:'5★',min:20,max:40},{star:'6★',min:23,max:47},{star:'7★',min:27,max:55},{star:'8★',min:31,max:62},{star:'9★',min:35,max:70},{star:'10★',min:38,max:77},{star:'11★',min:42,max:85},{star:'12★',min:46,max:92},{star:'13★',min:50,max:100},{star:'14★',min:53,max:107},{star:'15★',min:57,max:115}]}],
+  '天音':[{name:'妙灵符文',desc:'使用后可为腰带增加一定法攻',stars:[{star:'1★',min:10,max:20},{star:'2★',min:17,max:35},{star:'3★',min:25,max:50},{star:'4★',min:32,max:65},{star:'5★',min:40,max:80},{star:'6★',min:47,max:95},{star:'7★',min:55,max:110},{star:'8★',min:62,max:125},{star:'9★',min:70,max:140},{star:'10★',min:77,max:155},{star:'11★',min:85,max:170},{star:'12★',min:92,max:185},{star:'13★',min:100,max:200},{star:'14★',min:107,max:215},{star:'15★',min:115,max:230}]}],
+  '焚香':[{name:'血脉符文',desc:'使用后可为衣服增加一定最大气血',stars:[{star:'1★',min:18,max:36},{star:'2★',min:31,max:63},{star:'3★',min:45,max:90},{star:'4★',min:58,max:117},{star:'5★',min:72,max:144},{star:'6★',min:85,max:171},{star:'7★',min:99,max:198},{star:'8★',min:112,max:225},{star:'9★',min:126,max:252},{star:'10★',min:139,max:279},{star:'11★',min:153,max:306},{star:'12★',min:166,max:333},{star:'13★',min:180,max:360},{star:'14★',min:193,max:387},{star:'15★',min:207,max:414}]}],
+  '合欢':[{name:'敏疾符文',desc:'使用后可为鞋子增加一定速度',stars:[{star:'1★',min:4,max:8},{star:'2★',min:6,max:13},{star:'3★',min:9,max:19},{star:'4★',min:12,max:24},{star:'5★',min:15,max:30},{star:'6★',min:17,max:35},{star:'7★',min:20,max:41},{star:'8★',min:23,max:46},{star:'9★',min:26,max:52},{star:'10★',min:28,max:57},{star:'11★',min:31,max:63},{star:'12★',min:34,max:68},{star:'13★',min:37,max:74},{star:'14★',min:39,max:79},{star:'15★',min:42,max:85}]}],
+  '圣巫':[{name:'破敌符文',desc:'使用后可为武器增加一定物攻',stars:[{star:'1★',min:10,max:20},{star:'2★',min:17,max:35},{star:'3★',min:25,max:50},{star:'4★',min:32,max:65},{star:'5★',min:40,max:80},{star:'6★',min:47,max:95},{star:'7★',min:55,max:110},{star:'8★',min:62,max:125},{star:'9★',min:70,max:140},{star:'10★',min:77,max:155},{star:'11★',min:85,max:170},{star:'12★',min:92,max:185},{star:'13★',min:100,max:200},{star:'14★',min:107,max:215},{star:'15★',min:115,max:230}]}],
+  '苍羽':[{name:'静心符文',desc:'使用后可为腰带增加一定封抗',stars:[{star:'1★',min:5,max:10},{star:'2★',min:8,max:17},{star:'3★',min:12,max:25},{star:'4★',min:16,max:32},{star:'5★',min:20,max:40},{star:'6★',min:23,max:47},{star:'7★',min:27,max:55},{star:'8★',min:31,max:62},{star:'9★',min:35,max:70},{star:'10★',min:38,max:77},{star:'11★',min:42,max:85},{star:'12★',min:46,max:92},{star:'13★',min:50,max:100},{star:'14★',min:53,max:107},{star:'15★',min:57,max:115}]}],
+  '灵音':[{name:'琴音符文',desc:'使用后可为护腕增加一定封印命中',stars:[{star:'1★',min:10,max:20},{star:'2★',min:17,max:35},{star:'3★',min:25,max:50},{star:'4★',min:32,max:65},{star:'5★',min:40,max:80},{star:'6★',min:47,max:95},{star:'7★',min:55,max:110},{star:'8★',min:62,max:125},{star:'9★',min:70,max:140},{star:'10★',min:77,max:155},{star:'11★',min:85,max:170},{star:'12★',min:92,max:185},{star:'13★',min:100,max:200},{star:'14★',min:107,max:215},{star:'15★',min:115,max:230}]}],
+  '异能':[{name:'暴烈符文',desc:'使用后可为武器增加一定物暴',stars:[{star:'1★',min:10,max:20},{star:'2★',min:17,max:35},{star:'3★',min:25,max:50},{star:'4★',min:32,max:65},{star:'5★',min:40,max:80},{star:'6★',min:47,max:95},{star:'7★',min:55,max:110},{star:'8★',min:62,max:125},{star:'9★',min:70,max:140},{star:'10★',min:77,max:155},{star:'11★',min:85,max:170},{star:'12★',min:92,max:185},{star:'13★',min:100,max:200},{star:'14★',min:107,max:215},{star:'15★',min:115,max:230}]}],
+  '万毒':[{name:'蛊毒符文',desc:'使用后可为武器增加一定法暴',stars:[{star:'1★',min:10,max:20},{star:'2★',min:17,max:35},{star:'3★',min:25,max:50},{star:'4★',min:32,max:65},{star:'5★',min:40,max:80},{star:'6★',min:47,max:95},{star:'7★',min:55,max:110},{star:'8★',min:62,max:125},{star:'9★',min:70,max:140},{star:'10★',min:77,max:155},{star:'11★',min:85,max:170},{star:'12★',min:92,max:185},{star:'13★',min:100,max:200},{star:'14★',min:107,max:215},{star:'15★',min:115,max:230}]}],
+  '丹青':[{name:'水墨符文',desc:'使用后可为鞋子增加一定物理暴抗',stars:[{star:'1★',min:10,max:20},{star:'2★',min:17,max:35},{star:'3★',min:25,max:50},{star:'4★',min:32,max:65},{star:'5★',min:40,max:80},{star:'6★',min:47,max:95},{star:'7★',min:55,max:110},{star:'8★',min:62,max:125},{star:'9★',min:70,max:140},{star:'10★',min:77,max:155},{star:'11★',min:85,max:170},{star:'12★',min:92,max:185},{star:'13★',min:100,max:200},{star:'14★',min:107,max:215},{star:'15★',min:115,max:230}]}],
+  '阴阳':[{name:'阴阳符文',desc:'使用后可为衣服增加一定法术暴抗',stars:[{star:'1★',min:10,max:20},{star:'2★',min:17,max:35},{star:'3★',min:25,max:50},{star:'4★',min:32,max:65},{star:'5★',min:40,max:80},{star:'6★',min:47,max:95},{star:'7★',min:55,max:110},{star:'8★',min:62,max:125},{star:'9★',min:70,max:140},{star:'10★',min:77,max:155},{star:'11★',min:85,max:170},{star:'12★',min:92,max:185},{star:'13★',min:100,max:200},{star:'14★',min:107,max:215},{star:'15★',min:115,max:230}]}],
+  '黄金':[{name:'法老符文',desc:'使用后可为帽子增加一定最大法力',stars:[{star:'1★',min:18,max:36},{star:'2★',min:31,max:63},{star:'3★',min:45,max:90},{star:'4★',min:58,max:117},{star:'5★',min:72,max:144},{star:'6★',min:85,max:171},{star:'7★',min:99,max:198},{star:'8★',min:112,max:225},{star:'9★',min:126,max:252},{star:'10★',min:139,max:279},{star:'11★',min:153,max:306},{star:'12★',min:166,max:333},{star:'13★',min:180,max:360},{star:'14★',min:193,max:387},{star:'15★',min:207,max:414}]}],
+  '妖盟':[{name:'妖力符文',desc:'使用后可为帽子增加一定物理免伤',stars:[{star:'1★',min:18,max:36},{star:'2★',min:31,max:63},{star:'3★',min:45,max:90},{star:'4★',min:58,max:117},{star:'5★',min:72,max:144},{star:'6★',min:85,max:171},{star:'7★',min:99,max:198},{star:'8★',min:112,max:225},{star:'9★',min:126,max:252},{star:'10★',min:139,max:279},{star:'11★',min:153,max:306},{star:'12★',min:166,max:333},{star:'13★',min:180,max:360},{star:'14★',min:193,max:387},{star:'15★',min:207,max:414}]}],
+  '陈塘':[{name:'道心符文',desc:'使用后可为护腕增加一定法术免伤',stars:[{star:'1★',min:18,max:36},{star:'2★',min:31,max:63},{star:'3★',min:45,max:90},{star:'4★',min:58,max:117},{star:'5★',min:72,max:144},{star:'6★',min:85,max:171},{star:'7★',min:99,max:198},{star:'8★',min:112,max:225},{star:'9★',min:126,max:252},{star:'10★',min:139,max:279},{star:'11★',min:153,max:306},{star:'12★',min:166,max:333},{star:'13★',min:180,max:360},{star:'14★',min:193,max:387},{star:'15★',min:207,max:414}]}]
+};
+
+/* ===== 门派装备数据 ===== */
+const SECT_EQUIP={
+  '鬼王':[
+    {lv:0,char:'鬼王男',type:'刀',name:'环鸣刃',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'鬼王男',type:'刀',name:'碎玉刀',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'鬼王男',type:'刀',name:'冥血刀',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'鬼王男',type:'刀',name:'蓝魔飞月',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'鬼王男',type:'刀',name:'修罗刀',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'鬼王男',type:'刀',name:'笑天斩',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'鬼王男',type:'刀',name:'断龙绝麟',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'鬼王男',type:'刀',name:'天河中断',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'鬼王男',type:'刀',name:'鸿鸣百辟',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'鬼王男',type:'刀',name:'泣血',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'鬼王男',type:'刀',name:'龙牙',aMin:180,aMax:360,bMin:180,bMax:360},
+    {lv:0,char:'鬼王女',type:'爪',name:'铁痕爪',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'鬼王女',type:'爪',name:'青冥爪',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'鬼王女',type:'爪',name:'冰魄爪',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'鬼王女',type:'爪',name:'龙趾骨',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'鬼王女',type:'爪',name:'花魂破',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'鬼王女',type:'爪',name:'焱狱爪',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'鬼王女',type:'爪',name:'鬼面爪',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'鬼王女',type:'爪',name:'琉璃碧鸾',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'鬼王女',type:'爪',name:'飞燕破空',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'鬼王女',type:'爪',name:'闻毒爪',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'鬼王女',type:'爪',name:'凤凰天舞',aMin:180,aMax:360,bMin:180,bMax:360}
+  ],
+  '青云':[
+    {lv:0,char:'青云男',type:'剑',name:'松纹剑',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'青云男',type:'剑',name:'绝尘剑',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'青云男',type:'剑',name:'七星龙渊',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'青云男',type:'剑',name:'夏禹剑',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'青云男',type:'剑',name:'太阿剑',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'青云男',type:'剑',name:'刑天',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'青云男',type:'剑',name:'湛泸',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'青云男',type:'剑',name:'赤霄剑',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'青云男',type:'剑',name:'千字剑',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'青云男',type:'剑',name:'逐年剑',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'青云男',type:'剑',name:'天问剑',aMin:180,aMax:360,bMin:180,bMax:360},
+    {lv:0,char:'青云女',type:'对剑',name:'青钢对剑',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'青云女',type:'对剑',name:'炫落双剑',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'青云女',type:'对剑',name:'两仪对剑',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'青云女',type:'对剑',name:'追魂双剑',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'青云女',type:'对剑',name:'雌雄对剑',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'青云女',type:'对剑',name:'龙凤对剑',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'青云女',type:'对剑',name:'天光云影',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'青云女',type:'对剑',name:'万仞·断寒',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'青云女',type:'对剑',name:'干将莫邪',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'青云女',type:'对剑',name:'九曲双剑',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'青云女',type:'对剑',name:'游龙戏凤',aMin:180,aMax:360,bMin:180,bMax:360}
+  ],
+  '焚香':[
+    {lv:0,char:'焚香男',type:'枪',name:'梨花枪',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'焚香男',type:'枪',name:'六合枪',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'焚香男',type:'枪',name:'点金枪',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'焚香男',type:'枪',name:'方天画戟',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'焚香男',type:'枪',name:'天魂枪',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'焚香男',type:'枪',name:'神威离火枪',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'焚香男',type:'枪',name:'月影龙牙',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'焚香男',type:'枪',name:'长星扫九州',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'焚香男',type:'枪',name:'龙胆沥泉枪',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'焚香男',type:'枪',name:'碎魂枪',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'焚香男',type:'枪',name:'五虎断魂枪',aMin:180,aMax:360,bMin:180,bMax:360},
+    {lv:0,char:'焚香女',type:'环',name:'离情环',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'焚香女',type:'环',name:'晓月环',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'焚香女',type:'环',name:'长歌环',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'焚香女',type:'环',name:'金刚圈',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'焚香女',type:'环',name:'太乙明轮',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'焚香女',type:'环',name:'凤凰轮',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'焚香女',type:'环',name:'翡玉紫金环',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'焚香女',type:'环',name:'阴阳轮',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'焚香女',type:'环',name:'前尘忆梦',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'焚香女',type:'环',name:'耀日环',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'焚香女',type:'环',name:'天星月轮',aMin:180,aMax:360,bMin:180,bMax:360}
+  ],
+  '天音':[
+    {lv:0,char:'天音男',type:'杖',name:'水火杖',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'天音男',type:'杖',name:'秘法杖',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'天音男',type:'杖',name:'盘龙杖',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'天音男',type:'杖',name:'珈蓝杖',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'天音男',type:'杖',name:'御魄神杖',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'天音男',type:'杖',name:'天心一动',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'天音男',type:'杖',name:'遗世狂毫杖',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'天音男',type:'杖',name:'不周天柱',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'天音男',type:'杖',name:'转世三生杖',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'天音男',type:'杖',name:'女娲神石杖',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'天音男',type:'杖',name:'观相定禅杖',aMin:180,aMax:360,bMin:180,bMax:360},
+    {lv:0,char:'天音女',type:'缎带',name:'七霞菱',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'天音女',type:'缎带',name:'霞光缎带',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'天音女',type:'缎带',name:'混天绫',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'天音女',type:'缎带',name:'痴情缎带',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'天音女',type:'缎带',name:'春意阑珊',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'天音女',type:'缎带',name:'灵柔缎带',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'天音女',type:'缎带',name:'日照虹霓',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'天音女',type:'缎带',name:'慕雪梨花绫',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'天音女',type:'缎带',name:'前世缎丝',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'天音女',type:'缎带',name:'止水三丝',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'天音女',type:'缎带',name:'七彩飘仙绫',aMin:180,aMax:360,bMin:180,bMax:360}
+  ],
+  '合欢':[
+    {lv:0,char:'合欢男',type:'扇',name:'清风扇',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'合欢男',type:'扇',name:'暮云扇',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'合欢男',type:'扇',name:'凌御风行扇',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'合欢男',type:'扇',name:'悲喜扇',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'合欢男',type:'扇',name:'七海展图',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'合欢男',type:'扇',name:'朱雀血羽',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'合欢男',type:'扇',name:'九香扇',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'合欢男',type:'扇',name:'罗神大焰扇',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'合欢男',type:'扇',name:'九曜星芒',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'合欢男',type:'扇',name:'紫鸢大雕扇',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'合欢男',type:'扇',name:'和蕴紫气扇',aMin:180,aMax:360,bMin:180,bMax:360},
+    {lv:0,char:'合欢女',type:'伞',name:'浅笑',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'合欢女',type:'伞',name:'春露',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'合欢女',type:'伞',name:'星魂',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'合欢女',type:'伞',name:'时雨',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'合欢女',type:'伞',name:'伊人',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'合欢女',type:'伞',name:'葬花',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'合欢女',type:'伞',name:'烟火',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'合欢女',type:'伞',name:'落樱',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'合欢女',type:'伞',name:'皎如月',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'合欢女',type:'伞',name:'忆相思',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'合欢女',type:'伞',name:'镜花水月',aMin:180,aMax:360,bMin:180,bMax:360}
+  ],
+  '圣巫':[
+    {lv:0,char:'圣巫男',type:'锤',name:'紫檀锤',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'圣巫男',type:'锤',name:'破骨锤',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'圣巫男',type:'锤',name:'狼齿锤',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'圣巫男',type:'锤',name:'巨螺锤',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'圣巫男',type:'锤',name:'镇妖锤',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'圣巫男',type:'锤',name:'雷霆方至',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'圣巫男',type:'锤',name:'镇古降魔',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'圣巫男',type:'锤',name:'邪王离世',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'圣巫男',type:'锤',name:'碎天裂地',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'圣巫男',type:'锤',name:'山崩锤',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'圣巫男',type:'锤',name:'憾星锤',aMin:180,aMax:360,bMin:180,bMax:360},
+    {lv:0,char:'圣巫女',type:'玩具',name:'苹果棒棒糖',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'圣巫女',type:'玩具',name:'橘子棒棒糖',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'圣巫女',type:'玩具',name:'草莓棒棒糖',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'圣巫女',type:'玩具',name:'鸡毛掸子',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'圣巫女',type:'玩具',name:'狼牙棒',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'圣巫女',type:'玩具',name:'嗜萝狂兔',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'圣巫女',type:'玩具',name:'修罗假面',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'圣巫女',type:'玩具',name:'泡眼金鱼',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'圣巫女',type:'玩具',name:'外星飞碟',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'圣巫女',type:'玩具',name:'串串烧',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'圣巫女',type:'玩具',name:'旋转木马',aMin:180,aMax:360,bMin:180,bMax:360}
+  ],
+  '苍羽':[
+    {lv:0,char:'苍羽男',type:'弩',name:'练习弩',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'苍羽男',type:'弩',name:'断肠',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'苍羽男',type:'弩',name:'锁魄',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'苍羽男',type:'弩',name:'钩魂',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'苍羽男',type:'弩',name:'魂变',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'苍羽男',type:'弩',name:'冰棘',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'苍羽男',type:'弩',name:'蝠翼',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'苍羽男',type:'弩',name:'剔骨',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'苍羽男',type:'弩',name:'冥炎',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'苍羽男',type:'弩',name:'破凰',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'苍羽男',type:'弩',name:'惊天凤翼弩',aMin:180,aMax:360,bMin:180,bMax:360},
+    {lv:0,char:'苍羽女',type:'弓',name:'桦木弓',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'苍羽女',type:'弓',name:'青竹弓',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'苍羽女',type:'弓',name:'簪花弓',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'苍羽女',type:'弓',name:'碧玉弓',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'苍羽女',type:'弓',name:'蝶舞弓',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'苍羽女',type:'弓',name:'血棘弓',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'苍羽女',type:'弓',name:'雀翎翔天',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'苍羽女',type:'弓',name:'破日烈阳弓',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'苍羽女',type:'弓',name:'飞星逐月弓',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'苍羽女',type:'弓',name:'日冕疾风弓',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'苍羽女',type:'弓',name:'冰凌破宇弓',aMin:180,aMax:360,bMin:180,bMax:360}
+  ],
+  '灵音':[
+    {lv:0,char:'灵音男',type:'琴',name:'断纹',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'灵音男',type:'琴',name:'绕梁',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'灵音男',type:'琴',name:'焦尾',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'灵音男',type:'琴',name:'红鸾',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'灵音男',type:'琴',name:'绿绮',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'灵音男',type:'琴',name:'冰弦',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'灵音男',type:'琴',name:'独幽',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'灵音男',type:'琴',name:'落云奔雷',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'灵音男',type:'琴',name:'海月清辉',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'灵音男',type:'琴',name:'鸾凤和鸣',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'灵音男',type:'琴',name:'峄山孤桐',aMin:180,aMax:360,bMin:180,bMax:360},
+    {lv:0,char:'灵音女',type:'琵琶',name:'姻缘',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'灵音女',type:'琵琶',name:'飞花点翠',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'灵音女',type:'琵琶',name:'绮梦',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'灵音女',type:'琵琶',name:'冰殇',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'灵音女',type:'琵琶',name:'出水莲',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'灵音女',type:'琵琶',name:'凡人歌',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'灵音女',type:'琵琶',name:'风铃',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'灵音女',type:'琵琶',name:'情咒',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'灵音女',type:'琵琶',name:'暮色',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'灵音女',type:'琵琶',name:'剑魂',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'灵音女',type:'琵琶',name:'虚籁',aMin:180,aMax:360,bMin:180,bMax:360}
+  ],
+  '异能':[
+    {lv:0,char:'异能男',type:'电磁炮',name:'超合金重炮',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'异能男',type:'电磁炮',name:'光火离子炮',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'异能男',type:'电磁炮',name:'噬齿-毁灭',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'异能男',type:'电磁炮',name:'次元穿梭炮',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'异能男',type:'电磁炮',name:'时空之主宰',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'异能男',type:'电磁炮',name:'超能磁轨炮',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'异能男',type:'电磁炮',name:'苍穹之光',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'异能男',type:'电磁炮',name:'镭射手炮',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'异能男',type:'电磁炮',name:'紫焰翼龙',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'异能男',type:'电磁炮',name:'蓄能激光炮',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'异能男',type:'电磁炮',name:'JX-4噬魂',aMin:180,aMax:360,bMin:180,bMax:360},
+    {lv:0,char:'异能女',type:'原力枪',name:'速射原力枪',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'异能女',type:'原力枪',name:'核能镭射枪',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'异能女',type:'原力枪',name:'荒火赤练蛇',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'异能女',type:'原力枪',name:'粒子喷射枪',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'异能女',type:'原力枪',name:'涡轮牵引器',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'异能女',type:'原力枪',name:'引力加速枪',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'异能女',type:'原力枪',name:'脉冲气爆枪',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'异能女',type:'原力枪',name:'曲率折射枪',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'异能女',type:'原力枪',name:'超新星步枪',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'异能女',type:'原力枪',name:'黑洞发射器',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'异能女',type:'原力枪',name:'弑神狙击',aMin:180,aMax:360,bMin:180,bMax:360}
+  ],
+  '万毒':[
+    {lv:0,char:'万毒男',type:'毒蛊',name:'结魄灯',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'万毒男',type:'毒蛊',name:'千蛊',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'万毒男',type:'毒蛊',name:'诱惑蘑菇',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'万毒男',type:'毒蛊',name:'阎罗夜行',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'万毒男',type:'毒蛊',name:'聚魂囊',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'万毒男',type:'毒蛊',name:'贪欲壶',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'万毒男',type:'毒蛊',name:'尸鬼封印',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'万毒男',type:'毒蛊',name:'炼狱之光',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'万毒男',type:'毒蛊',name:'鬼王琼浆',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'万毒男',type:'毒蛊',name:'幽冥树妖',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'万毒男',type:'毒蛊',name:'妖狐再现',aMin:180,aMax:360,bMin:180,bMax:360},
+    {lv:0,char:'万毒女',type:'娃娃',name:'兔宝宝',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'万毒女',type:'娃娃',name:'晴雨娃娃',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'万毒女',type:'娃娃',name:'毒林种子',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'万毒女',type:'娃娃',name:'巫毒娃娃',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'万毒女',type:'娃娃',name:'忠之不渝',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'万毒女',type:'娃娃',name:'极乐财神',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'万毒女',type:'娃娃',name:'守望者',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'万毒女',type:'娃娃',name:'羽巫',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'万毒女',type:'娃娃',name:'余韵之灵',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'万毒女',type:'娃娃',name:'芙蓉仙',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'万毒女',type:'娃娃',name:'星夜女皇',aMin:180,aMax:360,bMin:180,bMax:360}
+  ],
+  '丹青':[
+    {lv:0,char:'丹青男',type:'笔',name:'碧玉笔',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'丹青男',type:'笔',name:'楠木笔',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'丹青男',type:'笔',name:'泪竹笔',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'丹青男',type:'笔',name:'金芒笔',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'丹青男',type:'笔',name:'判官笔',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'丹青男',type:'笔',name:'黄泉笔',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'丹青男',type:'笔',name:'太极玄清笔',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'丹青男',type:'笔',name:'金龙吐翠笔',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'丹青男',type:'笔',name:'春秋玉鼎笔',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'丹青男',type:'笔',name:'四海潮汐笔',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'丹青男',type:'笔',name:'苍穹逐日笔',aMin:180,aMax:360,bMin:180,bMax:360},
+    {lv:0,char:'丹青女',type:'毫',name:'锦瑟',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'丹青女',type:'毫',name:'青玉',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'丹青女',type:'毫',name:'血薇',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'丹青女',type:'毫',name:'蒹葭',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'丹青女',type:'毫',name:'鲸落',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'丹青女',type:'毫',name:'盈缺',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'丹青女',type:'毫',name:'傲雪凌霜',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'丹青女',type:'毫',name:'七步莲花',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'丹青女',type:'毫',name:'奈何归去',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'丹青女',type:'毫',name:'凤求凰',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'丹青女',type:'毫',name:'蝶鸢',aMin:180,aMax:360,bMin:180,bMax:360}
+  ],
+  '阴阳':[
+    {lv:0,char:'阴阳男',type:'太刀',name:'红叶狩',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'阴阳男',type:'太刀',name:'大鬼丸',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'阴阳男',type:'太刀',name:'千里暮雪',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'阴阳男',type:'太刀',name:'龙雀',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'阴阳男',type:'太刀',name:'百鬼大刀',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'阴阳男',type:'太刀',name:'金蟒锁魂刀',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'阴阳男',type:'太刀',name:'锦绣山河',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'阴阳男',type:'太刀',name:'花涧舞',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'阴阳男',type:'太刀',name:'星辰落',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'阴阳男',type:'太刀',name:'葬龙渊',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'阴阳男',type:'太刀',name:'屠戮君主',aMin:180,aMax:360,bMin:180,bMax:360},
+    {lv:0,char:'阴阳女',type:'折扇',name:'梅花扣',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'阴阳女',type:'折扇',name:'清凛',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'阴阳女',type:'折扇',name:'漠上伤',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'阴阳女',type:'折扇',name:'木樨·华',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'阴阳女',type:'折扇',name:'流星坠',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'阴阳女',type:'折扇',name:'桃花灼灼',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'阴阳女',type:'折扇',name:'辉夜',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'阴阳女',type:'折扇',name:'玉面伏见',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'阴阳女',type:'折扇',name:'长生结',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'阴阳女',type:'折扇',name:'风临雪山',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'阴阳女',type:'折扇',name:'七禽五火',aMin:180,aMax:360,bMin:180,bMax:360}
+  ],
+  '黄金':[
+    {lv:0,char:'黄金男',type:'镰形刀',name:'猫灵低语',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'黄金男',type:'镰形刀',name:'神眼涓流',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'黄金男',type:'镰形刀',name:'暮噬之眼',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'黄金男',type:'镰形刀',name:'碧空游鹰',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'黄金男',type:'镰形刀',name:'塞托之刃',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'黄金男',type:'镰形刀',name:'沙提怒袭',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'黄金男',type:'镰形刀',name:'魔玉噬光',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'黄金男',type:'镰形刀',name:'赛特之骨',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'黄金男',type:'镰形刀',name:'冥神之触',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'黄金男',type:'镰形刀',name:'四方诸神',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'黄金男',type:'镰形刀',name:'狮神裁决',aMin:180,aMax:360,bMin:180,bMax:360},
+    {lv:0,char:'黄金女',type:'权杖',name:'摄魂神眼',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'黄金女',type:'权杖',name:'猫灵轻语',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'黄金女',type:'权杖',name:'蛇焰腾空',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'黄金女',type:'权杖',name:'魂宿之愿',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'黄金女',type:'权杖',name:'九霄游鹰',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'黄金女',type:'权杖',name:'雪国星灵',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'黄金女',type:'权杖',name:'拂晓轻吟',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'黄金女',type:'权杖',name:'王权礼赞',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'黄金女',type:'权杖',name:'神火权杖',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'黄金女',type:'权杖',name:'辉耀救世',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'黄金女',type:'权杖',name:'神谕天降',aMin:180,aMax:360,bMin:180,bMax:360}
+  ],
+  '妖盟':[
+    {lv:0,char:'妖盟男',type:'棍',name:'浑铜棍',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'妖盟男',type:'棍',name:'混铁棍',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'妖盟男',type:'棍',name:'水火无间',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'妖盟男',type:'棍',name:'神圣幽影',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'妖盟男',type:'棍',name:'庆云浮生',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'妖盟男',type:'棍',name:'镇魂棍',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'妖盟男',type:'棍',name:'疾风棍',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'妖盟男',type:'棍',name:'煞血棍',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'妖盟男',type:'棍',name:'天心霜迹',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'妖盟男',type:'棍',name:'神木之息',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'妖盟男',type:'棍',name:'黯星熔火',aMin:180,aMax:360,bMin:180,bMax:360},
+    {lv:0,char:'妖盟女',type:'斧',name:'精铁斧',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'妖盟女',type:'斧',name:'银翼',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'妖盟女',type:'斧',name:'海妖之息',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'妖盟女',type:'斧',name:'溟海之握',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'妖盟女',type:'斧',name:'幽冥罗刹',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'妖盟女',type:'斧',name:'神木图腾',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'妖盟女',type:'斧',name:'天翔龙马',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'妖盟女',type:'斧',name:'欢语轻铃',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'妖盟女',type:'斧',name:'望舒皎皎',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'妖盟女',type:'斧',name:'邪皇寂世',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'妖盟女',type:'斧',name:'凤鸣霜雪刃',aMin:180,aMax:360,bMin:180,bMax:360}
+  ],
+  '陈塘':[
+    {lv:0,char:'陈塘男',type:'火尖枪',name:'初炎之枪',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'陈塘男',type:'火尖枪',name:'炽焰之刺',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'陈塘男',type:'火尖枪',name:'狂焰之咆',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'陈塘男',type:'火尖枪',name:'烈焰之主',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'陈塘男',type:'火尖枪',name:'焚天之龙',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'陈塘男',type:'火尖枪',name:'炼火之神',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'陈塘男',type:'火尖枪',name:'破灭烈焰',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'陈塘男',type:'火尖枪',name:'焰海无边',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'陈塘男',type:'火尖枪',name:'焰光轮枪',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'陈塘男',type:'火尖枪',name:'火焰三尖枪',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'陈塘男',type:'火尖枪',name:'霜狱三尖枪',aMin:180,aMax:360,bMin:180,bMax:360},
+    {lv:0,char:'陈塘女',type:'灯笼',name:'星辰点点',aMin:15,aMax:15,bMin:15,bMax:15},
+    {lv:10,char:'陈塘女',type:'灯笼',name:'幽影之灯',aMin:17,aMax:36,bMin:17,bMax:36},
+    {lv:20,char:'陈塘女',type:'灯笼',name:'晓明之炬',aMin:35,aMax:72,bMin:35,bMax:72},
+    {lv:30,char:'陈塘女',type:'灯笼',name:'吼岳狮吞',aMin:53,aMax:108,bMin:53,bMax:108},
+    {lv:40,char:'陈塘女',type:'灯笼',name:'星辉闪耀',aMin:71,aMax:144,bMin:71,bMax:144},
+    {lv:50,char:'陈塘女',type:'灯笼',name:'忘忧之灯',aMin:90,aMax:180,bMin:90,bMax:180},
+    {lv:60,char:'陈塘女',type:'灯笼',name:'烈焰煌炎',aMin:107,aMax:216,bMin:107,bMax:216},
+    {lv:70,char:'陈塘女',type:'灯笼',name:'无尽灯芒',aMin:125,aMax:252,bMin:125,bMax:252},
+    {lv:80,char:'陈塘女',type:'灯笼',name:'红颜之火',aMin:143,aMax:288,bMin:143,bMax:288},
+    {lv:90,char:'陈塘女',type:'灯笼',name:'冰封九重',aMin:161,aMax:324,bMin:161,bMax:324},
+    {lv:100,char:'陈塘女',type:'灯笼',name:'霜狱灯影',aMin:180,aMax:360,bMin:180,bMax:360}
+  ]
+};
+let currentSectName='鬼王';
+
+/* ===== 门派觉醒技能数据 ===== */
+const SECT_AWAKEN={
+  '鬼王':[
+    {tier:'源初',name:'鬼王・源初・觉醒',desc:'战斗中每回合有 20% 的概率觉醒，在觉醒状态下获得物理暴击率 + 20%。'},
+    {tier:'归元',name:'鬼王・归元・觉醒',desc:'在觉醒状态下获得【觉醒・狂鬼击】伤害提升 10%，击杀目标后回复自身 25% 气血。'},
+    {tier:'无极',name:'鬼王・无极・觉醒',desc:'在觉醒状态下方可获得【鬼王・无极・觉醒】。对 1 个目标造成 4 次物理伤害。CD:5 回合。'}
+  ],
+  '青云':[
+    {tier:'源初',name:'青云・源初・觉醒',desc:'战斗中每回合有 20% 的概率觉醒，在觉醒状态下获得有 35% 的概率法术连击。'},
+    {tier:'归元',name:'青云・归元・觉醒',desc:'在觉醒状态下获得【觉醒・天灵剑诀】击杀目标后会对敌方气血最低的单位释放追击一次，若持续击杀将无限追击。'},
+    {tier:'无极',name:'青云・无极・觉醒',desc:'在觉醒状态下方可获得【青云・无极・觉醒】。对敌方全体目标造成法术伤害。CD:5 回合。'}
+  ],
+  '天音':[
+    {tier:'源初',name:'天音・源初・觉醒',desc:'战斗中每回合有 20% 的概率觉醒，在觉醒状态下获得治疗效果增加 20%。'},
+    {tier:'归元',name:'天音・归元・觉醒',desc:'在觉醒状态下获得【觉醒・无相咒】护盾效果提升 15% 自身气血上限。'},
+    {tier:'无极',name:'天音・无极・觉醒',desc:'在觉醒状态下方可获得【天音・无极・觉醒】。治疗我方 5 个目标，并为目标增加 1 个吸收伤害的护盾。CD:5 回合。'}
+  ],
+  '焚香':[
+    {tier:'源初',name:'焚香・源初・觉醒',desc:'战斗中每回合有 20% 的概率觉醒，在觉醒状态下获得法术暴击率 + 20%。'},
+    {tier:'归元',name:'焚香・归元・觉醒',desc:'在觉醒状态下获得【觉醒・双龙旋】伤害提升 10%，暴击率提升 10%，攻击目标 3 次。'},
+    {tier:'无极',name:'焚香・无极・觉醒',desc:'在觉醒状态下方可获得【焚香・无极・觉醒】。对 1 个目标造成 4 次法术伤害。CD:5 回合。'}
+  ],
+  '合欢':[
+    {tier:'源初',name:'合欢・源初・觉醒',desc:'战斗中每回合有 20% 的概率觉醒，在觉醒状态下获得物理伤害结果增加 20%。'},
+    {tier:'归元',name:'合欢・归元・觉醒',desc:'在觉醒状态下获得【觉醒・落花听雨】提升 10% 伤害，大概率不休息。'},
+    {tier:'无极',name:'合欢・无极・觉醒',desc:'在觉醒状态下方可获得【合欢・无极・觉醒】。物理随机攻击目标 8 次，若攻击同一目标伤害降低 10%。CD:5 回合。'}
+  ],
+  '圣巫':[
+    {tier:'源初',name:'圣巫・源初・觉醒',desc:'战斗中每回合有 20% 的概率觉醒，在觉醒状态下获得速度加成 20%。'},
+    {tier:'归元',name:'圣巫・归元・觉醒',desc:'在觉醒状态下获得【觉醒・禁灵锁】提升 10% 命中率，释放时有 20% 的概率增加 1 个目标。'},
+    {tier:'无极',name:'圣巫・无极・觉醒',desc:'在觉醒状态下方可获得【圣巫・无极・觉醒】。提速 100% 释放，对 3 个目标进行封印 3 回合。CD:5 回合。'}
+  ],
+  '苍羽':[
+    {tier:'源初',name:'苍羽・源初・觉醒',desc:'战斗中每回合有 20% 的概率觉醒，在觉醒状态下获得普攻必定 3 连，并对宠物或子女造成 20% 气血上限加成的伤害。'},
+    {tier:'归元',name:'苍羽・归元・觉醒',desc:'在觉醒状态下获得【觉醒・劲烈爆炎箭】对象为宠物和孩子时附加气血上限提升至 20%。'},
+    {tier:'无极',name:'苍羽・无极・觉醒',desc:'在觉醒状态下方可获得【苍羽・无极・觉醒】。为友方 3 个目标增加 1 个复活 2 次的状态，持续 3 回合。CD:5 回合。'}
+  ],
+  '灵音':[
+    {tier:'源初',name:'灵音・源初・觉醒',desc:'战斗中每回合有 20% 的概率觉醒，在觉醒状态下获得法术伤害结果增加 20%。'},
+    {tier:'归元',name:'灵音・归元・觉醒',desc:'在觉醒状态下获得【觉醒・大风歌】对目标增加万象天音的减疗效果。'},
+    {tier:'无极',name:'灵音・无极・觉醒',desc:'在觉醒状态下方可获得【灵音・无极・觉醒】。对 3 个目标造成 3 次法术伤害。CD:5 回合。'}
+  ],
+  '异能':[
+    {tier:'源初',name:'异能・源初・觉醒',desc:'战斗中每回合有 20% 的概率觉醒，在觉醒状态下获得物理穿透增加 10%。'},
+    {tier:'归元',name:'异能・归元・觉醒',desc:'在觉醒状态下获得【觉醒・加农粒子炮】忽视目标 10% 防御，35% 概率追击一次 60% 伤害结果。'},
+    {tier:'无极',name:'异能・无极・觉醒',desc:'在觉醒状态下方可获得【异能・无极・觉醒】。对敌方 3 个目标造成 3 次物理伤害。CD:5 回合。'}
+  ],
+  '万毒':[
+    {tier:'源初',name:'万毒・源初・觉醒',desc:'战斗中每回合有 20% 的概率觉醒，在觉醒状态下获得法术暴击率 20%。'},
+    {tier:'归元',name:'万毒・归元・觉醒',desc:'在觉醒状态下获得【觉醒・破碎冰晶】使用后为自身增加 2 回合冰冻效果。'},
+    {tier:'无极',name:'万毒・无极・觉醒',desc:'在觉醒状态下方可获得【万毒・无极・觉醒】。使 1 个目标中毒，回合末损失当前气血 40% 的气血值，持续 5 回合。CD:5 回合。'}
+  ],
+  '丹青':[
+    {tier:'源初',name:'丹青・源初・觉醒',desc:'战斗中每回合有 20% 的概率觉醒，在觉醒状态下获得物理穿透增加 10%。'},
+    {tier:'归元',name:'丹青・归元・觉醒',desc:'在觉醒状态下获得【觉醒・画龙点睛】伤害提升 10%，概率封印目标 2 回合。'},
+    {tier:'无极',name:'丹青・无极・觉醒',desc:'在觉醒状态下方可获得【丹青・无极・觉醒】。对 5 个目标造成物理伤害，并有概率封印目标 3 回合。CD:5 回合。'}
+  ],
+  '阴阳':[
+    {tier:'源初',name:'阴阳・源初・觉醒',desc:'战斗中每回合有 20% 的概率觉醒，在觉醒状态下获得法术穿透增加 10%。'},
+    {tier:'归元',name:'阴阳・归元・觉醒',desc:'在觉醒状态下获得【觉醒・贪婪之噬】伤害提升 10%，使用时提速 50%。'},
+    {tier:'无极',name:'阴阳・无极・觉醒',desc:'在觉醒状态下方可获得【阴阳・无极・觉醒】。法术随机攻击目标 6 次，若攻击同一目标伤害降低 10%。CD:5 回合。'}
+  ],
+  '黄金':[
+    {tier:'源初',name:'黄金・源初・觉醒',desc:'战斗中每回合有 20% 的概率觉醒，在觉醒状态下获得封印命中率 20%。'},
+    {tier:'归元',name:'黄金・归元・觉醒',desc:'在觉醒状态下获得【觉醒・阿蒙祈祷】增加目标受到的治疗效果 2 回合。'},
+    {tier:'无极',name:'黄金・无极・觉醒',desc:'在觉醒状态下方可获得【黄金・无极・觉醒】。放出 3 条蛇对目标造成法术伤害并吸血。CD:5 回合。'}
+  ],
+  '妖盟':[
+    {tier:'源初',name:'妖盟・源初・觉醒',desc:'战斗中每回合有 20% 的概率觉醒，在觉醒状态下获得物理伤害结果和物理暴击率增加 10%。'},
+    {tier:'归元',name:'妖盟・归元・觉醒',desc:'在觉醒状态下获得【觉醒・力劈华山】使用时提速 100%。'},
+    {tier:'无极',name:'妖盟・无极・觉醒',desc:'在觉醒状态下方可获得【妖盟・无极・觉醒】。为友方全体目标增加 20% 闪避率，持续 3 回合。CD:5 回合。'}
+  ],
+  '陈塘':[
+    {tier:'源初',name:'陈塘・源初・觉醒',desc:'战斗中每回合有 20% 的概率觉醒，在觉醒状态下获得法术伤害结果和法术暴击率增加 10%。'},
+    {tier:'归元',name:'陈塘・归元・觉醒',desc:'在觉醒状态下获得【觉醒・乾坤圈】伤害提升 10%（无变身状态下也可使用）。'},
+    {tier:'无极',name:'陈塘・无极・觉醒',desc:'在觉醒状态下方可获得【陈塘・无极・觉醒】。对 1 个目标造成 5 次法术伤害。CD:5 回合。'}
+  ]
+};
+
+/* ===== 门派羽翼技能数据 ===== */
+const SECT_WING={
+  '鬼王':[
+    {lv:'2 阶',name:'金钟护体',desc:'进行防御时，受到的物理伤害降低为正常防御状态的 50%'},
+    {lv:'4 阶',name:'身强力壮',desc:'降低自身受到的 30% 的物理暴击伤害'},
+    {lv:'6 阶',name:'凝神静气',desc:'增加物理命中 5%'},
+    {lv:'8 阶',name:'包罗万象',desc:'受到物理伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'10 阶',name:'明镜止水',desc:'受到法术伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'11 阶',name:'上善若水',desc:'降低自身受到的 30% 的法术暴击伤害'},
+    {lv:'12 阶',name:'疾闪风急',desc:'增加物理闪避率 5%'},
+    {lv:'13 阶',name:'背水一战',desc:'自身气血低于 40% 时，伤害提高 10%'},
+    {lv:'14 阶',name:'太和弥清',desc:'每回合结束有 30% 几率解除自身的一条负面效果（不包括封印状态）'},
+    {lv:'15 阶',name:'丹田贯注',desc:'增加物理暴击伤害 20%'},
+    {lv:'16 阶',name:'怒发冲冠',desc:'怒气消耗降低 10%'},
+    {lv:'17 阶',name:'其疾如风',desc:'回合末 10% 几率触发，增加 10% 自身速度，持续 2 回合'},
+    {lv:'18 阶',name:'分筋错骨',desc:'物理攻击时，有 5% 几率使目标本回合伤筋断骨，本回合无法出手'},
+    {lv:'19 阶',name:'势如破竹',desc:'攻击时忽视目标 5% 的物理防御'},
+    {lv:'20 阶',name:'不动明王',desc:'降低受到的群体门派和宠物技能伤害 5%'},
+    {lv:'21 阶',name:'浴血奋战',desc:'当前参战宠物气血低于 40% 时，增加 10% 宠物伤害'},
+    {lv:'22 阶',name:'身轻如风',desc:'增加法术闪避率 5%'},
+    {lv:'23 阶',name:'坚韧不拔',desc:'增加耐力 30'},
+    {lv:'24 阶',name:'怒目金刚',desc:'增加力量 40'},
+    {lv:'25 阶',name:'医者精诚',desc:'受到的门派治疗技能效果提升 5%'},
+    {lv:'26 阶',name:'阳关三迭',desc:'每到回合数以 3 为结尾的回合，回合初恢复 20 怒气'},
+    {lv:'27 阶',name:'神之义眼',desc:'物理命中增加 5%'},
+    {lv:'28 阶',name:'两小无猜',desc:'召唤宠物和子女后，宠物和子女对子女伤害提升 50%，持续 3 回合'},
+    {lv:'30 阶',name:'山崩不摧',desc:'减少 5% 敌方角色单位对自己的物理伤害'},
+    {lv:'31 阶',name:'避其锋芒',desc:'减少 5% 受到的物理伤害'},
+    {lv:'32 阶',name:'荒古圣体',desc:'战斗第 5 回合，免疫负面类状态'},
+    {lv:'33 阶',name:'弱水三千',desc:'减少 5% 敌方角色单位对自己的法术伤害'},
+    {lv:'34 阶',name:'暂避其锋',desc:'减少 5% 受到的法术伤害'},
+    {lv:'35 阶',name:'锋势渐盈',desc:'增加 5% 造成的物理伤害'},
+    {lv:'36 阶',name:'绿新邪灵',desc:'战斗第 10 回合，免疫负面类状态'}
+  ],
+  '合欢':[
+    {lv:'2 阶',name:'金钟护体',desc:'进行防御时，受到的物理伤害降低为正常防御状态的 50%'},
+    {lv:'4 阶',name:'身强力壮',desc:'降低自身受到的 30% 的物理暴击伤害'},
+    {lv:'6 阶',name:'凝神静气',desc:'增加物理命中 5%'},
+    {lv:'8 阶',name:'包罗万象',desc:'受到物理伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'10 阶',name:'明镜止水',desc:'受到法术伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'11 阶',name:'上善若水',desc:'降低自身受到的 30% 的法术暴击伤害'},
+    {lv:'12 阶',name:'疾闪风急',desc:'增加物理闪避率 5%'},
+    {lv:'13 阶',name:'背水一战',desc:'自身气血低于 40% 时，伤害提高 10%'},
+    {lv:'14 阶',name:'太和弥清',desc:'每回合结束有 30% 几率解除自身的一条负面效果（不包括封印状态）'},
+    {lv:'15 阶',name:'丹田贯注',desc:'增加物理暴击伤害 20%'},
+    {lv:'16 阶',name:'怒发冲冠',desc:'怒气消耗降低 10%'},
+    {lv:'17 阶',name:'其疾如风',desc:'回合末 10% 几率触发，增加 10% 自身速度，持续 2 回合'},
+    {lv:'18 阶',name:'分筋错骨',desc:'物理攻击时，有 5% 几率使目标本回合伤筋断骨，本回合无法出手'},
+    {lv:'19 阶',name:'势如破竹',desc:'攻击时忽视目标 5% 的物理防御'},
+    {lv:'20 阶',name:'不动明王',desc:'降低受到的群体门派和宠物技能伤害 5%'},
+    {lv:'21 阶',name:'浴血奋战',desc:'当前参战宠物气血低于 40% 时，增加 10% 宠物伤害'},
+    {lv:'22 阶',name:'身轻如风',desc:'增加法术闪避率 5%'},
+    {lv:'23 阶',name:'坚韧不拔',desc:'增加耐力 30'},
+    {lv:'24 阶',name:'怒目金刚',desc:'增加力量 40'},
+    {lv:'25 阶',name:'医者精诚',desc:'受到的门派治疗技能效果提升 5%'},
+    {lv:'26 阶',name:'阳关三迭',desc:'每到回合数以 3 为结尾的回合，回合初恢复 20 怒气'},
+    {lv:'27 阶',name:'神之义眼',desc:'物理命中增加 5%'},
+    {lv:'28 阶',name:'两小无猜',desc:'召唤宠物和子女后，宠物和子女对子女伤害提升 50%，持续 3 回合'},
+    {lv:'30 阶',name:'山崩不摧',desc:'减少 5% 敌方角色单位对自己的物理伤害'},
+    {lv:'31 阶',name:'避其锋芒',desc:'减少 5% 受到的物理伤害'},
+    {lv:'32 阶',name:'荒古圣体',desc:'战斗第 5 回合，免疫负面类状态'},
+    {lv:'33 阶',name:'弱水三千',desc:'减少 5% 敌方角色单位对自己的法术伤害'},
+    {lv:'34 阶',name:'暂避其锋',desc:'减少 5% 受到的法术伤害'},
+    {lv:'35 阶',name:'锋势渐盈',desc:'增加 5% 造成的物理伤害'},
+    {lv:'36 阶',name:'绿新邪灵',desc:'战斗第 10 回合，免疫负面类状态'}
+  ],
+  '苍羽':[
+    {lv:'2 阶',name:'金钟护体',desc:'进行防御时，受到的物理伤害降低为正常防御状态的 50%'},
+    {lv:'4 阶',name:'身强力壮',desc:'降低自身受到的 30% 的物理暴击伤害'},
+    {lv:'6 阶',name:'凝神静气',desc:'增加物理命中 5%'},
+    {lv:'8 阶',name:'包罗万象',desc:'受到物理伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'10 阶',name:'明镜止水',desc:'受到法术伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'11 阶',name:'上善若水',desc:'降低自身受到的 30% 的法术暴击伤害'},
+    {lv:'12 阶',name:'疾闪风急',desc:'增加物理闪避率 5%'},
+    {lv:'13 阶',name:'背水一战',desc:'自身气血低于 40% 时，伤害提高 10%'},
+    {lv:'14 阶',name:'太和弥清',desc:'每回合结束有 30% 几率解除自身的一条负面效果（不包括封印状态）'},
+    {lv:'15 阶',name:'丹田贯注',desc:'增加物理暴击伤害 20%'},
+    {lv:'16 阶',name:'怒发冲冠',desc:'怒气消耗降低 10%'},
+    {lv:'17 阶',name:'其疾如风',desc:'回合末 10% 几率触发，增加 10% 自身速度，持续 2 回合'},
+    {lv:'18 阶',name:'分筋错骨',desc:'物理攻击时，有 5% 几率使目标本回合伤筋断骨，本回合无法出手'},
+    {lv:'19 阶',name:'势如破竹',desc:'攻击时忽视目标 5% 的物理防御'},
+    {lv:'20 阶',name:'不动明王',desc:'降低受到的群体门派和宠物技能伤害 5%'},
+    {lv:'21 阶',name:'浴血奋战',desc:'当前参战宠物气血低于 40% 时，增加 10% 宠物伤害'},
+    {lv:'22 阶',name:'身轻如风',desc:'增加法术闪避率 5%'},
+    {lv:'23 阶',name:'坚韧不拔',desc:'增加耐力 30'},
+    {lv:'24 阶',name:'怒目金刚',desc:'增加力量 40'},
+    {lv:'25 阶',name:'医者精诚',desc:'受到的门派治疗技能效果提升 5%'},
+    {lv:'26 阶',name:'阳关三迭',desc:'每到回合数以 3 为结尾的回合，回合初恢复 20 怒气'},
+    {lv:'27 阶',name:'神之义眼',desc:'物理命中增加 5%'},
+    {lv:'28 阶',name:'两小无猜',desc:'召唤宠物和子女后，宠物和子女对子女伤害提升 50%，持续 3 回合'},
+    {lv:'30 阶',name:'山崩不摧',desc:'减少 5% 敌方角色单位对自己的物理伤害'},
+    {lv:'31 阶',name:'避其锋芒',desc:'减少 5% 受到的物理伤害'},
+    {lv:'32 阶',name:'荒古圣体',desc:'战斗第 5 回合，免疫负面类状态'},
+    {lv:'33 阶',name:'弱水三千',desc:'减少 5% 敌方角色单位对自己的法术伤害'},
+    {lv:'34 阶',name:'暂避其锋',desc:'减少 5% 受到的法术伤害'},
+    {lv:'35 阶',name:'锋势渐盈',desc:'增加 5% 造成的物理伤害'},
+    {lv:'36 阶',name:'绿新邪灵',desc:'战斗第 10 回合，免疫负面类状态'}
+  ],
+  '异能':[
+    {lv:'2 阶',name:'金钟护体',desc:'进行防御时，受到的物理伤害降低为正常防御状态的 50%'},
+    {lv:'4 阶',name:'身强力壮',desc:'降低自身受到的 30% 的物理暴击伤害'},
+    {lv:'6 阶',name:'凝神静气',desc:'增加物理命中 5%'},
+    {lv:'8 阶',name:'包罗万象',desc:'受到物理伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'10 阶',name:'明镜止水',desc:'受到法术伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'11 阶',name:'上善若水',desc:'降低自身受到的 30% 的法术暴击伤害'},
+    {lv:'12 阶',name:'疾闪风急',desc:'增加物理闪避率 5%'},
+    {lv:'13 阶',name:'背水一战',desc:'自身气血低于 40% 时，伤害提高 10%'},
+    {lv:'14 阶',name:'太和弥清',desc:'每回合结束有 30% 几率解除自身的一条负面效果（不包括封印状态）'},
+    {lv:'15 阶',name:'丹田贯注',desc:'增加物理暴击伤害 20%'},
+    {lv:'16 阶',name:'怒发冲冠',desc:'怒气消耗降低 10%'},
+    {lv:'17 阶',name:'其疾如风',desc:'回合末 10% 几率触发，增加 10% 自身速度，持续 2 回合'},
+    {lv:'18 阶',name:'分筋错骨',desc:'物理攻击时，有 5% 几率使目标本回合伤筋断骨，本回合无法出手'},
+    {lv:'19 阶',name:'势如破竹',desc:'攻击时忽视目标 5% 的物理防御'},
+    {lv:'20 阶',name:'不动明王',desc:'降低受到的群体门派和宠物技能伤害 5%'},
+    {lv:'21 阶',name:'浴血奋战',desc:'当前参战宠物气血低于 40% 时，增加 10% 宠物伤害'},
+    {lv:'22 阶',name:'身轻如风',desc:'增加法术闪避率 5%'},
+    {lv:'23 阶',name:'坚韧不拔',desc:'增加耐力 30'},
+    {lv:'24 阶',name:'怒目金刚',desc:'增加力量 40'},
+    {lv:'25 阶',name:'医者精诚',desc:'受到的门派治疗技能效果提升 5%'},
+    {lv:'26 阶',name:'阳关三迭',desc:'每到回合数以 3 为结尾的回合，回合初恢复 20 怒气'},
+    {lv:'27 阶',name:'神之义眼',desc:'物理命中增加 5%'},
+    {lv:'28 阶',name:'两小无猜',desc:'召唤宠物和子女后，宠物和子女对子女伤害提升 50%，持续 3 回合'},
+    {lv:'30 阶',name:'山崩不摧',desc:'减少 5% 敌方角色单位对自己的物理伤害'},
+    {lv:'31 阶',name:'避其锋芒',desc:'减少 5% 受到的物理伤害'},
+    {lv:'32 阶',name:'荒古圣体',desc:'战斗第 5 回合，免疫负面类状态'},
+    {lv:'33 阶',name:'弱水三千',desc:'减少 5% 敌方角色单位对自己的法术伤害'},
+    {lv:'34 阶',name:'暂避其锋',desc:'减少 5% 受到的法术伤害'},
+    {lv:'35 阶',name:'锋势渐盈',desc:'增加 5% 造成的物理伤害'},
+    {lv:'36 阶',name:'绿新邪灵',desc:'战斗第 10 回合，免疫负面类状态'}
+  ],
+  '丹青':[
+    {lv:'2 阶',name:'金钟护体',desc:'进行防御时，受到的物理伤害降低为正常防御状态的 50%'},
+    {lv:'4 阶',name:'身强力壮',desc:'降低自身受到的 30% 的物理暴击伤害'},
+    {lv:'6 阶',name:'凝神静气',desc:'增加物理命中 5%'},
+    {lv:'8 阶',name:'包罗万象',desc:'受到物理伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'10 阶',name:'明镜止水',desc:'受到法术伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'11 阶',name:'上善若水',desc:'降低自身受到的 30% 的法术暴击伤害'},
+    {lv:'12 阶',name:'疾闪风急',desc:'增加物理闪避率 5%'},
+    {lv:'13 阶',name:'背水一战',desc:'自身气血低于 40% 时，伤害提高 10%'},
+    {lv:'14 阶',name:'太和弥清',desc:'每回合结束有 30% 几率解除自身的一条负面效果（不包括封印状态）'},
+    {lv:'15 阶',name:'丹田贯注',desc:'增加物理暴击伤害 20%'},
+    {lv:'16 阶',name:'怒发冲冠',desc:'怒气消耗降低 10%'},
+    {lv:'17 阶',name:'其疾如风',desc:'回合末 10% 几率触发，增加 10% 自身速度，持续 2 回合'},
+    {lv:'18 阶',name:'分筋错骨',desc:'物理攻击时，有 5% 几率使目标本回合伤筋断骨，本回合无法出手'},
+    {lv:'19 阶',name:'势如破竹',desc:'攻击时忽视目标 5% 的物理防御'},
+    {lv:'20 阶',name:'不动明王',desc:'降低受到的群体门派和宠物技能伤害 5%'},
+    {lv:'21 阶',name:'浴血奋战',desc:'当前参战宠物气血低于 40% 时，增加 10% 宠物伤害'},
+    {lv:'22 阶',name:'身轻如风',desc:'增加法术闪避率 5%'},
+    {lv:'23 阶',name:'坚韧不拔',desc:'增加耐力 30'},
+    {lv:'24 阶',name:'怒目金刚',desc:'增加力量 40'},
+    {lv:'25 阶',name:'医者精诚',desc:'受到的门派治疗技能效果提升 5%'},
+    {lv:'26 阶',name:'阳关三迭',desc:'每到回合数以 3 为结尾的回合，回合初恢复 20 怒气'},
+    {lv:'27 阶',name:'神之义眼',desc:'物理命中增加 5%'},
+    {lv:'28 阶',name:'两小无猜',desc:'召唤宠物和子女后，宠物和子女对子女伤害提升 50%，持续 3 回合'},
+    {lv:'30 阶',name:'山崩不摧',desc:'减少 5% 敌方角色单位对自己的物理伤害'},
+    {lv:'31 阶',name:'避其锋芒',desc:'减少 5% 受到的物理伤害'},
+    {lv:'32 阶',name:'荒古圣体',desc:'战斗第 5 回合，免疫负面类状态'},
+    {lv:'33 阶',name:'弱水三千',desc:'减少 5% 敌方角色单位对自己的法术伤害'},
+    {lv:'34 阶',name:'暂避其锋',desc:'减少 5% 受到的法术伤害'},
+    {lv:'35 阶',name:'锋势渐盈',desc:'增加 5% 造成的物理伤害'},
+    {lv:'36 阶',name:'绿新邪灵',desc:'战斗第 10 回合，免疫负面类状态'}
+  ],
+  '妖盟':[
+    {lv:'2 阶',name:'金钟护体',desc:'进行防御时，受到的物理伤害降低为正常防御状态的 50%'},
+    {lv:'4 阶',name:'身强力壮',desc:'降低自身受到的 30% 的物理暴击伤害'},
+    {lv:'6 阶',name:'凝神静气',desc:'增加物理命中 5%'},
+    {lv:'8 阶',name:'包罗万象',desc:'受到物理伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'10 阶',name:'明镜止水',desc:'受到法术伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'11 阶',name:'上善若水',desc:'降低自身受到的 30% 的法术暴击伤害'},
+    {lv:'12 阶',name:'疾闪风急',desc:'增加物理闪避率 5%'},
+    {lv:'13 阶',name:'背水一战',desc:'自身气血低于 40% 时，伤害提高 10%'},
+    {lv:'14 阶',name:'太和弥清',desc:'每回合结束有 30% 几率解除自身的一条负面效果（不包括封印状态）'},
+    {lv:'15 阶',name:'丹田贯注',desc:'增加物理暴击伤害 20%'},
+    {lv:'16 阶',name:'怒发冲冠',desc:'怒气消耗降低 10%'},
+    {lv:'17 阶',name:'其疾如风',desc:'回合末 10% 几率触发，增加 10% 自身速度，持续 2 回合'},
+    {lv:'18 阶',name:'分筋错骨',desc:'物理攻击时，有 5% 几率使目标本回合伤筋断骨，本回合无法出手'},
+    {lv:'19 阶',name:'势如破竹',desc:'攻击时忽视目标 5% 的物理防御'},
+    {lv:'20 阶',name:'不动明王',desc:'降低受到的群体门派和宠物技能伤害 5%'},
+    {lv:'21 阶',name:'浴血奋战',desc:'当前参战宠物气血低于 40% 时，增加 10% 宠物伤害'},
+    {lv:'22 阶',name:'身轻如风',desc:'增加法术闪避率 5%'},
+    {lv:'23 阶',name:'坚韧不拔',desc:'增加耐力 30'},
+    {lv:'24 阶',name:'怒目金刚',desc:'增加力量 40'},
+    {lv:'25 阶',name:'医者精诚',desc:'受到的门派治疗技能效果提升 5%'},
+    {lv:'26 阶',name:'阳关三迭',desc:'每到回合数以 3 为结尾的回合，回合初恢复 20 怒气'},
+    {lv:'27 阶',name:'神之义眼',desc:'物理命中增加 5%'},
+    {lv:'28 阶',name:'两小无猜',desc:'召唤宠物和子女后，宠物和子女对子女伤害提升 50%，持续 3 回合'},
+    {lv:'30 阶',name:'山崩不摧',desc:'减少 5% 敌方角色单位对自己的物理伤害'},
+    {lv:'31 阶',name:'避其锋芒',desc:'减少 5% 受到的物理伤害'},
+    {lv:'32 阶',name:'荒古圣体',desc:'战斗第 5 回合，免疫负面类状态'},
+    {lv:'33 阶',name:'弱水三千',desc:'减少 5% 敌方角色单位对自己的法术伤害'},
+    {lv:'34 阶',name:'暂避其锋',desc:'减少 5% 受到的法术伤害'},
+    {lv:'35 阶',name:'锋势渐盈',desc:'增加 5% 造成的物理伤害'},
+    {lv:'36 阶',name:'绿新邪灵',desc:'战斗第 10 回合，免疫负面类状态'}
+  ],
+  '青云':[
+    {lv:'2 阶',name:'金钟护体',desc:'进行防御时，受到的物理伤害降低为正常防御状态的 50%'},
+    {lv:'4 阶',name:'身强力壮',desc:'降低自身受到的 30% 的物理暴击伤害'},
+    {lv:'6 阶',name:'上善若水',desc:'降低自身受到的 30% 的法术暴击伤害'},
+    {lv:'8 阶',name:'包罗万象',desc:'受到物理伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'10 阶',name:'乘胜追击',desc:'法术攻击目标时，有 8% 的几率追加一次单法攻击'},
+    {lv:'11 阶',name:'明镜止水',desc:'受到法术伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'12 阶',name:'疾闪风急',desc:'增加物理闪避率 5%'},
+    {lv:'13 阶',name:'背水一战',desc:'自身气血低于 40% 时，伤害提高 10%'},
+    {lv:'14 阶',name:'太和弥清',desc:'每回合结束有 30% 几率解除自身的一条负面效果（不包括封印状态）'},
+    {lv:'15 阶',name:'五气朝元',desc:'增加法术暴击伤害 20%'},
+    {lv:'16 阶',name:'怒发冲冠',desc:'怒气消耗降低 10%'},
+    {lv:'17 阶',name:'其疾如风',desc:'回合末 10% 几率触发，增加 10% 自身速度，持续 2 回合'},
+    {lv:'18 阶',name:'钩魄摄魂',desc:'法术攻击时，有 5% 几率使目标本回合混乱，随机攻击友方'},
+    {lv:'19 阶',name:'势不可挡',desc:'攻击时忽视目标 5% 的法术防御'},
+    {lv:'20 阶',name:'不动明王',desc:'降低受到的群体门派和宠物技能伤害 5%'},
+    {lv:'21 阶',name:'浴血奋战',desc:'当前参战宠物气血低于 40% 时，增加 10% 宠物伤害'},
+    {lv:'22 阶',name:'身轻如风',desc:'增加法术闪避率 5%'},
+    {lv:'23 阶',name:'坚韧不拔',desc:'增加耐力 30'},
+    {lv:'24 阶',name:'慧根深深',desc:'增加灵性 40'},
+    {lv:'25 阶',name:'医者精诚',desc:'受到的门派治疗技能效果提升 5%'},
+    {lv:'26 阶',name:'阳关三迭',desc:'每到回合数以 3 为结尾的回合，回合初恢复 20 怒气'},
+    {lv:'27 阶',name:'天帝之眼',desc:'法术命中增加 5%'},
+    {lv:'28 阶',name:'两小无猜',desc:'召唤宠物和子女后，宠物和子女对子女伤害提升 50%，持续 3 回合'},
+    {lv:'30 阶',name:'山崩不摧',desc:'减少 5% 敌方角色单位对自己的物理伤害'},
+    {lv:'31 阶',name:'避其锋芒',desc:'减少 5% 受到的物理伤害'},
+    {lv:'32 阶',name:'荒古圣体',desc:'战斗第 5 回合，免疫负面类状态'},
+    {lv:'33 阶',name:'弱水三千',desc:'减少 5% 敌方角色单位对自己的法术伤害'},
+    {lv:'34 阶',name:'暂避其锋',desc:'减少 5% 受到的法术伤害'},
+    {lv:'35 阶',name:'锋势渐盈',desc:'增加 5% 造成的物理伤害'},
+    {lv:'36 阶',name:'绿新邪灵',desc:'战斗第 10 回合，免疫负面类状态'}
+  ],
+  '焚香':[
+    {lv:'2 阶',name:'金钟护体',desc:'进行防御时，受到的物理伤害降低为正常防御状态的 50%'},
+    {lv:'4 阶',name:'身强力壮',desc:'降低自身受到的 30% 的物理暴击伤害'},
+    {lv:'6 阶',name:'上善若水',desc:'降低自身受到的 30% 的法术暴击伤害'},
+    {lv:'8 阶',name:'包罗万象',desc:'受到物理伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'10 阶',name:'乘胜追击',desc:'法术攻击目标时，有 8% 的几率追加一次单法攻击'},
+    {lv:'11 阶',name:'明镜止水',desc:'受到法术伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'12 阶',name:'疾闪风急',desc:'增加物理闪避率 5%'},
+    {lv:'13 阶',name:'背水一战',desc:'自身气血低于 40% 时，伤害提高 10%'},
+    {lv:'14 阶',name:'太和弥清',desc:'每回合结束有 30% 几率解除自身的一条负面效果（不包括封印状态）'},
+    {lv:'15 阶',name:'五气朝元',desc:'增加法术暴击伤害 20%'},
+    {lv:'16 阶',name:'怒发冲冠',desc:'怒气消耗降低 10%'},
+    {lv:'17 阶',name:'其疾如风',desc:'回合末 10% 几率触发，增加 10% 自身速度，持续 2 回合'},
+    {lv:'18 阶',name:'钩魄摄魂',desc:'法术攻击时，有 5% 几率使目标本回合混乱，随机攻击友方'},
+    {lv:'19 阶',name:'势不可挡',desc:'攻击时忽视目标 5% 的法术防御'},
+    {lv:'20 阶',name:'不动明王',desc:'降低受到的群体门派和宠物技能伤害 5%'},
+    {lv:'21 阶',name:'浴血奋战',desc:'当前参战宠物气血低于 40% 时，增加 10% 宠物伤害'},
+    {lv:'22 阶',name:'身轻如风',desc:'增加法术闪避率 5%'},
+    {lv:'23 阶',name:'坚韧不拔',desc:'增加耐力 30'},
+    {lv:'24 阶',name:'慧根深深',desc:'增加灵性 40'},
+    {lv:'25 阶',name:'医者精诚',desc:'受到的门派治疗技能效果提升 5%'},
+    {lv:'26 阶',name:'阳关三迭',desc:'每到回合数以 3 为结尾的回合，回合初恢复 20 怒气'},
+    {lv:'27 阶',name:'天帝之眼',desc:'法术命中增加 5%'},
+    {lv:'28 阶',name:'两小无猜',desc:'召唤宠物和子女后，宠物和子女对子女伤害提升 50%，持续 3 回合'},
+    {lv:'30 阶',name:'山崩不摧',desc:'减少 5% 敌方角色单位对自己的物理伤害'},
+    {lv:'31 阶',name:'避其锋芒',desc:'减少 5% 受到的物理伤害'},
+    {lv:'32 阶',name:'荒古圣体',desc:'战斗第 5 回合，免疫负面类状态'},
+    {lv:'33 阶',name:'弱水三千',desc:'减少 5% 敌方角色单位对自己的法术伤害'},
+    {lv:'34 阶',name:'暂避其锋',desc:'减少 5% 受到的法术伤害'},
+    {lv:'35 阶',name:'锋势渐盈',desc:'增加 5% 造成的物理伤害'},
+    {lv:'36 阶',name:'绿新邪灵',desc:'战斗第 10 回合，免疫负面类状态'}
+  ],
+  '灵音':[
+    {lv:'2 阶',name:'金钟护体',desc:'进行防御时，受到的物理伤害降低为正常防御状态的 50%'},
+    {lv:'4 阶',name:'身强力壮',desc:'降低自身受到的 30% 的物理暴击伤害'},
+    {lv:'6 阶',name:'上善若水',desc:'降低自身受到的 30% 的法术暴击伤害'},
+    {lv:'8 阶',name:'包罗万象',desc:'受到物理伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'10 阶',name:'乘胜追击',desc:'法术攻击目标时，有 8% 的几率追加一次单法攻击'},
+    {lv:'11 阶',name:'明镜止水',desc:'受到法术伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'12 阶',name:'疾闪风急',desc:'增加物理闪避率 5%'},
+    {lv:'13 阶',name:'背水一战',desc:'自身气血低于 40% 时，伤害提高 10%'},
+    {lv:'14 阶',name:'太和弥清',desc:'每回合结束有 30% 几率解除自身的一条负面效果（不包括封印状态）'},
+    {lv:'15 阶',name:'五气朝元',desc:'增加法术暴击伤害 20%'},
+    {lv:'16 阶',name:'怒发冲冠',desc:'怒气消耗降低 10%'},
+    {lv:'17 阶',name:'其疾如风',desc:'回合末 10% 几率触发，增加 10% 自身速度，持续 2 回合'},
+    {lv:'18 阶',name:'钩魄摄魂',desc:'法术攻击时，有 5% 几率使目标本回合混乱，随机攻击友方'},
+    {lv:'19 阶',name:'势不可挡',desc:'攻击时忽视目标 5% 的法术防御'},
+    {lv:'20 阶',name:'不动明王',desc:'降低受到的群体门派和宠物技能伤害 5%'},
+    {lv:'21 阶',name:'浴血奋战',desc:'当前参战宠物气血低于 40% 时，增加 10% 宠物伤害'},
+    {lv:'22 阶',name:'身轻如风',desc:'增加法术闪避率 5%'},
+    {lv:'23 阶',name:'坚韧不拔',desc:'增加耐力 30'},
+    {lv:'24 阶',name:'慧根深深',desc:'增加灵性 40'},
+    {lv:'25 阶',name:'医者精诚',desc:'受到的门派治疗技能效果提升 5%'},
+    {lv:'26 阶',name:'阳关三迭',desc:'每到回合数以 3 为结尾的回合，回合初恢复 20 怒气'},
+    {lv:'27 阶',name:'天帝之眼',desc:'法术命中增加 5%'},
+    {lv:'28 阶',name:'两小无猜',desc:'召唤宠物和子女后，宠物和子女对子女伤害提升 50%，持续 3 回合'},
+    {lv:'30 阶',name:'山崩不摧',desc:'减少 5% 敌方角色单位对自己的物理伤害'},
+    {lv:'31 阶',name:'避其锋芒',desc:'减少 5% 受到的物理伤害'},
+    {lv:'32 阶',name:'荒古圣体',desc:'战斗第 5 回合，免疫负面类状态'},
+    {lv:'33 阶',name:'弱水三千',desc:'减少 5% 敌方角色单位对自己的法术伤害'},
+    {lv:'34 阶',name:'暂避其锋',desc:'减少 5% 受到的法术伤害'},
+    {lv:'35 阶',name:'锋势渐盈',desc:'增加 5% 造成的物理伤害'},
+    {lv:'36 阶',name:'绿新邪灵',desc:'战斗第 10 回合，免疫负面类状态'}
+  ],
+  '万毒':[
+    {lv:'2 阶',name:'金钟护体',desc:'进行防御时，受到的物理伤害降低为正常防御状态的 50%'},
+    {lv:'4 阶',name:'身强力壮',desc:'降低自身受到的 30% 的物理暴击伤害'},
+    {lv:'6 阶',name:'上善若水',desc:'降低自身受到的 30% 的法术暴击伤害'},
+    {lv:'8 阶',name:'包罗万象',desc:'受到物理伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'10 阶',name:'乘胜追击',desc:'法术攻击目标时，有 8% 的几率追加一次单法攻击'},
+    {lv:'11 阶',name:'明镜止水',desc:'受到法术伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'12 阶',name:'疾闪风急',desc:'增加物理闪避率 5%'},
+    {lv:'13 阶',name:'背水一战',desc:'自身气血低于 40% 时，伤害提高 10%'},
+    {lv:'14 阶',name:'太和弥清',desc:'每回合结束有 30% 几率解除自身的一条负面效果（不包括封印状态）'},
+    {lv:'15 阶',name:'五气朝元',desc:'增加法术暴击伤害 20%'},
+    {lv:'16 阶',name:'怒发冲冠',desc:'怒气消耗降低 10%'},
+    {lv:'17 阶',name:'其疾如风',desc:'回合末 10% 几率触发，增加 10% 自身速度，持续 2 回合'},
+    {lv:'18 阶',name:'钩魄摄魂',desc:'法术攻击时，有 5% 几率使目标本回合混乱，随机攻击友方'},
+    {lv:'19 阶',name:'势不可挡',desc:'攻击时忽视目标 5% 的法术防御'},
+    {lv:'20 阶',name:'不动明王',desc:'降低受到的群体门派和宠物技能伤害 5%'},
+    {lv:'21 阶',name:'浴血奋战',desc:'当前参战宠物气血低于 40% 时，增加 10% 宠物伤害'},
+    {lv:'22 阶',name:'身轻如风',desc:'增加法术闪避率 5%'},
+    {lv:'23 阶',name:'坚韧不拔',desc:'增加耐力 30'},
+    {lv:'24 阶',name:'慧根深深',desc:'增加灵性 40'},
+    {lv:'25 阶',name:'医者精诚',desc:'受到的门派治疗技能效果提升 5%'},
+    {lv:'26 阶',name:'阳关三迭',desc:'每到回合数以 3 为结尾的回合，回合初恢复 20 怒气'},
+    {lv:'27 阶',name:'天帝之眼',desc:'法术命中增加 5%'},
+    {lv:'28 阶',name:'两小无猜',desc:'召唤宠物和子女后，宠物和子女对子女伤害提升 50%，持续 3 回合'},
+    {lv:'30 阶',name:'山崩不摧',desc:'减少 5% 敌方角色单位对自己的物理伤害'},
+    {lv:'31 阶',name:'避其锋芒',desc:'减少 5% 受到的物理伤害'},
+    {lv:'32 阶',name:'荒古圣体',desc:'战斗第 5 回合，免疫负面类状态'},
+    {lv:'33 阶',name:'弱水三千',desc:'减少 5% 敌方角色单位对自己的法术伤害'},
+    {lv:'34 阶',name:'暂避其锋',desc:'减少 5% 受到的法术伤害'},
+    {lv:'35 阶',name:'锋势渐盈',desc:'增加 5% 造成的物理伤害'},
+    {lv:'36 阶',name:'绿新邪灵',desc:'战斗第 10 回合，免疫负面类状态'}
+  ],
+  '阴阳':[
+    {lv:'2 阶',name:'金钟护体',desc:'进行防御时，受到的物理伤害降低为正常防御状态的 50%'},
+    {lv:'4 阶',name:'身强力壮',desc:'降低自身受到的 30% 的物理暴击伤害'},
+    {lv:'6 阶',name:'上善若水',desc:'降低自身受到的 30% 的法术暴击伤害'},
+    {lv:'8 阶',name:'包罗万象',desc:'受到物理伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'10 阶',name:'乘胜追击',desc:'法术攻击目标时，有 8% 的几率追加一次单法攻击'},
+    {lv:'11 阶',name:'明镜止水',desc:'受到法术伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'12 阶',name:'疾闪风急',desc:'增加物理闪避率 5%'},
+    {lv:'13 阶',name:'背水一战',desc:'自身气血低于 40% 时，伤害提高 10%'},
+    {lv:'14 阶',name:'太和弥清',desc:'每回合结束有 30% 几率解除自身的一条负面效果（不包括封印状态）'},
+    {lv:'15 阶',name:'五气朝元',desc:'增加法术暴击伤害 20%'},
+    {lv:'16 阶',name:'怒发冲冠',desc:'怒气消耗降低 10%'},
+    {lv:'17 阶',name:'其疾如风',desc:'回合末 10% 几率触发，增加 10% 自身速度，持续 2 回合'},
+    {lv:'18 阶',name:'钩魄摄魂',desc:'法术攻击时，有 5% 几率使目标本回合混乱，随机攻击友方'},
+    {lv:'19 阶',name:'势不可挡',desc:'攻击时忽视目标 5% 的法术防御'},
+    {lv:'20 阶',name:'不动明王',desc:'降低受到的群体门派和宠物技能伤害 5%'},
+    {lv:'21 阶',name:'浴血奋战',desc:'当前参战宠物气血低于 40% 时，增加 10% 宠物伤害'},
+    {lv:'22 阶',name:'身轻如风',desc:'增加法术闪避率 5%'},
+    {lv:'23 阶',name:'坚韧不拔',desc:'增加耐力 30'},
+    {lv:'24 阶',name:'慧根深深',desc:'增加灵性 40'},
+    {lv:'25 阶',name:'医者精诚',desc:'受到的门派治疗技能效果提升 5%'},
+    {lv:'26 阶',name:'阳关三迭',desc:'每到回合数以 3 为结尾的回合，回合初恢复 20 怒气'},
+    {lv:'27 阶',name:'天帝之眼',desc:'法术命中增加 5%'},
+    {lv:'28 阶',name:'两小无猜',desc:'召唤宠物和子女后，宠物和子女对子女伤害提升 50%，持续 3 回合'},
+    {lv:'30 阶',name:'山崩不摧',desc:'减少 5% 敌方角色单位对自己的物理伤害'},
+    {lv:'31 阶',name:'避其锋芒',desc:'减少 5% 受到的物理伤害'},
+    {lv:'32 阶',name:'荒古圣体',desc:'战斗第 5 回合，免疫负面类状态'},
+    {lv:'33 阶',name:'弱水三千',desc:'减少 5% 敌方角色单位对自己的法术伤害'},
+    {lv:'34 阶',name:'暂避其锋',desc:'减少 5% 受到的法术伤害'},
+    {lv:'35 阶',name:'锋势渐盈',desc:'增加 5% 造成的物理伤害'},
+    {lv:'36 阶',name:'绿新邪灵',desc:'战斗第 10 回合，免疫负面类状态'}
+  ],
+  '陈塘':[
+    {lv:'2 阶',name:'金钟护体',desc:'进行防御时，受到的物理伤害降低为正常防御状态的 50%'},
+    {lv:'4 阶',name:'身强力壮',desc:'降低自身受到的 30% 的物理暴击伤害'},
+    {lv:'6 阶',name:'上善若水',desc:'降低自身受到的 30% 的法术暴击伤害'},
+    {lv:'8 阶',name:'包罗万象',desc:'受到物理伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'10 阶',name:'乘胜追击',desc:'法术攻击目标时，有 8% 的几率追加一次单法攻击'},
+    {lv:'11 阶',name:'明镜止水',desc:'受到法术伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'12 阶',name:'疾闪风急',desc:'增加物理闪避率 5%'},
+    {lv:'13 阶',name:'背水一战',desc:'自身气血低于 40% 时，伤害提高 10%'},
+    {lv:'14 阶',name:'太和弥清',desc:'每回合结束有 30% 几率解除自身的一条负面效果（不包括封印状态）'},
+    {lv:'15 阶',name:'五气朝元',desc:'增加法术暴击伤害 20%'},
+    {lv:'16 阶',name:'怒发冲冠',desc:'怒气消耗降低 10%'},
+    {lv:'17 阶',name:'其疾如风',desc:'回合末 10% 几率触发，增加 10% 自身速度，持续 2 回合'},
+    {lv:'18 阶',name:'钩魄摄魂',desc:'法术攻击时，有 5% 几率使目标本回合混乱，随机攻击友方'},
+    {lv:'19 阶',name:'势不可挡',desc:'攻击时忽视目标 5% 的法术防御'},
+    {lv:'20 阶',name:'不动明王',desc:'降低受到的群体门派和宠物技能伤害 5%'},
+    {lv:'21 阶',name:'浴血奋战',desc:'当前参战宠物气血低于 40% 时，增加 10% 宠物伤害'},
+    {lv:'22 阶',name:'身轻如风',desc:'增加法术闪避率 5%'},
+    {lv:'23 阶',name:'坚韧不拔',desc:'增加耐力 30'},
+    {lv:'24 阶',name:'慧根深深',desc:'增加灵性 40'},
+    {lv:'25 阶',name:'医者精诚',desc:'受到的门派治疗技能效果提升 5%'},
+    {lv:'26 阶',name:'阳关三迭',desc:'每到回合数以 3 为结尾的回合，回合初恢复 20 怒气'},
+    {lv:'27 阶',name:'天帝之眼',desc:'法术命中增加 5%'},
+    {lv:'28 阶',name:'两小无猜',desc:'召唤宠物和子女后，宠物和子女对子女伤害提升 50%，持续 3 回合'},
+    {lv:'30 阶',name:'山崩不摧',desc:'减少 5% 敌方角色单位对自己的物理伤害'},
+    {lv:'31 阶',name:'避其锋芒',desc:'减少 5% 受到的物理伤害'},
+    {lv:'32 阶',name:'荒古圣体',desc:'战斗第 5 回合，免疫负面类状态'},
+    {lv:'33 阶',name:'弱水三千',desc:'减少 5% 敌方角色单位对自己的法术伤害'},
+    {lv:'34 阶',name:'暂避其锋',desc:'减少 5% 受到的法术伤害'},
+    {lv:'35 阶',name:'锋势渐盈',desc:'增加 5% 造成的物理伤害'},
+    {lv:'36 阶',name:'绿新邪灵',desc:'战斗第 10 回合，免疫负面类状态'}
+  ],
+  '圣巫':[
+    {lv:'2 阶',name:'金钟护体',desc:'进行防御时，受到的物理伤害降低为正常防御状态的 50%'},
+    {lv:'4 阶',name:'身强力壮',desc:'降低自身受到的 30% 的物理暴击伤害'},
+    {lv:'6 阶',name:'上善若水',desc:'降低自身受到的 30% 的法术暴击伤害'},
+    {lv:'8 阶',name:'包罗万象',desc:'受到物理伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'10 阶',name:'乘胜追击',desc:'法术攻击目标时，有 8% 的几率追加一次单法攻击'},
+    {lv:'11 阶',name:'明镜止水',desc:'受到法术伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'12 阶',name:'袖纳乾坤',desc:'使用门派封印类技能时，有 8% 几率增加一个封印目标'},
+    {lv:'13 阶',name:'孤军奋战',desc:'无宠物参战的状态下，自身受到的所有伤害均降为正常的 80%'},
+    {lv:'14 阶',name:'太和弥清',desc:'每回合结束有 30% 几率解除自身的一条负面效果（不包括封印状态）'},
+    {lv:'15 阶',name:'五气朝元',desc:'增加法术暴击伤害 20%'},
+    {lv:'16 阶',name:'怒发冲冠',desc:'怒气消耗降低 10%'},
+    {lv:'17 阶',name:'其疾如风',desc:'回合末 10% 几率触发，增加 10% 自身速度，持续 2 回合'},
+    {lv:'18 阶',name:'钩魄摄魂',desc:'法术攻击时，有 5% 几率使目标本回合混乱，随机攻击友方'},
+    {lv:'19 阶',name:'灵韵加身',desc:'降低自身受到的 5% 的封印命中率'},
+    {lv:'20 阶',name:'不动明王',desc:'降低受到的群体门派和宠物技能伤害 5%'},
+    {lv:'21 阶',name:'疾闪风急',desc:'增加物理闪避率 5%'},
+    {lv:'22 阶',name:'浴血奋战',desc:'当前参战宠物气血低于 40% 时，增加 10% 宠物伤害'},
+    {lv:'23 阶',name:'坚韧不拔',desc:'增加耐力 30'},
+    {lv:'24 阶',name:'暗影加身',desc:'增加敏捷 40'},
+    {lv:'25 阶',name:'身轻如风',desc:'增加法术闪避率 5%'},
+    {lv:'26 阶',name:'阳关三迭',desc:'每到回合数以 3 为结尾的回合，回合初恢复 20 怒气'},
+    {lv:'27 阶',name:'天帝之眼',desc:'法术命中增加 5%'},
+    {lv:'28 阶',name:'两小无猜',desc:'召唤宠物和子女后，宠物和子女对子女伤害提升 50%，持续 3 回合'},
+    {lv:'30 阶',name:'山崩不摧',desc:'减少 5% 敌方角色单位对自己的物理伤害'},
+    {lv:'31 阶',name:'避其锋芒',desc:'减少 5% 受到的物理伤害'},
+    {lv:'32 阶',name:'荒古圣体',desc:'战斗第 5 回合，免疫负面类状态'},
+    {lv:'33 阶',name:'弱水三千',desc:'减少 5% 敌方角色单位对自己的法术伤害'},
+    {lv:'34 阶',name:'暂避其锋',desc:'减少 5% 受到的法术伤害'},
+    {lv:'35 阶',name:'锋势渐盈',desc:'增加 5% 造成的物理伤害'},
+    {lv:'36 阶',name:'绿新邪灵',desc:'战斗第 10 回合，免疫负面类状态'}
+  ],
+  '天音':[
+    {lv:'2 阶',name:'金钟护体',desc:'进行防御时，受到的物理伤害降低为正常防御状态的 50%'},
+    {lv:'4 阶',name:'身强力壮',desc:'降低自身受到的 30% 的物理暴击伤害'},
+    {lv:'6 阶',name:'上善若水',desc:'降低自身受到的 30% 的法术暴击伤害'},
+    {lv:'8 阶',name:'包罗万象',desc:'受到物理伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'10 阶',name:'医者精诚',desc:'受到的门派治疗技能效果提升 5%'},
+    {lv:'11 阶',name:'明镜止水',desc:'受到法术伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'12 阶',name:'万佛朝宗',desc:'使用门派技能恢复气血时，有 8% 几率增加一个治疗目标，触发时治疗效果降低 10%'},
+    {lv:'13 阶',name:'心无杂念',desc:'使用门派技能恢复气血时，有 10% 概率提升目标封印抗性，持续 2 回合'},
+    {lv:'14 阶',name:'太和弥清',desc:'每回合结束有 30% 几率解除自身的一条负面效果（不包括封印状态）'},
+    {lv:'15 阶',name:'五气朝元',desc:'增加法术暴击伤害 20%'},
+    {lv:'16 阶',name:'妙手仁心',desc:'使用门派技能恢复气血时，效果增加 10%'},
+    {lv:'17 阶',name:'怒发冲冠',desc:'怒气消耗降低 10%'},
+    {lv:'18 阶',name:'孤军奋战',desc:'无宠物参战的状态下，自身受到的所有伤害均降为正常的 80%'},
+    {lv:'19 阶',name:'势不可挡',desc:'攻击时忽视目标 5% 的法术防御'},
+    {lv:'20 阶',name:'不动明王',desc:'降低受到的群体门派和宠物技能伤害 5%'},
+    {lv:'21 阶',name:'浴血奋战',desc:'当前参战宠物气血低于 40% 时，增加 10% 宠物伤害'},
+    {lv:'22 阶',name:'身轻如风',desc:'增加法术闪避率 5%'},
+    {lv:'23 阶',name:'坚韧不拔',desc:'增加耐力 30'},
+    {lv:'24 阶',name:'慧根深深',desc:'增加灵性 40'},
+    {lv:'25 阶',name:'疾闪风急',desc:'增加物理闪避率 5%'},
+    {lv:'26 阶',name:'阳关三迭',desc:'每到回合数以 3 为结尾的回合，回合初恢复 20 怒气'},
+    {lv:'27 阶',name:'天帝之眼',desc:'法术命中增加 5%'},
+    {lv:'28 阶',name:'两小无猜',desc:'召唤宠物和子女后，宠物和子女对子女伤害提升 50%，持续 3 回合'},
+    {lv:'30 阶',name:'山崩不摧',desc:'减少 5% 敌方角色单位对自己的物理伤害'},
+    {lv:'31 阶',name:'避其锋芒',desc:'减少 5% 受到的物理伤害'},
+    {lv:'32 阶',name:'荒古圣体',desc:'战斗第 5 回合，免疫负面类状态'},
+    {lv:'33 阶',name:'弱水三千',desc:'减少 5% 敌方角色单位对自己的法术伤害'},
+    {lv:'34 阶',name:'暂避其锋',desc:'减少 5% 受到的法术伤害'},
+    {lv:'35 阶',name:'锋势渐盈',desc:'增加 5% 造成的物理伤害'},
+    {lv:'36 阶',name:'绿新邪灵',desc:'战斗第 10 回合，免疫负面类状态'}
+  ],
+  '黄金':[
+    {lv:'2 阶',name:'金钟护体',desc:'进行防御时，受到的物理伤害降低为正常防御状态的 50%'},
+    {lv:'4 阶',name:'身强力壮',desc:'降低自身受到的 30% 的物理暴击伤害'},
+    {lv:'6 阶',name:'上善若水',desc:'降低自身受到的 30% 的法术暴击伤害'},
+    {lv:'8 阶',name:'包罗万象',desc:'受到物理伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'10 阶',name:'医者精诚',desc:'受到的门派治疗技能效果提升 5%'},
+    {lv:'11 阶',name:'明镜止水',desc:'受到法术伤害时，有 10% 几率使受到的伤害减半'},
+    {lv:'12 阶',name:'万佛朝宗',desc:'使用门派技能恢复气血时，有 8% 几率增加一个治疗目标，触发时治疗效果降低 10%'},
+    {lv:'13 阶',name:'心无杂念',desc:'使用门派技能恢复气血时，有 10% 概率提升目标封印抗性，持续 2 回合'},
+    {lv:'14 阶',name:'太和弥清',desc:'每回合结束有 30% 几率解除自身的一条负面效果（不包括封印状态）'},
+    {lv:'15 阶',name:'五气朝元',desc:'增加法术暴击伤害 20%'},
+    {lv:'16 阶',name:'妙手仁心',desc:'使用门派技能恢复气血时，效果增加 10%'},
+    {lv:'17 阶',name:'怒发冲冠',desc:'怒气消耗降低 10%'},
+    {lv:'18 阶',name:'孤军奋战',desc:'无宠物参战的状态下，自身受到的所有伤害均降为正常的 80%'},
+    {lv:'19 阶',name:'势不可挡',desc:'攻击时忽视目标 5% 的法术防御'},
+    {lv:'20 阶',name:'不动明王',desc:'降低受到的群体门派和宠物技能伤害 5%'},
+    {lv:'21 阶',name:'浴血奋战',desc:'当前参战宠物气血低于 40% 时，增加 10% 宠物伤害'},
+    {lv:'22 阶',name:'身轻如风',desc:'增加法术闪避率 5%'},
+    {lv:'23 阶',name:'坚韧不拔',desc:'增加耐力 30'},
+    {lv:'24 阶',name:'慧根深深',desc:'增加灵性 40'},
+    {lv:'25 阶',name:'疾闪风急',desc:'增加物理闪避率 5%'},
+    {lv:'26 阶',name:'阳关三迭',desc:'每到回合数以 3 为结尾的回合，回合初恢复 20 怒气'},
+    {lv:'27 阶',name:'天帝之眼',desc:'法术命中增加 5%'},
+    {lv:'28 阶',name:'两小无猜',desc:'召唤宠物和子女后，宠物和子女对子女伤害提升 50%，持续 3 回合'},
+    {lv:'30 阶',name:'山崩不摧',desc:'减少 5% 敌方角色单位对自己的物理伤害'},
+    {lv:'31 阶',name:'避其锋芒',desc:'减少 5% 受到的物理伤害'},
+    {lv:'32 阶',name:'荒古圣体',desc:'战斗第 5 回合，免疫负面类状态'},
+    {lv:'33 阶',name:'弱水三千',desc:'减少 5% 敌方角色单位对自己的法术伤害'},
+    {lv:'34 阶',name:'暂避其锋',desc:'减少 5% 受到的法术伤害'},
+    {lv:'35 阶',name:'锋势渐盈',desc:'增加 5% 造成的物理伤害'},
+    {lv:'36 阶',name:'绿新邪灵',desc:'战斗第 10 回合，免疫负面类状态'}
+  ]
+};
+
+
+document.getElementById('year').textContent=new Date().getFullYear();
+const _origSwitchSect=switchSect;
+switchSect=function(idx){
+  _origSwitchSect(idx);
+  try{history.replaceState(null,'','sects.html#sect-'+SECTS[idx].id);}catch(e){}
+};
+(function(){
+  const m=location.hash.match(/^#sect-(.+)$/);
+  let idx=0;
+  if(m){
+    const found=SECTS.findIndex(s=>s.id===m[1]);
+    if(found>-1) idx=found;
+  }
+  switchSect(idx);
+})();
+</script>
+<script>
+document.addEventListener('copy',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复制');});
+document.addEventListener('contextmenu',function(e){e.preventDefault();});
+</script>
+</body>
+</html>

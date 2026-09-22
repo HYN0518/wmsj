@@ -60,8 +60,9 @@
   input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
 
 </style>
+<link rel="stylesheet" href="wiki-detail.css">
 </head>
-<body>
+<body class="wiki-detail-page">
 <div class="site-watermark"></div>
 <div class="wrap">
   <a href="index.html?skipIntro=1#character" class="back-btn">
@@ -84,7 +85,7 @@
     </div>
     <div class="hs-collapsible">
       <div class="hs-collapsible-inner">
-        <p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">等级限制：人物等级达到 60级在技能→修炼处查看[轮回天书]</p><p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">人物每升 2 级获得 1 点轮回点 ，适用轮回石额外增加轮回点</p><ul><li class="img-li"><img class="tut-img" src="art/lunhui_tutorial/image1.webp" alt="系统介绍"></li></ul><div class="sub-header">优先级</div><p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">优先级推荐：个人建议 ，不喜勿喷 ，感谢理解</p><ul><li class="img-li"><img class="tut-img" src="art/lunhui_tutorial/lunhui_priority.webp" alt="轮回优先级" loading="lazy"></li></ul>
+        <div class="lv-banner">等级限制：人物等级达到 60 级</div><p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">在技能→修炼处查看[轮回天书]</p><p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">人物每升 2 级获得 1 点轮回点 ，适用轮回石额外增加轮回点</p><ul><li class="img-li"><img class="tut-img" src="art/lunhui_tutorial/image1.webp" alt="系统介绍"></li></ul><div class="sub-header">优先级</div><p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">优先级推荐：个人建议 ，不喜勿喷 ，感谢理解</p><ul><li class="img-li"><img class="tut-img" src="art/lunhui_tutorial/lunhui_priority.webp" alt="轮回优先级" loading="lazy"></li></ul>
       </div>
     </div>
   </div>
@@ -116,5 +117,6 @@ document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复�
 document.addEventListener('contextmenu',function(e){e.preventDefault();});
 </script>
 
+<script src="wiki-detail.js"></script>
 </body>
 </html>

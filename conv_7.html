@@ -26,6 +26,7 @@
   .page-title{text-align:center;margin:32px 0 40px}
   .page-title h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;letter-spacing:.02em;background:linear-gradient(135deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
   .page-title p{margin-top:8px;color:var(--muted);font-size:.95rem}
+  .season-guide-hint{text-align:center;margin:-4px 0 18px;color:var(--muted);font-size:.95rem}
 
   /* 思维导图容器 */
   .mindmap-container{position:relative;width:100%;overflow-x:auto;padding:40px 20px 60px;background:var(--card);border-radius:16px;box-shadow:0 4px 24px rgba(22,19,15,.06)}
@@ -96,8 +97,8 @@
     .wrap{padding:14px 14px 32px}
     .page-title{margin:12px 0 16px}
     .page-title h1{font-size:1.5rem}
-    .page-title p{display:none}
-    .page-title .landscape-hint{display:block;margin-top:4px;color:var(--pink);font-size:.78rem;font-weight:700}
+    .page-title p,.season-guide-hint{display:none}
+    .landscape-hint{display:block;margin:0 0 12px;text-align:center;color:var(--pink);font-size:.78rem;font-weight:700}
     .back-btn{padding:6px 14px;font-size:.8rem}
     .mindmap-container{padding:14px 10px 26px;overflow:auto;-webkit-overflow-scrolling:touch}
     .mindmap{min-width:640px}
@@ -143,8 +144,9 @@
   input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
 
 </style>
+<link rel="stylesheet" href="wiki-detail.css">
 </head>
-<body>
+<body class="wiki-detail-page">
 <div class="site-watermark"></div>
 <div class="wrap">
   <a href="index.html?skipIntro=1#features" class="back-btn">
@@ -159,11 +161,12 @@
     </svg>
     智能客服
   </a>
-  <div class="page-title">
+  <div class="page-title wiki-title-art">
+    <img src="art/saiji_title.webp" alt="赛季说明">
     <h1>赛季说明</h1>
-    <p>点击分支可展开/收起子节点</p>
-    <p class="landscape-hint">滑动查看完整导图 · 点击分支可展开/收起</p>
   </div>
+  <p class="season-guide-hint">点击分支可展开/收起子节点</p>
+  <p class="landscape-hint">滑动查看完整导图 · 点击分支可展开/收起</p>
 
   <div class="mindmap-container">
     <div class="mindmap">
@@ -349,5 +352,6 @@ document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复�
 document.addEventListener('contextmenu',function(e){e.preventDefault();});
 </script>
 
+<script src="wiki-detail.js"></script>
 </body>
 </html>

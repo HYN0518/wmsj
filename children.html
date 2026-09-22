@@ -34,7 +34,7 @@
   img{max-width:100%;display:block}
   button{font-family:inherit}
 
-  .wrap{max-width:960px;margin:0 auto;padding:32px 24px 60px}
+  .wrap{max-width:960px;margin:0 auto;padding:76px 24px 12px}
 
   .back-btn{
     display:inline-flex;align-items:center;gap:8px;
@@ -120,7 +120,7 @@
   .tag-on { background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe; }
 
   @media (max-width:640px){
-    .wrap{padding:24px 16px}
+    .wrap{padding:64px 16px 12px}
     .page-title{margin:24px 0 32px}
     .section li { font-size:.85rem;word-wrap:break-word;overflow-wrap:break-word }
     .table-wrap td, .table-wrap th { padding:8px 10px; font-size:.82rem }
@@ -168,8 +168,9 @@
   input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
 
 </style>
+<style id="wiki-nosb">html{scrollbar-width:none;-ms-overflow-style:none}html::-webkit-scrollbar,body::-webkit-scrollbar{width:0;height:0;display:none}</style><link rel="stylesheet" href="wiki-detail.css">
 </head>
-<body>
+<body class="wiki-detail-page">
 <div class="site-watermark"></div>
 
 <div class="wrap">
@@ -185,7 +186,8 @@
     智能客服
   </a>
 
-  <div class="page-title">
+  <div class="page-title wiki-title-art">
+    <img src="art/children_title.webp" alt="子女介绍">
     <h1>子女介绍</h1>
   </div>
 
@@ -199,13 +201,46 @@
         <ul>
           <li>子女是战斗中的重要伙伴，可在战斗中被<strong>召唤上场</strong>协助父母作战，拥有独立的<strong>性格、门派技能、装备、成长与资质</strong>等培养体系。</li>
         </ul>
-        <div class="note">
-          <strong>等级限制：</strong>人物等级达到 <strong>50 级</strong>，且<strong>解锁家园系统</strong>后。
-        </div>
+        <div class="lv-banner">等级限制：人物等级达到 50 级，且解锁家园系统后。</div>
         <ul>
           <li>前往<strong>商会 → 便捷 → 便民系列</strong>，购买<strong>「一键获得‖子女」</strong>，即可一键获得一个成年子女（性别随机，获得后可在<strong>家园</strong>中查看）。</li>
           <li class="img-li"><img class="tut-img" src="art/children_tutorial/image2.webp" alt="商会购买一键获得子女" loading="lazy"></li>
           <li>要先<strong>激活家园</strong>才能孕育子女。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-mark">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>子女印记</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li>原有<strong>宠物印记</strong>的生效范围拓展至子女，已有的宠物印记也可以用于孩子。</li>
+          <li>同时新增<strong>子女专属印记</strong>，进一步丰富子女培养选择。</li>
+          <li>在印记界面切换到<strong>子女</strong>，选择要佩戴印记的孩子即可。</li>
+          <li class="img-li"><img class="tut-img" src="art/children_tutorial/mark.webp" alt="子女印记" loading="lazy"></li>
+        </ul>
+        <div class="note">友情提醒：需要激活家园，且子女带在身上才会显示。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="sec-guard">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>子女守护</span>
+      <button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible">
+      <div class="hs-collapsible-inner">
+        <ul>
+          <li>坐骑守护范围拓展至<strong>子女</strong>。孩子受到坐骑守护后，可以获得坐骑提供的技能，已有的坐骑也能为孩子的成长提供帮助。</li>
+          <li>在坐骑界面切换到<strong>子女</strong>，点击选择子女即可守护，也可<strong>更换子女</strong>或<strong>卸下子女</strong>。</li>
+          <li>第二个守护位需<strong>角色达到 73 级</strong>，且<strong>坐骑达到 6 阶</strong>后解锁。</li>
+          <li class="img-li"><img class="tut-img" src="art/children_tutorial/guard.webp" alt="坐骑守护子女" loading="lazy"></li>
         </ul>
       </div>
     </div>
@@ -372,10 +407,7 @@
     </div>
   </div>
 
-  <div class="footer">
-    <p>九小卿攻略站</p>
-
-</div>
+  
 
 <script>
 var personalityData = [
@@ -825,5 +857,75 @@ document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复�
 document.addEventListener('contextmenu',function(e){e.preventDefault();});
 </script>
 
+<script>if(window.self!==window.top){document.documentElement.classList.add("embedded");var _s=document.createElement("style");_s.textContent=".back-btn{display:none!important}";document.head.appendChild(_s);}</script><script>
+/* 手风琴转标签栏：与门派页 sect-tab 同款视觉 */
+(function(){
+  var hs=[].slice.call(document.querySelectorAll('.hs-toggle-header'));
+  if(!hs.length) return;
+  var st=document.createElement('style');
+  st.textContent='.wtab-bar{display:flex;gap:8px;overflow-x:auto;padding:6px 2px 10px;scrollbar-width:none;-ms-overflow-style:none}.wtab-bar::-webkit-scrollbar{display:none}.wtab{flex:0 0 auto;display:inline-flex;align-items:center;background:#fff;border:1.5px solid rgba(22,19,15,.08);border-radius:999px;padding:8px 14px;font-size:.85rem;font-weight:800;color:#57534e;cursor:pointer;font-family:inherit;white-space:nowrap;transition:background .2s,color .2s,border-color .2s,box-shadow .2s}.wtab.active{background:#fff;border-color:#f59e0b;color:#c77b2e;box-shadow:0 0 0 2.5px rgba(245,158,11,.28),0 6px 14px rgba(245,158,11,.2)}@media(min-width:961px){.wtab{padding:9px 18px;font-size:.9rem}}';
+  document.head.appendChild(st);
+  var units=hs.map(function(h){
+    var nx=h.nextElementSibling;
+    var box=document.createElement('div');
+    h.parentNode.insertBefore(box,h);
+    box.appendChild(h);
+    if(nx) box.appendChild(nx);
+    h.style.display='none';
+    var c=box.querySelector('.hs-collapsible');
+    if(c) c.classList.add('open');
+    return box;
+  });
+  var bar=document.createElement('div'); bar.className='wtab-bar';
+  units.forEach(function(u,i){
+    var sp=u.querySelector('.hs-toggle-header span');
+    var b=document.createElement('button');
+    b.type='button'; b.className='wtab';
+    b.textContent=sp?sp.textContent.trim():('栏目'+(i+1));
+    b.addEventListener('click',function(){
+      units.forEach(function(x,j){ x.style.display=(j===i)?'':'none'; });
+      [].forEach.call(bar.children,function(x){ x.classList.remove('active'); });
+      b.classList.add('active');
+      /* 只滚标签栏自身，避免波及页面滚动 */
+      (function(){
+        var edge=8,r=b.getBoundingClientRect(),h=bar.getBoundingClientRect();
+        if(r.left>=h.left+edge && r.right<=h.right-edge) return;
+        var tabLeft=r.left-h.left+bar.scrollLeft;
+        bar.scrollTo({left:Math.max(0,tabLeft-(bar.clientWidth-b.offsetWidth)/2),behavior:'auto'});
+      })();
+    });
+    bar.appendChild(b);
+  });
+  /* 鼠标左键按住拖动横向滚动 */
+  bar.style.cursor='grab';
+  var dragging=false,startX=0,startL=0,moved=0;
+  bar.addEventListener('mousedown',function(e){
+    dragging=true;moved=0;startX=e.pageX;startL=bar.scrollLeft;
+    bar.style.cursor='grabbing';
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove',function(e){
+    if(!dragging) return;
+    var dx=e.pageX-startX;
+    moved=Math.max(moved,Math.abs(dx));
+    bar.scrollLeft=startL-dx;
+  });
+  window.addEventListener('mouseup',function(){
+    if(!dragging) return;
+    dragging=false;bar.style.cursor='grab';
+    /* click 事件在 mouseup 后同步触发，异步复位避免拦截后续点击 */
+    setTimeout(function(){moved=0},0);
+  });
+  /* 拖动超过 6px 时拦截 click，避免松手误切标签 */
+  bar.addEventListener('click',function(e){
+    if(moved>6){e.stopPropagation();e.preventDefault();}
+  },true);
+  var anchor=units[0].closest('.section')||units[0];
+  var holder=document.createElement('div');
+  anchor.parentNode.insertBefore(holder,anchor);
+  holder.appendChild(bar);
+  units.forEach(function(u,i){ holder.appendChild(u); if(i) u.style.display='none'; });
+  bar.firstChild.classList.add('active');
+})();
+</script><script src="wiki-detail.js"></script>
 </body>
-</html>

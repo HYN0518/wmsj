@@ -50,8 +50,9 @@
   input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
 
 </style>
+<link rel="stylesheet" href="wiki-detail.css">
 </head>
-<body>
+<body class="wiki-detail-page">
 <div class="site-watermark"></div>
 <div class="wrap">
   <a href="index.html?skipIntro=1#features" class="back-btn">
@@ -66,7 +67,10 @@
     </svg>
     智能客服
   </a>
-  <div class="page-title"><h1>人物面饰</h1></div>
+  <div class="page-title wiki-title-art">
+    <img src="art/mianshi_title.webp" alt="面饰介绍">
+    <h1>面饰介绍</h1>
+  </div>
   <div class="purple-header">面饰介绍</div>
 <p class="doc-p">每个面饰由 7 个部件组成 ，包含 5 个普通部件和 2 个特殊部件 ;每个部件提供 1~2 条基础属性 ，会随部件等级提升而提升 ;</p>
 <div class="img-row"><div class="doc-img"><img src="art/renwu_mianshi/img_0.png" alt="截图"></div><div class="doc-img"><img src="art/renwu_mianshi/img_1.png" alt="截图" loading="lazy"></div></div>
@@ -106,5 +110,6 @@ document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复�
 document.addEventListener('contextmenu',function(e){e.preventDefault();});
 </script>
 
+<script src="wiki-detail.js"></script>
 </body>
 </html>

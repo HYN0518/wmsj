@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="zh-CN" data-page-node-id="UDpAu9WLc0XCw1lPyYe9kA">
+<head data-page-node-id="DRpaqmyo7nPewZUi1UhOeH">
+<meta charset="UTF-8" data-page-node-id="21wMiIAKOTLqampWvW8QcC">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="ZvOMZQhCQC1ICdpnor4SPA">
 <title>仙侣介绍 — 九小卿攻略站</title>
-<meta name="description" content="九小卿仙侣系统攻略 - 仙侣图鉴、寻缘、升星、神器、结交、洞府、元神、情缘">
-<link rel="icon" type="image/jpeg" href="art/favicon.jpg">
+<meta name="description" content="九小卿仙侣系统攻略 - 仙侣图鉴、寻缘、升星、神器、结交、洞府、元神、情缘" data-page-node-id="Wbbzw9S7sZCjMCbFU4G7Wd">
+<link rel="icon" type="image/jpeg" href="art/favicon.jpg" data-page-node-id="NSsVkbXE3EbsSkb2KoBDnH">
 <style>
   :root{
     --ink:#1a1a1a;
@@ -30,7 +30,7 @@
   img{max-width:100%;display:block}
   button{font-family:inherit}
 
-  .wrap{max-width:960px;margin:0 auto;padding:32px 24px 60px}
+  .wrap{max-width:960px;margin:0 auto;padding:76px 24px 12px}
 
   /* Header */
   .back-btn{
@@ -195,7 +195,7 @@
   .quality-badge.q-B{background:rgba(59,130,246,.1);color:#3b82f6}
 
   /* Encyclopedia layout */
-  .ency-layout{display:flex;gap:24px;margin-top:20px;min-height:500px}
+  .ency-layout{display:flex;gap:24px;margin-top:8px;min-height:500px}
   .ency-sidebar{flex-shrink:0;width:160px;display:flex;flex-direction:column;gap:6px}
   .ency-side-btn{
     display:flex;
@@ -260,23 +260,28 @@
   .pet-detail-overlay{
     display:none;
     position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
+    inset:0;
     background:rgba(0,0,0,.45);
-    z-index:1000;
+    z-index:10000;
     align-items:center;
     justify-content:center;
-    padding:20px
+    box-sizing:border-box;
+    overflow:hidden;
+    padding:max(12px,env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) max(12px,env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))
   }
   .pet-detail-overlay.show{display:flex}
   .pet-detail-card{
     background:#fff;
     border-radius:20px;
-    max-width:560px;
-    width:100%;
-    height:80vh;
+    width:min(560px,100%);
+    max-width:100%;
+    height:min(80vh,100%);
+    height:min(80dvh,100%);
+    max-height:100%;
+    min-height:0;
+    min-width:0;
+    overflow:hidden;
+    box-sizing:border-box;
     display:flex;
     flex-direction:column;
     position:relative;
@@ -295,6 +300,7 @@
     padding:28px 28px 16px;
     border-bottom:1px solid #f0ede8;
     flex-shrink:0;
+    min-width:0;
     background:#fff;
     border-radius:20px 20px 0 0
   }
@@ -336,7 +342,7 @@
   .stats-table-wrap::-webkit-scrollbar{height:4px}
   .stats-table-wrap::-webkit-scrollbar-thumb{background:#d4b8ff;border-radius:4px}
 
-  .xl-bond-table{border-collapse:collapse;font-size:.82rem;min-width:480px}
+  .xl-bond-table{border-collapse:collapse;font-size:.82rem;min-width:min(480px,100%)}
   .xl-bond-table th{
     background:rgba(139,92,246,.06);
     font-weight:600;
@@ -373,7 +379,7 @@
     .ency-side-btn{flex:1;min-width:120px;padding:10px 12px}
     .xianlv-grid{grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:16px 8px;height:330px}
     .xl-avatar{width:64px;height:64px}
-    .pet-detail-card{height:85vh;border-radius:16px}
+    .pet-detail-card{height:min(85vh,100%);height:min(85dvh,100%);max-height:100%;border-radius:16px}
     .detail-header{padding:20px 20px 14px;border-radius:16px 16px 0 0}
     .detail-body{padding:12px 20px 20px}
     .detail-title{font-size:1.15rem}
@@ -400,225 +406,221 @@
   input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
 
 </style>
+<style id="wiki-nosb">html{scrollbar-width:none;-ms-overflow-style:none}html::-webkit-scrollbar,body::-webkit-scrollbar{width:0;height:0;display:none}</style><link rel="stylesheet" href="wiki-detail.css" data-page-node-id="x6ZsyvytVvPg8plvaneM1t">
 </head>
-<body>
-<div class="site-watermark"></div>
+<body class="wiki-detail-page" data-page-node-id="DlNPdnjjq8yUOqrmnBBRcQ">
+<div class="site-watermark" data-page-node-id="IW0OkzbGgv8I4S3n58532a"></div>
 
-<div class="wrap">
+<div class="wrap" data-page-node-id="Ew0EdhP2pKVG2h8qfcCwbD">
 
-  <a href="index.html?skipIntro=1#card-companion" class="back-btn">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M19 12H5M12 19l-7-7 7-7"/>
+  <a href="index.html?skipIntro=1#card-companion" class="back-btn" data-page-node-id="OHjpGVX9Cpwkn9x3guSp3Q">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="iBoUT45tZdwoZ2OOTJchaa">
+      <path d="M19 12H5M12 19l-7-7 7-7" data-page-node-id="LJOFOFGUCkXwKrc2gmuD9w"/>
     </svg>
     返回首页
   </a>
-  <a href="conv_8.html" class="back-btn">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  <a href="conv_8.html" class="back-btn" data-page-node-id="f4BmOEznhg7W1GRwFIz4xc">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-page-node-id="lc9iMf44RmCTgEJMgnvGcS"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" data-page-node-id="zMt38b5xI3dCrTkqNkYMcM"/></svg>
     智能客服
   </a>
 
-  <div class="page-title">
-    <h1>仙侣介绍</h1>
+  <div class="page-title wiki-title-art" data-page-node-id="iHbK1kpI1gZOGzXVt4Ts6S">
+    <img src="art/xianlv_title.webp" alt="仙侣介绍" data-page-node-id="gQBQkWhhfMetLrjxb5205c">
+    <h1 data-page-node-id="HGVk64QPTiPgCxD0sRDUHD">仙侣介绍</h1>
   </div>
 
-  <div class="notice-box">
-    <div class="notice-item">
-      <span class="pin">&#x1F4CC;</span>
-      <span>1.仙侣系统开启等级：人物等级达到 13 级。仙侣分为 B/A/S/SS 四个级别（由低到高），仙侣后三个技能需要仙侣修炼分别达到 8/10/12 级解锁。</span>
+  <div class="notice-box" data-page-node-id="rZl9y1rcKKLpZm4H5FOUik">
+    <div class="notice-item" data-page-node-id="3HSM1Y8xH4GQxmBsQrIkM6">
+      <span data-page-node-id="BpFRzt2OIhQEduYXDQKuTz">1.仙侣系统开启等级：人物等级达到 13 级。仙侣分为 B/A/S/SS 四个级别（由低到高），仙侣后三个技能需要仙侣修炼分别达到 8/10/12 级解锁。</span>
     </div>
-    <div class="notice-item">
-      <span class="pin">&#x1F4CC;</span>
-      <span>2.下方仙侣图鉴可按级别筛选、搜索名称，点击卡片可查看该仙侣的技能、情缘与礼物偏好；其余章节均可点击标题栏展开/收起。</span>
+    <div class="notice-item" data-page-node-id="Jw2Dydsq3NYkLOQse3evUb">
+      <span data-page-node-id="h8hbdVCKNVlC1HTWKdvSt3">2.下方仙侣图鉴可按级别筛选、搜索名称，点击卡片可查看该仙侣的技能、情缘与礼物偏好；其余章节均可点击标题栏展开/收起。</span>
     </div>
   </div>
 
-  <div class="section" id="xianlv-encyclopedia">
-    <h2 style="font-size:1.4rem;font-weight:700;margin-bottom:4px">仙侣图鉴</h2>
-    <div class="ency-layout">
-      <div class="ency-sidebar">
-        <button class="ency-side-btn active" data-cat="ALL"><span>全部仙侣</span><span class="side-count"></span></button>
-        <button class="ency-side-btn" data-cat="B"><span>B级</span><span class="side-count"></span></button>
-        <button class="ency-side-btn" data-cat="A"><span>A级</span><span class="side-count"></span></button>
-        <button class="ency-side-btn" data-cat="S"><span>S级</span><span class="side-count"></span></button>
-        <button class="ency-side-btn" data-cat="SS"><span>SS级</span><span class="side-count"></span></button>
+  <div class="section" id="xianlv-encyclopedia" data-wiki-label="仙侣图鉴" data-page-node-id="lnxepuXhDNwF6nFTrjpTa9">
+    <div class="ency-layout" data-page-node-id="UqgzAD9pXaMe2BjSONtg7y">
+      <div class="ency-sidebar" data-page-node-id="GluK9Fg5lWht5Wp3N57WjA">
+        <button class="ency-side-btn active" data-cat="ALL" data-page-node-id="WCg735LIDIVfQ3DEwLuXAV"><span data-page-node-id="ISsz2Bo468XoiIwXrwqeBR">全部仙侣</span><span class="side-count" data-page-node-id="8Y5tM4pWpNdRc5b4tD7raz"></span></button>
+        <button class="ency-side-btn" data-cat="B" data-page-node-id="iRRf4j1qHRo1wiJlhH0Sq8"><span data-page-node-id="WSSSFRDGlqUtjcRfD2uChk">B级</span><span class="side-count" data-page-node-id="PJ9hZRDLLZR2pegS17mj67"></span></button>
+        <button class="ency-side-btn" data-cat="A" data-page-node-id="k3haqIlVXpj0l5JP44hBdd"><span data-page-node-id="gNL5UC6CUmmC8zEa9PXD0S">A级</span><span class="side-count" data-page-node-id="4Z3KTNiaZ0S7vkfkq1gzxT"></span></button>
+        <button class="ency-side-btn" data-cat="S" data-page-node-id="GYwEzq8ExyeDIqlkW6aMqy"><span data-page-node-id="DdsjWT0dqA5Bl0Z2qsYQVY">S级</span><span class="side-count" data-page-node-id="c6mMpw9OkiEXSOQZtk0tXp"></span></button>
+        <button class="ency-side-btn" data-cat="SS" data-page-node-id="SN4AvGdWDyNvjeFLFvEgVR"><span data-page-node-id="kty9cTW4ksnjjO0G0CrDm7">SS级</span><span class="side-count" data-page-node-id="1npOQBbdNHkonXTZ0tduiY"></span></button>
       </div>
-      <div class="ency-main">
-        <div class="ency-search-bar"><input type="text" id="xianlv-search" placeholder="搜索仙侣名称..."></div>
-        <div class="xianlv-grid" id="xianlv-grid"></div>
+      <div class="ency-main" data-page-node-id="bcUUkGvlj2rPXJVVP2wzRw">
+        <div class="ency-search-bar" data-page-node-id="jnIeSM5H9lDg5ycWZEWC8A"><input type="text" id="xianlv-search" placeholder="搜索仙侣名称..." data-page-node-id="7KNtZPY0YmERlrDJBJrqom"></div>
+        <div class="xianlv-grid" id="xianlv-grid" data-page-node-id="q9vZMnEkrR7YtuN9Z0aJej"></div>
       </div>
     </div>
-    <div class="pet-detail-overlay" id="xianlv-detail-overlay">
-      <div class="pet-detail-card" id="xianlv-detail-card">
-        <button class="detail-close" id="xianlv-detail-close">&times;</button>
-        <div class="detail-header" id="xianlv-detail-header"></div>
-        <div class="detail-body" id="xianlv-detail-body"></div>
+    <div class="pet-detail-overlay" id="xianlv-detail-overlay" data-page-node-id="OCepkPPWY13XiQNOeTpfRc">
+      <div class="pet-detail-card" id="xianlv-detail-card" data-page-node-id="sCKiHyM7M7bmScBS4IZ1CS">
+        <button class="detail-close" id="xianlv-detail-close" data-page-node-id="5qoTnoG8sC53BqOa6uAv38">&times;</button>
+        <div class="detail-header" id="xianlv-detail-header" data-page-node-id="njYzDHViP8bBjgELPaGwPV"></div>
+        <div class="detail-body" id="xianlv-detail-body" data-page-node-id="f3QQ2oJTvk0uTDEZNPCQwF"></div>
       </div>
     </div>
   </div>
 
-  <div class="section" id="sec-xunyuan">
-    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
-      <span>仙侣寻缘</span>
-      <button type="button" class="hs-expand-btn">展开 ∨</button>
+  <div class="section" id="sec-xunyuan" data-page-node-id="yOScKxR8Qxr1t6GFKbkWEG">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false" data-page-node-id="iwYCFlBIvdtuEMXW75bvSX">
+      <span data-page-node-id="77wHCTYwcSSABGm2RkPmbP">仙侣寻缘</span>
+      <button type="button" class="hs-expand-btn" data-page-node-id="lrNJtVug0BuXFEaMEElw3O">展开 ∨</button>
     </div>
-    <div class="hs-collapsible">
-      <div class="hs-collapsible-inner">
-        <img class="step-img" src="art/xianlv_tutorial/image3.webp" alt="仙侣寻缘" loading="lazy">
-        <li>1.  仙侣寻缘活动期间，每天可以金币寻缘 10 次，罗盘寻缘 100000 次，每天 0 点刷新次数。</li>
-        <li>2.  参与仙侣寻缘可获得仙侣专属突破道具，用于仙侣升星过程中突破更高星级。</li>
-        <li>3.  每次十连必得一个仙侣仙缘福袋道具，打开可随机获得一个仙侣仙缘。</li>
-        <li>4.  多余的仙侣突破道具可在寻缘背包中分解积分，用于积分商城兑换。</li>
-        <img class="step-img" src="art/xianlv_tutorial/image4.png" alt="寻缘背包" loading="lazy">
-        <div class="img-row">
-          <img class="img-row-item" src="art/xianlv_tutorial/image5.webp" alt="积分分解" loading="lazy">
-          <img class="img-row-item" src="art/xianlv_tutorial/image6.webp" alt="积分分解" loading="lazy">
+    <div class="hs-collapsible" data-page-node-id="GPjwtgqdcypLPj9OJUxDTK">
+      <div class="hs-collapsible-inner" data-page-node-id="BfDGPo7f7Gf3TD6Jn3geP8">
+        <img class="step-img" src="art/xianlv_tutorial/image3.webp" alt="仙侣寻缘" loading="lazy" data-page-node-id="X6IbEBZnYfH0cQ23KjaspA">
+        <li data-page-node-id="eiN71afZGBXxw5vyY7Wcv3">1.  仙侣寻缘活动期间，每天可以金币寻缘 10 次，罗盘寻缘 100000 次，每天 0 点刷新次数。</li>
+        <li data-page-node-id="Y9GiVCodIxEAeqekqQj0u9">2.  参与仙侣寻缘可获得仙侣专属突破道具，用于仙侣升星过程中突破更高星级。</li>
+        <li data-page-node-id="3cUImzXRNruLUmqCJ9ZTHJ">3.  每次十连必得一个仙侣仙缘福袋道具，打开可随机获得一个仙侣仙缘。</li>
+        <li data-page-node-id="V38iBNCQ1L3LI3Y5F42ZXX">4.  多余的仙侣突破道具可在寻缘背包中分解积分，用于积分商城兑换。</li>
+        <img class="step-img" src="art/xianlv_tutorial/image4.png" alt="寻缘背包" loading="lazy" data-page-node-id="ttpdNyZzPj28MT4hmI77q4">
+        <div class="img-row" data-page-node-id="3YbQacx0M7hKWjSKt41CPz">
+          <img class="img-row-item" src="art/xianlv_tutorial/image5.webp" alt="积分分解" loading="lazy" data-page-node-id="WUU69Sqe7ymu2CrXLZvWdv">
+          <img class="img-row-item" src="art/xianlv_tutorial/image6.webp" alt="积分分解" loading="lazy" data-page-node-id="SPMeyPRTlIG3JBdzYeYo08">
         </div>
-        <img class="step-img" src="art/xianlv_tutorial/image7.webp" alt="积分商城" loading="lazy">
-        <img class="step-img" src="art/xianlv_tutorial/image8.webp" alt="积分商城兑换" loading="lazy">
-        <li>仙星石 1 个 = 1 缘力积分。</li>
-        <img class="step-img" src="art/xianlv_tutorial/image9.png" alt="仙星石分解" loading="lazy">
-        <li>仙侣仙缘 1 个 = 10 缘力积分，不分级别。</li>
-        <div class="img-row">
-          <img class="img-row-item" src="art/xianlv_tutorial/image10.png" alt="仙侣仙缘分解" loading="lazy">
-          <img class="img-row-item" src="art/xianlv_tutorial/image11.webp" alt="缘力积分" loading="lazy">
+        <img class="step-img" src="art/xianlv_tutorial/image7.webp" alt="积分商城" loading="lazy" data-page-node-id="QmoGJ8YSrMT9uVJHB03ptl">
+        <img class="step-img" src="art/xianlv_tutorial/image8.webp" alt="积分商城兑换" loading="lazy" data-page-node-id="EVuPKZiSTAJkmlpXwEzAiJ">
+        <li data-page-node-id="gSEZq1asPqqwo2zNyaxCL0">仙星石 1 个 = 1 缘力积分。</li>
+        <img class="step-img" src="art/xianlv_tutorial/image9.png" alt="仙星石分解" loading="lazy" data-page-node-id="ZsaWFOpspTkVUbfFLpbAyJ">
+        <li data-page-node-id="DVKkUldGfrdS8xcpPLj0DL">仙侣仙缘 1 个 = 10 缘力积分，不分级别。</li>
+        <div class="img-row" data-page-node-id="bHc0XVvxJCZa4eCm5yr2AT">
+          <img class="img-row-item" src="art/xianlv_tutorial/image10.png" alt="仙侣仙缘分解" loading="lazy" data-page-node-id="AcVoKfXzaJeOi2Vmzyf8sk">
+          <img class="img-row-item" src="art/xianlv_tutorial/image11.webp" alt="缘力积分" loading="lazy" data-page-node-id="TBFVDIsS6o8AvMwfNmaq2Z">
         </div>
       </div>
     </div>
   </div>
 
-  <div class="section" id="sec-shengxing">
-    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
-      <span>仙侣升星</span>
-      <button type="button" class="hs-expand-btn">展开 ∨</button>
+  <div class="section" id="sec-shengxing" data-page-node-id="N1L5BdGkggYOKA0A9AxrHr">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false" data-page-node-id="DIU0aOb9KFmjtw7DSyAF3c">
+      <span data-page-node-id="lgYy3CDE0jVkmvglgEREWB">仙侣升星</span>
+      <button type="button" class="hs-expand-btn" data-page-node-id="MOuqtuK1vrPT8MaXDFK3By">展开 ∨</button>
     </div>
-    <div class="hs-collapsible">
-      <div class="hs-collapsible-inner">
-        <img class="step-img" src="art/xianlv_tutorial/image12.webp" alt="仙侣升星" loading="lazy">
-        <li>1.  仙侣升星将提升仙侣的各项属性。</li>
-        <li>2.  仙侣升星道具可通过活动获得，部分星级需要使用仙侣突破道具，仙侣突破道具将通过寻缘玩法获得。</li>
-        <li>3.  累计仙侣总星级还将为角色提供属性加成。</li>
-        <li>4.  每 5 的倍数星级要突破，前期突破要仙星石，后期要仙星石 + 对应仙缘。</li>
-        <div class="img-row">
-          <img class="img-row-item" src="art/xianlv_tutorial/image13.png" alt="升星突破" loading="lazy">
-          <img class="img-row-item" src="art/xianlv_tutorial/image14.png" alt="升星突破" loading="lazy">
+    <div class="hs-collapsible" data-page-node-id="fR2vAguuG3CtftT3bME0R2">
+      <div class="hs-collapsible-inner" data-page-node-id="NYLLnXFp0vGgDBHX4CmfIm">
+        <img class="step-img" src="art/xianlv_tutorial/image12.webp" alt="仙侣升星" loading="lazy" data-page-node-id="A3jO1TGUqaI95Z5V2uTFZg">
+        <li data-page-node-id="OPh1q0fhkpmnG631xIEEK6">1.  仙侣升星将提升仙侣的各项属性。</li>
+        <li data-page-node-id="XqFJMGAIhREDAwFLWK0cMO">2.  仙侣升星道具可通过活动获得，部分星级需要使用仙侣突破道具，仙侣突破道具将通过寻缘玩法获得。</li>
+        <li data-page-node-id="I7V7QZPJfm4hmn2sxsg9KD">3.  累计仙侣总星级还将为角色提供属性加成。</li>
+        <li data-page-node-id="xZolNdXL2PjyIMf8KSpPhG">4.  每 5 的倍数星级要突破，前期突破要仙星石，后期要仙星石 + 对应仙缘。</li>
+        <div class="img-row" data-page-node-id="LJf3iEm76Xh1npX8agR33H">
+          <img class="img-row-item" src="art/xianlv_tutorial/image13.png" alt="升星突破" loading="lazy" data-page-node-id="rlqV2CXCXXHFKT77WM48dh">
+          <img class="img-row-item" src="art/xianlv_tutorial/image14.png" alt="升星突破" loading="lazy" data-page-node-id="C5NGY8DyNgKtBAiXS47S8H">
         </div>
-        <img class="step-img" src="art/xianlv_tutorial/image15.webp" alt="升星消耗" loading="lazy">
-        <li>这里这个满级是 1200 星，看的是所有仙侣的总星级。</li>
-        <div class="img-row">
-          <img class="img-row-item" src="art/xianlv_tutorial/image16.png" alt="总星级加成" loading="lazy">
-          <img class="img-row-item" src="art/xianlv_tutorial/image17.png" alt="总星级加成" loading="lazy">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section" id="sec-shenqi">
-    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
-      <span>仙侣神器</span>
-      <button type="button" class="hs-expand-btn">展开 ∨</button>
-    </div>
-    <div class="hs-collapsible">
-      <div class="hs-collapsible-inner">
-        <li>1.  通用部位神器（华胜、霞帔、璎珞、云履）是任何仙侣都能穿戴的，专属部位神器只有它的专属仙侣能穿戴。</li>
-        <li>2.  神器可以消耗相同部位的神器获得经验进行升级，升级后属性提升。</li>
-        <li>3.  一个仙侣所有的神器位置上都穿戴神器后，会激活套装技能效果。</li>
-        <li>4.  通用部位神器达到 25 级后，可以重置获得升级消耗的 80% 的经验。</li>
-        <li>5.  仙侣专属神器不可重置。</li>
-        <li>6.  神器重置后，相关属性加成将被清除，套装提供的加点将被扣除。</li>
-        <li>7.  若已开启自动加点，重置完成后将按自动加点规则自动分配。</li>
-        <img class="step-img" src="art/xianlv_tutorial/image18.webp" alt="仙侣神器" loading="lazy">
-        <img class="step-img" src="art/xianlv_tutorial/image19.png" alt="神器穿戴" loading="lazy">
-        <img class="step-img" src="art/xianlv_tutorial/image20.png" alt="神器升级" loading="lazy">
-        <img class="step-img" src="art/xianlv_tutorial/image21.png" alt="神器套装" loading="lazy">
-        <li>专属神器套装效果，列举一个仅供参考：</li>
-        <img class="step-img" src="art/xianlv_tutorial/image22.png" alt="专属神器套装效果" loading="lazy">
-        <div class="sub-header">神器重置</div>
-        <img class="step-img" src="art/xianlv_tutorial/image23.png" alt="神器重置" loading="lazy">
-        <li>1.  当少侠们的通用部位神器达到 5 级，即可开启神器重置。</li>
-        <li>2.  使用神器重置功能，神器在重置后，将会返还该部位神器已投入的升级经验的 80%，但相关属性加成和套装加点将被扣除。</li>
-        <li>3.  重置之后的神器加点需要少侠们手动进行重新分配。当然啦，如果少侠已经开启了自动加点功能，重置后的神器将按自动加点规则自动分配潜力点哦！</li>
-        <div class="img-row">
-          <img class="img-row-item" src="art/xianlv_tutorial/image24.png" alt="神器重置说明" loading="lazy">
-          <img class="img-row-item" src="art/xianlv_tutorial/image25.webp" alt="神器重置说明" loading="lazy">
+        <img class="step-img" src="art/xianlv_tutorial/image15.webp" alt="升星消耗" loading="lazy" data-page-node-id="Ac7Ize4pRZUJmnJ1ppthAr">
+        <li data-page-node-id="ZvwFrh6l5hzaGe2oIxjDb1">这里这个满级是 1200 星，看的是所有仙侣的总星级。</li>
+        <div class="img-row" data-page-node-id="wAb2yIuLiqvztXB4R6mI1q">
+          <img class="img-row-item" src="art/xianlv_tutorial/image16.png" alt="总星级加成" loading="lazy" data-page-node-id="B6eQlp3QkdnQKYAOR6BgKG">
+          <img class="img-row-item" src="art/xianlv_tutorial/image17.png" alt="总星级加成" loading="lazy" data-page-node-id="GPJo77UNJRUsvI7xHpVy54">
         </div>
       </div>
     </div>
   </div>
 
-  <div class="section" id="sec-xunluo">
-    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
-      <span>仙侣巡逻</span>
-      <button type="button" class="hs-expand-btn">展开 ∨</button>
+  <div class="section" id="sec-shenqi" data-page-node-id="cnoQb9sPtLyKQsGSMHTf9J">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false" data-page-node-id="BzAdgGWeh2m5qNUjMXJuJC">
+      <span data-page-node-id="23q5ZMvZgkEICl7GuPFkYD">仙侣神器</span>
+      <button type="button" class="hs-expand-btn" data-page-node-id="xKc5McJzDRak5KDvqH6cMm">展开 ∨</button>
     </div>
-    <div class="hs-collapsible">
-      <div class="hs-collapsible-inner">
-        <li>这玩意没什么难度，纯挂机，就是半个小时左右回来了给你带回来材料了。</li>
-        <img class="step-img" src="art/xianlv_tutorial/image26.webp" alt="仙侣巡逻" loading="lazy">
+    <div class="hs-collapsible" data-page-node-id="I0sGGClLcrovheftH9tgOf">
+      <div class="hs-collapsible-inner" data-page-node-id="q3feKT0iqAlCrmcMZoPnd4">
+        <li data-page-node-id="oOp1ZqH6jaC8HFPuCiGNEE">1.  通用部位神器（华胜、霞帔、璎珞、云履）是任何仙侣都能穿戴的，专属部位神器只有它的专属仙侣能穿戴。</li>
+        <li data-page-node-id="1DZAJVA8nmmqVFFuhFC3qY">2.  神器可以消耗相同部位的神器获得经验进行升级，升级后属性提升。</li>
+        <li data-page-node-id="t5hNJZ9KdiNGBCUTeg1kWf">3.  一个仙侣所有的神器位置上都穿戴神器后，会激活套装技能效果。</li>
+        <li data-page-node-id="WJnX0EIcqslxjKRzC8SQ2j">4.  通用部位神器达到 25 级后，可以重置获得升级消耗的 80% 的经验。</li>
+        <li data-page-node-id="K1pI3V6TKbQLVc71NAT0i5">5.  仙侣专属神器不可重置。</li>
+        <li data-page-node-id="pzUEDFH4Z3qFJwigWLVCJ4">6.  神器重置后，相关属性加成将被清除，套装提供的加点将被扣除。</li>
+        <li data-page-node-id="PUONCcPZxLdF0c8xOFH8NA">7.  若已开启自动加点，重置完成后将按自动加点规则自动分配。</li>
+        <img class="step-img" src="art/xianlv_tutorial/image18.webp" alt="仙侣神器" loading="lazy" data-page-node-id="lzrA9mh9tqB1eeWJQW6QbO">
+        <img class="step-img" src="art/xianlv_tutorial/image19.png" alt="神器穿戴" loading="lazy" data-page-node-id="vvWtevrKbp7EIwDPfQbmjD">
+        <img class="step-img" src="art/xianlv_tutorial/image20.png" alt="神器升级" loading="lazy" data-page-node-id="WzbvDNFW4N3iJAQWTyBvuV">
+        <img class="step-img" src="art/xianlv_tutorial/image21.png" alt="神器套装" loading="lazy" data-page-node-id="WLJvIYDUsBDZhXYwdqCZnl">
+        <li data-page-node-id="LNb9mvq3aS47jC2LMVl1ck">专属神器套装效果，列举一个仅供参考：</li>
+        <img class="step-img" src="art/xianlv_tutorial/image22.png" alt="专属神器套装效果" loading="lazy" data-page-node-id="ZiyKctjePOPyCRWN9uLcNE">
+        <div class="sub-header" data-page-node-id="x9LGFxw4M0v89uxDwMf3hx">神器重置</div>
+        <img class="step-img" src="art/xianlv_tutorial/image23.png" alt="神器重置" loading="lazy" data-page-node-id="9Kr00kwbGYlDBY3VP5HyMF">
+        <li data-page-node-id="IkknImMLJS3uotFRewWmRi">1.  当少侠们的通用部位神器达到 5 级，即可开启神器重置。</li>
+        <li data-page-node-id="y4QfsdqtGOLaB94WWBjcg5">2.  使用神器重置功能，神器在重置后，将会返还该部位神器已投入的升级经验的 80%，但相关属性加成和套装加点将被扣除。</li>
+        <li data-page-node-id="RwggZfu7sPBlrlT26hQIjy">3.  重置之后的神器加点需要少侠们手动进行重新分配。当然啦，如果少侠已经开启了自动加点功能，重置后的神器将按自动加点规则自动分配潜力点哦！</li>
+        <div class="img-row" data-page-node-id="5I8V7ET8klJV9TgkywNf6A">
+          <img class="img-row-item" src="art/xianlv_tutorial/image24.png" alt="神器重置说明" loading="lazy" data-page-node-id="3jgkuOhieqAMOvlqze0XBC">
+          <img class="img-row-item" src="art/xianlv_tutorial/image25.webp" alt="神器重置说明" loading="lazy" data-page-node-id="cyGb2hGFB45MjgE2czHsi4">
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="section" id="sec-jiejiao">
-    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
-      <span>仙侣结交</span>
-      <button type="button" class="hs-expand-btn">展开 ∨</button>
+  <div class="section" id="sec-xunluo" data-page-node-id="6RSRpVWqcEPho8AhipsONl">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false" data-page-node-id="BqjhQz796bIox2ao26C8k3">
+      <span data-page-node-id="uBEZAI7ZWYyNRBz2zTTrUi">仙侣巡逻</span>
+      <button type="button" class="hs-expand-btn" data-page-node-id="2SdFVdyTUulkfYYnOGUr0k">展开 ∨</button>
     </div>
-    <div class="hs-collapsible">
-      <div class="hs-collapsible-inner">
-        <img class="step-img" src="art/xianlv_tutorial/image27.webp" alt="仙侣结交" loading="lazy">
-        <img class="step-img" src="art/xianlv_tutorial/image28.png" alt="仙侣结交等级" loading="lazy">
-        <li>每级都有属性提升，上限 30 级。</li>
-        <img class="step-img" src="art/xianlv_tutorial/image29.png" alt="赠送礼物" loading="lazy">
-        <li>根据下表赠送对应仙侣的对应礼物可以增加双倍交情。</li>
-        <div class="sub-header">仙侣礼物表</div>
-        <div class="table-wrap" id="gift-table-wrap"></div>
-        <img class="step-img" src="art/xianlv_tutorial/image30.webp" alt="礼物赠送界面" loading="lazy">
+    <div class="hs-collapsible" data-page-node-id="3IknVDfTFRYJgAqD5Cez15">
+      <div class="hs-collapsible-inner" data-page-node-id="9uJJc1FJ6AUvAhlqJHDfZx">
+        <li data-page-node-id="VlzTYhXpDS34DpxTD9mGXB">这玩意没什么难度，纯挂机，就是半个小时左右回来了给你带回来材料了。</li>
+        <img class="step-img" src="art/xianlv_tutorial/image26.webp" alt="仙侣巡逻" loading="lazy" data-page-node-id="c5Cj6Sip4OQJfZRXpUPl5D">
       </div>
     </div>
   </div>
 
-  <div class="section" id="sec-dongfu">
-    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
-      <span>仙侣洞府</span>
-      <button type="button" class="hs-expand-btn">展开 ∨</button>
+  <div class="section" id="sec-jiejiao" data-page-node-id="Gjg1u5tmaRO9DbnAvKxzgO">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false" data-page-node-id="XXVqU9mxRCOjYvhGPu8k4w">
+      <span data-page-node-id="ViMKpo8IK6H7RIlJcvHUt6">仙侣结交</span>
+      <button type="button" class="hs-expand-btn" data-page-node-id="tcwW7e2SYRJeYyWqgTXs7b">展开 ∨</button>
     </div>
-    <div class="hs-collapsible">
-      <div class="hs-collapsible-inner">
-        <img class="step-img" src="art/xianlv_tutorial/image31.webp" alt="仙侣洞府" loading="lazy">
-        <li>洞府属性增加的是人物属性。</li>
-        <img class="step-img" src="art/xianlv_tutorial/image32.png" alt="洞府驻扎" loading="lazy">
-        <li>这个驻扎没啥讲究，哪个牛逼就驻扎哪个就行了。</li>
-        <img class="step-img" src="art/xianlv_tutorial/image33.webp" alt="洞府加成" loading="lazy">
+    <div class="hs-collapsible" data-page-node-id="6xkSZdVxD6RHERoerDml5R">
+      <div class="hs-collapsible-inner" data-page-node-id="B9vlyEqMyt78ejq57dbNkO">
+        <img class="step-img" src="art/xianlv_tutorial/image27.webp" alt="仙侣结交" loading="lazy" data-page-node-id="99lOs3vhwfB7hc2Vjio5w8">
+        <img class="step-img" src="art/xianlv_tutorial/image28.png" alt="仙侣结交等级" loading="lazy" data-page-node-id="WINN38xvlGLmsF4HQ3NEer">
+        <li data-page-node-id="opbZQ7yTc7jxHG3sCNHxuZ">每级都有属性提升，上限 30 级。</li>
+        <img class="step-img" src="art/xianlv_tutorial/image29.png" alt="赠送礼物" loading="lazy" data-page-node-id="5yC4W5F9PRUXV3Xt2hItlB">
+        <li data-page-node-id="dw9L9wASlHz6JHOCVVr2Ha">根据下表赠送对应仙侣的对应礼物可以增加双倍交情。</li>
+        <div class="sub-header" data-page-node-id="EZK2CcNIpfhwiweB4KLL1b">仙侣礼物表</div>
+        <div class="table-wrap" id="gift-table-wrap" data-page-node-id="IoR02x8Ujm9uzXDkYQEf6F"></div>
+        <img class="step-img" src="art/xianlv_tutorial/image30.webp" alt="礼物赠送界面" loading="lazy" data-page-node-id="rKExfyHzhwHoos8wIge5y7">
       </div>
     </div>
   </div>
 
-  <div class="section" id="sec-yuanshen">
-    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
-      <span>仙侣元神</span>
-      <button type="button" class="hs-expand-btn">展开 ∨</button>
+  <div class="section" id="sec-dongfu" data-page-node-id="LJB19vnXIk3QL9YnxLztUN">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false" data-page-node-id="pqeAx9sxIla9zvDvm7r3FA">
+      <span data-page-node-id="8BMHBUQzeW1FSdDdb2Nu1x">仙侣洞府</span>
+      <button type="button" class="hs-expand-btn" data-page-node-id="i2tc37TW3aHhATPlM1Lyb2">展开 ∨</button>
     </div>
-    <div class="hs-collapsible">
-      <div class="hs-collapsible-inner">
-        <li>1.  等级限制：人物等级达到 70 级。本次加强了仙侣元神，在原来基础上提高了 5 倍。</li>
-        <li>2.  在元神升级上，每个穴位的每个位置都需要升级，不能单独升级其中的某一个。此外每一级需要的升级材料都会增加 1 个。所以如果想要升级高的宝宝可要慢慢存才行。虽然需求的材料很多，不过仙侣实力可是得到了大大的提升，当面对同等级实力相差不大的仙侣可以完爆对面，再配合上仙侣的情缘简直是实力大增。</li>
-        <li>3.  只需要开 4 个穴位就行了，因为每个人只能携带 4 个仙侣上场。如果想要更换仙侣，可以点击仙侣元神处切换。</li>
-        <div class="sub-header">道具介绍</div>
-        <img class="step-img" src="art/xianlv_tutorial/image36.png" alt="元神道具" loading="lazy">
-        <div class="sub-header">属性提升</div>
-        <li>仙侣元神系统为仙侣能够提供的战力支持还是很高的，不同的元神每升一级增加的属性也不一样，分别有气血 +1%、物(法)攻 +0.6%、物(法)防 +0.4%、物(法)暴 +1%、法力 +1%、封抗 +1% 以及速度 +0.6%。</li>
-        <img class="step-img" src="art/xianlv_tutorial/image38.webp" alt="元神属性" loading="lazy">
-        <div class="sub-header">消耗介绍</div>
-        <li>注：统计的为单一位置消耗数量，建议各位少侠均匀提升！残念消耗 = 元神星级 × 10。</li>
-        <div class="table-wrap" id="yuanshen-cost-wrap"></div>
+    <div class="hs-collapsible" data-page-node-id="jJR5VTJ0miAGuVCe6iXaCN">
+      <div class="hs-collapsible-inner" data-page-node-id="hh84g02b5a1xgQNjYRQ5PP">
+        <img class="step-img" src="art/xianlv_tutorial/image31.webp" alt="仙侣洞府" loading="lazy" data-page-node-id="qtwhzSrmODfU48jQaiBa4t">
+        <li data-page-node-id="R39GJTyEoAeFYAraq0LD5d">洞府属性增加的是人物属性。</li>
+        <img class="step-img" src="art/xianlv_tutorial/image32.png" alt="洞府驻扎" loading="lazy" data-page-node-id="Xwv0gPm4NsCfeu4pXPSBbh">
+        <li data-page-node-id="bEa4poNkH7pdj0csWNaKbp">这个驻扎没啥讲究，哪个牛逼就驻扎哪个就行了。</li>
+        <img class="step-img" src="art/xianlv_tutorial/image33.webp" alt="洞府加成" loading="lazy" data-page-node-id="FLzCFWHxioOBZrufdyhFO0">
       </div>
     </div>
   </div>
 
-  <div class="footer">
-    <p>九小卿攻略站</p>
+  <div class="section" id="sec-yuanshen" data-page-node-id="Q9HlSPYBePXniBEOFWVCUg">
+    <div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false" data-page-node-id="IKilViQLp1FggLIlvw2yeF">
+      <span data-page-node-id="BHj4SP8RvLaH6TE6OfXAEh">仙侣元神</span>
+      <button type="button" class="hs-expand-btn" data-page-node-id="cy8RGROHYhk3A39mCmCX7a">展开 ∨</button>
+    </div>
+    <div class="hs-collapsible" data-page-node-id="sfWGINVoAnEYqUBbkJ2Kly">
+      <div class="hs-collapsible-inner" data-page-node-id="31QMiQa4qAzF8HqJEyH2sg">
+        <div class="lv-banner">等级限制：人物等级达到 70 级</div><li data-page-node-id="hrpZe02AWZZgpoF27OxMWa">本次加强了仙侣元神，在原来基础上提高了 5 倍。</li>
+        <li data-page-node-id="JOZwmtYtntIg2jnS3HyeNE">2.  在元神升级上，每个穴位的每个位置都需要升级，不能单独升级其中的某一个。此外每一级需要的升级材料都会增加 1 个。所以如果想要升级高的宝宝可要慢慢存才行。虽然需求的材料很多，不过仙侣实力可是得到了大大的提升，当面对同等级实力相差不大的仙侣可以完爆对面，再配合上仙侣的情缘简直是实力大增。</li>
+        <li data-page-node-id="mkoCZaHfXYKDbHKRD7gaAb">3.  只需要开 4 个穴位就行了，因为每个人只能携带 4 个仙侣上场。如果想要更换仙侣，可以点击仙侣元神处切换。</li>
+        <div class="sub-header" data-page-node-id="TC5hvGKsxbkmzugBUfg9AL">道具介绍</div>
+        <img class="step-img" src="art/xianlv_tutorial/image36.png" alt="元神道具" loading="lazy" data-page-node-id="Uk7kwgGYQHrv40YgeKCgST">
+        <div class="sub-header" data-page-node-id="eT1X1GQLdeOkKZL3ifFb1w">属性提升</div>
+        <li data-page-node-id="BZcgBGqQnIH9tD6gFtBAmL">仙侣元神系统为仙侣能够提供的战力支持还是很高的，不同的元神每升一级增加的属性也不一样，分别有气血 +1%、物(法)攻 +0.6%、物(法)防 +0.4%、物(法)暴 +1%、法力 +1%、封抗 +1% 以及速度 +0.6%。</li>
+        <img class="step-img" src="art/xianlv_tutorial/image38.webp" alt="元神属性" loading="lazy" data-page-node-id="Nbr21lMouUwEjihJF9Glzp">
+        <div class="sub-header" data-page-node-id="lbNy9pbE61kfRupPVLD94N">消耗介绍</div>
+        <li data-page-node-id="ZPJjLAnKpfN8hseHxqSGgC">注：统计的为单一位置消耗数量，建议各位少侠均匀提升！残念消耗 = 元神星级 × 10。</li>
+        <div class="table-wrap" id="yuanshen-cost-wrap" data-page-node-id="0Rs8xw2F6FGWoAXVxwDl9Z"></div>
+      </div>
+    </div>
+  </div>
 
-</div>
+  
 
 <script>
 var companionData = [
@@ -1511,6 +1513,7 @@ var companionIcons = {
       }
 
       detailBody.innerHTML = body;
+      if(overlay.parentNode !== document.body) document.body.appendChild(overlay);
       overlay.classList.add('show');
       var sbWidth = window.innerWidth - document.documentElement.clientWidth;
       document.documentElement.style.overflow = 'hidden';
@@ -1518,10 +1521,12 @@ var companionIcons = {
     });
   });
 
+  var overlayHome = overlay.parentNode;
   function closeModal(){
     overlay.classList.remove('show');
     document.documentElement.style.overflow = '';
     document.body.style.paddingRight = '';
+    if(overlayHome && overlay.parentNode !== overlayHome) overlayHome.appendChild(overlay);
   }
 
   document.getElementById('xianlv-detail-close').addEventListener('click', closeModal);
@@ -1592,5 +1597,80 @@ document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复�
 document.addEventListener('contextmenu',function(e){e.preventDefault();});
 </script>
 
+<script>if(window.self!==window.top){document.documentElement.classList.add("embedded");var _s=document.createElement("style");_s.textContent=".back-btn{display:none!important}";document.head.appendChild(_s);}</script><script>
+/* 手风琴转标签栏：与门派页 sect-tab 同款视觉 */
+(function(){
+  var hs=[].slice.call(document.querySelectorAll('.hs-toggle-header'));
+  if(!hs.length) return;
+  var st=document.createElement('style');
+  st.textContent='.wtab-bar{display:flex;gap:8px;overflow-x:auto;padding:6px 2px 10px;scrollbar-width:none;-ms-overflow-style:none}.wtab-bar::-webkit-scrollbar{display:none}.wtab{flex:0 0 auto;display:inline-flex;align-items:center;background:#fff;border:1.5px solid rgba(22,19,15,.08);border-radius:999px;padding:8px 14px;font-size:.85rem;font-weight:800;color:#57534e;cursor:pointer;font-family:inherit;white-space:nowrap;transition:background .2s,color .2s,border-color .2s,box-shadow .2s}.wtab.active{background:#fff;border-color:#f59e0b;color:#c77b2e;box-shadow:0 0 0 2.5px rgba(245,158,11,.28),0 6px 14px rgba(245,158,11,.2)}@media(min-width:961px){.wtab{padding:9px 18px;font-size:.9rem}}';
+  document.head.appendChild(st);
+  var units=hs.map(function(h){
+    var nx=h.nextElementSibling;
+    var box=document.createElement('div');
+    h.parentNode.insertBefore(box,h);
+    box.appendChild(h);
+    if(nx) box.appendChild(nx);
+    h.style.display='none';
+    var c=box.querySelector('.hs-collapsible');
+    if(c) c.classList.add('open');
+    return box;
+  });
+  var ency=document.getElementById('xianlv-encyclopedia');
+  if(ency){
+    ency.setAttribute('data-wtab-label','仙侣图鉴');
+    units.unshift(ency);
+  }
+  var bar=document.createElement('div'); bar.className='wtab-bar';
+  units.forEach(function(u,i){
+    var sp=u.querySelector('.hs-toggle-header span');
+    var b=document.createElement('button');
+    b.type='button'; b.className='wtab';
+    b.textContent=u.getAttribute('data-wtab-label')||(sp?sp.textContent.trim():('栏目'+(i+1)));
+    b.addEventListener('click',function(){
+      units.forEach(function(x,j){ x.style.display=(j===i)?'':'none'; });
+      [].forEach.call(bar.children,function(x){ x.classList.remove('active'); });
+      b.classList.add('active');
+      /* 只滚标签栏自身，避免波及页面滚动 */
+      (function(){
+        var edge=8,r=b.getBoundingClientRect(),h=bar.getBoundingClientRect();
+        if(r.left>=h.left+edge && r.right<=h.right-edge) return;
+        var tabLeft=r.left-h.left+bar.scrollLeft;
+        bar.scrollTo({left:Math.max(0,tabLeft-(bar.clientWidth-b.offsetWidth)/2),behavior:'auto'});
+      })();
+    });
+    bar.appendChild(b);
+  });
+  /* 鼠标左键按住拖动横向滚动 */
+  bar.style.cursor='grab';
+  var dragging=false,startX=0,startL=0,moved=0;
+  bar.addEventListener('mousedown',function(e){
+    dragging=true;moved=0;startX=e.pageX;startL=bar.scrollLeft;
+    bar.style.cursor='grabbing';
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove',function(e){
+    if(!dragging) return;
+    var dx=e.pageX-startX;
+    moved=Math.max(moved,Math.abs(dx));
+    bar.scrollLeft=startL-dx;
+  });
+  window.addEventListener('mouseup',function(){
+    if(!dragging) return;
+    dragging=false;bar.style.cursor='grab';
+    /* click 事件在 mouseup 后同步触发，异步复位避免拦截后续点击 */
+    setTimeout(function(){moved=0},0);
+  });
+  /* 拖动超过 6px 时拦截 click，避免松手误切标签 */
+  bar.addEventListener('click',function(e){
+    if(moved>6){e.stopPropagation();e.preventDefault();}
+  },true);
+  var anchor=units[0].closest('.section')||units[0];
+  var holder=document.createElement('div');
+  anchor.parentNode.insertBefore(holder,anchor);
+  holder.appendChild(bar);
+  units.forEach(function(u,i){ holder.appendChild(u); if(i) u.style.display='none'; });
+  bar.firstChild.classList.add('active');
+})();
+</script><script src="wiki-detail.js"></script>
 </body>
-</html>

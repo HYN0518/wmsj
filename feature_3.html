@@ -63,8 +63,9 @@
   input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
 
 </style>
+<link rel="stylesheet" href="wiki-detail.css">
 </head>
-<body>
+<body class="wiki-detail-page">
 <div class="site-watermark"></div>
 <div class="wrap">
   <a href="index.html?skipIntro=1#features" class="back-btn">
@@ -79,7 +80,10 @@
     </svg>
     智能客服
   </a>
-  <div class="page-title"><h1>人物天命</h1></div>
+  <div class="page-title wiki-title-art">
+    <img src="art/tianming_title.webp" alt="天命介绍">
+    <h1>天命介绍</h1>
+  </div>
   <div class="blue-header">占卜：</div>
 <p class="doc-p">获取元魂道具的唯一方式就是通过每天的占 卜。普通占 卜可以在商会中通过金币购</p>
 <p class="doc-p">买本命元神进行占 卜 ，每天共有 5次机会 ，宝宝们一定要记得买满！还有每日首次免费的特殊占 卜也不要错过哦~</p>
@@ -224,5 +228,6 @@ document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复�
 document.addEventListener('contextmenu',function(e){e.preventDefault();});
 </script>
 
+<script src="wiki-detail.js"></script>
 </body>
 </html>

@@ -18,7 +18,7 @@
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
   button{font-family:inherit}
-  .wrap{max-width:960px;margin:0 auto;padding:32px 24px 60px}
+  .wrap{max-width:960px;margin:0 auto;padding:76px 24px 12px}
   .back-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;background:var(--card);border:1.5px solid rgba(22,19,15,.12);color:var(--ink);font-weight:700;font-size:.9rem;cursor:pointer;transition:all .2s}
   .back-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(22,19,15,.12);border-color:var(--pink)}
   .back-btn svg{width:18px;height:18px}
@@ -38,13 +38,19 @@
   .hs-collapsible.open{grid-template-rows:1fr}
   .hs-collapsible-inner{overflow:hidden;min-height:0;padding-top:20px}
   .tut-img{max-width:min(640px,100%);border-radius:10px;border:1px solid rgba(22,19,15,.08);box-shadow:0 4px 14px rgba(22,19,15,.08);margin:8px auto 4px}
+  body.wiki-detail-page .shot-row{display:flex;flex-wrap:nowrap;gap:10px;align-items:flex-start;justify-content:center;margin:8px 0 16px}
+  body.wiki-detail-page .shot-row .tut-img{flex:1 1 0;width:0;min-width:0;max-width:none;height:auto;margin:0;cursor:zoom-in}
+  body.wiki-detail-page #sec-linghu .tut-img,body.wiki-detail-page #sec-linghu-skill .tut-img{cursor:zoom-in}
+  .img-lightbox{position:fixed;inset:0;z-index:100001;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(22,19,15,.72);cursor:zoom-out}
+  .img-lightbox[hidden]{display:none}
+  body.wiki-detail-page .img-lightbox img{width:auto;max-width:min(1100px,92vw);max-height:88vh;height:auto;margin:0;cursor:zoom-out;box-shadow:0 16px 40px rgba(0,0,0,.35)}
   .data-table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:.88rem;border:1px solid rgba(22,19,15,.1);border-radius:10px;overflow:hidden}
   .data-table th{background:linear-gradient(135deg,#8b5cf6,#ff4d8d);color:#fff;font-weight:700;padding:10px 12px;text-align:left;white-space:nowrap}
   .data-table td{padding:9px 12px;border-bottom:1px solid rgba(22,19,15,.06);color:#333;line-height:1.6}
   .data-table tr:nth-child(even) td{background:rgba(139,92,246,.03)}
   .table-wrap{overflow-x:auto;margin:8px 0 16px}
   @media (max-width:640px){
-    .wrap{padding:24px 16px}
+    .wrap{padding:64px 16px 12px}
     .page-title{margin:24px 0 32px}
     .section li{font-size:.85rem}
     .hs-toggle-header{font-size:1.05rem}
@@ -60,8 +66,9 @@
   input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
 
 </style>
+<style id="wiki-nosb">html{scrollbar-width:none;-ms-overflow-style:none}html::-webkit-scrollbar,body::-webkit-scrollbar{width:0;height:0;display:none}</style><link rel="stylesheet" href="wiki-detail.css">
 </head>
-<body>
+<body class="wiki-detail-page">
 <div class="site-watermark"></div>
 <div class="wrap">
   <a href="index.html?skipIntro=1#character" class="back-btn">
@@ -79,9 +86,9 @@
     智能客服
   </a>
   
-<div class="page-title">
-    
-<h1>羽翼介绍</h1>
+<div class="page-title wiki-title-art">
+    <img src="art/yuyi_title.webp" alt="羽翼介绍">
+    <h1>羽翼介绍</h1>
   </div>
   
 <div class="section" id="sec-0">
@@ -96,7 +103,7 @@
       
 <div class="hs-collapsible-inner">
         
-<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">等级限制：人物等级达到 45 级</p>
+<div class="lv-banner">等级限制：人物等级达到 45 级</div>
 <p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">羽翼通过羽根解锁，做完羽翼指引任务获得羽根</p>
 <img class="tut-img" src="art/yuyi_tutorial/image1.png" alt="羽根">
 <p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8;margin-top:16px">升级可用的两种材料【灵羽】【仙羽】</p>
@@ -109,6 +116,285 @@
 <p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8;margin-top:16px">用于给羽翼换个颜色</p>
 <img class="tut-img" src="art/yuyi_tutorial/image4.png" alt="焕彩绒" loading="lazy">
       </div>
+    </div>
+  </div>
+
+<div class="section" id="sec-linghu">
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>灵护介绍</span>
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+<div class="hs-collapsible">
+<div class="hs-collapsible-inner">
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">羽翼灵护提升分为强化与升星两个方面，强化升级可按百分比提升灵宠自带基础属性，升星可提升灵宠加成羽翼属性的百分比。</p>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">灵宠品质分为绿＜蓝＜紫＜橙＜彩，不同品质灵宠基础属性值不同，紫橙彩色灵宠自带对羽翼属性的百分比加成，紫色 10%、橙色 20%、彩色 30%。</p>
+<img class="tut-img" src="art/yuyi_linghu/img1.png" alt="灵宠品质加成">
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8;margin-top:16px">通过灵宠招募可获得新的灵宠，当获得同类灵宠的高品质卡牌时，则低品质卡牌自动转化为碎片，灵宠卡牌品质替换不影响灵宠目前已强化的属性等</p>
+<div class="shot-row">
+<img class="tut-img" src="art/yuyi_linghu/img2.png" alt="灵宠招募">
+<img class="tut-img" src="art/yuyi_linghu/img3.png" alt="招募结果">
+<img class="tut-img" src="art/yuyi_linghu/img4.png" alt="灵宠背包">
+</div>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8;margin-top:16px">通过消耗银币和弥月币来强化灵宠属性、提升灵宠等级。（每个上限 100 级）</p>
+<div class="shot-row">
+<img class="tut-img" src="art/yuyi_linghu/img5.png" alt="灵宠强化">
+<img class="tut-img" src="art/yuyi_linghu/img6.png" alt="弥月币">
+</div>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8;margin-top:16px">灵宠碎片可用来提升相应灵宠的星段，突破星级。升至 3 星与 5 星时可分别解锁灵宠专属技能</p>
+<div class="shot-row">
+<img class="tut-img" src="art/yuyi_linghu/img7.png" alt="灵宠升星">
+<img class="tut-img" src="art/yuyi_linghu/img8.png" alt="三星五星解锁技能">
+</div>
+</div>
+    </div>
+  </div>
+
+<div class="section" id="sec-linghu-skill">
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>灵护技能</span>
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+<div class="hs-collapsible">
+<div class="hs-collapsible-inner">
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8;font-weight:700">守护技能：</p>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8">有守护的专属技能翅膀的话可以守护专属的享受技能的提升，没有的话可以守护其他的指定范围内的翅膀享受属性加成</p>
+<div class="shot-row">
+<img class="tut-img" src="art/yuyi_linghu/img9.png" alt="选择守护灵翼">
+<img class="tut-img" src="art/yuyi_linghu/img10.png" alt="灵翼守护效果">
+</div>
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8;margin-top:16px">属性总览处可以选择生效的属性和技能</p>
+<img class="tut-img" src="art/yuyi_linghu/img11.png" alt="属性与技能总览">
+<p style="margin-bottom:12px;color:#333;font-size:.95rem;line-height:1.8;margin-top:16px">灵兽外观可以快速穿戴有的灵护外观</p>
+<img class="tut-img" src="art/yuyi_linghu/img12.png" alt="灵兽外观">
+<div class="table-wrap">
+<table class="data-table">
+<thead>
+<tr>
+<th>羽翼名称</th>
+<th>技能名称</th>
+<th>技能效果A</th>
+<th>技能效果B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>黄金兜兜</td>
+<td>共鸣·黄金兜兜</td>
+<td>第1回合，玩家受到物理伤害减免10%</td>
+<td>【桃之天天】羽翼的【万古长青】技能效果提升为:回合开始时当自身气血低于30%时，会恢复自身2000气血。</td>
+</tr>
+<tr>
+<td>萌小兔</td>
+<td>共鸣·萌小兔</td>
+<td>第1回合，玩家受到法术伤害减免10%</td>
+<td>【沧澜如雪】羽翼的【生命守护】技能效果提升为:宠物出场后为宠物增加持续2回合的吸收伤害护盾，吸收量=手动分配的力量或灵性中较大的值x10，对子女无效。</td>
+</tr>
+<tr>
+<td>鲁鲁</td>
+<td>共鸣·鲁鲁</td>
+<td>第2回合，玩家受到法术伤害减免10%</td>
+<td>【暗夜假面】羽翼的【圣灵之翼】技能效果提升为:每回合结束时有8%几率因为羽翼的庇护使玩家在下一回合处于免伤的状态，死亡状态也可触发。</td>
+</tr>
+<tr>
+<td>皮皮</td>
+<td>共鸣·皮皮</td>
+<td>第1回合，玩家受到封印命中降低5%</td>
+<td>【绿野仙踪】羽翼的【神佑复生】技能效果提升为:死亡时有8%概率复活并回复全部气血。</td>
+</tr>
+<tr>
+<td>小纸人</td>
+<td>共鸣·小纸人</td>
+<td>第1回合，宠物法术伤害增加10%</td>
+<td>【仙灵蝶翼】羽翼的【死亡之眸】技能效果提升为:攻击时，5%概率恐惧主目标。</td>
+</tr>
+<tr>
+<td>赛博小灰</td>
+<td>共鸣·赛博小灰</td>
+<td>第1回合，宠物受到物理暴击概率降低5%</td>
+<td>【萌虎飞行员】羽翼的【转日回天】技能效果提升为:防御时，恢复自身8%的气血和魔法</td>
+</tr>
+<tr>
+<td>白素贞</td>
+<td>共鸣·白素贞</td>
+<td>第2回合，玩家法术攻击提升3%</td>
+<td>【冰晶凋零】羽翼的【卧薪尝胆】技能效果提升为:被暴击后增加自身5%物理攻击、法术攻击、封印命中率，治疗效果，持续3回合，可叠加3层</td>
+</tr>
+<tr>
+<td>九天灵蛇</td>
+<td>共鸣·九天灵蛇</td>
+<td>第1回合，玩家法术攻击提升3%</td>
+<td>【时运福兔】羽翼的【时运加护】技能效果提升为:召唤宠物后，直到本回合结束前，宠物获得必定触发的保命效果(不限次数)，且该宠物本回合伤害提升10%。</td>
+</tr>
+<tr>
+<td>龙三太子</td>
+<td>共鸣·龙三太子</td>
+<td>第2回合，玩家物理攻击提升3%</td>
+<td>【夜之锋刃】羽翼的【他化自在】技能效果提升为:每过4回合增加3%伤害，1%封印命中，1%治疗效果，最多增加7层。</td>
+</tr>
+<tr>
+<td>美猴王</td>
+<td>共鸣·美猴王</td>
+<td>第1回合，玩家物理攻击提升3%</td>
+<td>【铁翼猎鹰】羽翼的【铁翼突袭】技能效果提升为:每回合末，有25%概率为自身附加增益状态，使攻击可以无视宠物的减伤类技能(招架、抗拒、铁壁、凝神、天龙圣体持续3回合，不可叠加、替换、驱散</td>
+</tr>
+<tr>
+<td>小灰</td>
+<td>共鸣·小灰</td>
+<td>第2回合，玩家受到物理伤害减免10%</td>
+<td>【清酒弥风】羽翼的【怒火中烧】技能效果提升为:当友方角色或仙侣阵亡时，激发自身愤怒，恢复自身8点怒气(重生、保命不触发）</td>
+</tr>
+<tr>
+<td>稻草人</td>
+<td>共鸣·稻草人</td>
+<td>第2回合，玩家受到封印命中降低5%</td>
+<td>【荷莲浪涌】羽翼的【狂怒】技能效果提升为:战斗第一回合开始前增加30点怒气固定值</td>
+</tr>
+<tr>
+<td>炸弹怪</td>
+<td>共鸣·炸弹怪</td>
+<td>第1回合，玩家受到治疗效果提升10%</td>
+<td>【罪恶与救赎】羽翼的【救赎】技能效果提升为:每回合结束有15%几率解除自身的封印状态</td>
+</tr>
+<tr>
+<td>粽子</td>
+<td>共鸣·粽子</td>
+<td>第2回合，玩家受到治疗效果提升10%</td>
+<td>【双子化蝶】羽翼的【蝶舞徐行】技能效果提升为:有15%概率将攻击的主目标速度降低10%，持续3回合</td>
+</tr>
+<tr>
+<td>糕糕</td>
+<td>共鸣·糕糕</td>
+<td>第1回合，玩家受到物理暴击概率降低5%</td>
+<td>【圣晶宝蝶】羽翼的【攻其颓弱】技能效果提升为:攻击目标若有负面状态，本次伤害结果增加15%。</td>
+</tr>
+<tr>
+<td>煎蛋鸡</td>
+<td>共鸣·煎蛋鸡</td>
+<td>第2回合，玩家受到物理暴击概率降低5%</td>
+<td>【机器侠】羽翼的【机械领主】技能效果提升为:受到物理攻击时，5%概率使伤害变为1点。</td>
+</tr>
+<tr>
+<td>包子脸星人</td>
+<td>共鸣·包子脸星人</td>
+<td>第1回合，玩家受到法术暴击概率降低5%</td>
+<td>【九天玄翼】羽翼的【绝地反击】技能效果提升为:被攻击后，如果血量低于40%会触发一个自身血量30%的护盾。(每场战斗只能触发一次）</td>
+</tr>
+<tr>
+<td>小海魂</td>
+<td>共鸣·小海魂</td>
+<td>第2回合，玩家受到法术暴击概率降低5%</td>
+<td>【守护天使】羽翼的【神灵守护】技能效果提升为:第一回合30%概率免疫首次伤害。</td>
+</tr>
+<tr>
+<td>灵音</td>
+<td>共鸣·灵音</td>
+<td>第1回合，宠物受到物理伤害减免10%.</td>
+<td>【愤怒的寄居蟹】羽翼的【愤怒屏障】技能效果提升为:受到法术攻击时，5%概率使伤害变为1点。</td>
+</tr>
+<tr>
+<td>叠叠猫</td>
+<td>共鸣·叠叠猫</td>
+<td>第2回合，宠物受到物理伤害减免10%.</td>
+<td>【凤舞九天】羽翼的【凤舞九天】技能效果提升为:回合末，15%概率增加150速度，持续3回合。</td>
+</tr>
+<tr>
+<td>梦猪</td>
+<td>共鸣·梦猪</td>
+<td>第1回合，宠物受到法术伤害减免10%</td>
+<td>【天使之心】羽翼的【天使之心】技能效果提升为:被复活时25%概率额外恢复20%自身气血上限。</td>
+</tr>
+<tr>
+<td>小浣熊</td>
+<td>共鸣·小浣熊</td>
+<td>第2回合，宠物受到法术伤害减免10%</td>
+<td>【穹云华图】羽翼的【单枪匹马】技能效果提升为:没有宠物出战时，受到的伤害降低25%。</td>
+</tr>
+<tr>
+<td>小团酱</td>
+<td>共鸣·小团酱</td>
+<td>第1回合，宠物物理伤害增加10%</td>
+<td>【夜行械鹰】羽翼的【荆棘魔甲】技能效果提升为:受到攻击时，8%概率混乱攻击者。</td>
+</tr>
+<tr>
+<td>天琊</td>
+<td>共鸣·天琊</td>
+<td>第2回合，宠物物理伤害增加10%</td>
+<td>【黑翼之眼】羽翼的【宠爱有加】技能效果提升为:首回合，宠物受到的伤害降低60%。</td>
+</tr>
+<tr>
+<td>小鬼魂</td>
+<td>共鸣·小鬼魂</td>
+<td>第2回合，宠物法术伤害增加10%</td>
+<td>【天使之翼】羽翼的【神之庇佑】技能效果提升为:首回合，反弹所受伤害的30%给攻击者。</td>
+</tr>
+<tr>
+<td>御魔镜</td>
+<td>共鸣·御魔镜</td>
+<td>第2回合，宠物受到物理暴击概率降低5%</td>
+<td>【绫罗幻蝶】羽翼的【两仪微尘】技能效果提升为:每回合末降低被暴击率3%，最多叠加10层，持续到战斗结束。</td>
+</tr>
+<tr>
+<td>南瓜头死神</td>
+<td>共鸣·南瓜头死神</td>
+<td>第1回合，宠物受到法术暴击概率降低5%</td>
+<td>【幸运777】羽翼的【逆势灵佑】技能效果提升为:回合内每受击4次，可以获得抵挡下一次攻击的状态，状态持续1回合，状态以及计次回合末清除。</td>
+</tr>
+<tr>
+<td>寒冰</td>
+<td>共鸣·寒冰</td>
+<td>第2回合，宠物受到法术暴击概率降低5%</td>
+<td>【丝缕翠蝶】羽翼的【蝶影迅刃】技能效果提升为:攻击时，根据自身速度高出受击目标的百分比，提升对目标的伤害，至多15%。(对每个受击目标独立计算。)</td>
+</tr>
+<tr>
+<td>哮天犬</td>
+<td>共鸣·哮天犬</td>
+<td>第1回合，宠物法术防御提升5%。</td>
+<td>【剑与荣耀】羽翼的【血之狂暴】技能效果提升为:若出战的宠物因死亡离场，自己会进入狂暴状态增加13%伤害、13%治疗量、7%封印命中概率，持续3回合。</td>
+</tr>
+<tr>
+<td>甜点萌蛇</td>
+<td>共鸣·甜点萌蛇</td>
+<td>第1回合，宠物法术攻击提升3%。</td>
+<td>【蓝叶盈露】羽翼的【先发制敌】技能效果提升为:攻击目标时，若目标本回合还未进行行动，则造成的伤害提升13%。</td>
+</tr>
+<tr>
+<td>糖霜小兜妹</td>
+<td>共鸣·糖霜小兜妹</td>
+<td>第2回合，宠物物理攻击提升3%。</td>
+<td>【金华织羽】羽翼的【织羽之光】技能效果提升为:第1至10回合为自身增加气血+400，速度+30。第11至20回合，为自身增加气血+600，速度+40。第21回合及以后，为自身增加气血+800，速度+50。该不可叠加，不可驱散。</td>
+</tr>
+<tr>
+<td>龙傲天</td>
+<td>共鸣·龙傲天</td>
+<td>第1回合，宠物物理攻击提升3%。</td>
+<td>【流光樱彩】羽翼的【龙鳞护体】技能效果提升为:受到攻击时，有7%概率令攻击者进入麻痹负面状态，持续2回合，麻痹状态下无法行动</td>
+</tr>
+<tr>
+<td>焱凰</td>
+<td>共鸣·焱凰</td>
+<td>第2回合，宠物法术攻击提升3%。</td>
+<td>【幽冥鬼蝶】羽翼的【幽冥神力】技能效果提升为:宠物死亡后，30%概率消耗人物10%气血上限的气血复活该宠物并回复30%气血，不受审判技能的影响，每场战斗只能触发一次。</td>
+</tr>
+<tr>
+<td>青牛</td>
+<td>共鸣·青牛</td>
+<td>第1回合，宠物物理防御提升5%。</td>
+<td>【星痕之翼】羽翼的【吞星吐月】技能效果提升为:引天地之精华灌注于身，进入战斗后，提升8%的最大气血</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+    </div>
+  </div>
+
+<div class="section" id="sec-dianhua">
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+      <span>点化介绍</span>
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+    </div>
+<div class="hs-collapsible">
+<div class="hs-collapsible-inner"></div>
     </div>
   </div>
   
@@ -832,11 +1118,7 @@
     </div>
   </div>
   
-<div class="footer">
-    
-<p>九小卿攻略站</p>
 
-</div>
 <script>
 (function(){
   document.querySelectorAll('.hs-toggle-header').forEach(function(header){
@@ -861,5 +1143,75 @@ document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复�
 document.addEventListener('contextmenu',function(e){e.preventDefault();});
 </script>
 
+<script>if(window.self!==window.top){document.documentElement.classList.add("embedded");var _s=document.createElement("style");_s.textContent=".back-btn{display:none!important}";document.head.appendChild(_s);}</script><script>
+/* 手风琴转标签栏：与门派页 sect-tab 同款视觉 */
+(function(){
+  var hs=[].slice.call(document.querySelectorAll('.hs-toggle-header'));
+  if(!hs.length) return;
+  var st=document.createElement('style');
+  st.textContent='.wtab-bar{display:flex;gap:8px;overflow-x:auto;padding:6px 2px 10px;scrollbar-width:none;-ms-overflow-style:none}.wtab-bar::-webkit-scrollbar{display:none}.wtab{flex:0 0 auto;display:inline-flex;align-items:center;background:#fff;border:1.5px solid rgba(22,19,15,.08);border-radius:999px;padding:8px 14px;font-size:.85rem;font-weight:800;color:#57534e;cursor:pointer;font-family:inherit;white-space:nowrap;transition:background .2s,color .2s,border-color .2s,box-shadow .2s}.wtab.active{background:#fff;border-color:#f59e0b;color:#c77b2e;box-shadow:0 0 0 2.5px rgba(245,158,11,.28),0 6px 14px rgba(245,158,11,.2)}@media(min-width:961px){.wtab{padding:9px 18px;font-size:.9rem}}';
+  document.head.appendChild(st);
+  var units=hs.map(function(h){
+    var nx=h.nextElementSibling;
+    var box=document.createElement('div');
+    h.parentNode.insertBefore(box,h);
+    box.appendChild(h);
+    if(nx) box.appendChild(nx);
+    h.style.display='none';
+    var c=box.querySelector('.hs-collapsible');
+    if(c) c.classList.add('open');
+    return box;
+  });
+  var bar=document.createElement('div'); bar.className='wtab-bar';
+  units.forEach(function(u,i){
+    var sp=u.querySelector('.hs-toggle-header span');
+    var b=document.createElement('button');
+    b.type='button'; b.className='wtab';
+    b.textContent=sp?sp.textContent.trim():('栏目'+(i+1));
+    b.addEventListener('click',function(){
+      units.forEach(function(x,j){ x.style.display=(j===i)?'':'none'; });
+      [].forEach.call(bar.children,function(x){ x.classList.remove('active'); });
+      b.classList.add('active');
+      /* 只滚标签栏自身，避免波及页面滚动 */
+      (function(){
+        var edge=8,r=b.getBoundingClientRect(),h=bar.getBoundingClientRect();
+        if(r.left>=h.left+edge && r.right<=h.right-edge) return;
+        var tabLeft=r.left-h.left+bar.scrollLeft;
+        bar.scrollTo({left:Math.max(0,tabLeft-(bar.clientWidth-b.offsetWidth)/2),behavior:'auto'});
+      })();
+    });
+    bar.appendChild(b);
+  });
+  /* 鼠标左键按住拖动横向滚动 */
+  bar.style.cursor='grab';
+  var dragging=false,startX=0,startL=0,moved=0;
+  bar.addEventListener('mousedown',function(e){
+    dragging=true;moved=0;startX=e.pageX;startL=bar.scrollLeft;
+    bar.style.cursor='grabbing';
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove',function(e){
+    if(!dragging) return;
+    var dx=e.pageX-startX;
+    moved=Math.max(moved,Math.abs(dx));
+    bar.scrollLeft=startL-dx;
+  });
+  window.addEventListener('mouseup',function(){
+    if(!dragging) return;
+    dragging=false;bar.style.cursor='grab';
+    /* click 事件在 mouseup 后同步触发，异步复位避免拦截后续点击 */
+    setTimeout(function(){moved=0},0);
+  });
+  /* 拖动超过 6px 时拦截 click，避免松手误切标签 */
+  bar.addEventListener('click',function(e){
+    if(moved>6){e.stopPropagation();e.preventDefault();}
+  },true);
+  var anchor=units[0].closest('.section')||units[0];
+  var holder=document.createElement('div');
+  anchor.parentNode.insertBefore(holder,anchor);
+  holder.appendChild(bar);
+  units.forEach(function(u,i){ holder.appendChild(u); if(i) u.style.display='none'; });
+  bar.firstChild.classList.add('active');
+})();
+</script><script src="wiki-detail.js"></script>
 </body>
-</html>

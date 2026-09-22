@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="zh-CN" data-page-node-id="qsD8cwvLG8TGOil2Nah6r8">
+<head data-page-node-id="eE9Fc4k8SHF5ydYb83NXdQ">
+<meta charset="UTF-8" data-page-node-id="3DANLLo4j4UTgiSOxdI2rW">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="vsaIDdyEPLLGe6naZ1kXT3">
 <title>宠物介绍 — 九小卿攻略站</title>
-<meta name="description" content="九小卿宠物系统攻略 - 返生、化生、觉醒、印记、内丹、护佑">
-<link rel="icon" type="image/jpeg" href="art/favicon.jpg">
+<meta name="description" content="九小卿宠物系统攻略 - 返生、化生、觉醒、印记、内丹、护佑" data-page-node-id="VYvuu3XbtPiD0Dezh4hpgE">
+<link rel="icon" type="image/jpeg" href="art/favicon.jpg" data-page-node-id="nwSHzvFV006rD9eYLzyCl9">
 <style>
   :root{
     --ink:#1a1a1a;
@@ -29,7 +29,7 @@
   a:hover{text-decoration:underline}
   img{max-width:100%;display:block}
 
-  .wrap{max-width:960px;margin:0 auto;padding:32px 24px 60px}
+  .wrap{max-width:960px;margin:0 auto;padding:76px 24px 12px}
 
   /* Header */
   .back-btn{
@@ -344,7 +344,7 @@
   }
 
   @media (max-width:640px){
-    .wrap{padding:20px 16px 40px}
+    .wrap{padding:60px 16px 12px}
     .page-header h1{font-size:1.6rem}
     .nav-tag{font-size:.75rem;padding:5px 8px}
     .img-row{flex-direction:column}
@@ -360,7 +360,7 @@
   }
 
   /* Encyclopedia layout */
-  .ency-layout{display:flex;gap:24px;margin-top:20px;min-height:500px}
+  .ency-layout{display:flex;gap:24px;margin-top:8px;min-height:500px}
   .ency-sidebar{flex-shrink:0;width:160px;display:flex;flex-direction:column;gap:6px}
   .ency-side-btn{
     display:flex;
@@ -423,23 +423,28 @@
   .pet-detail-overlay{
     display:none;
     position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
+    inset:0;
     background:rgba(0,0,0,.45);
-    z-index:1000;
+    z-index:10000;
     align-items:center;
     justify-content:center;
-    padding:20px
+    box-sizing:border-box;
+    overflow:hidden;
+    padding:max(12px,env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) max(12px,env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))
   }
   .pet-detail-overlay.show{display:flex}
   .pet-detail-card{
     background:#fff;
     border-radius:20px;
-    max-width:560px;
-    width:100%;
-    height:80vh;
+    width:min(560px,100%);
+    max-width:100%;
+    height:min(80vh,100%);
+    height:min(80dvh,100%);
+    max-height:100%;
+    min-height:0;
+    min-width:0;
+    overflow:hidden;
+    box-sizing:border-box;
     display:flex;
     flex-direction:column;
     position:relative;
@@ -458,6 +463,7 @@
     padding:28px 28px 16px;
     border-bottom:1px solid #f0ede8;
     flex-shrink:0;
+    min-width:0;
     background:#fff;
     border-radius:20px 20px 0 0
   }
@@ -530,7 +536,8 @@
     .pet-stats-table th,.pet-stats-table td{padding:4px 3px}
     .skill-item{flex-direction:column;gap:2px}
     .skill-label{min-width:auto}
-    .pet-detail-card{height:90vh;border-radius:12px}
+    .pet-detail-overlay{padding:8px;padding-top:max(8px,env(safe-area-inset-top,0px));padding-bottom:max(8px,env(safe-area-inset-bottom,0px))}
+    .pet-detail-card{height:min(100vh,100%);height:min(100dvh,100%);max-height:100%;border-radius:12px}
     .detail-header{padding:16px 16px 12px;border-radius:12px 12px 0 0}
     .detail-body{padding:10px 16px 16px}
     .detail-title{font-size:1.05rem}
@@ -547,1302 +554,1306 @@
   input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
 
 </style>
+<style id="wiki-nosb">html{scrollbar-width:none;-ms-overflow-style:none}html::-webkit-scrollbar,body::-webkit-scrollbar{width:0;height:0;display:none}</style><link rel="stylesheet" href="wiki-detail.css" data-page-node-id="3NzytxorvA23QFR8XbKNmP">
 </head>
-<body>
-<div class="site-watermark"></div>
+<body class="wiki-detail-page" data-page-node-id="OS1g9kbOmK5f5nKUsmRTCJ">
+<div class="site-watermark" data-page-node-id="BHhmj98WGZP9SE9RDdg7pQ"></div>
 
-<div class="wrap">
+<div class="wrap" data-page-node-id="S9NBBtaRn8pCAli69k0YvS">
 
-  <a href="index.html?skipIntro=1#card-pet" class="back-btn">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M19 12H5M12 19l-7-7 7-7"/>
+  <a href="index.html?skipIntro=1#card-pet" class="back-btn" data-page-node-id="DFkk7AwA5NpkCtlYNQbH5Y">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" data-page-node-id="6OFeAcDVnLs9svMxKas4Lx">
+      <path d="M19 12H5M12 19l-7-7 7-7" data-page-node-id="mMMxh8meeHEKowamcgetkN"/>
     </svg>
     返回首页
   </a>
-  <a href="conv_8.html" class="back-btn">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  <a href="conv_8.html" class="back-btn" data-page-node-id="igMVyjIshOHczi66aHQf0Q">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-page-node-id="AXmJn41RA18OlQykMDaofM"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" data-page-node-id="FsvUiEpwl5Kb7VcgiHsIOa"/></svg>
     智能客服
   </a>
 
-  <div class="page-title">
-    <h1>宠物介绍</h1>
+  <div class="page-title wiki-title-art" data-page-node-id="CWJvNI39wSKRKxdGd9FBR7">
+    <img src="art/pet_title.webp" alt="宠物介绍" data-page-node-id="yvxAvF5A7F66BZsADSTGuE">
+    <h1 data-page-node-id="KkF6HoCYqRSC7pV5QJ3ppv">宠物介绍</h1>
   </div>
 
-  <div class="notice-box">
-    <div class="notice-item">
-      <span class="pin">&#x1F4CC;</span>
-      <span>1.本次宠物部分制作了大量更新篇幅非常的长，少侠们可以根据下方提供的按钮可以快速地跳转到指定文章的位置！</span>
+  <div class="notice-box" data-page-node-id="oRAGbRsDwPzvnPLKgLCOFF">
+    <div class="notice-item" data-page-node-id="0O65dzhLRsSha8BlFNWfZS">
+      <span data-page-node-id="rMvQj3ZD3LEOdFrupyMk3f">1.本次宠物部分制作了大量更新篇幅非常的长，少侠们可以根据下方提供的按钮可以快速地跳转到指定文章的位置！</span>
     </div>
-    <div class="notice-item">
-      <span class="pin">&#x1F4CC;</span>
-      <span>2.移除了宠物"炼魂"这个功能，由星灵守护替代</span>
+    <div class="notice-item" data-page-node-id="n2nFhAxDLyNbLe7q3cE94c">
+      <span data-page-node-id="C53uHBROtFWZXQm6SuANZA">2.移除了宠物"炼魂"这个功能，由星灵守护替代</span>
     </div>
   </div>
 
-  <div class="tag-nav">
+  <div class="tag-nav" data-page-node-id="243ffLrneo0CPTyDMrcgls">
   </div>
 
-<div class="section" id="pet-encyclopedia">
-<h2 style="font-size:1.4rem;font-weight:700;margin-bottom:4px">宠物图鉴</h2>
-<div class="ency-layout">
-<div class="ency-sidebar">
-<button class="ency-side-btn active" data-cat="shenshou"><span>神兽</span><span class="side-count">70</span></button>
-<button class="ency-side-btn" data-cat="moshou"><span>魔兽</span><span class="side-count">9</span></button>
-<button class="ency-side-btn" data-cat="bianyi"><span>变异</span><span class="side-count">3</span></button>
-</div>
-<div class="ency-main">
-<div class="ency-search-bar"><input type="text" id="pet-search" placeholder="搜索宠物名称..."></div>
-<div class="pet-grid" id="pet-grid">
-<div class="pet-grid-item" data-cat="shenshou" data-name="小灰" data-idx="0">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_xiaohui.png" alt="宠物图标"></div>
-<span class="pet-grid-name">小灰</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="黄金兜兜" data-idx="1">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_huangjindoudou.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">黄金兜兜</span>
-<span class="grid-alloc">全法</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="傀儡师" data-idx="2">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_KuiLeiShi.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">傀儡师</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="日精灵" data-idx="3">
-<div class="pet-avatar"><img src="icons/cwtj/rjl.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">日精灵</span>
-<span class="grid-alloc">全法</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="煎蛋鸟" data-idx="4">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_jiandanniao.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">煎蛋鸟</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="小兜妹" data-idx="5">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_xiaodoumei.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">小兜妹</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="彩蝶依依" data-idx="6">
-<div class="pet-avatar"><img src="icons/cwtj/cdyy.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">彩蝶依依</span>
-<span class="grid-alloc">全速</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="包子脸星人" data-idx="7">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_baozi.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">包子脸星人</span>
-<span class="grid-alloc">全速</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="齐天大圣" data-idx="8">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_SunWuKong.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">齐天大圣</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="北斗神驴" data-idx="9">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_XLv.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">北斗神驴</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="森林之子" data-idx="10">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_XLu.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">森林之子</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="羽化仙" data-idx="11">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_BY.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">羽化仙</span>
-<span class="grid-alloc">全法</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="皮皮龙" data-idx="12">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_ll.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">皮皮龙</span>
-<span class="grid-alloc">全法</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="大天狗" data-idx="13">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_tg.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">大天狗</span>
-<span class="grid-alloc">全力/全速</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="小浣熊" data-idx="14">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_lm.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">小浣熊</span>
-<span class="grid-alloc">全体</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="武士汪" data-idx="15">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_025.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">武士汪</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="神风兔" data-idx="16">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_SS.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">神风兔</span>
-<span class="grid-alloc">全速</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="怒目金刚" data-idx="17">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_037.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">怒目金刚</span>
-<span class="grid-alloc">全体</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="喵喵酱" data-idx="18">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_066.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">喵喵酱</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="提线木偶" data-idx="19">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_024.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">提线木偶</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="梦猪" data-idx="20">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_MengZhu.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">梦猪</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="九儿" data-idx="21">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_026.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">九儿</span>
-<span class="grid-alloc">全法</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="小厨娘" data-idx="22">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_082.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">小厨娘</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="叠叠猫" data-idx="23">
-<div class="pet-avatar"><img src="icons/cwtj/ddm.webp" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">叠叠猫</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="白泽" data-idx="24">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_131.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">白泽</span>
-<span class="grid-alloc">全法/全速</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="幽冥女帝" data-idx="25">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_080.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">幽冥女帝</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="熊憨憨" data-idx="26">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_146.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">熊憨憨</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="甜心小护士" data-idx="27">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_120.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">甜心小护士</span>
-<span class="grid-alloc">全速</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="锦毛鼠" data-idx="28">
-<div class="pet-avatar"><img src="icons/cwtj/jms.webp" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">锦毛鼠</span>
-<span class="grid-alloc">全法</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="龙后" data-idx="29">
-<div class="pet-avatar"><img src="icons/cwtj/lh.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">龙后</span>
-<span class="grid-alloc">随心配</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="妃龙姬" data-idx="30">
-<div class="pet-avatar"><img src="icons/cwtj/flj.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">妃龙姬</span>
-<span class="grid-alloc">全体</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="獬豸" data-idx="31">
-<div class="pet-avatar"><img src="icons/cwtj/item_03135.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">獬豸</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="牛鼎鼎" data-idx="32">
-<div class="pet-avatar"><img src="icons/cwtj/item_03324.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">牛鼎鼎</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="兔兔酱" data-idx="33">
-<div class="pet-avatar"><img src="icons/cwtj/item_03677.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">兔兔酱</span>
-<span class="grid-alloc">全法</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="钞能熊猫" data-idx="34">
-<div class="pet-avatar"><img src="icons/cwtj/item_03704.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">钞能熊猫</span>
-<span class="grid-alloc">全法</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="机甲天使" data-idx="35">
-<div class="pet-avatar"><img src="icons/cwtj/item_03714.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">机甲天使</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="虎校尉" data-idx="36">
-<div class="pet-avatar"><img src="icons/cwtj/item_03721.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">虎校尉</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="幽冥狼" data-idx="37">
-<div class="pet-avatar"><img src="icons/cwtj/item_03828.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">幽冥狼</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="水麒麟" data-idx="38">
-<div class="pet-avatar"><img src="icons/cwtj/sql.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">水麒麟</span>
-<span class="grid-alloc">全法</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="赵盼儿" data-idx="39">
-<div class="pet-avatar"><img src="icons/cwtj/item_03925.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">赵盼儿</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="鲁鲁" data-idx="40">
-<div class="pet-avatar"><img src="icons/cwtj/ll.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">鲁鲁</span>
-<span class="grid-alloc">全法</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="星夜小兜妹" data-idx="41">
-<div class="pet-avatar"><img src="icons/cwtj/xyxdm.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">星夜小兜妹</span>
-<span class="grid-alloc">全法</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="兔小兔" data-idx="42">
-<div class="pet-avatar"><img src="icons/cwtj/item_04241.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">兔小兔</span>
-<span class="grid-alloc">全法</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="糕糕" data-idx="43">
-<div class="pet-avatar"><img src="icons/cwtj/item_04229.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">糕糕</span>
-<span class="grid-alloc">全法</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="皮皮" data-idx="44">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_PiPi.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">皮皮</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="超能兔小兔" data-idx="45">
-<div class="pet-avatar"><img src="icons/cwtj/item_04408.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">超能兔小兔</span>
-<span class="grid-alloc">全法</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="时影" data-idx="46">
-<div class="pet-avatar"><img src="icons/cwtj/item_04158.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">时影</span>
-<span class="grid-alloc">全速</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="赛博小灰" data-idx="47">
-<div class="pet-avatar"><img src="icons/cwtj/item_04779.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">赛博小灰</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="龙啸天" data-idx="48">
-<div class="pet-avatar"><img src="icons/cwtj/item_04999.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">龙啸天</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="马卡龙" data-idx="49">
-<div class="pet-avatar"><img src="icons/cwtj/item_05000.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">马卡龙</span>
-<span class="grid-alloc">全体</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="焱凰" data-idx="50">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_LH_YH.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">焱凰</span>
-<span class="grid-alloc">全速</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="青牛" data-idx="51">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_LH_QN.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">青牛</span>
-<span class="grid-alloc">全速</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="糖霜小兜妹" data-idx="52">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_LH_LH_TSXDM.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">糖霜小兜妹</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="龙三太子" data-idx="53">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_LH_LSTZ.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">龙三太子</span>
-<span class="grid-alloc">全法</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="甜点萌蛇" data-idx="54">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_LH_TDMS.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">甜点萌蛇</span>
-<span class="grid-alloc">全法</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="九天灵蛇" data-idx="55">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_LH_JTLS.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">九天灵蛇</span>
-<span class="grid-alloc">全法</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="白素贞" data-idx="56">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_LH_BSZ.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">白素贞</span>
-<span class="grid-alloc">全法</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="美猴王" data-idx="57">
-<div class="pet-avatar"><img src="icons/cwtj/item_05313.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">美猴王</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="水晶兜兜" data-idx="58">
-<div class="pet-avatar"><img src="icons/cwtj/sjdd.webp" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">水晶兜兜</span>
-<span class="grid-alloc">全法</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="福运小马" data-idx="59">
-<div class="pet-avatar"><img src="icons/cwtj/item_06671.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">福运小马</span>
-<span class="grid-alloc">全法</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="桃驹儿" data-idx="60">
-<div class="pet-avatar"><img src="icons/cwtj/item_06672.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">桃驹儿</span>
-<span class="grid-alloc">全体</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="洞天仙子" data-idx="61">
-<div class="pet-avatar"><img src="icons/cwtj/item_05125.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">洞天仙子</span>
-<span class="grid-alloc">全法</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="阎罗王" data-idx="62">
-<div class="pet-avatar"><img src="icons/cwtj/item_07030.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">阎罗王</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="寒冰" data-idx="63">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_047.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">寒冰</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="墨雪" data-idx="64">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_046.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">墨雪</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="吴钩" data-idx="65">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_042.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">吴钩</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="天琊" data-idx="66">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_041.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">天琊</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="赤炎" data-idx="67">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_045.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">赤炎</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="斩龙" data-idx="68">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_043.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">斩龙</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="shenshou" data-name="轩辕" data-idx="69">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_044.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">轩辕</span>
-<span class="grid-alloc">全力</span>
-</div>
-<div class="pet-grid-item" data-cat="moshou" data-name="青龙" data-idx="70">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_shenshouqinglong.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">青龙</span>
+<div class="section" id="pet-encyclopedia" data-wiki-label="宠物图鉴" data-page-node-id="SVbtbDSjN51GJgmOwg3TLk">
+<div class="ency-layout" data-page-node-id="JJO7GttvvmvcG4DA7LjC90">
+<div class="ency-sidebar" data-page-node-id="NHM5MeHiDKz7RapJJpHRca">
+<button class="ency-side-btn active" data-cat="shenshou" data-page-node-id="WPUdU5zcK41iPgmX8g5u06"><span data-page-node-id="ME1GSLtkA9IBWrf25Ytx4D">神兽</span><span class="side-count" data-page-node-id="mJtENEL9xDh5pQ6numEycQ">70</span></button>
+<button class="ency-side-btn" data-cat="moshou" data-page-node-id="f1ycRZo4l3wDxUhGiy1Z4p"><span data-page-node-id="bIR2fz9hqu64DXzfqSkhhm">魔兽</span><span class="side-count" data-page-node-id="DRxxhIisqLSSWY7aBF7MGE">9</span></button>
+<button class="ency-side-btn" data-cat="bianyi" data-page-node-id="FFtgZmLFKr03SCvhDOmO86"><span data-page-node-id="fwvFYJyrTkLxIn9cUnHktc">变异</span><span class="side-count" data-page-node-id="UO2bw8InKz53Z6EbOOwkle">3</span></button>
+</div>
+<div class="ency-main" data-page-node-id="y9H4dketFMJRcjnsfOro8v">
+<div class="ency-search-bar" data-page-node-id="pBxkQjjJIWeiDXD0vVf0tU"><input type="text" id="pet-search" placeholder="搜索宠物名称..." data-page-node-id="5Nr9aPC334fdd1GomCHDHQ"></div>
+<div class="pet-grid" id="pet-grid" data-page-node-id="htQ81wVzSKXGLdOmKHC05D">
+<div class="pet-grid-item" data-cat="shenshou" data-name="小灰" data-idx="0" data-page-node-id="H0zXnnjg5Ic8lSPDCEc4Yf">
+<div class="pet-avatar" data-page-node-id="Z0qdBjfi7tZ0dmMEOCGNOv"><img src="icons/cwtj/smallhead_xiaohui.png" alt="宠物图标" data-page-node-id="0mzUuIeHaYzFvrO5fLuxx1"></div>
+<span class="pet-grid-name" data-page-node-id="VY2lg9T9TTJuxVynahYaeD">小灰</span>
+<span class="grid-alloc" data-page-node-id="RSlDSDm1JSWwQ3w8edFQaG">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="黄金兜兜" data-idx="1" data-page-node-id="XXloRAjMMlFogNY1AVocpf">
+<div class="pet-avatar" data-page-node-id="HkVQJ4OCLDP6IKa8w5zNIM"><img src="icons/cwtj/smallhead_huangjindoudou.png" alt="宠物图标" loading="lazy" data-page-node-id="AiyNUcKsbcEAaetxUYGFfB"></div>
+<span class="pet-grid-name" data-page-node-id="9ToJNu8tvFIBn0rzx4uVwu">黄金兜兜</span>
+<span class="grid-alloc" data-page-node-id="uDlndAnuZk52Nv25GAuWWn">全法</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="傀儡师" data-idx="2" data-page-node-id="Wh3AAcJMT2UGqyFCD81NGY">
+<div class="pet-avatar" data-page-node-id="Lwuc5zFwdDU7MKXVWOOX4Z"><img src="icons/cwtj/smallhead_KuiLeiShi.png" alt="宠物图标" loading="lazy" data-page-node-id="JF8XHatg4ACO5ADRGK9Fj3"></div>
+<span class="pet-grid-name" data-page-node-id="8eaSbPgMFaCJNQplCbMl8t">傀儡师</span>
+<span class="grid-alloc" data-page-node-id="OzMCle65UoxHUcWxpsB4ma">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="日精灵" data-idx="3" data-page-node-id="NwDTXBZIQF7PG8LXtYZMPM">
+<div class="pet-avatar" data-page-node-id="p0WT2z7nj3Fa7zHekdQfA4"><img src="icons/cwtj/rjl.png" alt="宠物图标" loading="lazy" data-page-node-id="HafGRr3G6mAjjBP7E2rumv"></div>
+<span class="pet-grid-name" data-page-node-id="jJQCYxXnKl6oGFP7qeBwMJ">日精灵</span>
+<span class="grid-alloc" data-page-node-id="AIHASlREFjIsSseBK1Q1BT">全法</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="煎蛋鸟" data-idx="4" data-page-node-id="u7D98FVgtxPzEGYyUqmF4G">
+<div class="pet-avatar" data-page-node-id="Y0t2zecnmHk7ALA6VbxeQA"><img src="icons/cwtj/smallhead_jiandanniao.png" alt="宠物图标" loading="lazy" data-page-node-id="DRDkXJGC2hRNm1p7ZdtAIE"></div>
+<span class="pet-grid-name" data-page-node-id="AbTJGKdXXEE0ctjcBmFtYj">煎蛋鸟</span>
+<span class="grid-alloc" data-page-node-id="4xPxB5SMg7POKTIeS0HFOQ">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="小兜妹" data-idx="5" data-page-node-id="6bOAR1KYV7ZrbX5T7iJfGh">
+<div class="pet-avatar" data-page-node-id="Mug5XVqBTOlSLGcxmylr3l"><img src="icons/cwtj/smallhead_xiaodoumei.png" alt="宠物图标" loading="lazy" data-page-node-id="QGnL5MCB3rBKpSbfop0spJ"></div>
+<span class="pet-grid-name" data-page-node-id="jiU7cXPPzrtkujB56aUmUU">小兜妹</span>
+<span class="grid-alloc" data-page-node-id="IGNEAJgKFyM7oiVcGaThzM">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="彩蝶依依" data-idx="6" data-page-node-id="f2SFrpmTRXuBX5k3rAFDml">
+<div class="pet-avatar" data-page-node-id="OZgI31l8pAe1DGSKoY3KP8"><img src="icons/cwtj/cdyy.png" alt="宠物图标" loading="lazy" data-page-node-id="fquDBPUQWsyyk8p6DYiuq1"></div>
+<span class="pet-grid-name" data-page-node-id="N2F0lNTspq19Yuui0NckFw">彩蝶依依</span>
+<span class="grid-alloc" data-page-node-id="Q01e7cc8JmzeloBGqTCWv1">全速</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="包子脸星人" data-idx="7" data-page-node-id="KuW412pAIploBSNQOegfUv">
+<div class="pet-avatar" data-page-node-id="IZvi2AiNZJQi360dW79ylT"><img src="icons/cwtj/smallhead_baozi.png" alt="宠物图标" loading="lazy" data-page-node-id="0mK7OpinYM0dywBAJUeJbx"></div>
+<span class="pet-grid-name" data-page-node-id="UvDG4JrgE0AWVg0unNdkAc">包子脸星人</span>
+<span class="grid-alloc" data-page-node-id="1FrTBNcsu6iKVz10Kldd6M">全速</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="齐天大圣" data-idx="8" data-page-node-id="qVrs3l3hw0CbN9cA7CGaCT">
+<div class="pet-avatar" data-page-node-id="YPs7ry2TOzecWREpwHMY0C"><img src="icons/cwtj/smallhead_SunWuKong.png" alt="宠物图标" loading="lazy" data-page-node-id="c0voeb5q5LlBwqb9znvev9"></div>
+<span class="pet-grid-name" data-page-node-id="yMCWdXPG0Own8qgaPHQDgu">齐天大圣</span>
+<span class="grid-alloc" data-page-node-id="V21b6QQD8doC7OGPhfcud5">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="北斗神驴" data-idx="9" data-page-node-id="iEfYSl2eo83098oRGsxlE9">
+<div class="pet-avatar" data-page-node-id="CGguD7uaaHyOhza4XkaLNi"><img src="icons/cwtj/smallhead_XLv.png" alt="宠物图标" loading="lazy" data-page-node-id="BF7kxPIdTpkYkFESbCfEtF"></div>
+<span class="pet-grid-name" data-page-node-id="BHdyAbiWCPNHkMulvN4IiF">北斗神驴</span>
+<span class="grid-alloc" data-page-node-id="5VXUnfR0HmpNUTkCxatoDK">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="森林之子" data-idx="10" data-page-node-id="0h7HxtsWEspekuB3CaMrsr">
+<div class="pet-avatar" data-page-node-id="eEF7wfp35lCx8EIiHNqi5K"><img src="icons/cwtj/smallhead_XLu.png" alt="宠物图标" loading="lazy" data-page-node-id="P3pJLyB3zJcDydlb9D7TfF"></div>
+<span class="pet-grid-name" data-page-node-id="RV97j4CWCRQaR7yo8U98Ya">森林之子</span>
+<span class="grid-alloc" data-page-node-id="qaGazzvsYDXW28zNTvrM0Q">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="羽化仙" data-idx="11" data-page-node-id="Jni50TJzMHAGDoP05vBK2z">
+<div class="pet-avatar" data-page-node-id="RPfHazh7Ar8w7akSzoyJBH"><img src="icons/cwtj/smallhead_BY.png" alt="宠物图标" loading="lazy" data-page-node-id="dZdir7fDqe5ST9Dzr4eG8f"></div>
+<span class="pet-grid-name" data-page-node-id="9KtKWPBpt1mC5zf8rGhsLj">羽化仙</span>
+<span class="grid-alloc" data-page-node-id="qwk9M9k9AGSbWdr2Axtlx7">全法</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="皮皮龙" data-idx="12" data-page-node-id="sGU2Hi39vMhgIs3nojIRcc">
+<div class="pet-avatar" data-page-node-id="IbAHEyK3pSZ7xkwt2JqRbj"><img src="icons/cwtj/smallhead_ll.png" alt="宠物图标" loading="lazy" data-page-node-id="8KxDkAJpM9GfsuoJBdTkS5"></div>
+<span class="pet-grid-name" data-page-node-id="tzVmWF4ZgsN07UEmBvVka8">皮皮龙</span>
+<span class="grid-alloc" data-page-node-id="SJaK9CEEH2zAQR5f73zu2i">全法</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="大天狗" data-idx="13" data-page-node-id="y5m5WDXlDBGF3G0OkmiNsf">
+<div class="pet-avatar" data-page-node-id="HHmbwVixxvU22LuDXPECFs"><img src="icons/cwtj/smallhead_tg.png" alt="宠物图标" loading="lazy" data-page-node-id="auyQjqAtHVEeh3G9yM6zvm"></div>
+<span class="pet-grid-name" data-page-node-id="n95B4QUM6v3vvqaudD7sMF">大天狗</span>
+<span class="grid-alloc" data-page-node-id="TLA275Yycn4HdCqSEdMYcT">全力/全速</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="小浣熊" data-idx="14" data-page-node-id="FLAYvLe9BKBzEUcPHm7FSe">
+<div class="pet-avatar" data-page-node-id="MC7T8n0YlSRRiLSWA9aMAC"><img src="icons/cwtj/smallhead_lm.png" alt="宠物图标" loading="lazy" data-page-node-id="rH1N1HgBjEHUsFZhgAfxVq"></div>
+<span class="pet-grid-name" data-page-node-id="HLN6uuPO6hyX08aFSldFnH">小浣熊</span>
+<span class="grid-alloc" data-page-node-id="PtkL4AcuT9Y12CQDD0PV64">全体</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="武士汪" data-idx="15" data-page-node-id="R2MzumsGM0vKjF59CFRfjj">
+<div class="pet-avatar" data-page-node-id="yrYUzjHM4lTcmp3crXE0Ms"><img src="icons/cwtj/smallhead_025.png" alt="宠物图标" loading="lazy" data-page-node-id="FHnJF3CNDrKnNoPOfwX2kb"></div>
+<span class="pet-grid-name" data-page-node-id="3SSSzdcXTVIvgAEwG5CPEp">武士汪</span>
+<span class="grid-alloc" data-page-node-id="RkaEp8oHS0lEJ9M3mfmKU8">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="神风兔" data-idx="16" data-page-node-id="T7el7ZH2t8SV0tkvr7MMCa">
+<div class="pet-avatar" data-page-node-id="MbH5rXAUsGWQqAwqcbh8Hp"><img src="icons/cwtj/smallhead_SS.png" alt="宠物图标" loading="lazy" data-page-node-id="1lM4K8zEv8j9OyFgcjkm6E"></div>
+<span class="pet-grid-name" data-page-node-id="Kgw2mHGtuBlVbfc7qwEGEQ">神风兔</span>
+<span class="grid-alloc" data-page-node-id="d4P6WsXqBiQVSLprExZbxq">全速</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="怒目金刚" data-idx="17" data-page-node-id="M3GFwU6thjNAMvVUAKwUpW">
+<div class="pet-avatar" data-page-node-id="LwoGa2QIuossJShc7vznS1"><img src="icons/cwtj/smallhead_037.png" alt="宠物图标" loading="lazy" data-page-node-id="B6i8m2i6ecZJySZsWsdzDk"></div>
+<span class="pet-grid-name" data-page-node-id="s1K96DCOyR4R9IFLVfC4YX">怒目金刚</span>
+<span class="grid-alloc" data-page-node-id="tsKC2lZlBrSpBGMJLkyVvH">全体</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="喵喵酱" data-idx="18" data-page-node-id="eKgZ4bA4F54UZDjy7sgZyc">
+<div class="pet-avatar" data-page-node-id="wxyTouSknbrAnGXsylddKj"><img src="icons/cwtj/smallhead_066.png" alt="宠物图标" loading="lazy" data-page-node-id="REXDaqbjJiAKaADncHpmSb"></div>
+<span class="pet-grid-name" data-page-node-id="lLH4CyjxTNFPEH2S9kBkSs">喵喵酱</span>
+<span class="grid-alloc" data-page-node-id="OumCWkCvWyFNiUGhBEBQxP">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="提线木偶" data-idx="19" data-page-node-id="b13rOH9UXEiCyphhIQ2mtE">
+<div class="pet-avatar" data-page-node-id="vLmfcWARwt73KwKsD1nACe"><img src="icons/cwtj/smallhead_024.png" alt="宠物图标" loading="lazy" data-page-node-id="X69MVx6cGMpxjsBgCfGCmr"></div>
+<span class="pet-grid-name" data-page-node-id="5R3fLVi41t0Bm9PCgaDmCZ">提线木偶</span>
+<span class="grid-alloc" data-page-node-id="hbfO97Ndy26UzDYLg9KnDv">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="梦猪" data-idx="20" data-page-node-id="WZZVWS0dDP3quvivxtlNx0">
+<div class="pet-avatar" data-page-node-id="ESfOMFqo5Rr9g0oEIoO8Tm"><img src="icons/cwtj/smallhead_MengZhu.png" alt="宠物图标" loading="lazy" data-page-node-id="OScvc8gkIFX8THd2NSMbOA"></div>
+<span class="pet-grid-name" data-page-node-id="x35hiCzDhxzazOgWMdwF6F">梦猪</span>
+<span class="grid-alloc" data-page-node-id="PDaHJoyZTXNkJGQaZzYH7b">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="九儿" data-idx="21" data-page-node-id="AiTWCjDrjsA0E3cnTguB0n">
+<div class="pet-avatar" data-page-node-id="Q9Y0chDP25cmQQFcE4tZ5q"><img src="icons/cwtj/smallhead_026.png" alt="宠物图标" loading="lazy" data-page-node-id="R3UcT8tuYJ0wuhpkqLNBGE"></div>
+<span class="pet-grid-name" data-page-node-id="8TjMaoyK1W0rCo1meygIuD">九儿</span>
+<span class="grid-alloc" data-page-node-id="zDJZoHY8jmyuG2ivMOo5nH">全法</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="小厨娘" data-idx="22" data-page-node-id="qKwDhkOOmFPMHgajM39jZg">
+<div class="pet-avatar" data-page-node-id="ANrc57rlm5vlV6zYnfaI7a"><img src="icons/cwtj/smallhead_082.png" alt="宠物图标" loading="lazy" data-page-node-id="CeuWaeZZXYAC3BJy1ZMAAB"></div>
+<span class="pet-grid-name" data-page-node-id="zOqZ8GmkcTvIR2uChzUw8Q">小厨娘</span>
+<span class="grid-alloc" data-page-node-id="kC9MnG9yv3V3IxTJu0s90o">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="叠叠猫" data-idx="23" data-page-node-id="Qpi42xD4G22bmbOpCGDgk0">
+<div class="pet-avatar" data-page-node-id="lBX8X2PC3VJDzEtAH8wGq8"><img src="icons/cwtj/ddm.webp" alt="宠物图标" loading="lazy" data-page-node-id="ovjher13FV0BlStumD0khE"></div>
+<span class="pet-grid-name" data-page-node-id="C954Tar2WFV5Z6MzBab5Dg">叠叠猫</span>
+<span class="grid-alloc" data-page-node-id="JSI1eWeS7kbamLBlUpWlOO">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="白泽" data-idx="24" data-page-node-id="YPQ5HXiYf8zEFGwqEYVMn1">
+<div class="pet-avatar" data-page-node-id="pkMC7G1Rz7tYcQL4XZbOuZ"><img src="icons/cwtj/smallhead_131.png" alt="宠物图标" loading="lazy" data-page-node-id="3QvPceERMeQ5bBftynEasW"></div>
+<span class="pet-grid-name" data-page-node-id="DxRJEUjtCSvTxw1SUXWI1T">白泽</span>
+<span class="grid-alloc" data-page-node-id="lepZClcmspWnxjStNFCiCO">全法/全速</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="幽冥女帝" data-idx="25" data-page-node-id="Kw7MF6OgrDJzAgA7deZFLP">
+<div class="pet-avatar" data-page-node-id="AFFxIX5t6X71XBF1a8Ixq5"><img src="icons/cwtj/smallhead_080.png" alt="宠物图标" loading="lazy" data-page-node-id="bnPhKthc7wVfFTax7TOAru"></div>
+<span class="pet-grid-name" data-page-node-id="qT0BRQWHmPt7ipVy60XuX4">幽冥女帝</span>
+<span class="grid-alloc" data-page-node-id="ePfvgvj8NgnEnl9c0OcmJy">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="熊憨憨" data-idx="26" data-page-node-id="oG2Km8TJKKADj6EiPIiOn0">
+<div class="pet-avatar" data-page-node-id="eQtdVXKDbKPFqc1yu208OL"><img src="icons/cwtj/smallhead_146.png" alt="宠物图标" loading="lazy" data-page-node-id="xEo6et24FmTv4g7vUO6x5h"></div>
+<span class="pet-grid-name" data-page-node-id="J4127eCDIsubyaOHVhvQrR">熊憨憨</span>
+<span class="grid-alloc" data-page-node-id="lKjJLv0GdWon3t6THUX9yN">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="甜心小护士" data-idx="27" data-page-node-id="6Dg18qnL8YV12yzsKKUmlR">
+<div class="pet-avatar" data-page-node-id="63dQEK8E8M4NVhNZfkawDB"><img src="icons/cwtj/smallhead_120.png" alt="宠物图标" loading="lazy" data-page-node-id="DAmIaBUKhP3GGcZTYudMgL"></div>
+<span class="pet-grid-name" data-page-node-id="dvqZWFJCmaM2ZL88oyNl5L">甜心小护士</span>
+<span class="grid-alloc" data-page-node-id="k374YOsoKCDx5DKakbPCgs">全速</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="锦毛鼠" data-idx="28" data-page-node-id="yBIv7qVhZwKnCfAGMWnf4Y">
+<div class="pet-avatar" data-page-node-id="yl0A4Pe8zHybcfK681JMhW"><img src="icons/cwtj/jms.webp" alt="宠物图标" loading="lazy" data-page-node-id="KZDhA4hIlBE3MtLGweV2ic"></div>
+<span class="pet-grid-name" data-page-node-id="Bfm5XDJ3cHPDFNhB76RgLm">锦毛鼠</span>
+<span class="grid-alloc" data-page-node-id="yWiZ3BYIvGFixK3ATBbPUA">全法</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="龙后" data-idx="29" data-page-node-id="qdEeyudEHEpBsXCoNFlExX">
+<div class="pet-avatar" data-page-node-id="LWm90iaCKLnaRWsMRzQCpp"><img src="icons/cwtj/lh.png" alt="宠物图标" loading="lazy" data-page-node-id="By1fr56B6cUualu81QCTb3"></div>
+<span class="pet-grid-name" data-page-node-id="HLi9CVfRg38Ol2KudrvWm5">龙后</span>
+<span class="grid-alloc" data-page-node-id="3TycZZBmGgEFY0YLE73Qim">随心配</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="妃龙姬" data-idx="30" data-page-node-id="yEFbJnZkBWtPFm7DCUpWVW">
+<div class="pet-avatar" data-page-node-id="DT5GpzGU2EqIFdriBcsuxY"><img src="icons/cwtj/flj.png" alt="宠物图标" loading="lazy" data-page-node-id="VLOwBajxxoxFiFSRxhRyH6"></div>
+<span class="pet-grid-name" data-page-node-id="oMfb82BpzCpIMQvQfSa0pA">妃龙姬</span>
+<span class="grid-alloc" data-page-node-id="kUERUnfmFLQepoPHjAbKEg">全体</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="獬豸" data-idx="31" data-page-node-id="EWyR5dOZhjDYl0cf6MOPpm">
+<div class="pet-avatar" data-page-node-id="SWOX5xMHWDUzksTiAUdEi0"><img src="icons/cwtj/item_03135.png" alt="宠物图标" loading="lazy" data-page-node-id="2cwJ5FZqesMugWr5POxR6z"></div>
+<span class="pet-grid-name" data-page-node-id="wJadYAUGcn2WfT0CCFVEDz">獬豸</span>
+<span class="grid-alloc" data-page-node-id="BsSImQ4JUr1HK1ZJfAFD6o">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="牛鼎鼎" data-idx="32" data-page-node-id="EhFKvqSCpDPPp6q7PSscXI">
+<div class="pet-avatar" data-page-node-id="gIaJRfIYM5zNLXQwy8Rmw5"><img src="icons/cwtj/item_03324.png" alt="宠物图标" loading="lazy" data-page-node-id="4YXrC0WwG6fIbRZhdPvsgn"></div>
+<span class="pet-grid-name" data-page-node-id="6kcoHvljDdSbq9kNSZsdhs">牛鼎鼎</span>
+<span class="grid-alloc" data-page-node-id="El58lvhH23dMw271fmGgm6">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="兔兔酱" data-idx="33" data-page-node-id="WIpqcQWdzpMYkmj8aBNKbi">
+<div class="pet-avatar" data-page-node-id="O2mcyrfwBnINbt49xdff8V"><img src="icons/cwtj/item_03677.png" alt="宠物图标" loading="lazy" data-page-node-id="ecLhIkCsUnF0yoJRb206AU"></div>
+<span class="pet-grid-name" data-page-node-id="IiNg8A1Sa7yuUv968BXVs8">兔兔酱</span>
+<span class="grid-alloc" data-page-node-id="trXk25HK2mXNAKTiDHvSjU">全法</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="钞能熊猫" data-idx="34" data-page-node-id="FJpXonLinZ9bArSdkRZF6b">
+<div class="pet-avatar" data-page-node-id="xhQJopXVjkEU68X05c7qvG"><img src="icons/cwtj/item_03704.png" alt="宠物图标" loading="lazy" data-page-node-id="ThSXN3I2ifb2OGOWNtvAT9"></div>
+<span class="pet-grid-name" data-page-node-id="6POk4OQXNmDEkzG6BPWkDa">钞能熊猫</span>
+<span class="grid-alloc" data-page-node-id="txUke3QthTV3No0BUO45bu">全法</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="机甲天使" data-idx="35" data-page-node-id="988cEsBq0LZMss9gNE8t8f">
+<div class="pet-avatar" data-page-node-id="ihBsTuAc96cv5HJxEgfcFl"><img src="icons/cwtj/item_03714.png" alt="宠物图标" loading="lazy" data-page-node-id="eduNztIFp0NAaverlhorjD"></div>
+<span class="pet-grid-name" data-page-node-id="flqOtg6VMEp7fJ2A7fz9TZ">机甲天使</span>
+<span class="grid-alloc" data-page-node-id="Ks8X2JVBTAIDR2Y0qxZtyE">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="虎校尉" data-idx="36" data-page-node-id="kudaEgOFGMB6IEvyuJ6yKE">
+<div class="pet-avatar" data-page-node-id="0jBvYfjjEiGkhWKFPwfWyU"><img src="icons/cwtj/item_03721.png" alt="宠物图标" loading="lazy" data-page-node-id="9SBRRJHF3wkwK8gLFsv3aa"></div>
+<span class="pet-grid-name" data-page-node-id="U3nW2g8hJ2O4g5vFoSgtMF">虎校尉</span>
+<span class="grid-alloc" data-page-node-id="vSTChMC5hkW7TI9EFLUtwW">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="幽冥狼" data-idx="37" data-page-node-id="ppL1OxJLfGo7Lcwr7Su7Kw">
+<div class="pet-avatar" data-page-node-id="KLNDoQoYM54m6mOmxwtBUY"><img src="icons/cwtj/item_03828.png" alt="宠物图标" loading="lazy" data-page-node-id="I1BLwXpfLcdiSUkXod0pdg"></div>
+<span class="pet-grid-name" data-page-node-id="VAgh20JuAJk6utH1iVC613">幽冥狼</span>
+<span class="grid-alloc" data-page-node-id="EW9Me0FQOqmeJwGpQa6FFJ">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="水麒麟" data-idx="38" data-page-node-id="S7X7Yn3zPiBDk0fymbCVkI">
+<div class="pet-avatar" data-page-node-id="GVe1zRKE7au0DMUhGPWeCT"><img src="icons/cwtj/sql.png" alt="宠物图标" loading="lazy" data-page-node-id="ZiKhzeZA6xD93sr6x4rl87"></div>
+<span class="pet-grid-name" data-page-node-id="b8humWMMxeG0lyeeOYcVbN">水麒麟</span>
+<span class="grid-alloc" data-page-node-id="N0qCngUDo81KX5AmaxcQcK">全法</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="赵盼儿" data-idx="39" data-page-node-id="fsAIL4F4RcRKgGZfmzDeFm">
+<div class="pet-avatar" data-page-node-id="EmMiZDYjM3xEhPjr9H6Qst"><img src="icons/cwtj/item_03925.png" alt="宠物图标" loading="lazy" data-page-node-id="hQ16h0wiS12zNOxPD0FH8M"></div>
+<span class="pet-grid-name" data-page-node-id="uttAZzUPixwbisWXPU0cRX">赵盼儿</span>
+<span class="grid-alloc" data-page-node-id="vgGq96qB0lbxPtmiySLMa7">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="鲁鲁" data-idx="40" data-page-node-id="Wy8Y9i2sHNacGArBJrxEeC">
+<div class="pet-avatar" data-page-node-id="nnnFAnWZnqjrEcIgfzTzD1"><img src="icons/cwtj/ll.png" alt="宠物图标" loading="lazy" data-page-node-id="rlQhI33FpXB8y43malinm4"></div>
+<span class="pet-grid-name" data-page-node-id="s6D6tEykYBFchAJBpLR5Ua">鲁鲁</span>
+<span class="grid-alloc" data-page-node-id="znqSrbjgSDVwxi6H4KhzjR">全法</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="星夜小兜妹" data-idx="41" data-page-node-id="ekIFqJJrwPXjN4zYTVYs77">
+<div class="pet-avatar" data-page-node-id="Su2w5d37E6vfDiCNJHg1L2"><img src="icons/cwtj/xyxdm.png" alt="宠物图标" loading="lazy" data-page-node-id="LqPjbCpG5VV7BE7xF4T1SQ"></div>
+<span class="pet-grid-name" data-page-node-id="6oHY5c2kDGUBeEOaYywymX">星夜小兜妹</span>
+<span class="grid-alloc" data-page-node-id="MwTHi2NYF3FMFMLoqaEzor">全法</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="兔小兔" data-idx="42" data-page-node-id="3FyClbkA004Vz0pH5Rs8hQ">
+<div class="pet-avatar" data-page-node-id="pATjBFHc58bW9ukR4n90CY"><img src="icons/cwtj/item_04241.png" alt="宠物图标" loading="lazy" data-page-node-id="AY9HjKHM6nP6KmSH3RdNWS"></div>
+<span class="pet-grid-name" data-page-node-id="JFaf6lPHttU1qhSyAK3z6c">兔小兔</span>
+<span class="grid-alloc" data-page-node-id="UL88KKnPFSx25GknGm76qO">全法</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="糕糕" data-idx="43" data-page-node-id="6wVdLU5vOCnY3uyZSEa1Be">
+<div class="pet-avatar" data-page-node-id="1eS3elnBejePdJMY2DKxOF"><img src="icons/cwtj/item_04229.png" alt="宠物图标" loading="lazy" data-page-node-id="FAaR8yrKJUUEyKRFKnAu0J"></div>
+<span class="pet-grid-name" data-page-node-id="2WTKVSmFFMD2CJHBHmfSyO">糕糕</span>
+<span class="grid-alloc" data-page-node-id="z1bICEmKfgNDwsZw1YCwHs">全法</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="皮皮" data-idx="44" data-page-node-id="LVg4dzTtwcErGwVO9oCVnT">
+<div class="pet-avatar" data-page-node-id="OFk6jcsbReuBfj04Bu1aEP"><img src="icons/cwtj/smallhead_PiPi.png" alt="宠物图标" loading="lazy" data-page-node-id="IJ1j9aDtNAajt1zNERnv4Q"></div>
+<span class="pet-grid-name" data-page-node-id="s4amuUXJLOtD36SGjLjM3q">皮皮</span>
+<span class="grid-alloc" data-page-node-id="8QVfKpgJ5ImzZQuNcRlx19">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="超能兔小兔" data-idx="45" data-page-node-id="tfwKHV9b2E4mUNG13ZxqZZ">
+<div class="pet-avatar" data-page-node-id="NMKmaX7O6sYgqTHnAxfdou"><img src="icons/cwtj/item_04408.png" alt="宠物图标" loading="lazy" data-page-node-id="GXLjTc1JqJK7aM6g3YaGfN"></div>
+<span class="pet-grid-name" data-page-node-id="Ec4v79ZVXXHsbK3LELtwaS">超能兔小兔</span>
+<span class="grid-alloc" data-page-node-id="6QNfOF8hmgzIAmu8ieHtOy">全法</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="时影" data-idx="46" data-page-node-id="jESGRuEPMeByCgbJGS6o2H">
+<div class="pet-avatar" data-page-node-id="X6WLtVXgRacZQzWZRrewrV"><img src="icons/cwtj/item_04158.png" alt="宠物图标" loading="lazy" data-page-node-id="rydcuij4pKz4O7dQH8xlAB"></div>
+<span class="pet-grid-name" data-page-node-id="dVsOqeQAwpJKNAfhWES8W6">时影</span>
+<span class="grid-alloc" data-page-node-id="aSAT91dCce1uBaaxAAGyv1">全速</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="赛博小灰" data-idx="47" data-page-node-id="dxjXm1tvVH3zNCtiq5LnBi">
+<div class="pet-avatar" data-page-node-id="XAFn4zepzftYRZ4r57d27X"><img src="icons/cwtj/item_04779.png" alt="宠物图标" loading="lazy" data-page-node-id="8dKt8UdzbrDxEGZCXZj5rH"></div>
+<span class="pet-grid-name" data-page-node-id="SJCZ2TpLasctq7jivPD8ue">赛博小灰</span>
+<span class="grid-alloc" data-page-node-id="B69z8Z8dYQyA6mBWYgUqpt">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="龙啸天" data-idx="48" data-page-node-id="FS9sWf9Xwro6v0ADmS8xpy">
+<div class="pet-avatar" data-page-node-id="FvCkMhkArQs3oDSkkFtDOt"><img src="icons/cwtj/item_04999.png" alt="宠物图标" loading="lazy" data-page-node-id="Bp55ByB4zmqCsTdaEjTZxV"></div>
+<span class="pet-grid-name" data-page-node-id="u4XJDr7y7147tOqdA0F3QU">龙啸天</span>
+<span class="grid-alloc" data-page-node-id="Dc7bG7yAiDS41Yh3koGU9b">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="马卡龙" data-idx="49" data-page-node-id="EJPH2vEmK4fi0OlG0eIm0E">
+<div class="pet-avatar" data-page-node-id="zeWSr1sehdeE4SaLRKXOCV"><img src="icons/cwtj/item_05000.png" alt="宠物图标" loading="lazy" data-page-node-id="p3iL24ME5HqWwesXEwk1bc"></div>
+<span class="pet-grid-name" data-page-node-id="N5lCTqdAMBqpPeJCc8usz6">马卡龙</span>
+<span class="grid-alloc" data-page-node-id="DAduzlWJKuz5OREOb5mYGM">全体</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="焱凰" data-idx="50" data-page-node-id="Urb7sKCYlwbd5zi3qkJ29B">
+<div class="pet-avatar" data-page-node-id="hDOptDNfrysHtQeNmj314P"><img src="icons/cwtj/smallhead_LH_YH.png" alt="宠物图标" loading="lazy" data-page-node-id="7v9FrgT6mAJ47OAQd1HNRB"></div>
+<span class="pet-grid-name" data-page-node-id="uVny5yO1ScU2cFlxInTsBz">焱凰</span>
+<span class="grid-alloc" data-page-node-id="T9cTDTAp0Zz7mZiuyr7McB">全速</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="青牛" data-idx="51" data-page-node-id="XceG3liB3eLIO0UkuaTQrC">
+<div class="pet-avatar" data-page-node-id="QkTibnz2zCCQH57wy2xPcW"><img src="icons/cwtj/smallhead_LH_QN.png" alt="宠物图标" loading="lazy" data-page-node-id="shxrtEtUpwFMgsXghy1yYC"></div>
+<span class="pet-grid-name" data-page-node-id="2ELHn29BpEX2mrP3yNP7Pq">青牛</span>
+<span class="grid-alloc" data-page-node-id="DlL2anHhGZxDMQkErdxvG8">全速</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="糖霜小兜妹" data-idx="52" data-page-node-id="vQIoBbnkeIoAXYdJrGJBqS">
+<div class="pet-avatar" data-page-node-id="93PgMzncvrgeTwivqHjsDE"><img src="icons/cwtj/smallhead_LH_LH_TSXDM.png" alt="宠物图标" loading="lazy" data-page-node-id="OZ0KPX8QRRdZDGQYz6ScJT"></div>
+<span class="pet-grid-name" data-page-node-id="myMPSREpvqb1WBLXn83gnz">糖霜小兜妹</span>
+<span class="grid-alloc" data-page-node-id="4Ybm1TTUOD9BN1n79dGp1K">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="龙三太子" data-idx="53" data-page-node-id="UaXewmJTF7tTe4CFXFaFP9">
+<div class="pet-avatar" data-page-node-id="hZlcuXKLHjKrJwRMgQXazr"><img src="icons/cwtj/smallhead_LH_LSTZ.png" alt="宠物图标" loading="lazy" data-page-node-id="wF6CgZ0DBF3zXO6zqog7Tx"></div>
+<span class="pet-grid-name" data-page-node-id="AeGYkL6b5vqUxDv32xa5Mu">龙三太子</span>
+<span class="grid-alloc" data-page-node-id="MUkyVfsVWulmTBV2zRfEfo">全法</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="甜点萌蛇" data-idx="54" data-page-node-id="j7O90pJuM9bp7LpaV3wgAI">
+<div class="pet-avatar" data-page-node-id="91H1HJH8XMTdktdCTJpXUR"><img src="icons/cwtj/smallhead_LH_TDMS.png" alt="宠物图标" loading="lazy" data-page-node-id="oRxGEoGxAx0TsJCPnff82N"></div>
+<span class="pet-grid-name" data-page-node-id="Hjf5XRULn002AOAA4daW80">甜点萌蛇</span>
+<span class="grid-alloc" data-page-node-id="vp1bMfRVDk56SluYWM2k3H">全法</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="九天灵蛇" data-idx="55" data-page-node-id="HNHvgaB55CMvtxO3lIU5is">
+<div class="pet-avatar" data-page-node-id="EeEgC8ZgoKe1sTgM5V0Fty"><img src="icons/cwtj/smallhead_LH_JTLS.png" alt="宠物图标" loading="lazy" data-page-node-id="aNSrNGWt4NdnjeU1hfvvLY"></div>
+<span class="pet-grid-name" data-page-node-id="8CfOnumvR5tTfaWlMqvpRK">九天灵蛇</span>
+<span class="grid-alloc" data-page-node-id="JyHYs48zxNled0sKWqDyBR">全法</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="白素贞" data-idx="56" data-page-node-id="GoPcktANuaQRL2AWWvr1UM">
+<div class="pet-avatar" data-page-node-id="IszAWZqabRppcNCMVDdUVP"><img src="icons/cwtj/smallhead_LH_BSZ.png" alt="宠物图标" loading="lazy" data-page-node-id="kzDIwMrlT8DPfTlXpSDdPS"></div>
+<span class="pet-grid-name" data-page-node-id="kfFPJmtlSY5idYH853P5hz">白素贞</span>
+<span class="grid-alloc" data-page-node-id="Uy2jLkwtXgTYH541hC5n4M">全法</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="美猴王" data-idx="57" data-page-node-id="xn0O6SRxhG5L0fGVt6xHBB">
+<div class="pet-avatar" data-page-node-id="bLcYvqrOkNVLglwAby3FCG"><img src="icons/cwtj/item_05313.png" alt="宠物图标" loading="lazy" data-page-node-id="ZmdH7o3uFANfs92hf4omsC"></div>
+<span class="pet-grid-name" data-page-node-id="7wAgAOhnC6ASWsWZNcWneo">美猴王</span>
+<span class="grid-alloc" data-page-node-id="ZCYWFmwYbpi9h3YWYloquo">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="水晶兜兜" data-idx="58" data-page-node-id="LstnuJseulP3L0LrDTbfjn">
+<div class="pet-avatar" data-page-node-id="2qPLtOcgFOnAc3U6GCscQD"><img src="icons/cwtj/sjdd.webp" alt="宠物图标" loading="lazy" data-page-node-id="4c1Pte9n2hY2yWfkGCY3jh"></div>
+<span class="pet-grid-name" data-page-node-id="mysF9j4up00QpBZKrjT410">水晶兜兜</span>
+<span class="grid-alloc" data-page-node-id="bG0fOFU64Nc326nyBea8QU">全法</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="福运小马" data-idx="59" data-page-node-id="UrZAFTk4yCKylPCyTQmFaq">
+<div class="pet-avatar" data-page-node-id="Vu0gfl8bnSvIS4l2eHaSwK"><img src="icons/cwtj/item_06671.png" alt="宠物图标" loading="lazy" data-page-node-id="JD88eggxxsD4kwXeHHDCk0"></div>
+<span class="pet-grid-name" data-page-node-id="X76ZGUpd4wPsoDvd0n9Cl2">福运小马</span>
+<span class="grid-alloc" data-page-node-id="GGnSWA40jjxLF4BLQ6ciBm">全法</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="桃驹儿" data-idx="60" data-page-node-id="OJgUyFGOoa21lXDvwx1LK6">
+<div class="pet-avatar" data-page-node-id="Gd5AiUfXMsHoib8oDg7zyN"><img src="icons/cwtj/item_06672.png" alt="宠物图标" loading="lazy" data-page-node-id="4TwaDJyrgbYi7V66LZ1LXW"></div>
+<span class="pet-grid-name" data-page-node-id="5xNz1i8adRzCRPNHPzffGv">桃驹儿</span>
+<span class="grid-alloc" data-page-node-id="vGJK48ilZyagBCm3nsejOe">全体</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="洞天仙子" data-idx="61" data-page-node-id="0Rmuv5V6vV02QrnVZE4zku">
+<div class="pet-avatar" data-page-node-id="B39alqSUceAPojTQerkAZk"><img src="icons/cwtj/item_05125.png" alt="宠物图标" loading="lazy" data-page-node-id="UiEwyfIo9eJSYkqD8UJIfq"></div>
+<span class="pet-grid-name" data-page-node-id="4XxFcAu2OWU5EAfs0S9B7y">洞天仙子</span>
+<span class="grid-alloc" data-page-node-id="2k7sIHzFYmbM3OAmGt1lxb">全法</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="阎罗王" data-idx="62" data-page-node-id="xl9ARHQA86gL8ekUzbqNCV">
+<div class="pet-avatar" data-page-node-id="AzBo1FKhaemXWJwuJCguWd"><img src="icons/cwtj/item_07030.png" alt="宠物图标" loading="lazy" data-page-node-id="u04lAwBhFej7fRF8nVK8N5"></div>
+<span class="pet-grid-name" data-page-node-id="AAKEH6TWLwu7FjzaBK9l0N">阎罗王</span>
+<span class="grid-alloc" data-page-node-id="9cJHErE3Dq1QG7S0lHG9xw">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="寒冰" data-idx="63" data-page-node-id="k6ZBHYwaXm9Y90ETy9lnVB">
+<div class="pet-avatar" data-page-node-id="EXUyayIMuQ4Gg5K7AICoAk"><img src="icons/cwtj/smallhead_047.png" alt="宠物图标" loading="lazy" data-page-node-id="MMR50hCd0AUeev03SQvCXr"></div>
+<span class="pet-grid-name" data-page-node-id="9Xa2aTpD9QlK1hXTpO0piE">寒冰</span>
+<span class="grid-alloc" data-page-node-id="DbzBeBrzEt94l2aF9qkDh8">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="墨雪" data-idx="64" data-page-node-id="oTbHxnNAAFOsGeZ2XFvYP8">
+<div class="pet-avatar" data-page-node-id="MDezEqM2NngDLzwMAxb02e"><img src="icons/cwtj/smallhead_046.png" alt="宠物图标" loading="lazy" data-page-node-id="7B893ymqDlm6NdeONPzgQd"></div>
+<span class="pet-grid-name" data-page-node-id="oB4JbtDC8UnQdw2Q9L0Rua">墨雪</span>
+<span class="grid-alloc" data-page-node-id="4NSeHvXZ4kFBNHtGooUoT8">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="吴钩" data-idx="65" data-page-node-id="mOvwpGBq5t69FBlKkWw98v">
+<div class="pet-avatar" data-page-node-id="N3BtT7RRIMBA5Cu3Loz2mx"><img src="icons/cwtj/smallhead_042.png" alt="宠物图标" loading="lazy" data-page-node-id="GUAHT6dmGVS7h93LI1EUQ8"></div>
+<span class="pet-grid-name" data-page-node-id="kW0HNNhdohWFqaFPKlsiLx">吴钩</span>
+<span class="grid-alloc" data-page-node-id="CuAXLf6ifksYpA8cLJtX06">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="天琊" data-idx="66" data-page-node-id="MFyYPAoDCJcSyPeZoFWV8o">
+<div class="pet-avatar" data-page-node-id="Gk1q2Fm7VkCx379bGK2sUj"><img src="icons/cwtj/smallhead_041.png" alt="宠物图标" loading="lazy" data-page-node-id="ROeCZv52KIFoSd1Wf7YE5P"></div>
+<span class="pet-grid-name" data-page-node-id="6z1y2V9lE1SyQe6hldQRpb">天琊</span>
+<span class="grid-alloc" data-page-node-id="wrVM0k3ZaeWL7VwXmbMioC">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="赤炎" data-idx="67" data-page-node-id="7cvQ9I0S52Uq1dy7qrJLIo">
+<div class="pet-avatar" data-page-node-id="6mdnGr1dQPXR0wjlwBM05u"><img src="icons/cwtj/smallhead_045.png" alt="宠物图标" loading="lazy" data-page-node-id="EUHWpQKjZB7h8vZcMgGmAe"></div>
+<span class="pet-grid-name" data-page-node-id="wuPljcPiFhj88RgWjj2Gs0">赤炎</span>
+<span class="grid-alloc" data-page-node-id="TTvZcGusQUgQr43fxSEAH8">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="斩龙" data-idx="68" data-page-node-id="IFMLYinI0bzYZ7wVXLMjd9">
+<div class="pet-avatar" data-page-node-id="1pTxq8Oa52ZbZqeCcgjIDN"><img src="icons/cwtj/smallhead_043.png" alt="宠物图标" loading="lazy" data-page-node-id="w4BaPAFRKY1nRLwbQKvVBh"></div>
+<span class="pet-grid-name" data-page-node-id="ISFfShKO87qqh6bl9VB7GS">斩龙</span>
+<span class="grid-alloc" data-page-node-id="iVVeVil8LOV2iYv6y2GQpf">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="shenshou" data-name="轩辕" data-idx="69" data-page-node-id="WJitq9tfL36zHCNN97QhmC">
+<div class="pet-avatar" data-page-node-id="mgzIDex3wW6yxbXuzfoJeK"><img src="icons/cwtj/smallhead_044.png" alt="宠物图标" loading="lazy" data-page-node-id="XNYyCY9vCrn2FWXsBme7gO"></div>
+<span class="pet-grid-name" data-page-node-id="8fpsXFB4AEkZG35s8ACzdn">轩辕</span>
+<span class="grid-alloc" data-page-node-id="Hqu7bCiu5HZcZFebl3MEMw">全力</span>
+</div>
+<div class="pet-grid-item" data-cat="moshou" data-name="青龙" data-idx="70" data-page-node-id="KKAItq3vnGZWvJ4iut42Io">
+<div class="pet-avatar" data-page-node-id="VRYqiMm3S3VOlnH3CG8msw"><img src="icons/cwtj/smallhead_shenshouqinglong.png" alt="宠物图标" loading="lazy" data-page-node-id="C6ca6DzBG18fWjV2XABzWZ"></div>
+<span class="pet-grid-name" data-page-node-id="d8nvZU90zgxP1cZndH6gdC">青龙</span>
 
 </div>
-<div class="pet-grid-item" data-cat="moshou" data-name="白虎" data-idx="71">
-<div class="pet-avatar"><img src="icons/cwtj/bh.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">白虎</span>
+<div class="pet-grid-item" data-cat="moshou" data-name="白虎" data-idx="71" data-page-node-id="trCQYqBTvYID0qY20E0UdW">
+<div class="pet-avatar" data-page-node-id="4QmZk88M4IGo5RV16G688k"><img src="icons/cwtj/bh.png" alt="宠物图标" loading="lazy" data-page-node-id="UMqKZQoDiKXomHSqjAijVd"></div>
+<span class="pet-grid-name" data-page-node-id="YRqmQ5OsbmrtgQWccKt2HD">白虎</span>
 
 </div>
-<div class="pet-grid-item" data-cat="moshou" data-name="朱雀" data-idx="72">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_zhuque.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">朱雀</span>
+<div class="pet-grid-item" data-cat="moshou" data-name="朱雀" data-idx="72" data-page-node-id="xtJ5ysjXoS3wl8yMw2Dzj1">
+<div class="pet-avatar" data-page-node-id="ax5CLhTAPXgfTYCFZZZmDD"><img src="icons/cwtj/smallhead_zhuque.png" alt="宠物图标" loading="lazy" data-page-node-id="LNQsKCzPsdufQNGHWD850F"></div>
+<span class="pet-grid-name" data-page-node-id="KXNOkt92htmvG7gQk8KPgk">朱雀</span>
 
 </div>
-<div class="pet-grid-item" data-cat="moshou" data-name="玄武" data-idx="73">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_xuanwu.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">玄武</span>
+<div class="pet-grid-item" data-cat="moshou" data-name="玄武" data-idx="73" data-page-node-id="ONpmN7LRbT7chpCnnEnUz1">
+<div class="pet-avatar" data-page-node-id="mrxyL59WyCj3d2ijODLIs0"><img src="icons/cwtj/smallhead_xuanwu.png" alt="宠物图标" loading="lazy" data-page-node-id="Azm8u2yofSnEyOq8ig3fdW"></div>
+<span class="pet-grid-name" data-page-node-id="d2QnFRbGXnaQTnRdERYCnH">玄武</span>
 
 </div>
-<div class="pet-grid-item" data-cat="moshou" data-name="喵太郎" data-idx="74">
-<div class="pet-avatar"><img src="icons/cwtj/mtl.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">喵太郎</span>
+<div class="pet-grid-item" data-cat="moshou" data-name="喵太郎" data-idx="74" data-page-node-id="XN1G3iWdqCWjtl5cM3OM1P">
+<div class="pet-avatar" data-page-node-id="fO0VoTcAhiP0Iq4WUel6cu"><img src="icons/cwtj/mtl.png" alt="宠物图标" loading="lazy" data-page-node-id="oR7D78sB3JD2YEvYJISVMS"></div>
+<span class="pet-grid-name" data-page-node-id="wQRLXp1bjDrGWjCLsNrv9p">喵太郎</span>
 
 </div>
-<div class="pet-grid-item" data-cat="moshou" data-name="年兽" data-idx="75">
-<div class="pet-avatar"><img src="icons/cwtj/ns.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">年兽</span>
+<div class="pet-grid-item" data-cat="moshou" data-name="年兽" data-idx="75" data-page-node-id="zznEmUsHCYLO9ArdKhkEU5">
+<div class="pet-avatar" data-page-node-id="DmHRtnOlwnNJexu6Fu8HtI"><img src="icons/cwtj/ns.png" alt="宠物图标" loading="lazy" data-page-node-id="flhjuiTt3IdWzUAJBA2dAt"></div>
+<span class="pet-grid-name" data-page-node-id="xs1dJWe7qTStp8SCxnwPFV">年兽</span>
 
 </div>
-<div class="pet-grid-item" data-cat="moshou" data-name="龟仙人" data-idx="76">
-<div class="pet-avatar"><img src="icons/cwtj/gxr.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">龟仙人</span>
+<div class="pet-grid-item" data-cat="moshou" data-name="龟仙人" data-idx="76" data-page-node-id="150BVqvphZiGCHQcdsG4ZT">
+<div class="pet-avatar" data-page-node-id="xfuIO3HvMAZdxPIGPde104"><img src="icons/cwtj/gxr.png" alt="宠物图标" loading="lazy" data-page-node-id="lUT7PrO1EV3VTQoS01ShEI"></div>
+<span class="pet-grid-name" data-page-node-id="GmRFBMTJiWXnRBjG3100YI">龟仙人</span>
 
 </div>
-<div class="pet-grid-item" data-cat="moshou" data-name="萌小兔" data-idx="77">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_079.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">萌小兔</span>
+<div class="pet-grid-item" data-cat="moshou" data-name="萌小兔" data-idx="77" data-page-node-id="4ZnpgtdTXBnIvmtqZSuEgU">
+<div class="pet-avatar" data-page-node-id="zzVthsNGkF3jUUsvyHLfDF"><img src="icons/cwtj/smallhead_079.png" alt="宠物图标" loading="lazy" data-page-node-id="jypNRcp2KkmsLppqFNxgpg"></div>
+<span class="pet-grid-name" data-page-node-id="NMnju9GkKjzglJEgUW1FG8">萌小兔</span>
 
 </div>
-<div class="pet-grid-item" data-cat="moshou" data-name="小青" data-idx="78">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_192.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">小青</span>
+<div class="pet-grid-item" data-cat="moshou" data-name="小青" data-idx="78" data-page-node-id="vNnVfTrDCXXjir3z6bmhY2">
+<div class="pet-avatar" data-page-node-id="DH6pl6RORLN8e53oA8K2Ty"><img src="icons/cwtj/smallhead_192.png" alt="宠物图标" loading="lazy" data-page-node-id="hj5ph5XZrAKPblNl7xl0uU"></div>
+<span class="pet-grid-name" data-page-node-id="wmHHmaXR7qpRdY1jH0rwYh">小青</span>
 
 </div>
-<div class="pet-grid-item" data-cat="bianyi" data-name="小团酱" data-idx="79">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_TZ.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">小团酱</span>
+<div class="pet-grid-item" data-cat="bianyi" data-name="小团酱" data-idx="79" data-page-node-id="eMKfvHluDMXcJxnigGbW3E">
+<div class="pet-avatar" data-page-node-id="smSQOGCzXoDoxoE0zl7s2S"><img src="icons/cwtj/smallhead_TZ.png" alt="宠物图标" loading="lazy" data-page-node-id="70IMrs2i6YoD1U6tehdvHH"></div>
+<span class="pet-grid-name" data-page-node-id="qEn2cHA0OJEAkZn68niZsW">小团酱</span>
 
 </div>
-<div class="pet-grid-item" data-cat="bianyi" data-name="熊滚滚" data-idx="80">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_xm.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">熊滚滚</span>
+<div class="pet-grid-item" data-cat="bianyi" data-name="熊滚滚" data-idx="80" data-page-node-id="OJqAMXiReUFnKzyIo5jN2L">
+<div class="pet-avatar" data-page-node-id="rWMm4xJ3zfgrL9pwjsyXpt"><img src="icons/cwtj/smallhead_xm.png" alt="宠物图标" loading="lazy" data-page-node-id="1C7kNtxkSGGS3KZSOwHJgu"></div>
+<span class="pet-grid-name" data-page-node-id="v467qqjRuFlG8nBPq7ePye">熊滚滚</span>
 
 </div>
-<div class="pet-grid-item" data-cat="bianyi" data-name="小桃儿" data-idx="81">
-<div class="pet-avatar"><img src="icons/cwtj/smallhead_035.png" alt="宠物图标" loading="lazy"></div>
-<span class="pet-grid-name">小桃儿</span>
+<div class="pet-grid-item" data-cat="bianyi" data-name="小桃儿" data-idx="81" data-page-node-id="KCpQjz5a7f4u57lF9cPLZe">
+<div class="pet-avatar" data-page-node-id="gkVzNYw0fA28sMuu77XdFe"><img src="icons/cwtj/smallhead_035.png" alt="宠物图标" loading="lazy" data-page-node-id="bjPFE95DfRsXqlkxwMCKMA"></div>
+<span class="pet-grid-name" data-page-node-id="gmb2uyoGuh2MKptNEtogGE">小桃儿</span>
 
 </div>
 </div>
-<div class="pet-detail-overlay" id="pet-detail-overlay">
-<div class="pet-detail-card" id="pet-detail-card">
-<button class="detail-close" id="detail-close">&times;</button>
-<div class="detail-header" id="detail-header"></div>
-<div class="detail-body" id="detail-body"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="section" id="sec-fansheng">
-<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
-<span>宠物返生</span>
-<button type="button" class="hs-expand-btn">展开 ∨</button>
-</div>
-<div class="hs-collapsible">
-<div class="hs-collapsible-inner">
-<li>1.  返生可以使宠物变回 0 级 ，并且资质技能重新随机获得：但宠物高于 30 级后不可返生。</li>
-<li>2.  野生、宝宝以及变异类型的宠物，进行普通返生后有3%的概率成为变异宠物。</li>
-<li>3.  变异宠物进行高级返生，则结果一定是变异宠物</li>
-<li>4.  专有宠物不可返生。</li>
-<li>5.  神兽、魔兽，可使用高级返生丹再生；再生只重置其技能，并且高于75级不可再生。</li>
-<li>ps:必定变异功能无用</li>
-<div class="hs-media">
-<div class="hs-vid-col">
-<video src="art/pet_tutorial/cwfs.mp4" poster="art/pet_tutorial/cwfs_poster.webp" controls muted playsinline preload="none"></video>
+<div class="pet-detail-overlay" id="pet-detail-overlay" data-page-node-id="RUnRCvVLrtLX1cxmtzea2A">
+<div class="pet-detail-card" id="pet-detail-card" data-page-node-id="7X1ZrzkOaBJC1lo7Yp8eyV">
+<button class="detail-close" id="detail-close" data-page-node-id="pcNUk7oVJDR2e1uROGFGbI">&times;</button>
+<div class="detail-header" id="detail-header" data-page-node-id="SycS7cHKqYhgP6tvkiNCvD"></div>
+<div class="detail-body" id="detail-body" data-page-node-id="XYvF8xWcYKwYpYxvMFBdag"></div>
 </div>
 </div>
 </div>
 </div>
 </div>
 
-<div class="section" id="sec-huasheng">
-<div class="sub-header hs-toggle-header" id="hs-toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="hs-collapsible">
-<span>宠物化生</span>
-<button type="button" class="hs-expand-btn" id="hs-expand-btn">展开 ∨</button>
+<div class="section" id="sec-fansheng" data-page-node-id="x5YvioE2obWMJ7YC4oZPn7">
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false" data-page-node-id="oMKxYHQAiR2GDfIsKo92ZR">
+<span data-page-node-id="uYRDC9b2S58IM9BSQe8bBs">宠物返生</span>
+<button type="button" class="hs-expand-btn" data-page-node-id="oKTlkobK11KgH77vyyFvN5">展开 ∨</button>
 </div>
-<div class="hs-collapsible" id="hs-collapsible">
-<div class="hs-collapsible-inner">
-<div class="hs-text">
-<div class="sub-header">化生规则</div>
-<li>1.  化生通过消耗副宠来改变主宠的技能个数(可能增加或减少) ，不影响宠物资质和成长。</li>
-<li>2.  主宠类型必须是神兽、魔兽、变异、宝宝。副宠必须是至少有一个技能的变异、宝宝。</li>
-<li>3.  化生前可点选主宠的技能进行铭记 ，铭记的技能化生后必存在。</li>
-<div class="sub-header" style="margin-top:20px">化生结果</div>
-<li>化生后副宠消失 ，请谨慎操作。</li>
-<li>化生后主宠技能个数在0至主副宠技能总数之间随机产生，最多不超过10个。</li>
-<li>副宠携带等级比主宠携带等级越低，化生后技能保留概率越小;副宠携带等级大于等于主宠，技能保留概率较高。</li>
-<li>化生时，主副宠相同技能不会重复计算个数，且副宠的"特有"技能不会被主宠继承。</li>
-<li>坐骑和护符的技能不会被化生。</li>
-<div class="sub-header" style="margin-top:20px">化生保底</div>
-<li>化生保底影响化生后主宠技能个数。选择保底后，保证化生后的技能个数最小值，但不影响最大个数的可能性。(即:保证化生的最低收益)选择化生保底后，当化生结果技能数少于保底数时自动触发。</li>
-<li>使用铭纹丹，确保化生后主宠技能不少于主副宠不重复技能之和/2(向下取整，计算技能和时去掉副宠特有技能)。</li>
-<li>使用菩提丹，确保化生后主宠技能不少于(主副宠不重复技能之和/2)+1(向下取整，计算技能和时去掉副宠特有技能)</li>
-<li>保底计算时会去掉副宠特有技能以及重复技能，主宠已铭记的技能必定保留。</li>
-<li>只有当主宠携带等级小于等于副宠携带等级时才能使用保底功能。</li>
-</div>
-<div class="hs-media">
-<div class="hs-img-col">
-<img src="art/pet_tutorial/image25.webp" alt="化生保底" loading="lazy">
-</div>
-<div class="hs-vid-col">
-<video src="art/pet_tutorial/pet_huasheng.mp4" poster="art/pet_tutorial/pet_huasheng_poster.webp" controls muted playsinline preload="none"></video>
+<div class="hs-collapsible" data-page-node-id="UdYza6wpioF8sdwP2qj9ci">
+<div class="hs-collapsible-inner" data-page-node-id="P123GV3RZBDkTzXNWg3pD4">
+<li data-page-node-id="ig51BvVjGFqJe060gWtsqz">1.  返生可以使宠物变回 0 级 ，并且资质技能重新随机获得：但宠物高于 30 级后不可返生。</li>
+<li data-page-node-id="EHqaeCK3C5Rjuo5XN0yxGr">2.  野生、宝宝以及变异类型的宠物，进行普通返生后有3%的概率成为变异宠物。</li>
+<li data-page-node-id="jXL1xnfyvHBTsJyEBOhXdw">3.  变异宠物进行高级返生，则结果一定是变异宠物</li>
+<li data-page-node-id="bVcjDlwaVLWii8mSlTyIhD">4.  专有宠物不可返生。</li>
+<li data-page-node-id="pyqDJzTMiKHka6r4C9OWeq">5.  神兽、魔兽，可使用高级返生丹再生；再生只重置其技能，并且高于75级不可再生。</li>
+<li data-page-node-id="hVTdah0yNsXcuDdOK9eMf5">ps:必定变异功能无用</li>
+<div class="hs-media" data-page-node-id="RiHNSvXSdPWdC2rVirCCGi">
+<div class="hs-vid-col" data-page-node-id="jGjK6KkIbezMTotx1x1ESA">
+<video src="art/pet_tutorial/cwfs.mp4" poster="art/pet_tutorial/cwfs_poster.webp" controls muted playsinline preload="none" data-page-node-id="bZlYlukPlhCeuBFAwfzf9C"></video>
 </div>
 </div>
 </div>
 </div>
 </div>
 
-<div class="section" id="sec-suipian">
-<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
-<span>碎片转换</span>
-<button type="button" class="hs-expand-btn">展开 ∨</button>
+<div class="section" id="sec-huasheng" data-page-node-id="9MXdfgIGBkFTzHhOdXXyY4">
+<div class="sub-header hs-toggle-header" id="hs-toggle-header" role="button" tabindex="0" aria-expanded="false" aria-controls="hs-collapsible" data-page-node-id="SKfGWfsZ4d2wcN0s0ztPF8">
+<span data-page-node-id="N8VL49fiVVlAGBGSiusVrp">宠物化生</span>
+<button type="button" class="hs-expand-btn" id="hs-expand-btn" data-page-node-id="M5GHvIhCM4Xfs1YJ3eOupc">展开 ∨</button>
 </div>
-<div class="hs-collapsible">
-<div class="hs-collapsible-inner">
-<li>可将任意碎片以 2：1 的比例转化为指定的其他碎片</li>
-<li>不过转化的数量必须是双数 ，单数的话没办法转换 ，因为按 2：1 的比例单数不能给 0.5 个碎片吧(ノへ￣、)</li>
-<img class="step-img" src="art/pet_tutorial/image28.png" alt="" loading="lazy">
+<div class="hs-collapsible" id="hs-collapsible" data-page-node-id="XndRKHpO8YVPuUFiRUJs8g">
+<div class="hs-collapsible-inner" data-page-node-id="D2gswHmbKLFkmhhhaCFahT">
+<div class="hs-text" data-page-node-id="ILHJWOX5X9k74KGUTA5MEt">
+<div class="sub-header" data-page-node-id="HOE8llmgOYjFXnWMk7MICo">化生规则</div>
+<li data-page-node-id="oU6DX5ai4aul8LIZBRZwqz">1.  化生通过消耗副宠来改变主宠的技能个数(可能增加或减少) ，不影响宠物资质和成长。</li>
+<li data-page-node-id="xIXPhOF4OfxCkLH1iM0JTN">2.  主宠类型必须是神兽、魔兽、变异、宝宝。副宠必须是至少有一个技能的变异、宝宝。</li>
+<li data-page-node-id="fi9I6i2i024FDEYXNnOKwq">3.  化生前可点选主宠的技能进行铭记 ，铭记的技能化生后必存在。</li>
+<div class="sub-header" style="margin-top:20px" data-page-node-id="UIumBl9ldNAm9YfD0vYqp9">化生结果</div>
+<li data-page-node-id="p3ZZOe5CDTd8L1WQfPWjCx">化生后副宠消失 ，请谨慎操作。</li>
+<li data-page-node-id="kxkj9IgAV1YKzs2RhJduGI">化生后主宠技能个数在0至主副宠技能总数之间随机产生，最多不超过10个。</li>
+<li data-page-node-id="V8JTBAFJkDnhecZWxEXCJQ">副宠携带等级比主宠携带等级越低，化生后技能保留概率越小;副宠携带等级大于等于主宠，技能保留概率较高。</li>
+<li data-page-node-id="JiA5VQ99wQA8f3bUG2iYWn">化生时，主副宠相同技能不会重复计算个数，且副宠的"特有"技能不会被主宠继承。</li>
+<li data-page-node-id="WJUlQRGihTZjC2EssHMhnp">坐骑和护符的技能不会被化生。</li>
+<div class="sub-header" style="margin-top:20px" data-page-node-id="mRr1UpQ1PEa1AyBcv2c1ed">化生保底</div>
+<li data-page-node-id="pibHOAgdcJcAqEvjFUteqq">化生保底影响化生后主宠技能个数。选择保底后，保证化生后的技能个数最小值，但不影响最大个数的可能性。(即:保证化生的最低收益)选择化生保底后，当化生结果技能数少于保底数时自动触发。</li>
+<li data-page-node-id="HNTDvuiNiqP6HYh3dXYv2h">使用铭纹丹，确保化生后主宠技能不少于主副宠不重复技能之和/2(向下取整，计算技能和时去掉副宠特有技能)。</li>
+<li data-page-node-id="tSCMWe8IuEoSEb7lKx3Hx3">使用菩提丹，确保化生后主宠技能不少于(主副宠不重复技能之和/2)+1(向下取整，计算技能和时去掉副宠特有技能)</li>
+<li data-page-node-id="o8YM4AVUdEYsQ9n0Earwfq">保底计算时会去掉副宠特有技能以及重复技能，主宠已铭记的技能必定保留。</li>
+<li data-page-node-id="Jm2qixUFMcAcuND9lcm4C9">只有当主宠携带等级小于等于副宠携带等级时才能使用保底功能。</li>
+</div>
+<div class="hs-media" data-page-node-id="uRZFoueeYmZw5mLyicqWuR">
+<div class="hs-img-col" data-page-node-id="UbvJuGhFHxUF6r8jkiQsc1">
+<img src="art/pet_tutorial/image25.webp" alt="化生保底" loading="lazy" data-page-node-id="ihficFGbOZw2JYiVFpHLBu">
+</div>
+<div class="hs-vid-col" data-page-node-id="vJIiTeaP2GSeIvoe1zexJM">
+<video src="art/pet_tutorial/pet_huasheng.mp4" poster="art/pet_tutorial/pet_huasheng_poster.webp" controls muted playsinline preload="none" data-page-node-id="jovQ4OwKTvnSK9NNjVL9NB"></video>
+</div>
+</div>
 </div>
 </div>
 </div>
 
-<div class="section" id="sec-fenjie">
-<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
-<span>宠物分解</span>
-<button type="button" class="hs-expand-btn">展开 ∨</button>
+<div class="section" id="sec-suipian" data-page-node-id="MrQSXIWeIY6VoonGA6z0ID">
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false" data-page-node-id="yaHeeeKx4mywAXHZERpAt3">
+<span data-page-node-id="7xNwJLucmsSKbX3ptkSHjA">碎片转换</span>
+<button type="button" class="hs-expand-btn" data-page-node-id="CNUw7jivN1TTxpBVJKOSmC">展开 ∨</button>
 </div>
-<div class="hs-collapsible">
-<div class="hs-collapsible-inner">
-<li>大部分宠物支持分解 ，有部分宠物不支持分解</li>
-<li>分解仅返还的是袋子和进阶材料 ，比如袋子是 99 个碎片合成那么返回给你 10% 的碎片进阶的碎片也是如此 ，天仙玉露的返还是固定的跟进阶不挂钩</li>
-<img class="step-img" src="art/pet_tutorial/image31.png" alt="" loading="lazy">
+<div class="hs-collapsible" data-page-node-id="CitnL7I3RC1GetjQBT8qHI">
+<div class="hs-collapsible-inner" data-page-node-id="o3tlM7BBsNQMogJ1iGNeLQ">
+<li data-page-node-id="ZLR6pkUPuQxPWjsYLAbQV5">可将任意碎片以 2：1 的比例转化为指定的其他碎片</li>
+<li data-page-node-id="OWxVnYVjQDbjaB8RJnGput">不过转化的数量必须是双数 ，单数的话没办法转换 ，因为按 2：1 的比例单数不能给 0.5 个碎片吧(ノへ￣、)</li>
+<img class="step-img" src="art/pet_tutorial/image28.png" alt="" loading="lazy" data-page-node-id="UvD88bLfCVMMY0IX1zFgO4">
 </div>
 </div>
 </div>
 
-<div class="section" id="sec-juexing">
-<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
-<span>宠物觉醒</span>
-<button type="button" class="hs-expand-btn">展开 ∨</button>
+<div class="section" id="sec-fenjie" data-page-node-id="oX94Ge3zx3naLjupCFMxrr">
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false" data-page-node-id="FUD3XDgCirQ01Dri65Wj1Y">
+<span data-page-node-id="PxlD2QJzFzGCnUtfzyCuU2">宠物分解</span>
+<button type="button" class="hs-expand-btn" data-page-node-id="0xe8ZPGSlBOridQew2DAVY">展开 ∨</button>
 </div>
-<div class="hs-collapsible">
-<div class="hs-collapsible-inner">
-<li>人物和宠物达到 78 级开启宠物觉醒功能</li>
-<img class="step-img" src="art/pet_tutorial/image34.png" alt="" loading="lazy">
-<li>消耗特定道具可以为宠物觉醒 ，最大 10 层</li>
-<li>神兽消耗为：</li>
-  <li>[淬炼石]每个 10 点经验</li>
-  <li>[凝髓石]每个 100 点经验</li>
-  <li>[神兽碎片]每个 100 点经验</li>
-<img class="step-img" src="art/pet_tutorial/image36.png" alt="" loading="lazy">
-<div class="sub-header">升级消耗：</div>
-<div class="table-wrap"><table>
-<tr>
-<th>等级</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>7</th>
-<th>8</th>
-<th>9</th>
-<th>10</th>
+<div class="hs-collapsible" data-page-node-id="AZncAsscHhXD9JhYLUUEBs">
+<div class="hs-collapsible-inner" data-page-node-id="CQQWxaGCY7HaGnFIDzeevj">
+<li data-page-node-id="OCPFP3GubuXgjnxKYbvzNo">大部分宠物支持分解 ，有部分宠物不支持分解</li>
+<li data-page-node-id="PCKlbSIZf0o9rdyTmkEAHt">分解仅返还的是袋子和进阶材料 ，比如袋子是 99 个碎片合成那么返回给你 10% 的碎片进阶的碎片也是如此 ，天仙玉露的返还是固定的跟进阶不挂钩</li>
+<img class="step-img" src="art/pet_tutorial/image31.png" alt="" loading="lazy" data-page-node-id="yjfWKtds0Di7QxOiGb6xeD">
+</div>
+</div>
+</div>
+
+<div class="section" id="sec-juexing" data-page-node-id="XT9mCHIMDeVB1CnEYfKMn6">
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false" data-page-node-id="7uhFFD3xtYOtAUDRc2Ju01">
+<span data-page-node-id="EF6GQuWOw86TwXJncWi2VA">宠物觉醒</span>
+<button type="button" class="hs-expand-btn" data-page-node-id="HR8ybGDljMnzDcwJcKOodm">展开 ∨</button>
+</div>
+<div class="hs-collapsible" data-page-node-id="3SIviYO6zo5WgeOtkLdXaC">
+<div class="hs-collapsible-inner" data-page-node-id="uqfQy3o08eAEcIe2wEoYBE">
+<li data-page-node-id="0zTOdJ32e4KikVgLOFciQu">人物和宠物达到 78 级开启宠物觉醒功能</li>
+<img class="step-img" src="art/pet_tutorial/image34.png" alt="" loading="lazy" data-page-node-id="ye1qEul7DSY5bq3ZJLjT3u">
+<li data-page-node-id="OA3UMLRqC5ZzizAdbLMYFb">消耗特定道具可以为宠物觉醒 ，最大 10 层</li>
+<li data-page-node-id="yzNXoitCGB3HFH3tCil7Da">神兽消耗为：</li>
+  <li data-page-node-id="MfbAYB6clKsTFyBLnRHGtv">[淬炼石]每个 10 点经验</li>
+  <li data-page-node-id="k5cpaduTWDIgnj6eP1MkiJ">[凝髓石]每个 100 点经验</li>
+  <li data-page-node-id="MjHGrICfVE4o2tnOJ4nJAu">[神兽碎片]每个 100 点经验</li>
+<img class="step-img" src="art/pet_tutorial/image36.png" alt="" loading="lazy" data-page-node-id="VkJmk40uMzVJDPFD2aQ624">
+<div class="sub-header" data-page-node-id="elSW4E3zlstbGSKEmXzP6n">升级消耗：</div>
+<div class="table-wrap" data-page-node-id="DskkIwxf2TGqbo08Nd7Oby"><table data-page-node-id="TJsZiMhSpsOpU9QlGUUybZ">
+<tr data-page-node-id="GBAHmprc8s4711HuarjG3f">
+<th data-page-node-id="o0Y7TBV0mG6hRFpEWMnr6x">等级</th>
+<th data-page-node-id="XcmxGuF2miL7XyHhT6Z61i">1</th>
+<th data-page-node-id="CX5FIdk3d6qmaHD12UPkks">2</th>
+<th data-page-node-id="VPjEQVSqaD13J9i2FUleJj">3</th>
+<th data-page-node-id="y77uB1fca6DQ0lrQmF3f4q">4</th>
+<th data-page-node-id="HziD8Lo8uHLpfqNDpHEoJ7">5</th>
+<th data-page-node-id="ntfwrsvtMOKxOAv3E5y1yG">6</th>
+<th data-page-node-id="qrRJ0GzWjLfBIyPY8xdqAK">7</th>
+<th data-page-node-id="S0EvboD3P9n4lJ7L9cVrDp">8</th>
+<th data-page-node-id="JGBlkY7HC4o13OBUHR1cvI">9</th>
+<th data-page-node-id="GeFtBMUH3WNUsCbayFVxEg">10</th>
 </tr>
-<tr>
-<td>经验</td>
-<td>10000</td>
-<td>15000</td>
-<td>20000</td>
-<td>25000</td>
-<td>30000</td>
-<td>35000</td>
-<td>50000</td>
-<td>75000</td>
-<td>110000</td>
-<td>150000</td>
+<tr data-page-node-id="TBALJGeiFMsFBrN4ea9DQF">
+<td data-page-node-id="cwILgoiZpXNmSJ0X0TCtsa">经验</td>
+<td data-page-node-id="UMRbO2z4TW8WysmBULdRHH">10000</td>
+<td data-page-node-id="MNwICs5ccPtuKRHf99dFRu">15000</td>
+<td data-page-node-id="TgvmyiknZGv3clW9HfUHyy">20000</td>
+<td data-page-node-id="YGOx3tADMcVvAOG7DB4vOU">25000</td>
+<td data-page-node-id="cMUmlxXD5DXIcWpYEUHHMt">30000</td>
+<td data-page-node-id="yvy8jku32S2HeyTMWflpD8">35000</td>
+<td data-page-node-id="cz0qphdobL9sj2yjXvWsHC">50000</td>
+<td data-page-node-id="Zd1sAO8xpQFcnCuGoHtZWE">75000</td>
+<td data-page-node-id="Vvf1XcOGQd5ltELtisll7o">110000</td>
+<td data-page-node-id="tNcKWnPWbdMFCAi3oWmm6n">150000</td>
 </tr>
 </table></div>
-<li>当选择到稀有材料（例如神兽碎片） 参与升级时 ，将会在升级操作前弹出提⽰ ，以避免少侠们误消耗。</li>
-<img class="step-img" src="art/pet_tutorial/image37.png" alt="" loading="lazy">
-<li>当宠物达到觉醒 5 时 ，少侠可通过点击  “ 重置”  按钮 ，进行宠物重置。需要注意的是 ，当少侠或宠物处于战斗之中 ，无法进行重置。</li>
-<li>重置会返还 80% 的觉醒升级材料 ，若宠物已经继承其他宠物则继承技能暂不生效</li>
-<img class="step-img" src="art/pet_tutorial/image38.png" alt="" loading="lazy">
-<li>每次觉醒成功后可以为宠物洗炼属性 ，洗炼到心仪的属性还可以加锁</li>
-<li>觉醒 1-10 每一阶段的属性是单独的 ，每一层的属性是叠加的</li>
-<li>保证下次洗炼不会覆盖（觉醒增加的属性为宠物面板属性）</li>
-<li>有宠物碎片的可以用宠物碎片洗 ，没有可以用天仙玉露洗 ，锁的条数越多消耗越高！</li>
-<img class="step-img" src="art/pet_tutorial/image40.png" alt="" loading="lazy">
-<img class="step-img" src="art/pet_tutorial/image41.png" alt="" loading="lazy">
+<li data-page-node-id="5NQaBXH7oNf0h2IjlMXhfd">当选择到稀有材料（例如神兽碎片） 参与升级时 ，将会在升级操作前弹出提⽰ ，以避免少侠们误消耗。</li>
+<img class="step-img" src="art/pet_tutorial/image37.png" alt="" loading="lazy" data-page-node-id="ME3w0ZRkLkR3Epdy7C91Iq">
+<li data-page-node-id="fJf3zF9UFJwHRXEj8EsWEV">当宠物达到觉醒 5 时 ，少侠可通过点击  “ 重置”  按钮 ，进行宠物重置。需要注意的是 ，当少侠或宠物处于战斗之中 ，无法进行重置。</li>
+<li data-page-node-id="aQ38GHuydKMshR19uJWIkb">重置会返还 80% 的觉醒升级材料 ，若宠物已经继承其他宠物则继承技能暂不生效</li>
+<img class="step-img" src="art/pet_tutorial/image38.png" alt="" loading="lazy" data-page-node-id="8CTHCNuca9HoaCojTCeA3X">
+<li data-page-node-id="e7HQXAujvdzTH39cxvEIZD">每次觉醒成功后可以为宠物洗炼属性 ，洗炼到心仪的属性还可以加锁</li>
+<li data-page-node-id="6YwAk0nAG6H8ncCzCPyOEg">觉醒 1-10 每一阶段的属性是单独的 ，每一层的属性是叠加的</li>
+<li data-page-node-id="Ig7ktNGUiDAzOXH6qEGEO4">保证下次洗炼不会覆盖（觉醒增加的属性为宠物面板属性）</li>
+<li data-page-node-id="FPcJrp46laDdZSyQQeDtrB">有宠物碎片的可以用宠物碎片洗 ，没有可以用天仙玉露洗 ，锁的条数越多消耗越高！</li>
+<img class="step-img" src="art/pet_tutorial/image40.png" alt="" loading="lazy" data-page-node-id="l0dwCdpfqMVAE6oICBFa9f">
+<img class="step-img" src="art/pet_tutorial/image41.png" alt="" loading="lazy" data-page-node-id="ajLXogjynSF2shWnU5TPzi">
 </div>
 </div>
-<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
-<span>宠物继承</span>
-<button type="button" class="hs-expand-btn">展开 ∨</button>
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false" data-page-node-id="8PhKvWd7B8eR3noAkqRVHf">
+<span data-page-node-id="F0Pd8IHci68vMx0NUODHOv">宠物继承</span>
+<button type="button" class="hs-expand-btn" data-page-node-id="rPYXdV00SAhFUJnmwxPDaF">展开 ∨</button>
 </div>
-<div class="hs-collapsible">
-<div class="hs-collapsible-inner">
-<li>宠物觉醒1层之后开启继承功能，可以概率将0阶的特定宠物特有技能继承到主宠上面（獬暂不开启继承功能，普通，变异宠物不可作为副宠但可作为主宠）</li>
-<img class="step-img" src="art/pet_tutorial/image44.webp" alt="" loading="lazy">
-<li>同一宠物继承第 1 次概率为 25% 成功 ，失败则返还对应副宠碎片</li>
-<li>同一宠物继承第 2 次概率为 50% 成功 ，失败则返还对应副宠碎片</li>
-<li>同一宠物继承第 3 次概率为 75% 成功 ，失败则返还对应副宠碎片</li>
-<li>同一宠物继承第 4 次概率为 100% 成功</li>
-<img class="step-img" src="art/pet_tutorial/jc11.webp" alt="" loading="lazy">
-<li>例：我当前继承了一只驴，但是失败了，下一次成功率会提高到50%，但是我若不想继承驴了，想继承马卡龙，这样会重新计算并清空驴的概率</li>
-<img class="step-img" src="art/pet_tutorial/jc12.png" alt="" loading="lazy">
-<li>继承技能需要单独消耗道具进行提升</li>
-<li>稀有神兽消耗自身的碎片</li>
-<li>普通神兽需要消耗神兽碎片</li>
-<img class="step-img" src="art/pet_tutorial/image48.png" alt="" loading="lazy">
-<li>宠物继承实操视频</li>
-<div class="hs-media">
-<div class="hs-vid-col">
-<video src="art/pet_tutorial/cwjcsp.mp4" poster="art/pet_tutorial/cwjcsp_poster.webp" controls muted playsinline preload="none"></video>
-</div>
-</div>
-<li>宠物的【继承重置】 功能 ，是针对宠物存在继承技能（包括已失效的继承技能），可以进行重置的手段。</li>
-<li>该功能的入口位于宠物觉醒页面。想要进行宠物技能的【继承重置】，需要宠物存在技能技能（包括已失效的继承技能）</li>
-<img class="step-img" src="art/pet_tutorial/image49.png" alt="" loading="lazy">
-<li>需要注意的是 ，继承重置之后将会删除宠物的已继承技能（包括已失效的继承技能）。重置后还会返还上次继承成功对应的宠物宝宝。</li>
-<img class="step-img" src="art/pet_tutorial/image51.png" alt="" loading="lazy">
-<li>另外 ，若是当次继承使技能升阶 ，则会额外返还升阶消耗的 80% 的材料！</li>
-<li>还有一点特殊注意事项：如果奥义书作用于继承技能 ，重置后的奥义则会因缺少该技能暂时不生效 ，只有在宠物再次拥有继承技能时 ，奥义才会恢复生效哦！</li>
-<img class="step-img" src="art/pet_tutorial/image52.png" alt="" loading="lazy">
+<div class="hs-collapsible" data-page-node-id="v8bB87J7Hk4C13ldmY9qur">
+<div class="hs-collapsible-inner" data-page-node-id="wGtu18OjKZFIQTjiywVO92">
+<li data-page-node-id="0DOEpSPqkgRIN4DNPfxdu4">宠物觉醒1层之后开启继承功能，可以概率将0阶的特定宠物特有技能继承到主宠上面（獬暂不开启继承功能，普通，变异宠物不可作为副宠但可作为主宠）</li>
+<img class="step-img" src="art/pet_tutorial/image44.webp" alt="" loading="lazy" data-page-node-id="UndbymYIXMemKPnhwVVx5W">
+<li data-page-node-id="gGp7lEAwH8qugOxfCiBgXM">同一宠物继承第 1 次概率为 25% 成功 ，失败则返还对应副宠碎片</li>
+<li data-page-node-id="0KhUOrwMvEkXwIvtHD6qwV">同一宠物继承第 2 次概率为 50% 成功 ，失败则返还对应副宠碎片</li>
+<li data-page-node-id="WAHqR2wSFmE6P5M2kOEyD2">同一宠物继承第 3 次概率为 75% 成功 ，失败则返还对应副宠碎片</li>
+<li data-page-node-id="Jma9tMpcZwE8sGcOa5bjwC">同一宠物继承第 4 次概率为 100% 成功</li>
+<img class="step-img" src="art/pet_tutorial/jc11.webp" alt="" loading="lazy" data-page-node-id="jWghllsnsDSC4xVtSUOHs3">
+<li data-page-node-id="v3RPB4kZoHfAvvMX4rI7Cq">例：我当前继承了一只驴，但是失败了，下一次成功率会提高到50%，但是我若不想继承驴了，想继承马卡龙，这样会重新计算并清空驴的概率</li>
+<img class="step-img" src="art/pet_tutorial/jc12.png" alt="" loading="lazy" data-page-node-id="8IocsHiBG4Utsullfsvdxm">
+<li data-page-node-id="it1zJy17Q2EpMYchkrm7cX">继承技能需要单独消耗道具进行提升</li>
+<li data-page-node-id="5aIkv1n21qiWyXEdFmvYiK">稀有神兽消耗自身的碎片</li>
+<li data-page-node-id="Lzj0gpFtnZlIt2LNC3Wvcn">普通神兽需要消耗神兽碎片</li>
+<img class="step-img" src="art/pet_tutorial/image48.png" alt="" loading="lazy" data-page-node-id="dusvjczgboaKoX2eLPKBVi">
+<li data-page-node-id="FsqRTdsMuChqrBEsj0YkFE">宠物继承实操视频</li>
+<div class="hs-media" data-page-node-id="JrvKeL5ijV2ziuvkfa7Vkm">
+<div class="hs-vid-col" data-page-node-id="SMnB4DwxRdwylsbr7zbt7F">
+<video src="art/pet_tutorial/cwjcsp.mp4" poster="art/pet_tutorial/cwjcsp_poster.webp" controls muted playsinline preload="none" data-page-node-id="nF3Tthj7SEnocQ8J5W8K7Y"></video>
 </div>
 </div>
-</div>
-<div class="section" id="sec-yinji">
-<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
-<span>宠物印记</span>
-<button type="button" class="hs-expand-btn">展开 ∨</button>
-</div>
-<div class="hs-collapsible">
-<div class="hs-collapsible-inner">
-<li>等级限制：人物等级达到 80 级</li>
-<li>注：不能卡 25 级印记</li>
-<div class="sub-header">功能介绍：</div>
-<li>印记可以对宠物进行加持 ，增加宠物的属性</li>
-<li>高品质印记还会为宠物增加印记技能 ，印记技能效果随着印记等级提升</li>
-<li>印记为宠物增加的属性会受到宠物本身的资质和成长放大</li>
-<li>每个印记只可以加持一个宠物</li>
-<li>印记可以通过升级来提升为宠物增加</li>
-<div class="sub-header">印记抽取：</div>
-<li>消耗  “ 兽印积分”  或  “ 圣兽积分”  抽取</li>
-<div class="hs-media">
-<div class="hs-vid-col">
-<video src="art/pet_tutorial/yjcq.mp4" poster="art/pet_tutorial/yjcq_poster.webp" controls muted playsinline preload="none"></video>
+<li data-page-node-id="1mkRsFzfREfZufTxtpACE7">宠物的【继承重置】 功能 ，是针对宠物存在继承技能（包括已失效的继承技能），可以进行重置的手段。</li>
+<li data-page-node-id="7wXBBVl3S7jcqraGmR6IeJ">该功能的入口位于宠物觉醒页面。想要进行宠物技能的【继承重置】，需要宠物存在技能技能（包括已失效的继承技能）</li>
+<img class="step-img" src="art/pet_tutorial/image49.png" alt="" loading="lazy" data-page-node-id="QLDAHzbohOTH6WYWLh6XeV">
+<li data-page-node-id="oRmj1D009vEVr96XzP3oPc">需要注意的是 ，继承重置之后将会删除宠物的已继承技能（包括已失效的继承技能）。重置后还会返还上次继承成功对应的宠物宝宝。</li>
+<img class="step-img" src="art/pet_tutorial/image51.png" alt="" loading="lazy" data-page-node-id="Z7q6IJiFGBmWYoyYjqPCbF">
+<li data-page-node-id="CYOLDgcyx2uYne0OjDiWXu">另外 ，若是当次继承使技能升阶 ，则会额外返还升阶消耗的 80% 的材料！</li>
+<li data-page-node-id="AoAB5yaX8Om8t4wmRBoP8h">还有一点特殊注意事项：如果奥义书作用于继承技能 ，重置后的奥义则会因缺少该技能暂时不生效 ，只有在宠物再次拥有继承技能时 ，奥义才会恢复生效哦！</li>
+<img class="step-img" src="art/pet_tutorial/image52.png" alt="" loading="lazy" data-page-node-id="r4FI8hSbKyk6ofv6eghjGO">
 </div>
 </div>
-<div class="sub-header">印记熔炼：</div>
-<li>将橙色印记取消勾选 ，不然给橙色印记也融了</li>
-<div class="hs-media">
-<div class="hs-vid-col">
-<video src="art/pet_tutorial/yjrl.mp4" poster="art/pet_tutorial/yjrl_poster.webp" controls muted playsinline preload="none"></video>
+</div>
+<div class="section" id="sec-yinji" data-page-node-id="PB3Dc9NTZIFuOX5Rn1C97K">
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false" data-page-node-id="bVzWAvYC13SF9JOAxslhhD">
+<span data-page-node-id="6DS7GNeLjF9jxaEkPQHpjF">宠物印记</span>
+<button type="button" class="hs-expand-btn" data-page-node-id="cNJeGHfUv0A8yfsOBnA7a1">展开 ∨</button>
+</div>
+<div class="hs-collapsible" data-page-node-id="FJ8c2SJEvEhfeCUHxtjyyB">
+<div class="hs-collapsible-inner" data-page-node-id="IcoQ3QmHieDlN3EgNH8x1u">
+<div class="lv-banner">等级限制：人物等级达到 80 级</div>
+<li data-page-node-id="jxFyED5t0R2EQU4eXh18uX">注：不能卡 25 级印记</li>
+<div class="sub-header" data-page-node-id="wJ6AFPVmbkJfNUSpiUURxv">功能介绍：</div>
+<li data-page-node-id="nUbgmFcxurgBnKLxq5HRlK">印记可以对宠物进行加持 ，增加宠物的属性</li>
+<li data-page-node-id="FFObLoyZ7cIuSzGQhys4uY">高品质印记还会为宠物增加印记技能 ，印记技能效果随着印记等级提升</li>
+<li data-page-node-id="hQrJ6t1S7FToRK3TSwBXlc">印记为宠物增加的属性会受到宠物本身的资质和成长放大</li>
+<li data-page-node-id="Auh4cyYx6by2fkgAWzfHp8">每个印记只可以加持一个宠物</li>
+<li data-page-node-id="7aJbEvszX9QXAi9NHUhH6v">印记可以通过升级来提升为宠物增加</li>
+<div class="sub-header" data-page-node-id="Drq6REE4NivUMlF5cClcX1">印记抽取：</div>
+<li data-page-node-id="IvgDIKm2F6etA6k5R7EsJ7">消耗  “ 兽印积分”  或  “ 圣兽积分”  抽取</li>
+<div class="hs-media" data-page-node-id="ck38jlZ9htgRucVBsrDQtz">
+<div class="hs-vid-col" data-page-node-id="9dwovQldDuiQwa2JwD6Xvh">
+<video src="art/pet_tutorial/yjcq.mp4" poster="art/pet_tutorial/yjcq_poster.webp" controls muted playsinline preload="none" data-page-node-id="bV7c0uBDDwwulxDLa4Trhm"></video>
 </div>
 </div>
-<div class="sub-header">印记升级：</div>
-<li>相同印记升级提供 50 经验 ，不同印记提供 25 经验</li>
-<div class="hs-media">
-<div class="hs-vid-col">
-<video src="art/pet_tutorial/yjsj.mp4" poster="art/pet_tutorial/yjsj_poster.webp" controls muted playsinline preload="none"></video>
+<div class="sub-header" data-page-node-id="kULgfkcAbAGYBzCeanWSt7">印记熔炼：</div>
+<li data-page-node-id="ylRH9BHdjTtDgojCBUgPf9">将橙色印记取消勾选 ，不然给橙色印记也融了</li>
+<div class="hs-media" data-page-node-id="9KWZBmNXfykupWTyHCD6BI">
+<div class="hs-vid-col" data-page-node-id="VAk3PWugd4x9X3xH8iIfbx">
+<video src="art/pet_tutorial/yjrl.mp4" poster="art/pet_tutorial/yjrl_poster.webp" controls muted playsinline preload="none" data-page-node-id="px0tc15WjRm7RSfNzqPh50"></video>
 </div>
 </div>
-  <div class="sub-header">升级所需：</div>
-  <div class="table-wrap"><table class="lv-table">
-<tr>
-<th>等级</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>7</th>
-<th>8</th>
-<th>9</th>
-<th>10</th>
-<th>11</th>
-<th>12</th>
-<th>13</th>
-<th>14</th>
-<th>15</th>
-<th>16</th>
-<th>17</th>
-<th>18</th>
-<th>19</th>
-<th>20</th>
-<th>21</th>
-<th>22</th>
-<th>23</th>
-<th>24</th>
-<th>25</th>
+<div class="sub-header" data-page-node-id="3seaBp8V1nAw4ruTSnrVRN">印记升级：</div>
+<li data-page-node-id="bgbgFZbZh1YVRYFzbiIbej">相同印记升级提供 50 经验 ，不同印记提供 25 经验</li>
+<div class="hs-media" data-page-node-id="tiqbwRue32zBR19dMiXiXt">
+<div class="hs-vid-col" data-page-node-id="wA2GbOJUDCFVwsah23A93R">
+<video src="art/pet_tutorial/yjsj.mp4" poster="art/pet_tutorial/yjsj_poster.webp" controls muted playsinline preload="none" data-page-node-id="JFTb96GExCEOcdXfZV6ILQ"></video>
+</div>
+</div>
+  <div class="sub-header" data-page-node-id="wYPTzgE6STDfbnOw95vXGN">升级所需：</div>
+  <div class="table-wrap" data-page-node-id="TFHUQ3ZpMmQBZhk1GTwOdO"><table class="lv-table" data-page-node-id="RBk6hTjzXX6ewqs7n8OVWj">
+<tr data-page-node-id="huFMjsWZQ2ecU3pNFBzIXA">
+<th data-page-node-id="mcKgKkSwCxiU4zIs22Jblu">等级</th>
+<th data-page-node-id="MmdS0StsAqZRsHG04wMzuU">2</th>
+<th data-page-node-id="yaFF5h9AgAfOaE3R9n4bmG">3</th>
+<th data-page-node-id="I7i9jtd0sgBh0j1lD7HBQ3">4</th>
+<th data-page-node-id="UYI7QzSvPYXwDIOzluSAGp">5</th>
+<th data-page-node-id="JUiqSlmHeQRw5qZXTtOq3e">6</th>
+<th data-page-node-id="9b4BEbzk9nsfOQH1sP2T4k">7</th>
+<th data-page-node-id="qmCgQAW0tskYGlcVpCS5Aw">8</th>
+<th data-page-node-id="FF1xxnhIGVtbP122mZcWRc">9</th>
+<th data-page-node-id="H9j5ZL1UYLvUi4fWmTwPMO">10</th>
+<th data-page-node-id="H6CofVg25TMFIoY7SGhiJ3">11</th>
+<th data-page-node-id="FohoSjlS9W4hbMBKOvIAa3">12</th>
+<th data-page-node-id="K92uwZX0AwAoqCrh21hcKM">13</th>
+<th data-page-node-id="NLPj0Eq4Il2rRWpWTUcAOl">14</th>
+<th data-page-node-id="FaLGxDBTJoWSbfFgCpllt1">15</th>
+<th data-page-node-id="QRtke1upqcrvtBvlqvP5C9">16</th>
+<th data-page-node-id="LSKuhrmyl8Dgsi40nQaw27">17</th>
+<th data-page-node-id="xpX3H52DGTdLyRHqd3QP3w">18</th>
+<th data-page-node-id="0UVRTh9XvOQPNwaaBATkg3">19</th>
+<th data-page-node-id="K2D056zC7fyrfqn2ZamqrI">20</th>
+<th data-page-node-id="EmAv7ZQmxK26owscEgrjX8">21</th>
+<th data-page-node-id="8816yEiAbVZqhfAdWFr7PU">22</th>
+<th data-page-node-id="NMRjZBSppWZngDeC6YkSui">23</th>
+<th data-page-node-id="MVTUnGqXbwDpB25z4bfIqC">24</th>
+<th data-page-node-id="DjS63fVFMbu8bm0QqdmLFM">25</th>
 </tr>
-<tr>
-<td>需要经验</td>
-<td>90</td>
-<td>150</td>
-<td>230</td>
-<td>330</td>
-<td>450</td>
-<td>590</td>
-<td>750</td>
-<td>930</td>
-<td>1130</td>
-<td>1350</td>
-<td>1590</td>
-<td>1850</td>
-<td>2130</td>
-<td>2430</td>
-<td>2750</td>
-<td>3090</td>
-<td>3450</td>
-<td>3830</td>
-<td>4230</td>
-<td>4650</td>
-<td>5090</td>
-<td>5550</td>
-<td>6030</td>
-<td>6530</td>
+<tr data-page-node-id="AEEe3JSDHKsp8H4qEQ8sYJ">
+<td data-page-node-id="FLprRDKopMyVxTHcxB9za4">需要经验</td>
+<td data-page-node-id="JdCG4iy3iAAXYREBj19H9s">90</td>
+<td data-page-node-id="NsgKEBYi9SBs6kPJJYKVQG">150</td>
+<td data-page-node-id="kHZEjUCoUZutgzmkIvzEVT">230</td>
+<td data-page-node-id="7AjQKGogCklLpNZc6CyZ3B">330</td>
+<td data-page-node-id="Yh2C6owLFl3Uz0RQ1Q414R">450</td>
+<td data-page-node-id="An6kJ9SYtIGCkr8ReYd0QS">590</td>
+<td data-page-node-id="bgOi6SXj95hFb1ybHNdHle">750</td>
+<td data-page-node-id="qJ8FFXThdCaH4iEJCBrp4k">930</td>
+<td data-page-node-id="7ch1HImUvVqm75kH2Ujo9F">1130</td>
+<td data-page-node-id="Eweg9M5XFXxNNMwEmlisC2">1350</td>
+<td data-page-node-id="CFGkj189vNF2Oe7auZpUHn">1590</td>
+<td data-page-node-id="xww8vFcbDoXqDWTrmZHfhz">1850</td>
+<td data-page-node-id="prR9s84BEWnzlIiiMaUBPJ">2130</td>
+<td data-page-node-id="MsGB8tDVwFEDplsTpnI8GH">2430</td>
+<td data-page-node-id="VB55jlfkNGQuwX2fNbR8i7">2750</td>
+<td data-page-node-id="AkwOqEYHoz5O4Q5Cf9SvZx">3090</td>
+<td data-page-node-id="zMnsLjV9BMlGIQZWtwOaBe">3450</td>
+<td data-page-node-id="NPEJkXcX1WygszQ1ievFUQ">3830</td>
+<td data-page-node-id="Oa8el46kjemL4V1Zg3bZxI">4230</td>
+<td data-page-node-id="NEa0fMhKpiCHTAFPmcOOB9">4650</td>
+<td data-page-node-id="8g1CUwLKb2Gyy0i3BeLPbv">5090</td>
+<td data-page-node-id="J1Ke5ucWOvBwahCBcvbkER">5550</td>
+<td data-page-node-id="J56svRM6xJvSTEhgfQlBgQ">6030</td>
+<td data-page-node-id="2gao2EAYzAB92HOWPDoNer">6530</td>
 </tr>
-<tr>
-<td>等级限制</td>
-<td colspan="4">人物 80 级可以升的范围</td>
-<td colspan="5">人物 90 级可以升的范围</td>
-<td colspan="15">人物 99 级可以升的范围</td>
-</tr>
-</table></div>
-</div>
-<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
-<span>宠物飞升</span>
-<button type="button" class="hs-expand-btn">展开 ∨</button>
-</div>
-<div class="hs-collapsible">
-<div class="hs-collapsible-inner">
-  <div class="sub-header">飞升条件：</div>
-<li>宠物满足以下条件可以开启飞升 :</li>
-<li>1.  宠物类型必须是变异、魔兽、神兽</li>
-<li>2.  人物等级达到 90 级 ，宠物等级达到 95 级</li>
-<li>3.  宠物本身的技能个数至少为 8 个(不包含护符技能个数)</li>
-<li>4.  宠物必须是绑定的 ，并且每次只能同时飞升一个宠物</li>
-<img class="step-img" src="art/pet_tutorial/image58.png" alt="" loading="lazy">
-<li>完成所有的飞升任务 ，宠物即可飞升成功</li>
-<li>宠物飞升放弃后 ，对于已上交的物品不会返还 ，所以请慎重对待每个宠物(直接简化了任务 ，上交元宝就行）</li>
-<img class="step-img" src="art/pet_tutorial/image60.webp" alt="" loading="lazy">
-<li>宠物飞升时可是有几率出现新的特殊外形的哦（神兽宠物可以不拉满最后的拟化丹 ，默认的就是自身的飞升外观 ，只有变异可以幻化出图鉴中的随机绘卷）</li>
-<img class="step-img" src="art/pet_tutorial/image61.png" alt="" loading="lazy">
-    <div class="sub-header">飞升炼化：</div>
-<li>炼化可以重新随机宠物飞升所带来的资质上限炼化会重新随机飞升炼骨的剩余次数 ，并且会清空飞升炼骨所带来的资质提升</li>
-<li>这里提醒你最好炼化出满意的资质上限再去飞升炼骨提升资质哦 ~</li>
-<img class="step-img" src="art/pet_tutorial/image63.png" alt="" loading="lazy">
-      <div class="sub-header">飞升炼骨：</div>
-<li>对于宠物飞升后提升的资质上限部分 ，你可以通过高级炼骨来提升资质</li>
-<li>高级炼骨只能提升宠物飞升后的资质部分，对飞升前的资质无法提升</li>
-<li>不同剩余次数下的高级炼骨 ，所消耗的道具和数量不同 ，剩余次数越少 ，所消耗的道具可能会越多哦 ~</li>
-<li>炼化会重新随机飞升炼骨的剩余次数 ，并且会清空飞升炼骨所带来的资质提升</li>
-<img class="step-img" src="art/pet_tutorial/image65.png" alt="" loading="lazy">
-</div>
-</div>
-<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
-<span>宠物星灵</span>
-<button type="button" class="hs-expand-btn">展开 ∨</button>
-</div>
-<div class="hs-collapsible">
-<div class="hs-collapsible-inner">
-<li>宠物飞升后解锁：</li>
-<li>这就不多介绍了就是直接给宠物加面板的</li>
-<li>每个类型凑齐 2、4 件有套装效果</li>
-<img class="step-img" src="art/pet_tutorial/image68.webp" alt="" loading="lazy">
-<li>点击这个效果按钮可以不让对应的星灵效果不生效</li>
-<img class="step-img" src="art/pet_tutorial/image70.png" alt="" loading="lazy">
-  <div class="sub-header">星灵图鉴：</div>
-<div class="xl-tujian">
-<div class="sub-header">生肖守护神·上</div>
-<div class="xl-cards">
-<img src="art/xingling/card_shengxiao_shang_1.png" alt="子鼠 物攻+50" loading="lazy">
-<img src="art/xingling/card_shengxiao_shang_2.png" alt="丑牛 气血+100" loading="lazy">
-<img src="art/xingling/card_shengxiao_shang_3.png" alt="寅虎 法防+50" loading="lazy">
-<img src="art/xingling/card_shengxiao_shang_4.png" alt="卯兔 物防+50" loading="lazy">
-<img src="art/xingling/card_shengxiao_shang_5.png" alt="辰龙 物攻+50" loading="lazy">
-<img src="art/xingling/card_shengxiao_shang_6.png" alt="巳蛇 速度+50" loading="lazy">
-<img src="art/xingling/card_shengxiao_shang_7.png" alt="火麒麟 物攻+100 速度+50" loading="lazy">
-</div>
-<div class="sub-header">生肖守护神·下</div>
-<div class="xl-cards">
-<img src="art/xingling/card_shengxiao_xia_1.png" alt="午马 法攻+50" loading="lazy">
-<img src="art/xingling/card_shengxiao_xia_2.png" alt="未羊 气血+100" loading="lazy">
-<img src="art/xingling/card_shengxiao_xia_3.png" alt="申猴 物防+50" loading="lazy">
-<img src="art/xingling/card_shengxiao_xia_4.png" alt="酉鸡 法防+50" loading="lazy">
-<img src="art/xingling/card_shengxiao_xia_5.png" alt="戌狗 法攻+50" loading="lazy">
-<img src="art/xingling/card_shengxiao_xia_6.png" alt="亥猪 速度+50" loading="lazy">
-<img src="art/xingling/card_shengxiao_xia_7.png" alt="水麒麟 法攻+100 速度+50" loading="lazy">
-</div>
-
-  <div class="sub-header">山海异闻·上</div>
-<div class="xl-cards">
-<img src="art/xingling/card_shanhai_shang_1.png" alt="凤凰 物攻+50" loading="lazy">
-<img src="art/xingling/card_shanhai_shang_2.png" alt="混沌 气血+100" loading="lazy">
-<img src="art/xingling/card_shanhai_shang_3.png" alt="巴蛇 物防+50" loading="lazy">
-<img src="art/xingling/card_shanhai_shang_4.png" alt="狰 法防+50" loading="lazy">
-<img src="art/xingling/card_shanhai_shang_5.png" alt="毕方 物攻+80 速度+30" loading="lazy">
-<img src="art/xingling/card_shanhai_shang_6.png" alt="鸾鸟 法攻+50" loading="lazy">
-</div>
-  <div class="sub-header">山海异闻·下</div>
-<div class="xl-cards">
-<img src="art/xingling/card_shanhai_xia_1.png" alt="穷奇 气血+100" loading="lazy">
-<img src="art/xingling/card_shanhai_xia_2.png" alt="饕餮 物防+50" loading="lazy">
-<img src="art/xingling/card_shanhai_xia_3.png" alt="梼杌 法防+50" loading="lazy">
-<img src="art/xingling/card_shanhai_xia_4.png" alt="九尾 法攻+80 速度+30" loading="lazy">
-</div>
-
-  <div class="sub-header">大荒怪谈·上</div>
-<div class="xl-cards">
-<img src="art/xingling/card_dahuang_shang_1.png" alt="紫蟒 物攻+50" loading="lazy">
-<img src="art/xingling/card_dahuang_shang_2.png" alt="飞廉 气血+200" loading="lazy">
-<img src="art/xingling/card_dahuang_shang_3.png" alt="灵鹤 法防+50" loading="lazy">
-<img src="art/xingling/card_dahuang_shang_4.png" alt="风犼 物防+50" loading="lazy">
-<img src="art/xingling/card_dahuang_shang_5.png" alt="狐仙 物攻+100 速度+50" loading="lazy">
-</div>
-  <div class="sub-header">大荒怪谈·下</div>
-<div class="xl-cards">
-<img src="art/xingling/card_dahuang_xia_1.png" alt="睚眦 法攻+50" loading="lazy">
-<img src="art/xingling/card_dahuang_xia_2.png" alt="天狼 气血+200" loading="lazy">
-<img src="art/xingling/card_dahuang_xia_3.png" alt="英招 物防+50" loading="lazy">
-<img src="art/xingling/card_dahuang_xia_4.png" alt="朱厌 法防+50" loading="lazy">
-<img src="art/xingling/card_dahuang_xia_5.png" alt="腾龙 法攻+100 速度+50" loading="lazy">
-</div>
-
-    <div class="sub-header">星座守护神·上</div>
-<div class="xl-cards">
-<img src="art/xingling/card_xingzuo_shang_1.png" alt="白羊 物攻+100" loading="lazy">
-<img src="art/xingling/card_xingzuo_shang_2.png" alt="金牛 气血+400" loading="lazy">
-<img src="art/xingling/card_xingzuo_shang_3.png" alt="双子 法防+100" loading="lazy">
-<img src="art/xingling/card_xingzuo_shang_4.png" alt="巨蟹 物防+100" loading="lazy">
-<img src="art/xingling/card_xingzuo_shang_5.png" alt="处女 速度+70" loading="lazy">
-<img src="art/xingling/card_xingzuo_shang_6.png" alt="狮子 物攻+150 物防+80 速度+30" loading="lazy">
-</div>
-    <div class="sub-header">星座守护神·下</div>
-<div class="xl-cards">
-<img src="art/xingling/card_xingzuo_xia_1.png" alt="天蝎 气血+400" loading="lazy">
-<img src="art/xingling/card_xingzuo_xia_2.png" alt="摩羯 法防+100" loading="lazy">
-<img src="art/xingling/card_xingzuo_xia_3.png" alt="射手 物防+100" loading="lazy">
-<img src="art/xingling/card_xingzuo_xia_4.png" alt="天秤 法攻+100" loading="lazy">
-<img src="art/xingling/card_xingzuo_xia_5.png" alt="双鱼 速度+70" loading="lazy">
-<img src="art/xingling/card_xingzuo_xia_6.png" alt="水瓶 法攻+150 法防+80 速度+30" loading="lazy">
-</div>
-
-  <div class="sub-header">八仙过海·上</div>
-<div class="xl-cards">
-<img src="art/xingling/card_baxian_shang_1.png" alt="铁拐李 气血+500" loading="lazy">
-<img src="art/xingling/card_baxian_shang_2.png" alt="韩湘子 法防+100" loading="lazy">
-<img src="art/xingling/card_baxian_shang_3.png" alt="何仙姑 法攻+100" loading="lazy">
-<img src="art/xingling/card_baxian_shang_4.png" alt="汉钟离 速度+70" loading="lazy">
-<img src="art/xingling/card_baxian_shang_5.png" alt="荷花 法攻+150 法防+80 速度+30" loading="lazy">
-</div>
-  <div class="sub-header">八仙过海·下</div>
-<div class="xl-cards">
-<img src="art/xingling/card_baxian_xia_1.png" alt="蓝采和 气血+500" loading="lazy">
-<img src="art/xingling/card_baxian_xia_2.png" alt="吕洞宾 物攻+100" loading="lazy">
-<img src="art/xingling/card_baxian_xia_3.png" alt="张果老 速度+70" loading="lazy">
-<img src="art/xingling/card_baxian_xia_4.png" alt="曹国舅 物防+100" loading="lazy">
-<img src="art/xingling/card_baxian_xia_5.png" alt="纯阳剑 物攻+150 物防+80 速度+30" loading="lazy">
-</div>
-
-    <div class="sub-header">八宗罪·上</div>
-<div class="xl-cards">
-<img src="art/xingling/card_bazong_shang_1.png" alt="傲慢 气血+500" loading="lazy">
-<img src="art/xingling/card_bazong_shang_2.png" alt="嫉妒 法防+100" loading="lazy">
-<img src="art/xingling/card_bazong_shang_3.png" alt="暴怒 速度+70" loading="lazy">
-<img src="art/xingling/card_bazong_shang_4.png" alt="懒惰 法攻+100" loading="lazy">
-<img src="art/xingling/card_bazong_shang_5.png" alt="轮回 法攻+150 法防+80 速度+30" loading="lazy">
-</div>
-<div class="sub-header">八宗罪·下</div>
-<div class="xl-cards">
-<img src="art/xingling/card_bazong_xia_1.png" alt="贪婪 气血+500" loading="lazy">
-<img src="art/xingling/card_bazong_xia_2.png" alt="暴食 物防+100" loading="lazy">
-<img src="art/xingling/card_bazong_xia_3.png" alt="色欲 速度+70" loading="lazy">
-<img src="art/xingling/card_bazong_xia_4.png" alt="冷漠 物攻+100" loading="lazy">
-<img src="art/xingling/card_bazong_xia_5.png" alt="涅槃 物攻+150 物防+80 速度+30" loading="lazy">
-</div>
-
-  <div class="sub-header">节气小仙·上</div>
-<div class="xl-cards">
-<img src="art/xingling/card_jieqi_shang_1.png" alt="清明 速度+50 气血+100" loading="lazy">
-<img src="art/xingling/card_jieqi_shang_2.png" alt="立春 气血+500" loading="lazy">
-<img src="art/xingling/card_jieqi_shang_3.png" alt="雨水 法防+100" loading="lazy">
-<img src="art/xingling/card_jieqi_shang_4.png" alt="惊蛰 物防+100" loading="lazy">
-<img src="art/xingling/card_jieqi_shang_5.png" alt="谷雨 法攻+100" loading="lazy">
-<img src="art/xingling/card_jieqi_shang_6.png" alt="春分 法攻+150 法防+80 速度+50" loading="lazy">
-</div>
-  <div class="sub-header">节气小仙·下</div>
-<div class="xl-cards">
-<img src="art/xingling/card_jieqi_xia_1.png" alt="小暑 物攻+100" loading="lazy">
-<img src="art/xingling/card_jieqi_xia_2.png" alt="大暑 气血+500" loading="lazy">
-<img src="art/xingling/card_jieqi_xia_3.png" alt="立夏 法防+100" loading="lazy">
-<img src="art/xingling/card_jieqi_xia_4.png" alt="芒种 物防+100" loading="lazy">
-<img src="art/xingling/card_jieqi_xia_5.png" alt="小满 速度+50 气血+100" loading="lazy">
-<img src="art/xingling/card_jieqi_xia_6.png" alt="夏至 物攻+150 物防+80 速度+50" loading="lazy">
-</div>
-
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="section" id="sec-lingbao">
-<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
-<span>宠物灵宝</span>
-<button type="button" class="hs-expand-btn">展开 ∨</button>
-</div>
-<div class="hs-collapsible">
-<div class="hs-collapsible-inner">
-<li>宠物飞升后解锁（解锁技能格子成功率为100%）</li>
-<li>灵宝是三个格子随机打上去的，跟子女的指定不一样</li>
-<li>灵宝技能学习时 ，会在已解锁的技能格子中随机顶替</li>
-<li>灵宝技能无法被铭记</li>
-<li>最多可以解锁三个灵宝技能格子</li>
-<img class="step-img" src="art/pet_tutorial/image112.png" alt="" loading="lazy">
-  <div class="sub-header">解锁条件：</div>
-<img class="step-img" src="art/pet_tutorial/lbjs2.png" alt="" loading="lazy">
-<li>打书的时候可以直接再学习技能处进去 ，也可以再进入灵宝处进去</li>
-<img class="step-img" src="art/pet_tutorial/lbjs1.webp" alt="" loading="lazy">
-</div>
-</div>
-</div>
-
-<div class="section" id="sec-zhuangbei">
-<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
-<span>宠物装备</span>
-<button type="button" class="hs-expand-btn">展开 ∨</button>
-</div>
-<div class="hs-collapsible">
-<div class="hs-collapsible-inner">
-<div class="zb-row">
-<div class="zb-col">
-<div class="sub-header"><span>宠物装备</span></div>
-<li>有概率是双属性 ，同时装备可替换 ，替换后不会消失</li>
-<img class="step-img" src="art/pet_tutorial/image119.png" alt="" loading="lazy">
-</div>
-<div class="zb-col">
-<div class="sub-header"><span>宠物饰品</span></div>
-<img class="step-img" src="art/pet_tutorial/sssp.png" alt="" loading="lazy">
-</div>
-<div class="zb-col">
-<div class="sub-header"><span>宠物护符</span></div>
-<img class="step-img" src="art/pet_tutorial/image121.png" alt="" loading="lazy">
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="section" id="sec-zhongzhu">
-<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
-<span>装备重铸</span>
-<button type="button" class="hs-expand-btn">展开 ∨</button>
-</div>
-<div class="hs-collapsible">
-<div class="hs-collapsible-inner">
-<li>消耗一定量的稀土可以重铸宠物装备。</li>
-<li>已经装备的宠物装备也可以重铸。</li>
-<li>宠物装备重铸所附加的属性上限与该宠物装备的基础属性一致。</li>
-<li>在宠物的装备饰品界面更换重铸后的宠物装备时 ，会返还一定的稀土数 ，重铸后的属性加成越高 ，返还的稀土数量越多。</li>
-<li>当宠物放生、被用于参与化生、被用于飞升消耗、被用于抽取外形消耗时 ，会根据该宠物所佩戴的宠物装备的重铸属性返还一定量的稀土</li>
-<li>重铸后的属性加成越高 ，返还的稀土数量越多。</li>
-<li>重铸的属性不计入宠物化丹属性。</li>
-<img class="step-img" src="art/pet_tutorial/zbcz.webp" alt="" loading="lazy">
-</div>
-</div>
-</div>
-
-<div class="section" id="sec-neidan">
-<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
-<span>宠物内丹</span>
-<button type="button" class="hs-expand-btn">展开 ∨</button>
-</div>
-<div class="hs-collapsible">
-<div class="hs-collapsible-inner">
-<li>每个镶嵌位可以镶嵌一颗金丹</li>
-<li>人阙只能镶嵌人 ·金丹（对应变异宠飞升后）</li>
-<li>地阙只能镶嵌地 ·金丹（对应魔兽宠飞升后）</li>
-<li>天阙只能镶嵌天 ·金丹（对应神兽宠飞升后）</li>
-<img class="step-img" src="art/pet_tutorial/image124.png" alt="" loading="lazy">
-<li>达到 95 级开启内丹默认解锁神阙 1 号位</li>
-<li>达到 104 级时解锁神阙 2 号位</li>
-<li>达到 140 级时解锁神阙 3 号位</li>
-<img class="step-img" src="art/pet_tutorial/nd1.webp" alt="" loading="lazy">
-<li>镶嵌金丹后，激活镶嵌位的效果</li>
-<li>1号位：提升物攻、法攻</li>
-<li>2号位：提升气血、物防</li>
-<li>3号位：提升速度、法防</li>
-<img class="step-img" src="art/pet_tutorial/nd2.webp" alt="" loading="lazy">
-<li>分解内丹得到丹魂和丹魄</li>
-<li>消耗丹魄升级镶嵌位 ，可以提升神阙效果</li>
-<li>镶嵌位等级达到当前阶数的等级上限 ，需要消耗丹魂升阶（满级 35 级 ，30 级的时候不用进阶 ，1-25 级每 5 级进阶一次）</li>
-<li>内丹属性等于各神阙镶嵌效果的总和</li>
-<img class="step-img" src="art/pet_tutorial/image126.png" alt="" loading="lazy">
-<li>宠物化丹后将消失化作一个新道具，进入金丹包裹</li>
-<li>参战、跟随、宠物防御小队中的宠物 ，无法化丹；镶嵌了金丹的宠物 ，无法化丹</li>
-<li>金丹属性与原宠物的属性有关。（不包含头盔重置属性、项圈重置属性、炼魂、印记加成）</li>
-<img class="step-img" src="art/pet_tutorial/image129.png" alt="" loading="lazy">
-<li>化丹后可以花费金币将宠物还魂</li>
-<li>大家前期培养的时候能用就用 ，有资源的时候再将宠物还魂 ，在进行提升</li>
-<img class="step-img" src="art/pet_tutorial/image130.png" alt="" loading="lazy">
-<li>金丹分解后无法再还魂</li>
-<img class="step-img" src="art/pet_tutorial/image131.png" alt="" loading="lazy">
-<li>重铸的属性不计入宠物化丹属性</li>
-<li>印记加成也不计入</li>
-<img class="step-img" src="art/pet_tutorial/image132.png" alt="" loading="lazy">
-<li>奥义技能也是跟子女一样的指定打书</li>
-<img class="step-img" src="art/pet_tutorial/image133.png" alt="" loading="lazy">
-<li>解锁条件：</li>
-<li>根据三阙位置镶嵌个数来决定解锁格子数</li>
-<img class="step-img" src="art/pet_tutorial/image135.png" alt="" loading="lazy">
-<li>右侧展⽰的所有奥义书 ，均是未升阶的奥义书。不包括 1 阶或 2 阶的奥义书</li>
-<li>您可单击右侧奥义书 ，添加到左侧 + 号中 ，直到左侧 + 号全部变为奥义书。作为升阶使用的消耗品 ，消耗后不可返还</li>
-<li>奥义升阶后可以获得更加强力的技能 ，可点击右侧二阶奥义书预览效果</li>
-<li>奥义升阶会额外给宠物带来潜力点 ，可在宠物潜力加点处查看</li>
-<li>一阶奥义书会为您的宠物增加 20 点潜力点</li>
-<li>二阶奥义书会为您的宠物增加 50 点潜力点</li>
-<li>当卸下奥义书时 ，潜力点会重置</li>
-<li>从初级升 1 阶要消耗两本相同的奥义</li>
-<li>1 阶升 2 阶需要消耗 5 本超级奥义 ，5 本奥义可以是同一个宠物的奥义 ，也可以是不同宠物的奥义 ，不可以是直接加属性的那种低级、高级奥义</li>
-<img class="step-img" src="art/pet_tutorial/image136.png" alt="" loading="lazy">
-  <div class="sub-header"><span>内丹培养</span></div>
-<li>1.  天地人阙一号位的宠物需要放置培养攻击力的宠物。你的宠物是物理那么这里放置的内丹就培养物理加点、物理项圈、物理星灵、打书忠心 + 蛮力 。你的宠物是法术这里放置的内丹就培养灵性加点、法攻项圈、法术星灵。</li>
-<li>2.  天地人阙二号位需要放置气血高物防高的内丹 ，同样你的内丹宠物培养的时候需要加点血量物防、带血量物防的头盔、带 + 血量物防的星灵、打书坚韧。</li>
-<li>3.  天地人阙三号位需要放置速度快法防高的宠物 ，这里的内丹宠物培养的时候加点可以选择十敏捷、带速度项圈、带法防头盔带法防和速度的星灵、打书固法</li>
-<img class="step-img" src="art/pet_tutorial/image139.png" alt="资质推荐" loading="lazy">
-
-</div>
-</div>
-</div>
-
-<div class="section" id="sec-huyou">
-<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
-<span>宠物护佑</span>
-<button type="button" class="hs-expand-btn">展开 ∨</button>
-</div>
-<div class="hs-collapsible">
-<div class="hs-collapsible-inner">
-<li>圣兽护佑玩法是在战斗中，达到指定回合后，可以召唤一只圣兽作为护佑对象，给予角色大幅度的加成。(圣兽即已经飞升的神兽）</li>
-<li>限制条件 1:当前正在上阵的神兽宠物，无法进行圣兽护佑。</li>
-<li>限制条件 2: 该场次战斗已经使用过神兽宠物 ，无法进行圣兽护佑。(无论这个神兽是战死 ，还是被替换)。</li>
-<li>限制条件 3: 相对的 ，正在上阵或已经上阵过的护佑圣兽 ，无法作为神兽宠物进行召唤</li>
-<li>圣兽护佑的持续回合根据神兽宠物的阶级决定 ，阶级越高 ，护佑持续回合数越多。本阶继承下阶继承</li>
-<li>圣兽护佑结束后 ，护佑功能进入冷却期 ，冷却期间内 ，无法使用护佑功能 ，冷却期为 3 回合。</li>
-<li>属性继承规则 :</li>
-<li>当前使用护佑的圣兽属性会部分继承到人物身上。气血将以护盾的形式作为继承。</li>
-<li>神兽宠物阶段越高 ，继承的属性越多。护佑结束后 ，继承加成的属性消失。</li>
-<img class="step-img" src="art/pet_tutorial/image142.webp" alt="" loading="lazy">
-<li>被动技能规则 :</li>
-<li>根据当前神兽宠物所学习的技能 ，会有概率继承到人物身上。护佑回合结束后 ，效果消失。（可同时继承多个被动技能）</li>
-<li>有部分技能不能够被继承，且继承后的技能效果也会与原来神兽宠物技能效果的有所不同。具体可以查看被动技能继承图鉴。</li>
-<img class="step-img" src="art/pet_tutorial/image144.png" alt="" loading="lazy">
-<li>专属技能规则</li>
-<li>每一只护佑圣兽都有一个专属的被动技能。护佑回合结束后 ，效果消失</li>
-<li>专属技能会在人物释放技能或者攻击时作为被动生效。</li>
-<img class="step-img" src="art/pet_tutorial/lh1.webp" alt="" loading="lazy">
-<li>用来调整护佑宠物在战斗中的排序顺序</li>
-<img class="step-img" src="art/pet_tutorial/image145.png" alt="" loading="lazy">
-<li>在特定的竞技活动中可以使用护佑</li>
-<li>战斗开始后第 3 回合可召唤护佑</li>
-<li>冷却 10 回合 ，下次召唤是第 13 回合</li>
-<li>召唤护佑不耽误人物 ，宠物出手机会</li>
-<img class="step-img" src="art/pet_tutorial/lh2.webp" alt="" loading="lazy">
-</div>
-</div>
-</div>
-
-<div class="section" id="sec-huyoujineng">
-<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
-<span>护佑技能</span>
-<button type="button" class="hs-expand-btn">展开 ∨</button>
-</div>
-<div class="hs-collapsible">
-<div class="hs-collapsible-inner">
-<div class="table-wrap"><table>
-<tr>
-<td>超级金刚 ·佑</td>
-<td>物理伤害结果提升 5%。</td>
-</tr>
-<tr>
-<td>超级重击 ·佑</td>
-<td>物理暴击概率增加 2%。</td>
-</tr>
-<tr>
-<td>超级蛮力 ·佑</td>
-<td>增加自身等级 *0.6 的攻击力。</td>
-</tr>
-<tr>
-<td>超级技巧 ·佑</td>
-<td>物理和法术反击伤害提升10%</td>
-</tr>
-<tr>
-<td>超级偷袭 ·佑</td>
-<td>物理攻击时忽视对方 5% 的物理防御。</td>
-</tr>
-<tr>
-<td>超级致命 ·佑</td>
-<td>物理暴击伤害提高 10%。</td>
-</tr>
-<tr>
-<td>超级怒火 ·佑</td>
-<td>法术暴击概率增加 2%。</td>
-</tr>
-<tr>
-<td>超级剧烈 ·佑</td>
-<td>法术波动范围增加 5%</td>
-</tr>
-<tr>
-<td>超级法伤 ·佑</td>
-<td>法术伤害结果提升 5%。</td>
-</tr>
-<tr>
-<td>超级法穿 ·佑</td>
-<td>法术攻击时忽视对方 5% 的法术防御。</td>
-</tr>
-<tr>
-<td>超级冥思 ·佑</td>
-<td>战斗中 ，每回合结束时恢复等级 *2 点法力。</td>
-</tr>
-<tr>
-<td>超级律令 ·佑</td>
-<td>使用技能时所消耗的法力减少 20%。</td>
-</tr>
-<tr>
-<td>超级吸血 ·佑</td>
-<td>物理攻击可吸取对方所掉气血的10% ，对拥有鬼魅技能的单位无效。</td>
-</tr>
-<tr>
-<td>超级再生 ·佑</td>
-<td>战斗中 ，回合初恢复等级 *3 的气血。</td>
-</tr>
-<tr>
-<td>超级招架 ·佑</td>
-<td>受到物理伤害时 ，有 30% 概率减免 10% 的伤害结果</td>
-</tr>
-<tr>
-<td>超级复仇 ·佑</td>
-<td>受到物理攻击 5% 几率进行反击 ，伤害为正常伤害的100%。</td>
-</tr>
-<tr>
-<td>超级魔反 ·佑</td>
-<td>受到物理攻击 5% 几率进行魔法反击 ，伤害为正常伤害的100%。</td>
-</tr>
-<tr>
-<td>超级抗拒 ·佑</td>
-<td>5% 概率使自身受到的法术伤害变为1。</td>
-</tr>
-<tr>
-<td>超级铁壁 ·佑</td>
-<td>5% 概率使自身受到的物理伤害变为1。</td>
-</tr>
-<tr>
-<td>超级坚韧 ·佑</td>
-<td>提升等级 *3 的物理防御。</td>
-</tr>
-<tr>
-<td>超级固法 ·佑</td>
-<td>提升等级 *3 的法术防御。</td>
-</tr>
-<tr>
-<td>超级幸运 ·佑</td>
-<td>法术躲避增加 5%</td>
-</tr>
-<tr>
-<td>超级飞行 ·佑</td>
-<td>物理躲避增加 5% ，物理命中增加 5%</td>
-</tr>
-<tr>
-<td>超级金睛 ·佑</td>
-<td>对隐身单位的伤害提高 20%</td>
-</tr>
-<tr>
-<td>超级持久 ·佑</td>
-<td>受到的增益状态持续回合数 +1</td>
-</tr>
-<tr>
-<td>超级毒药 ·佑</td>
-<td>物理或法术攻击时 ，2% 几率使目标 5 回合内中毒。</td>
-</tr>
-<tr>
-<td>超级气势 ·佑</td>
-<td>出战前 2 回合物理伤害结果增加10%。</td>
-</tr>
-<tr>
-<td>超级震慑 ·佑</td>
-<td>出战前 2 回合法术伤害结果增加10%。</td>
-</tr>
-<tr>
-<td>超级精准 ·佑</td>
-<td>对拥有飞行类、迅捷类技能的目标伤害结果增加10%</td>
-</tr>
-<tr>
-<td>超级冰霜 ·佑</td>
-<td>攻击命中时有 2% 概率降低目标速度 6 回合 ，该效果不能叠加。</td>
-</tr>
-<tr>
-<td>超级光明 ·佑</td>
-<td>受到治疗 ，提高治疗效果 10%。</td>
-</tr>
-<tr>
-<td>超级破防 ·佑</td>
-<td>攻击命中时有 2% 概率降低目标物理防御 6 回合 ，该效果不能叠加。</td>
-</tr>
-<tr>
-<td>超级丧胆 ·佑</td>
-<td>攻击命中时有 2% 概率降低目标物理攻击 6 回合 ，该效果不能叠加。</td>
-</tr>
-<tr>
-<td>超级迟钝 ·佑</td>
-<td>攻击命中时有 2% 概率降低目标物理闪避等级 6 回合 ，该效果不能叠加。</td>
-</tr>
-<tr>
-<td>超级断筋 ·佑</td>
-<td>攻击命中时有 2% 概率降低目标速度 6 回合 ，该效果不能叠加。</td>
-</tr>
-<tr>
-<td>超级涣神 ·佑</td>
-<td>攻击命中时有 2% 概率降低目标法术防御 6 回合 ，该效果不能叠加。</td>
-</tr>
-<tr>
-<td>超级碎灵 ·佑</td>
-<td>攻击命中时有 2% 概率降低目标法术攻击 6 回合 ，该效果不能叠加。</td>
-</tr>
-<tr>
-<td>超级灭心 ·佑</td>
-<td>攻击命中时有 2% 概率降低目标封印命中等级 6 回合 ，该效果不能叠加。</td>
-</tr>
-<tr>
-<td>超级毁镜 ·佑</td>
-<td>攻击命中时有 2% 概率降低目标封印抗性 6 回合 ，该效果不能叠加。</td>
-</tr>
-<tr>
-<td>超级迟缓 ·佑</td>
-<td>减少自身速度的10%。</td>
-</tr>
-</table></div>
-<div class="table-wrap"><table>
-<tr>
-<td>圣兽护佑</td>
-<td>为角色增加护佑圣兽 2% 的气血护盾 ，物理攻击 ，法术攻击 ，物理防御 ，法术防御 ，速度。</td>
-</tr>
-<tr>
-<td>圣兽护佑</td>
-<td>为角色增加护佑圣兽 4% 的气血护盾 ，物理攻击 ，法术攻击 ，物理防御 ，法术防御 ，速度。</td>
-</tr>
-<tr>
-<td>圣兽护佑</td>
-<td>为角色增加护佑圣兽 6% 的气血护盾 ，物理攻击 ，法术攻击 ，物理防御 ，法术防御 ，速度。</td>
-</tr>
-<tr>
-<td>圣兽护佑</td>
-<td>为角色增加护佑圣兽 8% 的气血护盾 ，物理攻击 ，法术攻击 ，物理防御 ，法术防御 ，速度。</td>
-</tr>
-<tr>
-<td>圣兽护佑</td>
-<td>为角色增加护佑圣兽 10% 的气血护盾 ，物理攻击 ，法术攻击 ，物理防御 ，法术防御 ，速度。</td>
-</tr>
-<tr>
-<td>圣兽护佑</td>
-<td>为角色增加护佑圣兽 12% 的气血护盾 ，物理攻击 ，法术攻击 ，物理防御 ，法术防御 ，速度。</td>
-</tr>
-<tr>
-<td>圣兽护佑</td>
-<td>为角色增加护佑圣兽 14% 的气血护盾 ，物理攻击 ，法术攻击 ，物理防御 ，法术防御 ，速度。</td>
+<tr data-page-node-id="K5cSJxqpOiFvMHEzzbJANX">
+<td data-page-node-id="dszQGjDhVTpH9mOZiEs1X4">等级限制</td>
+<td colspan="4" data-page-node-id="sQpCZhdiEGtVeg20faDpGt">人物 80 级可以升的范围</td>
+<td colspan="5" data-page-node-id="LMQAkK3FLOYfSTcMQg1qNm">人物 90 级可以升的范围</td>
+<td colspan="15" data-page-node-id="D6TABkRip2vV5gmW0zG6Fb">人物 99 级可以升的范围</td>
 </tr>
 </table></div>
 </div>
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false" data-page-node-id="exDjSByxqhHIMXdOcNMHbi">
+<span data-page-node-id="wEDQLHb2R5Sb0bqSNdfwUU">宠物飞升</span>
+<button type="button" class="hs-expand-btn" data-page-node-id="zErz1RKCj2D1gHWCpnMaoY">展开 ∨</button>
+</div>
+<div class="hs-collapsible" data-page-node-id="54PudVzW243hoSjzd3ruRA">
+<div class="hs-collapsible-inner" data-page-node-id="ZMATADj2MxEPTiXXghkJjq">
+  <div class="sub-header" data-page-node-id="OmhNV2uHIQEhKRRRfCVSFM">飞升条件：</div>
+<li data-page-node-id="iqcpYaFvE82hb76Gp9tEVY">宠物满足以下条件可以开启飞升 :</li>
+<li data-page-node-id="SH8cABbAVzLz5wC05pOgQd">1.  宠物类型必须是变异、魔兽、神兽</li>
+<li data-page-node-id="N47a19sOcomdUgxSuYSmFK">2.  人物等级达到 90 级 ，宠物等级达到 95 级</li>
+<li data-page-node-id="TJEEvTEBNujm9rbRXhW5Of">3.  宠物本身的技能个数至少为 8 个(不包含护符技能个数)</li>
+<li data-page-node-id="ZJyqpv2Hr9QL61Jc2cIJb3">4.  宠物必须是绑定的 ，并且每次只能同时飞升一个宠物</li>
+<img class="step-img" src="art/pet_tutorial/image58.png" alt="" loading="lazy" data-page-node-id="ZQUHZfkoxvAVKhEDMvgQAk">
+<li data-page-node-id="FryKRB5XdoSxEZ9y4h2kuY">完成所有的飞升任务 ，宠物即可飞升成功</li>
+<li data-page-node-id="yKRlD3W8ClvnJ8FiekDtbQ">宠物飞升放弃后 ，对于已上交的物品不会返还 ，所以请慎重对待每个宠物(直接简化了任务 ，上交元宝就行）</li>
+<img class="step-img" src="art/pet_tutorial/image60.webp" alt="" loading="lazy" data-page-node-id="4c5vDxQStzmbaMlF2XnbKZ">
+<li data-page-node-id="N6wHI5jJTVQ5QsJg1a5TSu">宠物飞升时可是有几率出现新的特殊外形的哦（神兽宠物可以不拉满最后的拟化丹 ，默认的就是自身的飞升外观 ，只有变异可以幻化出图鉴中的随机绘卷）</li>
+<img class="step-img" src="art/pet_tutorial/image61.png" alt="" loading="lazy" data-page-node-id="jp3MsQWjlGUDdFdys7CBax">
+    <div class="sub-header" data-page-node-id="dRa6gf5isILWrHczTCy3zO">飞升炼化：</div>
+<li data-page-node-id="e6ObxZDCfFqt3ylyET2rcR">炼化可以重新随机宠物飞升所带来的资质上限炼化会重新随机飞升炼骨的剩余次数 ，并且会清空飞升炼骨所带来的资质提升</li>
+<li data-page-node-id="S2E14Z0cbQx8EthB7HGQsH">这里提醒你最好炼化出满意的资质上限再去飞升炼骨提升资质哦 ~</li>
+<img class="step-img" src="art/pet_tutorial/image63.png" alt="" loading="lazy" data-page-node-id="gE3TrLyNUGt5MJUzVMEtqM">
+      <div class="sub-header" data-page-node-id="FzdvOPfM5myhitUatGFRpZ">飞升炼骨：</div>
+<li data-page-node-id="A4vXg5EILyKz5aEhoDZhtZ">对于宠物飞升后提升的资质上限部分 ，你可以通过高级炼骨来提升资质</li>
+<li data-page-node-id="86TK3agxRuqyU4AmEhAaQt">高级炼骨只能提升宠物飞升后的资质部分，对飞升前的资质无法提升</li>
+<li data-page-node-id="ui5VoTEkL6eNJtwFFBijPP">不同剩余次数下的高级炼骨 ，所消耗的道具和数量不同 ，剩余次数越少 ，所消耗的道具可能会越多哦 ~</li>
+<li data-page-node-id="LIpDdBTLbWYiaY0NF318wb">炼化会重新随机飞升炼骨的剩余次数 ，并且会清空飞升炼骨所带来的资质提升</li>
+<img class="step-img" src="art/pet_tutorial/image65.png" alt="" loading="lazy" data-page-node-id="FhLFl8fEPdYnvivSvembbC">
+</div>
+</div>
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false" data-page-node-id="YwBeUH0QIAR4SD18NqerEi">
+<span data-page-node-id="vYbuwByMUpspA5MTubBxpq">宠物星灵</span>
+<button type="button" class="hs-expand-btn" data-page-node-id="YhLdFxuz37AfHBwn6iD1rj">展开 ∨</button>
+</div>
+<div class="hs-collapsible" data-page-node-id="wrr2bDFPiukMydMsq2t5PP">
+<div class="hs-collapsible-inner" data-page-node-id="TNiizxh6gvZKzEH67pb4NX">
+<li data-page-node-id="usExJLwUH0FwAL3zrR2vvz">宠物飞升后解锁：</li>
+<li data-page-node-id="0wzYP8ESZQtuRFqwevixHL">这就不多介绍了就是直接给宠物加面板的</li>
+<li data-page-node-id="iLtlH7KAvWLkLurF4JLp46">每个类型凑齐 2、4 件有套装效果</li>
+<img class="step-img" src="art/pet_tutorial/image68.webp" alt="" loading="lazy" data-page-node-id="C13WpnUZyYhcRIgKZVN1Al">
+<li data-page-node-id="CmoV8h8xtw2HEuUeHkcJ7R">点击这个效果按钮可以不让对应的星灵效果不生效</li>
+<img class="step-img" src="art/pet_tutorial/image70.png" alt="" loading="lazy" data-page-node-id="0yQ24f2YpIZXQvey5RhAkP">
+  <div class="sub-header" data-page-node-id="FM0CYuJVEBf31tRX9Lbibp">星灵图鉴：</div>
+<div class="xl-tujian" data-page-node-id="7W2t16T0A66BKcHJvNnT7z">
+<div class="sub-header" data-page-node-id="BUHw6aslVreyIWYEfTkvd5">生肖守护神·上</div>
+<div class="xl-cards" data-page-node-id="34nLxsPeXJUb2qoO4NOjRv">
+<img src="art/xingling/card_shengxiao_shang_1.png" alt="子鼠 物攻+50" loading="lazy" data-page-node-id="TpAsQG7aXuAfh971v5gC5Z">
+<img src="art/xingling/card_shengxiao_shang_2.png" alt="丑牛 气血+100" loading="lazy" data-page-node-id="TqOeIPFaWBaQlelfJGhjqC">
+<img src="art/xingling/card_shengxiao_shang_3.png" alt="寅虎 法防+50" loading="lazy" data-page-node-id="UnW8j99MxySKZY8GqCoUD8">
+<img src="art/xingling/card_shengxiao_shang_4.png" alt="卯兔 物防+50" loading="lazy" data-page-node-id="Ln0HD3GyGkFmwtmwDZfTmg">
+<img src="art/xingling/card_shengxiao_shang_5.png" alt="辰龙 物攻+50" loading="lazy" data-page-node-id="VDPlQfzrPyDQdACCkO58Iu">
+<img src="art/xingling/card_shengxiao_shang_6.png" alt="巳蛇 速度+50" loading="lazy" data-page-node-id="FjwIyWZxEYPA2r1ZNSeVJJ">
+<img src="art/xingling/card_shengxiao_shang_7.png" alt="火麒麟 物攻+100 速度+50" loading="lazy" data-page-node-id="ckQCFFm9s2wgqmCvLjcTi8">
+</div>
+<div class="sub-header" data-page-node-id="zXPDMc50m40l7AkRZScaMY">生肖守护神·下</div>
+<div class="xl-cards" data-page-node-id="xyNreW5wf3PDgWGqYSuCoj">
+<img src="art/xingling/card_shengxiao_xia_1.png" alt="午马 法攻+50" loading="lazy" data-page-node-id="3F2Fn9m7fpxlkEDOomun9L">
+<img src="art/xingling/card_shengxiao_xia_2.png" alt="未羊 气血+100" loading="lazy" data-page-node-id="oYyvw4haaK2iXzUrNAepmJ">
+<img src="art/xingling/card_shengxiao_xia_3.png" alt="申猴 物防+50" loading="lazy" data-page-node-id="KPFLJF7TXcKHkqaCYu17Sh">
+<img src="art/xingling/card_shengxiao_xia_4.png" alt="酉鸡 法防+50" loading="lazy" data-page-node-id="VSIk4yrMwgM0pEFdE1E4Ay">
+<img src="art/xingling/card_shengxiao_xia_5.png" alt="戌狗 法攻+50" loading="lazy" data-page-node-id="8VWgAJ5FfcdgvoK0Y05MJE">
+<img src="art/xingling/card_shengxiao_xia_6.png" alt="亥猪 速度+50" loading="lazy" data-page-node-id="K0ZFSIx7Az6z18LbYWar9q">
+<img src="art/xingling/card_shengxiao_xia_7.png" alt="水麒麟 法攻+100 速度+50" loading="lazy" data-page-node-id="Gfkz8cNUnaFeqoj9BjFt7f">
+</div>
+
+  <div class="sub-header" data-page-node-id="sREppUsB7ZJz01jWA0Adgq">山海异闻·上</div>
+<div class="xl-cards" data-page-node-id="mOMkzXlYmzNsuMnmTORDGB">
+<img src="art/xingling/card_shanhai_shang_1.png" alt="凤凰 物攻+50" loading="lazy" data-page-node-id="eHwBEynAVtlVpjncsxBmAv">
+<img src="art/xingling/card_shanhai_shang_2.png" alt="混沌 气血+100" loading="lazy" data-page-node-id="Yt0OUUb29od1c9Jawzjj25">
+<img src="art/xingling/card_shanhai_shang_3.png" alt="巴蛇 物防+50" loading="lazy" data-page-node-id="VE8pU6oqDwtAk3lT17qvQ1">
+<img src="art/xingling/card_shanhai_shang_4.png" alt="狰 法防+50" loading="lazy" data-page-node-id="8QzDvFwUIwBy9UYHnW5GAt">
+<img src="art/xingling/card_shanhai_shang_5.png" alt="毕方 物攻+80 速度+30" loading="lazy" data-page-node-id="PM7ljZIHAtWG26VoyKR0R9">
+<img src="art/xingling/card_shanhai_shang_6.png" alt="鸾鸟 法攻+50" loading="lazy" data-page-node-id="Itp5QmI0Uv0UXS7aAGcaC6">
+</div>
+  <div class="sub-header" data-page-node-id="7ThrFKogXwzbPQjxsI3XAG">山海异闻·下</div>
+<div class="xl-cards" data-page-node-id="Tk2hHkXiWRFwPystLedN7D">
+<img src="art/xingling/card_shanhai_xia_1.png" alt="穷奇 气血+100" loading="lazy" data-page-node-id="xEXEfEBTQojSgpcej71WfN">
+<img src="art/xingling/card_shanhai_xia_2.png" alt="饕餮 物防+50" loading="lazy" data-page-node-id="chEF8Zr4GeSognzARtgjOV">
+<img src="art/xingling/card_shanhai_xia_3.png" alt="梼杌 法防+50" loading="lazy" data-page-node-id="EpyfrpRPmum9fryDk3uKeF">
+<img src="art/xingling/card_shanhai_xia_4.png" alt="九尾 法攻+80 速度+30" loading="lazy" data-page-node-id="Zl8VMloweEfODecc087Z7i">
+</div>
+
+  <div class="sub-header" data-page-node-id="1KM8mYKGMVAduOzxrtmily">大荒怪谈·上</div>
+<div class="xl-cards" data-page-node-id="5cW9RfoNKSscBN994FNlCG">
+<img src="art/xingling/card_dahuang_shang_1.png" alt="紫蟒 物攻+50" loading="lazy" data-page-node-id="2e1VeOcPq9gYFG2TIh9cGh">
+<img src="art/xingling/card_dahuang_shang_2.png" alt="飞廉 气血+200" loading="lazy" data-page-node-id="UzBkePNIUp6BlAbrWMsDCR">
+<img src="art/xingling/card_dahuang_shang_3.png" alt="灵鹤 法防+50" loading="lazy" data-page-node-id="un8LFK6HVHHDJU32i6eP2X">
+<img src="art/xingling/card_dahuang_shang_4.png" alt="风犼 物防+50" loading="lazy" data-page-node-id="FNjfsMtmi213T9iZjIG5Vw">
+<img src="art/xingling/card_dahuang_shang_5.png" alt="狐仙 物攻+100 速度+50" loading="lazy" data-page-node-id="DtGxb7ofIii7R87sJvAA6c">
+</div>
+  <div class="sub-header" data-page-node-id="1FfgHV6NuXtHbI6BhIozRj">大荒怪谈·下</div>
+<div class="xl-cards" data-page-node-id="hTLNGNtyQbr1DZE5eE5biG">
+<img src="art/xingling/card_dahuang_xia_1.png" alt="睚眦 法攻+50" loading="lazy" data-page-node-id="f1xNewBZ8GIC7pjlVx3Drj">
+<img src="art/xingling/card_dahuang_xia_2.png" alt="天狼 气血+200" loading="lazy" data-page-node-id="F5FUV9i8dgx0NMm7d0EOGe">
+<img src="art/xingling/card_dahuang_xia_3.png" alt="英招 物防+50" loading="lazy" data-page-node-id="5dnXip6qbbK1mN7PUghr0W">
+<img src="art/xingling/card_dahuang_xia_4.png" alt="朱厌 法防+50" loading="lazy" data-page-node-id="L9ZCafIZse8CiwQBkl1CEh">
+<img src="art/xingling/card_dahuang_xia_5.png" alt="腾龙 法攻+100 速度+50" loading="lazy" data-page-node-id="dT5xLbBLZWZIf66ob44j0P">
+</div>
+
+    <div class="sub-header" data-page-node-id="1hf6T9y1vN2QcauaQhRerp">星座守护神·上</div>
+<div class="xl-cards" data-page-node-id="TJAmdfRe9GzZb0fLAZb3u4">
+<img src="art/xingling/card_xingzuo_shang_1.png" alt="白羊 物攻+100" loading="lazy" data-page-node-id="ktBoNPR6XSHJV7LXFHoQz7">
+<img src="art/xingling/card_xingzuo_shang_2.png" alt="金牛 气血+400" loading="lazy" data-page-node-id="Wqyzf6W3c5YhgULcblUGKg">
+<img src="art/xingling/card_xingzuo_shang_3.png" alt="双子 法防+100" loading="lazy" data-page-node-id="04eas68ddHBKdOhwjXzNJ5">
+<img src="art/xingling/card_xingzuo_shang_4.png" alt="巨蟹 物防+100" loading="lazy" data-page-node-id="B8CJz2t2WoavSpUusZYuy8">
+<img src="art/xingling/card_xingzuo_shang_5.png" alt="处女 速度+70" loading="lazy" data-page-node-id="5mYLYNN4Jn2PVjB9xYCsPA">
+<img src="art/xingling/card_xingzuo_shang_6.png" alt="狮子 物攻+150 物防+80 速度+30" loading="lazy" data-page-node-id="3rJJhloaQu1kKCPY1HhpKi">
+</div>
+    <div class="sub-header" data-page-node-id="KezFhTOrDqpn52gFoKCBvn">星座守护神·下</div>
+<div class="xl-cards" data-page-node-id="1MvnMHzaCIB6e30fsVO5VJ">
+<img src="art/xingling/card_xingzuo_xia_1.png" alt="天蝎 气血+400" loading="lazy" data-page-node-id="a192HQ1vysRpxT5BfBk8Hm">
+<img src="art/xingling/card_xingzuo_xia_2.png" alt="摩羯 法防+100" loading="lazy" data-page-node-id="APzjDvWRbFAs06OqU9PwG1">
+<img src="art/xingling/card_xingzuo_xia_3.png" alt="射手 物防+100" loading="lazy" data-page-node-id="Jzxcryw2kWmqcNN14g63aT">
+<img src="art/xingling/card_xingzuo_xia_4.png" alt="天秤 法攻+100" loading="lazy" data-page-node-id="Pm56AjQHyc0EuboQ8BzuOi">
+<img src="art/xingling/card_xingzuo_xia_5.png" alt="双鱼 速度+70" loading="lazy" data-page-node-id="Cvn3tDw3J1vzJrLIdozWHM">
+<img src="art/xingling/card_xingzuo_xia_6.png" alt="水瓶 法攻+150 法防+80 速度+30" loading="lazy" data-page-node-id="8hBQImH2FWakiIQDstOT9m">
+</div>
+
+  <div class="sub-header" data-page-node-id="VcypUaTmZGOQN4fOy32a4S">八仙过海·上</div>
+<div class="xl-cards" data-page-node-id="bBK1tNRPZNanVUnTzhEzE2">
+<img src="art/xingling/card_baxian_shang_1.png" alt="铁拐李 气血+500" loading="lazy" data-page-node-id="cr4ueBrvOKoM4RVQFzXtcY">
+<img src="art/xingling/card_baxian_shang_2.png" alt="韩湘子 法防+100" loading="lazy" data-page-node-id="HGLmPdMR1CKiaOiSkbcknf">
+<img src="art/xingling/card_baxian_shang_3.png" alt="何仙姑 法攻+100" loading="lazy" data-page-node-id="gHkNc7zFNjjbZMfBa8vF5x">
+<img src="art/xingling/card_baxian_shang_4.png" alt="汉钟离 速度+70" loading="lazy" data-page-node-id="xoCQa7EVEQEHZ3GBk6QeG0">
+<img src="art/xingling/card_baxian_shang_5.png" alt="荷花 法攻+150 法防+80 速度+30" loading="lazy" data-page-node-id="FPUJYYvINVzWoy5JpF8Ktu">
+</div>
+  <div class="sub-header" data-page-node-id="173wPRpnjWw3McbLlyrRIf">八仙过海·下</div>
+<div class="xl-cards" data-page-node-id="PKbEEgWrH2M05QF2OtZaKi">
+<img src="art/xingling/card_baxian_xia_1.png" alt="蓝采和 气血+500" loading="lazy" data-page-node-id="Ed0SWTc3IN8hx8hIAke4ZN">
+<img src="art/xingling/card_baxian_xia_2.png" alt="吕洞宾 物攻+100" loading="lazy" data-page-node-id="CnFCp6lZXYMyF6vieWQXf9">
+<img src="art/xingling/card_baxian_xia_3.png" alt="张果老 速度+70" loading="lazy" data-page-node-id="Rzj3vlLX6iFjHnfw5JPeFN">
+<img src="art/xingling/card_baxian_xia_4.png" alt="曹国舅 物防+100" loading="lazy" data-page-node-id="6cYx1AjFCz5d4uFtsUCrg2">
+<img src="art/xingling/card_baxian_xia_5.png" alt="纯阳剑 物攻+150 物防+80 速度+30" loading="lazy" data-page-node-id="w7y9HbBgcrRzcRV1B7FaFs">
+</div>
+
+    <div class="sub-header" data-page-node-id="xVt3pHXoF55pTMyaIT9DgD">八宗罪·上</div>
+<div class="xl-cards" data-page-node-id="cy8gqFFD94JfJFHnSVMZ1t">
+<img src="art/xingling/card_bazong_shang_1.png" alt="傲慢 气血+500" loading="lazy" data-page-node-id="WAHqu7oE2v8705IRddxbu5">
+<img src="art/xingling/card_bazong_shang_2.png" alt="嫉妒 法防+100" loading="lazy" data-page-node-id="wTADrXNOxl7TzFKXe0vF8v">
+<img src="art/xingling/card_bazong_shang_3.png" alt="暴怒 速度+70" loading="lazy" data-page-node-id="FmBvklgAPxx2IFEqGIYzDz">
+<img src="art/xingling/card_bazong_shang_4.png" alt="懒惰 法攻+100" loading="lazy" data-page-node-id="Le5Mwbw6HmP1OMkWON5uwG">
+<img src="art/xingling/card_bazong_shang_5.png" alt="轮回 法攻+150 法防+80 速度+30" loading="lazy" data-page-node-id="RENSb35LxmFAoDJ1IgNCPq">
+</div>
+<div class="sub-header" data-page-node-id="rqOhG0a44h7UnxdSHMCAIS">八宗罪·下</div>
+<div class="xl-cards" data-page-node-id="NeADdcWF8UYAHyjrE8bRHG">
+<img src="art/xingling/card_bazong_xia_1.png" alt="贪婪 气血+500" loading="lazy" data-page-node-id="s4TVOSFSfXOwYeZ6WbwlvO">
+<img src="art/xingling/card_bazong_xia_2.png" alt="暴食 物防+100" loading="lazy" data-page-node-id="VEbEbURNBWHRYQ3TeAZ5y3">
+<img src="art/xingling/card_bazong_xia_3.png" alt="色欲 速度+70" loading="lazy" data-page-node-id="M6Hr37O2u5RzfmU7mJZiQE">
+<img src="art/xingling/card_bazong_xia_4.png" alt="冷漠 物攻+100" loading="lazy" data-page-node-id="G02Leqzvw67eHH7JhTG0sH">
+<img src="art/xingling/card_bazong_xia_5.png" alt="涅槃 物攻+150 物防+80 速度+30" loading="lazy" data-page-node-id="AhSREtHts1PVGrkwgiqeIE">
+</div>
+
+  <div class="sub-header" data-page-node-id="gFZnZwdXPC0tOcEIUiiufu">节气小仙·上</div>
+<div class="xl-cards" data-page-node-id="Hrt1X3tzmatvwIBYHkrs1N">
+<img src="art/xingling/card_jieqi_shang_1.png" alt="清明 速度+50 气血+100" loading="lazy" data-page-node-id="6p3lnC9XzC1i4auJQdMvyV">
+<img src="art/xingling/card_jieqi_shang_2.png" alt="立春 气血+500" loading="lazy" data-page-node-id="FseR7C3ndeF1tdMFKDB6ZX">
+<img src="art/xingling/card_jieqi_shang_3.png" alt="雨水 法防+100" loading="lazy" data-page-node-id="CNvehn84DwBIaZ8UiNQAEw">
+<img src="art/xingling/card_jieqi_shang_4.png" alt="惊蛰 物防+100" loading="lazy" data-page-node-id="XqFmrR7yvYVu2gs4ldrQSL">
+<img src="art/xingling/card_jieqi_shang_5.png" alt="谷雨 法攻+100" loading="lazy" data-page-node-id="wFxrGTKALtyIrjtVXqpkWC">
+<img src="art/xingling/card_jieqi_shang_6.png" alt="春分 法攻+150 法防+80 速度+50" loading="lazy" data-page-node-id="UEDIvFYCaRwzeE7B5nmyDv">
+</div>
+  <div class="sub-header" data-page-node-id="14b0z3qmjrBe0hqqxQorGS">节气小仙·下</div>
+<div class="xl-cards" data-page-node-id="QvUBLrKeMVJM1hD9M3MQpH">
+<img src="art/xingling/card_jieqi_xia_1.png" alt="小暑 物攻+100" loading="lazy" data-page-node-id="xDiO3b7RoxHkKE7Kd4BaMS">
+<img src="art/xingling/card_jieqi_xia_2.png" alt="大暑 气血+500" loading="lazy" data-page-node-id="DY8JkazpBU5Cwy25bc8sAV">
+<img src="art/xingling/card_jieqi_xia_3.png" alt="立夏 法防+100" loading="lazy" data-page-node-id="kDPyTMyRKr5F3C3a0qknuw">
+<img src="art/xingling/card_jieqi_xia_4.png" alt="芒种 物防+100" loading="lazy" data-page-node-id="TsAMmELkTTAp9sLUu7tbJj">
+<img src="art/xingling/card_jieqi_xia_5.png" alt="小满 速度+50 气血+100" loading="lazy" data-page-node-id="ViCcukT3Io50EHgZZD7cm7">
+<img src="art/xingling/card_jieqi_xia_6.png" alt="夏至 物攻+150 物防+80 速度+50" loading="lazy" data-page-node-id="LPy1O8htHvybAie7cn0BAv">
+</div>
+
+</div>
+</div>
+</div>
 </div>
 </div>
 
-  <div class="footer">
-    <p>九小卿攻略站</p>
+<div class="section" id="sec-lingbao" data-page-node-id="v1HGRYlReqv3t2Sofaybh6">
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false" data-page-node-id="LZ9yZMmCB6RJyAA1tOgypF">
+<span data-page-node-id="xIlLdJ6greWZHIOE4p46HL">宠物灵宝</span>
+<button type="button" class="hs-expand-btn" data-page-node-id="jeB7JXj0XR383Pn8TeAutm">展开 ∨</button>
+</div>
+<div class="hs-collapsible" data-page-node-id="9SGAPGBludJtpwaJvnlDXg">
+<div class="hs-collapsible-inner" data-page-node-id="HYMERufHFOGaFVfOtn4DL1">
+<li data-page-node-id="6PB5DNW3WyCcDxwgLXeUKf">宠物飞升后解锁（解锁技能格子成功率为100%）</li>
+<li data-page-node-id="K6HtSvmMMKFO70uhzxUwQb">灵宝是三个格子随机打上去的，跟子女的指定不一样</li>
+<li data-page-node-id="u5E9jpHIHIJ4ClzdTaRepU">灵宝技能学习时 ，会在已解锁的技能格子中随机顶替</li>
+<li data-page-node-id="EOzQqWdHR4c75VXWV6wOpb">灵宝技能无法被铭记</li>
+<li data-page-node-id="ZKj7EgTjb8j0No3dA1jeaT">最多可以解锁三个灵宝技能格子</li>
+<img class="step-img" src="art/pet_tutorial/image112.png" alt="" loading="lazy" data-page-node-id="tIGTOr03AeIB9Hg7Ba4qGk">
+  <div class="sub-header" data-page-node-id="CnLZVlxzBEncGI9PfV3lh6">解锁条件：</div>
+<img class="step-img" src="art/pet_tutorial/lbjs2.png" alt="" loading="lazy" data-page-node-id="E79hZKu1DatpOFQFNw5bej">
+<li data-page-node-id="DlO92DZCN1vxWgCeMYgAyS">打书的时候可以直接再学习技能处进去 ，也可以再进入灵宝处进去</li>
+<img class="step-img" src="art/pet_tutorial/lbjs1.webp" alt="" loading="lazy" data-page-node-id="AuDfKZFfv1LCu5V9cRhSIM">
+</div>
+</div>
+</div>
 
+<div class="section" id="sec-zhuangbei" data-page-node-id="KLYj7MYMpIvyOKvEEYXML5">
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false" data-page-node-id="cVYGkWTRxCRHed6b4En2AW">
+<span data-page-node-id="tHIsPU75HE3QjHCkj9E58N">宠物装备</span>
+<button type="button" class="hs-expand-btn" data-page-node-id="vRS3oSLceLhLLzpUwN664k">展开 ∨</button>
+</div>
+<div class="hs-collapsible" data-page-node-id="U1QL9coMfj1itQU6ECrBB0">
+<div class="hs-collapsible-inner" data-page-node-id="ZRI7H7BlzGHuwIcxL47VEy">
+<div class="zb-row" data-page-node-id="TWLWbYeNQDRKBacWqvQHdB">
+<div class="zb-col" data-page-node-id="iGA2DrP3fYioIOnENNEPfo">
+<div class="sub-header" data-page-node-id="19hfzUhBYz9dspdVowCksZ"><span data-page-node-id="atFeEmgdJxyZA0LfeoX9J7">宠物装备</span></div>
+<li data-page-node-id="0sfUgPhMWAxvIXuGED7gTo">有概率是双属性 ，同时装备可替换 ，替换后不会消失</li>
+<img class="step-img" src="art/pet_tutorial/image119.png" alt="" loading="lazy" data-page-node-id="pzOCF5WikKYHXdYGQrHy1E">
+</div>
+<div class="zb-col" data-page-node-id="ZWcaiH8BD879F7b2fNUcuF">
+<div class="sub-header" data-page-node-id="34ZDtJhEbkC3SCgAQ87WFD"><span data-page-node-id="HAJY5p5cyIBNkFSmHDcrqO">宠物饰品</span></div>
+<img class="step-img" src="art/pet_tutorial/sssp.png" alt="" loading="lazy" data-page-node-id="KEi6VpxXEVF2UH7rp7Hm7H">
+</div>
+<div class="zb-col" data-page-node-id="3j2bhj2JxpaLQI30SjOKDy">
+<div class="sub-header" data-page-node-id="opvNtRxb6Ok7p6PaE5FVcO"><span data-page-node-id="W93EKrGC2U43hcfYPdi762">宠物护符</span></div>
+<img class="step-img" src="art/pet_tutorial/image121.png" alt="" loading="lazy" data-page-node-id="AXYpI4Rp5jK5CEiWGaUDg9">
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="section" id="sec-zhongzhu" data-page-node-id="eUThwdCNxlFwd5B4AbKSre">
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false" data-page-node-id="mlXWBnbADCGdyu8rlXS3oF">
+<span data-page-node-id="gY4W4oKkTBBSbqG4MBE60C">装备重铸</span>
+<button type="button" class="hs-expand-btn" data-page-node-id="SyOxk1DGQ1qHQj4n76pJIh">展开 ∨</button>
+</div>
+<div class="hs-collapsible" data-page-node-id="S2qRdO6qsyHRuTC7AJ9PZI">
+<div class="hs-collapsible-inner" data-page-node-id="qkZADhCt5ZUWjExDxFyAdL">
+<li data-page-node-id="DGcsFGPMSul0jgrZ9H10OU">消耗一定量的稀土可以重铸宠物装备。</li>
+<li data-page-node-id="JZxF6ciBn82BuCMkH5nz8E">已经装备的宠物装备也可以重铸。</li>
+<li data-page-node-id="ptW0GHfeByh9aF2zbTL5Z0">宠物装备重铸所附加的属性上限与该宠物装备的基础属性一致。</li>
+<li data-page-node-id="xSKLotPZi9mh3ZPC9gYukz">在宠物的装备饰品界面更换重铸后的宠物装备时 ，会返还一定的稀土数 ，重铸后的属性加成越高 ，返还的稀土数量越多。</li>
+<li data-page-node-id="7ZjcfHjJGG7rqwNOdrlJnZ">当宠物放生、被用于参与化生、被用于飞升消耗、被用于抽取外形消耗时 ，会根据该宠物所佩戴的宠物装备的重铸属性返还一定量的稀土</li>
+<li data-page-node-id="a6ccnU08UDMyCX8JojU9kX">重铸后的属性加成越高 ，返还的稀土数量越多。</li>
+<li data-page-node-id="8L3fRwdsQiXvHGxDGAMGGT">重铸的属性不计入宠物化丹属性。</li>
+<img class="step-img" src="art/pet_tutorial/zbcz.webp" alt="" loading="lazy" data-page-node-id="DXjUWJDlaVbpNT0d1dH5ss">
+</div>
+</div>
+</div>
+
+<div class="section" id="sec-neidan" data-page-node-id="zYK6mlFHz9ftUU9HDQDpBz">
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false" data-page-node-id="mj6LT1en3aqCCnfbZ7iYDf">
+<span data-page-node-id="kE7SOkQgwwuXjQjbUR3oJN">宠物内丹</span>
+<button type="button" class="hs-expand-btn" data-page-node-id="H2FsG9OKtpPnfGigEd3bQo">展开 ∨</button>
+</div>
+<div class="hs-collapsible" data-page-node-id="OG1ZIca8lzACeVJsTMjLzM">
+<div class="hs-collapsible-inner" data-page-node-id="1VaztCUJMdHnUPMpK1N4EW">
+<li data-page-node-id="4cUx08qfEVCi18DawAcnvb">每个镶嵌位可以镶嵌一颗金丹</li>
+<li data-page-node-id="RhKEj0rR6gq4hGiKVxhTAH">人阙只能镶嵌人 ·金丹（对应变异宠飞升后）</li>
+<li data-page-node-id="8Nf7ORe1s6nQ7IYYeKV8YH">地阙只能镶嵌地 ·金丹（对应魔兽宠飞升后）</li>
+<li data-page-node-id="R3CJChbEJQfkH39IG5CqhO">天阙只能镶嵌天 ·金丹（对应神兽宠飞升后）</li>
+<img class="step-img" src="art/pet_tutorial/image124.png" alt="" loading="lazy" data-page-node-id="AaVxB8tQly7mHNTJ2bhLKI">
+<li data-page-node-id="cWDe3DBhWBPRHm7r8c1Lww">达到 95 级开启内丹默认解锁神阙 1 号位</li>
+<li data-page-node-id="FilDSb9P0iWNNjV17GJkzq">达到 104 级时解锁神阙 2 号位</li>
+<li data-page-node-id="LHDOIH1cwOHui3eAd6RBV1">达到 140 级时解锁神阙 3 号位</li>
+<img class="step-img" src="art/pet_tutorial/nd1.webp" alt="" loading="lazy" data-page-node-id="zPH81QPoSjMfTD9ppUqtyU">
+<li data-page-node-id="rBIShiJViyEoLbwCV1s8H2">镶嵌金丹后，激活镶嵌位的效果</li>
+<li data-page-node-id="mvCj4T8I2eYlEncdULo20k">1号位：提升物攻、法攻</li>
+<li data-page-node-id="6JDUqtTJjcIRRLGzPHJL03">2号位：提升气血、物防</li>
+<li data-page-node-id="UYWyRDgk6iLeBwzjYzpVZf">3号位：提升速度、法防</li>
+<img class="step-img" src="art/pet_tutorial/nd2.webp" alt="" loading="lazy" data-page-node-id="3Bh0DGEFRlziwOGXRhuAvE">
+<li data-page-node-id="JKZScjmsrNiwRBJAsVysOJ">分解内丹得到丹魂和丹魄</li>
+<li data-page-node-id="c6uE1r9A8SnCOnYJABS6G8">消耗丹魄升级镶嵌位 ，可以提升神阙效果</li>
+<li data-page-node-id="UCnsQLQaEn4LpGWk26bpUj">镶嵌位等级达到当前阶数的等级上限 ，需要消耗丹魂升阶（满级 35 级 ，30 级的时候不用进阶 ，1-25 级每 5 级进阶一次）</li>
+<li data-page-node-id="eZl5LNlDmQvlmBZePnclFi">内丹属性等于各神阙镶嵌效果的总和</li>
+<img class="step-img" src="art/pet_tutorial/image126.png" alt="" loading="lazy" data-page-node-id="WG7TLRe0jBiXCFj9JKIfRc">
+<li data-page-node-id="f5EQ5DbMe3gPbEjrchqezB">宠物化丹后将消失化作一个新道具，进入金丹包裹</li>
+<li data-page-node-id="0bzOMX8QjeV4Ehkk8OTge4">参战、跟随、宠物防御小队中的宠物 ，无法化丹；镶嵌了金丹的宠物 ，无法化丹</li>
+<li data-page-node-id="CCxHlFSu0e7pGbl19FybnH">金丹属性与原宠物的属性有关。（不包含头盔重置属性、项圈重置属性、炼魂、印记加成）</li>
+<img class="step-img" src="art/pet_tutorial/image129.png" alt="" loading="lazy" data-page-node-id="erzKk4i0BEimgLwegGWtyY">
+<li data-page-node-id="uUTpsnKBqPl5JjOMPx9UeN">化丹后可以花费金币将宠物还魂</li>
+<li data-page-node-id="YR5xhHzv5PGSMH0mAGSmGv">大家前期培养的时候能用就用 ，有资源的时候再将宠物还魂 ，在进行提升</li>
+<img class="step-img" src="art/pet_tutorial/image130.png" alt="" loading="lazy" data-page-node-id="tMzsuZ1mnzFnRZcfcMpZqu">
+<li data-page-node-id="ROcuLY1OG5G4tzYKTxTK7u">金丹分解后无法再还魂</li>
+<img class="step-img" src="art/pet_tutorial/image131.png" alt="" loading="lazy" data-page-node-id="wiU0CKYLrk6O8pilX1Xb6h">
+<li data-page-node-id="8HeImWzIcnZtEeQ9Zb2Z4C">重铸的属性不计入宠物化丹属性</li>
+<li data-page-node-id="sSiCqprg7TOkCcWkXDx6I4">印记加成也不计入</li>
+<img class="step-img" src="art/pet_tutorial/image132.png" alt="" loading="lazy" data-page-node-id="I4FZPywSHw4rbjkGL9coS6">
+<li data-page-node-id="V4kKGyUCn8C6jCua5ToCKV">奥义技能也是跟子女一样的指定打书</li>
+<img class="step-img" src="art/pet_tutorial/image133.png" alt="" loading="lazy" data-page-node-id="bABV2bhLhTcu3z0btotbdg">
+<li data-page-node-id="qYpdIWaFDmTEvjbYrlaGv4">解锁条件：</li>
+<li data-page-node-id="2bMuHo5vo0KeUjK1FEN2Mg">根据三阙位置镶嵌个数来决定解锁格子数</li>
+<img class="step-img" src="art/pet_tutorial/image135.png" alt="" loading="lazy" data-page-node-id="jZCcXJtsY4gmNPaDxFD1A6">
+<li data-page-node-id="0iZHjbPGGN49bTEBIcNyMN">右侧展⽰的所有奥义书 ，均是未升阶的奥义书。不包括 1 阶或 2 阶的奥义书</li>
+<li data-page-node-id="HDKeiKIgo3IkcXufSx3uyh">您可单击右侧奥义书 ，添加到左侧 + 号中 ，直到左侧 + 号全部变为奥义书。作为升阶使用的消耗品 ，消耗后不可返还</li>
+<li data-page-node-id="GjIffoo0FT72ghSM3Zrfr5">奥义升阶后可以获得更加强力的技能 ，可点击右侧二阶奥义书预览效果</li>
+<li data-page-node-id="GUm7tle17wVOgeQABLpPBI">奥义升阶会额外给宠物带来潜力点 ，可在宠物潜力加点处查看</li>
+<li data-page-node-id="vMJaNmMNYFJvQ9I10W6Nqm">一阶奥义书会为您的宠物增加 20 点潜力点</li>
+<li data-page-node-id="JqPk85FE0AN7BGHkoqViRk">二阶奥义书会为您的宠物增加 50 点潜力点</li>
+<li data-page-node-id="17QxTaEF5WLFgViX2Lqr9M">当卸下奥义书时 ，潜力点会重置</li>
+<li data-page-node-id="pSqzD3NDFEF5htSAFZrTyi">从初级升 1 阶要消耗两本相同的奥义</li>
+<li data-page-node-id="DgbRy7oF8YrdCdYB832Cpj">1 阶升 2 阶需要消耗 5 本超级奥义 ，5 本奥义可以是同一个宠物的奥义 ，也可以是不同宠物的奥义 ，不可以是直接加属性的那种低级、高级奥义</li>
+<img class="step-img" src="art/pet_tutorial/image136.png" alt="" loading="lazy" data-page-node-id="RwZ55y9xxY1iVo5s62yeBs">
+  <div class="sub-header" data-page-node-id="M7XuMqonEiRTJ0YPbwkN2F"><span data-page-node-id="0eHcGyZpMF5x6i4hReEr2i">内丹培养</span></div>
+<li data-page-node-id="MPEmKJQGdiAHsWoFs7zERZ">1.  天地人阙一号位的宠物需要放置培养攻击力的宠物。你的宠物是物理那么这里放置的内丹就培养物理加点、物理项圈、物理星灵、打书忠心 + 蛮力 。你的宠物是法术这里放置的内丹就培养灵性加点、法攻项圈、法术星灵。</li>
+<li data-page-node-id="168Uk4FFMUwX56lhFXWdq4">2.  天地人阙二号位需要放置气血高物防高的内丹 ，同样你的内丹宠物培养的时候需要加点血量物防、带血量物防的头盔、带 + 血量物防的星灵、打书坚韧。</li>
+<li data-page-node-id="r419aR1LXrsThV9zgZwtrG">3.  天地人阙三号位需要放置速度快法防高的宠物 ，这里的内丹宠物培养的时候加点可以选择十敏捷、带速度项圈、带法防头盔带法防和速度的星灵、打书固法</li>
+<img class="step-img" src="art/pet_tutorial/image139.png" alt="资质推荐" loading="lazy" data-page-node-id="TonalOLrUEC3RaQWj6V0ri">
+
+</div>
+</div>
+</div>
+
+<div class="section" id="sec-huyou" data-page-node-id="zmOMEpXLKWEdT4OD06fH5O">
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false" data-page-node-id="ptLeCAfeDa6yov5MExUhOc">
+<span data-page-node-id="tOx0ywLDQo12EapFhNDC0i">宠物护佑</span>
+<button type="button" class="hs-expand-btn" data-page-node-id="mVWjpLvAtaetlTMI4WWUHd">展开 ∨</button>
+</div>
+<div class="hs-collapsible" data-page-node-id="icPRawibGrPIpm6LJFOkGL">
+<div class="hs-collapsible-inner" data-page-node-id="fEDFyULGv0eV5ybCwY6V6f">
+<li data-page-node-id="KEBMONTwQ1jRZr3YO5PBSe">圣兽护佑玩法是在战斗中，达到指定回合后，可以召唤一只圣兽作为护佑对象，给予角色大幅度的加成。(圣兽即已经飞升的神兽）</li>
+<li data-page-node-id="AGTBOS2vjih4CplmQvlQ7S">限制条件 1:当前正在上阵的神兽宠物，无法进行圣兽护佑。</li>
+<li data-page-node-id="CVrUSt4RcEqp5fGnn6lQqy">限制条件 2: 该场次战斗已经使用过神兽宠物 ，无法进行圣兽护佑。(无论这个神兽是战死 ，还是被替换)。</li>
+<li data-page-node-id="nTS1wxWln1V9awjfQ61Gph">限制条件 3: 相对的 ，正在上阵或已经上阵过的护佑圣兽 ，无法作为神兽宠物进行召唤</li>
+<li data-page-node-id="3EfUb3P9kKBQlM44qOltrV">圣兽护佑的持续回合根据神兽宠物的阶级决定 ，阶级越高 ，护佑持续回合数越多。本阶继承下阶继承</li>
+<li data-page-node-id="oIKX71GIH7IGnuKtLvCslm">圣兽护佑结束后 ，护佑功能进入冷却期 ，冷却期间内 ，无法使用护佑功能 ，冷却期为 3 回合。</li>
+<li data-page-node-id="3261coX9KCtC4bkb5nroxp">属性继承规则 :</li>
+<li data-page-node-id="WVDRMJoA7wIk0cGRT5QpbV">当前使用护佑的圣兽属性会部分继承到人物身上。气血将以护盾的形式作为继承。</li>
+<li data-page-node-id="o1QZWKo1WEbDXYO1CEyRCD">神兽宠物阶段越高 ，继承的属性越多。护佑结束后 ，继承加成的属性消失。</li>
+<img class="step-img" src="art/pet_tutorial/image142.webp" alt="" loading="lazy" data-page-node-id="XjRgmqP56EOkBFMya1BWTz">
+<li data-page-node-id="T0V8iZ7ruB6F4K95lOWiCR">被动技能规则 :</li>
+<li data-page-node-id="PtNNKAa9CQncDVmWQLhAkI">根据当前神兽宠物所学习的技能 ，会有概率继承到人物身上。护佑回合结束后 ，效果消失。（可同时继承多个被动技能）</li>
+<li data-page-node-id="Nf5uYjguKPzSjbAc4FH5s8">有部分技能不能够被继承，且继承后的技能效果也会与原来神兽宠物技能效果的有所不同。具体可以查看被动技能继承图鉴。</li>
+<img class="step-img" src="art/pet_tutorial/image144.png" alt="" loading="lazy" data-page-node-id="X4iVWeQAgrfFhGR1g1fgv3">
+<li data-page-node-id="DP4Vl9qsJdRqnnQDMvPLdY">专属技能规则</li>
+<li data-page-node-id="4p0sq7PPtJiTywTUSjJdX1">每一只护佑圣兽都有一个专属的被动技能。护佑回合结束后 ，效果消失</li>
+<li data-page-node-id="rQkcNkD3I7Yqxsm5NJrrFw">专属技能会在人物释放技能或者攻击时作为被动生效。</li>
+<img class="step-img" src="art/pet_tutorial/lh1.webp" alt="" loading="lazy" data-page-node-id="D4JARKqhdhMYZzC8uY6Hvj">
+<li data-page-node-id="VcPs0JxdjyVrNnydOGwZ6Y">用来调整护佑宠物在战斗中的排序顺序</li>
+<img class="step-img" src="art/pet_tutorial/image145.png" alt="" loading="lazy" data-page-node-id="tXBEThwLb5kB1i7Q3b6ihN">
+<li data-page-node-id="UEg3tBc2PhBcgTtYDDKtqN">在特定的竞技活动中可以使用护佑</li>
+<li data-page-node-id="qDhvkhMyqWQHIUabolDOIO">战斗开始后第 3 回合可召唤护佑</li>
+<li data-page-node-id="t0ueBFmGWdFWDEdxeqZmB2">冷却 10 回合 ，下次召唤是第 13 回合</li>
+<li data-page-node-id="eu3uHiWgonfQFURZuXeHBz">召唤护佑不耽误人物 ，宠物出手机会</li>
+<img class="step-img" src="art/pet_tutorial/lh2.webp" alt="" loading="lazy" data-page-node-id="BfHMRdn3OwgtOzNEVhrCwi">
+</div>
+</div>
+</div>
+
+<div class="section" id="sec-huyoujineng" data-page-node-id="YSKsoztbNz5inccDKmpg3V">
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false" data-page-node-id="GLYFllCZPAFzetSx0SQkbD">
+<span data-page-node-id="doGUba29lgmxPSjLHTt4ob">护佑技能</span>
+<button type="button" class="hs-expand-btn" data-page-node-id="HiNG5b3ePgzuQjipz54Yxf">展开 ∨</button>
+</div>
+<div class="hs-collapsible" data-page-node-id="WvdZ29u4gE6IOsG4NXGelb">
+<div class="hs-collapsible-inner" data-page-node-id="orX7Uks73GVAEUxka7SWB6">
+<div class="table-wrap" data-page-node-id="IjgrGkP3Ix5P51LM61j2cd"><table data-page-node-id="qCTpNvpyBoshGBWfOJEAaY">
+<tr data-page-node-id="KTNHSKq0xBOFWZHz3OHcYD">
+<td data-page-node-id="Z2yQBD6cF2TDDnOhWoRlxw">超级金刚 ·佑</td>
+<td data-page-node-id="jm2epZXEB353jkombHYvy6">物理伤害结果提升 5%。</td>
+</tr>
+<tr data-page-node-id="sxlzdflQgToFpzwiAudyA3">
+<td data-page-node-id="QPpACmtb6Yx3SrJvzqyyay">超级重击 ·佑</td>
+<td data-page-node-id="UAKs1DUja5aNhEF0TDvKjb">物理暴击概率增加 2%。</td>
+</tr>
+<tr data-page-node-id="XREYSbWAcvL3RaDcDokAWB">
+<td data-page-node-id="g9XvKs8sZVneKvqsXCs3Ae">超级蛮力 ·佑</td>
+<td data-page-node-id="tU0BFhLgjOqUrgkTaqgzgo">增加自身等级 *0.6 的攻击力。</td>
+</tr>
+<tr data-page-node-id="4MeLszxcGWBdPB79SzmMqp">
+<td data-page-node-id="3hBq4583qdGO20yY0hi5NY">超级技巧 ·佑</td>
+<td data-page-node-id="vqnzTCjWjcHJdQIemcFAoa">物理和法术反击伤害提升10%</td>
+</tr>
+<tr data-page-node-id="A9DgGsWw8jk2x5Y6dQG5f7">
+<td data-page-node-id="XZkzEPBlrJmVYPZaaN80xk">超级偷袭 ·佑</td>
+<td data-page-node-id="rNY3Tt4wHubFeAwahOXEZF">物理攻击时忽视对方 5% 的物理防御。</td>
+</tr>
+<tr data-page-node-id="TpjlH3MoQ00vk9BPJNw7o1">
+<td data-page-node-id="oxav7wARj1J8cStEjAxHYI">超级致命 ·佑</td>
+<td data-page-node-id="zIMde4hJUjUq4QLCga9JzQ">物理暴击伤害提高 10%。</td>
+</tr>
+<tr data-page-node-id="K6FcVNrVchgBnfcTpQa12a">
+<td data-page-node-id="BsVHGCwSWBHYDs0GvDS0QC">超级怒火 ·佑</td>
+<td data-page-node-id="zDkV3mEOEZ8dUpwQLQgrNY">法术暴击概率增加 2%。</td>
+</tr>
+<tr data-page-node-id="xv4qLNNrtNT9N06IODoWom">
+<td data-page-node-id="uguZTLUJBtY9UkGcGQh5dq">超级剧烈 ·佑</td>
+<td data-page-node-id="jO5TlkQC2TjF6nLmOnnqrI">法术波动范围增加 5%</td>
+</tr>
+<tr data-page-node-id="EBVBcPUboRloMcO21o1siW">
+<td data-page-node-id="J5CjGLHFkQpf448TuN0XAa">超级法伤 ·佑</td>
+<td data-page-node-id="mC6HclqTAx8ZX7bBpGzyth">法术伤害结果提升 5%。</td>
+</tr>
+<tr data-page-node-id="4oF9lLK8xEuhTW5jdlXkyh">
+<td data-page-node-id="Fle82yWxTyeNrtn85Bc0Zo">超级法穿 ·佑</td>
+<td data-page-node-id="d2wJFjcdzlwuOyjCzRTSAE">法术攻击时忽视对方 5% 的法术防御。</td>
+</tr>
+<tr data-page-node-id="ag50ySCjp6NDcAKCYixFW2">
+<td data-page-node-id="mF2OntKdjCPniN53cg260m">超级冥思 ·佑</td>
+<td data-page-node-id="YQwktuSgFrhPZ0S7FKEtPM">战斗中 ，每回合结束时恢复等级 *2 点法力。</td>
+</tr>
+<tr data-page-node-id="Qn1aLcZTiL9QRCYb2vR4nL">
+<td data-page-node-id="ARtj86QVAKd3xEBvCuQHCD">超级律令 ·佑</td>
+<td data-page-node-id="gpSgUKrByo08Gd6uRpYRR3">使用技能时所消耗的法力减少 20%。</td>
+</tr>
+<tr data-page-node-id="5Vb5Mwx1D4odhm3Cqe1LxG">
+<td data-page-node-id="Z5zCddRJPVTslyPq61AMUv">超级吸血 ·佑</td>
+<td data-page-node-id="Z2RBl8AdDOp04RxS3bpNG3">物理攻击可吸取对方所掉气血的10% ，对拥有鬼魅技能的单位无效。</td>
+</tr>
+<tr data-page-node-id="YcVQm1cfHUdaAcpdXeIPl2">
+<td data-page-node-id="2eThHNUJjXSMAcAHIPRCBR">超级再生 ·佑</td>
+<td data-page-node-id="Mad5kzoAH0CWbye5x4m0zC">战斗中 ，回合初恢复等级 *3 的气血。</td>
+</tr>
+<tr data-page-node-id="00hD4HinQExgrPOokArKJF">
+<td data-page-node-id="iCinSBlRYeTlfid8XGCaPR">超级招架 ·佑</td>
+<td data-page-node-id="tdDH5liUP7LhPfeOa4bFjL">受到物理伤害时 ，有 30% 概率减免 10% 的伤害结果</td>
+</tr>
+<tr data-page-node-id="FkQ3clcoFphxQLntXfWXLW">
+<td data-page-node-id="Gpk8RLrzFhIqHCVu2fI27b">超级复仇 ·佑</td>
+<td data-page-node-id="9neTmGjMlvX9VaHkfXFKOa">受到物理攻击 5% 几率进行反击 ，伤害为正常伤害的100%。</td>
+</tr>
+<tr data-page-node-id="UGwhCHdqOC3qk5dlg6iqy5">
+<td data-page-node-id="dsg896cM91HApwXQNJKjWj">超级魔反 ·佑</td>
+<td data-page-node-id="k9cnqpATQj3HpQQVC4guNH">受到物理攻击 5% 几率进行魔法反击 ，伤害为正常伤害的100%。</td>
+</tr>
+<tr data-page-node-id="8AHA4GAD3UDEPiGg9vC5vV">
+<td data-page-node-id="b90HJn2kclbAWEqdCt5jp3">超级抗拒 ·佑</td>
+<td data-page-node-id="9wALkmVtFnKdRiFdR5691U">5% 概率使自身受到的法术伤害变为1。</td>
+</tr>
+<tr data-page-node-id="5WLkDM2fkx8tn128fAVi4q">
+<td data-page-node-id="fIbqFUF43T7t6hC9P7sKGN">超级铁壁 ·佑</td>
+<td data-page-node-id="AGa9fxUBeN2vwW69MACSPl">5% 概率使自身受到的物理伤害变为1。</td>
+</tr>
+<tr data-page-node-id="sqzaVQgugKpCdc9ZcCkRnH">
+<td data-page-node-id="OXNm7FlV1calDHB1FGQQbi">超级坚韧 ·佑</td>
+<td data-page-node-id="LENh3kAT0P7XgTzUm9gHwF">提升等级 *3 的物理防御。</td>
+</tr>
+<tr data-page-node-id="gZVxLtkEzXCMCBUPd7yWac">
+<td data-page-node-id="8n8FtjYMftRWoSgrtmx426">超级固法 ·佑</td>
+<td data-page-node-id="4skJH9idVNiABZaQI53kCI">提升等级 *3 的法术防御。</td>
+</tr>
+<tr data-page-node-id="hHCgB5Zs2UAEqF1ArrpfZK">
+<td data-page-node-id="UlFJJRnrL3cj9TH4fRYH6h">超级幸运 ·佑</td>
+<td data-page-node-id="5RNknDawFTWkUiFBBgQn8V">法术躲避增加 5%</td>
+</tr>
+<tr data-page-node-id="F0BjEmHFF2NQd3KkWjZjoy">
+<td data-page-node-id="a5504kGgxVK8LGUvXvC0Um">超级飞行 ·佑</td>
+<td data-page-node-id="lrNJOPjbF3DNPwmUSlZGvK">物理躲避增加 5% ，物理命中增加 5%</td>
+</tr>
+<tr data-page-node-id="b3ghnnNchPBxTEsX0kzHs8">
+<td data-page-node-id="JJ1vT6UOlUddKT9Qutb8ZO">超级金睛 ·佑</td>
+<td data-page-node-id="vI8LC6GqqyHNeZoXSwvauL">对隐身单位的伤害提高 20%</td>
+</tr>
+<tr data-page-node-id="fx5x6nJxfPimwm7zOUJCgk">
+<td data-page-node-id="2skqVUHhB1ylZ7zPDz0KY8">超级持久 ·佑</td>
+<td data-page-node-id="v6rQdsNc1QXKZPi9jao8b9">受到的增益状态持续回合数 +1</td>
+</tr>
+<tr data-page-node-id="EwtwBORbmyBTdQYzN7ZvH0">
+<td data-page-node-id="Lv7seWdSU4GkOQAB84gKBM">超级毒药 ·佑</td>
+<td data-page-node-id="SlAZzkolRKzkocRBgqRDO7">物理或法术攻击时 ，2% 几率使目标 5 回合内中毒。</td>
+</tr>
+<tr data-page-node-id="rxvjGPnCPTkQDx0DAoC0fN">
+<td data-page-node-id="yfucnQHlRqCHUgvk6uAH88">超级气势 ·佑</td>
+<td data-page-node-id="bajI3l8q9a25GnH7032QOA">出战前 2 回合物理伤害结果增加10%。</td>
+</tr>
+<tr data-page-node-id="N7d4bV7eEAyFk1xHKxJWYM">
+<td data-page-node-id="VJlhoIrDE6uRbX27L6V6fX">超级震慑 ·佑</td>
+<td data-page-node-id="JguttA8CpG1aJot0OWiMd1">出战前 2 回合法术伤害结果增加10%。</td>
+</tr>
+<tr data-page-node-id="gZK7VvxKrdbC194NhrgYV8">
+<td data-page-node-id="QV6JiYCZIOXkk10GQq0dYD">超级精准 ·佑</td>
+<td data-page-node-id="jcCvMVJaNYjF5o485dYvPA">对拥有飞行类、迅捷类技能的目标伤害结果增加10%</td>
+</tr>
+<tr data-page-node-id="0VIGBJ8PloE7mvCqeJY6e1">
+<td data-page-node-id="YycFclnExp3mCP8d1FLdae">超级冰霜 ·佑</td>
+<td data-page-node-id="bD0ez3DLqml2SBYJKFXnX0">攻击命中时有 2% 概率降低目标速度 6 回合 ，该效果不能叠加。</td>
+</tr>
+<tr data-page-node-id="eCGSI4TQ3jqpP8gNyTCDep">
+<td data-page-node-id="bwMgFKFZQJpt4aFRwobN01">超级光明 ·佑</td>
+<td data-page-node-id="8pHDeFqmDQ5Dc1lZKNc2rH">受到治疗 ，提高治疗效果 10%。</td>
+</tr>
+<tr data-page-node-id="6W776YR9FTcv3QjoAyXU90">
+<td data-page-node-id="BhlhjYJ2I401Tv3ZesvnXM">超级破防 ·佑</td>
+<td data-page-node-id="UgDEfoj7KLXH1daQGgezcJ">攻击命中时有 2% 概率降低目标物理防御 6 回合 ，该效果不能叠加。</td>
+</tr>
+<tr data-page-node-id="sI0GUTMAD4OLbi6vFTmJnu">
+<td data-page-node-id="70zqhuPp37hWDSCBOdU5RF">超级丧胆 ·佑</td>
+<td data-page-node-id="ae2ByahFkaMCcI5FaHLR3Y">攻击命中时有 2% 概率降低目标物理攻击 6 回合 ，该效果不能叠加。</td>
+</tr>
+<tr data-page-node-id="dxlDM6a1sP7PMbh8VToL2Q">
+<td data-page-node-id="s1TXnksBCfYOG7ttBGFNrR">超级迟钝 ·佑</td>
+<td data-page-node-id="NVBShUqfjpzqpuJ5jrPC9I">攻击命中时有 2% 概率降低目标物理闪避等级 6 回合 ，该效果不能叠加。</td>
+</tr>
+<tr data-page-node-id="zKa5Dzypsnqj4VTUfSGzzf">
+<td data-page-node-id="a1YHLrdcBtUoHPY0DDiGaQ">超级断筋 ·佑</td>
+<td data-page-node-id="7pJ3KixUtdGBnCHb60TciR">攻击命中时有 2% 概率降低目标速度 6 回合 ，该效果不能叠加。</td>
+</tr>
+<tr data-page-node-id="3goEFzJCsSLhwpeKwNl4cX">
+<td data-page-node-id="A89O1hiDS11LOk3tB8KaKP">超级涣神 ·佑</td>
+<td data-page-node-id="pyainMc47LsziAb4NEabag">攻击命中时有 2% 概率降低目标法术防御 6 回合 ，该效果不能叠加。</td>
+</tr>
+<tr data-page-node-id="8ByyLp96old4cYEdJ6hyLM">
+<td data-page-node-id="ZFzhQoAs7HmZgz111AqsFb">超级碎灵 ·佑</td>
+<td data-page-node-id="3ajhCEXbvQTqJ7YZDrakV7">攻击命中时有 2% 概率降低目标法术攻击 6 回合 ，该效果不能叠加。</td>
+</tr>
+<tr data-page-node-id="yaFmPsQJwKFJ5EYOxNfHEP">
+<td data-page-node-id="xZPDYsoK3qyw8RwPqDI7PB">超级灭心 ·佑</td>
+<td data-page-node-id="cDdxZqEtGqlwEF8AvD9oHt">攻击命中时有 2% 概率降低目标封印命中等级 6 回合 ，该效果不能叠加。</td>
+</tr>
+<tr data-page-node-id="H75LCHwghSi6eAsuUgNzX9">
+<td data-page-node-id="LLSJwukw5OOFXnwXsJZdCE">超级毁镜 ·佑</td>
+<td data-page-node-id="3c807twFXbEtdlmBnrxugH">攻击命中时有 2% 概率降低目标封印抗性 6 回合 ，该效果不能叠加。</td>
+</tr>
+<tr data-page-node-id="AyS2fgzkEF7M7l4Cp5ADHa">
+<td data-page-node-id="uRfS2YyXeqnh36Rx3vRFJC">超级迟缓 ·佑</td>
+<td data-page-node-id="hcB7qmLTUiGXbcL7fquuty">减少自身速度的10%。</td>
+</tr>
+</table></div>
+<div class="table-wrap" data-page-node-id="O1WOurRhfsTAWCPJgY71bt"><table data-page-node-id="HQg3ANYCTSfB4kJQgX3Mvi">
+<tr data-page-node-id="LmTtHIDGgZNIRGFKuErvS6">
+<td data-page-node-id="Ta7sLYsYXepFZ8W8fb31r0">圣兽护佑</td>
+<td data-page-node-id="cf0kVaM104GcGUcngTMsVF">为角色增加护佑圣兽 2% 的气血护盾 ，物理攻击 ，法术攻击 ，物理防御 ，法术防御 ，速度。</td>
+</tr>
+<tr data-page-node-id="6V6RHrX47urR2ppKpGmgCh">
+<td data-page-node-id="nI2Hr1p8twc4rk4fGrxB9p">圣兽护佑</td>
+<td data-page-node-id="QPEk98HBsilySkBEu7WGcg">为角色增加护佑圣兽 4% 的气血护盾 ，物理攻击 ，法术攻击 ，物理防御 ，法术防御 ，速度。</td>
+</tr>
+<tr data-page-node-id="LAtymWEGZrn26nzoSFDvHS">
+<td data-page-node-id="l2MXEzxXC657DBYnT6Mjos">圣兽护佑</td>
+<td data-page-node-id="EhvC5UJsjB0YOERV8BhJRg">为角色增加护佑圣兽 6% 的气血护盾 ，物理攻击 ，法术攻击 ，物理防御 ，法术防御 ，速度。</td>
+</tr>
+<tr data-page-node-id="QJnopdafU570RKSbugzGis">
+<td data-page-node-id="dZLgVvj2InYhPDcPNS3CTw">圣兽护佑</td>
+<td data-page-node-id="LMCKynmRoHELS9bipXOgVV">为角色增加护佑圣兽 8% 的气血护盾 ，物理攻击 ，法术攻击 ，物理防御 ，法术防御 ，速度。</td>
+</tr>
+<tr data-page-node-id="ijPH1CubCk084gyr8n24Ld">
+<td data-page-node-id="fWnLQrfmk1GW8Dol3rWJZV">圣兽护佑</td>
+<td data-page-node-id="OAO7GdQJqldRSdVInQm9df">为角色增加护佑圣兽 10% 的气血护盾 ，物理攻击 ，法术攻击 ，物理防御 ，法术防御 ，速度。</td>
+</tr>
+<tr data-page-node-id="X454cvKYuH7WNMAot7M7ir">
+<td data-page-node-id="fuO5j4xW8qv7kgmh9lyE7Y">圣兽护佑</td>
+<td data-page-node-id="sJOCNplGmyiwmboAu3Qc0J">为角色增加护佑圣兽 12% 的气血护盾 ，物理攻击 ，法术攻击 ，物理防御 ，法术防御 ，速度。</td>
+</tr>
+<tr data-page-node-id="nCL7YdhYi8Ai2RQ8AJFfSu">
+<td data-page-node-id="dpYwyKrKC1wqa8hlhUNLvu">圣兽护佑</td>
+<td data-page-node-id="QPRwLCEbdA4n60H3KsDnHZ">为角色增加护佑圣兽 14% 的气血护盾 ，物理攻击 ，法术攻击 ，物理防御 ，法术防御 ，速度。</td>
+</tr>
+</table></div>
+</div>
+</div>
+</div>
+
+<div class="section" id="sec-ultimate">
+<div class="sub-header hs-toggle-header" role="button" tabindex="0" aria-expanded="false">
+<span>终极技能</span>
+<button type="button" class="hs-expand-btn">展开 ∨</button>
+</div>
+<div class="hs-collapsible">
+<div class="hs-collapsible-inner"></div>
+</div>
 </div>
 
 <script>
@@ -7617,6 +7628,7 @@
       }
 
       detailBody.innerHTML = body;
+      if(overlay.parentNode !== document.body) document.body.appendChild(overlay);
       overlay.classList.add('show');
       var sbWidth = window.innerWidth - document.documentElement.clientWidth;
       document.documentElement.style.overflow = 'hidden';
@@ -7624,10 +7636,12 @@
     });
   });
 
+  var overlayHome = overlay.parentNode;
   function closeModal(){
     overlay.classList.remove('show');
     document.documentElement.style.overflow = '';
     document.body.style.paddingRight = '';
+    if(overlayHome && overlay.parentNode !== overlayHome) overlayHome.appendChild(overlay);
   }
 
   // Close detail - close button
@@ -7664,5 +7678,80 @@ document.addEventListener('cut',function(e){e.preventDefault();alert('禁止复�
 document.addEventListener('contextmenu',function(e){e.preventDefault();});
 </script>
 
+<script>if(window.self!==window.top){document.documentElement.classList.add("embedded");var _s=document.createElement("style");_s.textContent=".back-btn{display:none!important}";document.head.appendChild(_s);}</script><script>
+/* 手风琴转标签栏：与门派页 sect-tab 同款视觉 */
+(function(){
+  var hs=[].slice.call(document.querySelectorAll('.hs-toggle-header'));
+  if(!hs.length) return;
+  var st=document.createElement('style');
+  st.textContent='.wtab-bar{display:flex;gap:8px;overflow-x:auto;padding:6px 2px 10px;scrollbar-width:none;-ms-overflow-style:none}.wtab-bar::-webkit-scrollbar{display:none}.wtab{flex:0 0 auto;display:inline-flex;align-items:center;background:#fff;border:1.5px solid rgba(22,19,15,.08);border-radius:999px;padding:8px 14px;font-size:.85rem;font-weight:800;color:#57534e;cursor:pointer;font-family:inherit;white-space:nowrap;transition:background .2s,color .2s,border-color .2s,box-shadow .2s}.wtab.active{background:#fff;border-color:#f59e0b;color:#c77b2e;box-shadow:0 0 0 2.5px rgba(245,158,11,.28),0 6px 14px rgba(245,158,11,.2)}@media(min-width:961px){.wtab{padding:9px 18px;font-size:.9rem}}';
+  document.head.appendChild(st);
+  var units=hs.map(function(h){
+    var nx=h.nextElementSibling;
+    var box=document.createElement('div');
+    h.parentNode.insertBefore(box,h);
+    box.appendChild(h);
+    if(nx) box.appendChild(nx);
+    h.style.display='none';
+    var c=box.querySelector('.hs-collapsible');
+    if(c) c.classList.add('open');
+    return box;
+  });
+  var ency=document.getElementById('pet-encyclopedia');
+  if(ency){
+    ency.setAttribute('data-wtab-label','宠物图鉴');
+    units.unshift(ency);
+  }
+  var bar=document.createElement('div'); bar.className='wtab-bar';
+  units.forEach(function(u,i){
+    var sp=u.querySelector('.hs-toggle-header span');
+    var b=document.createElement('button');
+    b.type='button'; b.className='wtab';
+    b.textContent=u.getAttribute('data-wtab-label')||(sp?sp.textContent.trim():('栏目'+(i+1)));
+    b.addEventListener('click',function(){
+      units.forEach(function(x,j){ x.style.display=(j===i)?'':'none'; });
+      [].forEach.call(bar.children,function(x){ x.classList.remove('active'); });
+      b.classList.add('active');
+      /* 只滚标签栏自身，避免波及页面滚动 */
+      (function(){
+        var edge=8,r=b.getBoundingClientRect(),h=bar.getBoundingClientRect();
+        if(r.left>=h.left+edge && r.right<=h.right-edge) return;
+        var tabLeft=r.left-h.left+bar.scrollLeft;
+        bar.scrollTo({left:Math.max(0,tabLeft-(bar.clientWidth-b.offsetWidth)/2),behavior:'auto'});
+      })();
+    });
+    bar.appendChild(b);
+  });
+  /* 鼠标左键按住拖动横向滚动 */
+  bar.style.cursor='grab';
+  var dragging=false,startX=0,startL=0,moved=0;
+  bar.addEventListener('mousedown',function(e){
+    dragging=true;moved=0;startX=e.pageX;startL=bar.scrollLeft;
+    bar.style.cursor='grabbing';
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove',function(e){
+    if(!dragging) return;
+    var dx=e.pageX-startX;
+    moved=Math.max(moved,Math.abs(dx));
+    bar.scrollLeft=startL-dx;
+  });
+  window.addEventListener('mouseup',function(){
+    if(!dragging) return;
+    dragging=false;bar.style.cursor='grab';
+    /* click 事件在 mouseup 后同步触发，异步复位避免拦截后续点击 */
+    setTimeout(function(){moved=0},0);
+  });
+  /* 拖动超过 6px 时拦截 click，避免松手误切标签 */
+  bar.addEventListener('click',function(e){
+    if(moved>6){e.stopPropagation();e.preventDefault();}
+  },true);
+  var anchor=units[0].closest('.section')||units[0];
+  var holder=document.createElement('div');
+  anchor.parentNode.insertBefore(holder,anchor);
+  holder.appendChild(bar);
+  units.forEach(function(u,i){ holder.appendChild(u); if(i) u.style.display='none'; });
+  bar.firstChild.classList.add('active');
+})();
+</script><script src="wiki-detail.js"></script>
 </body>
-</html>
