@@ -46,7 +46,10 @@
 
   function currentFile(){
     var path=location.pathname.split('/').pop()||'';
-    try{return decodeURIComponent(path)}catch(e){return path}
+    try{path=decodeURIComponent(path)}catch(e){}
+    if(path&&isWikiFile(path))return path;
+    if(path&&isWikiFile(path+'.html'))return path+'.html';
+    return path;
   }
   function fileFromHref(href){
     try{
@@ -652,7 +655,10 @@
     else openMenu();
   }
   function hardOpen(file,label,cat){
-    var url=new URL(wikiHref(file,label),location.href);
+    var last=location.pathname.split('/').pop()||'';
+    var clean=last!==''&&!/\.html$/i.test(last);
+    var target=clean?file.replace(/\.html$/i,''):file;
+    var url=new URL(wikiHref(target,label),location.href);
     if(cat) url.searchParams.set('cat',cat);
     location.assign(url.href);
   }
