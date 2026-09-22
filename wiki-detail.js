@@ -464,7 +464,7 @@
       var active=item.src===file?' is-active':'';
       return '<a class="wiki-side-btn'+active+'" href="'+item.src+'" title="'+item.name+'" aria-label="'+item.name+'"><img src="'+item.icon+'" alt=""></a>'
     }).join('');
-    document.body.appendChild(rail);
+    document.documentElement.appendChild(rail);
   }
   function addBottomNav(){
     if(document.querySelector('.wiki-bottom-nav'))return;
@@ -474,7 +474,7 @@
     nav.className='wiki-bottom-nav';
     nav.setAttribute('aria-label','主导航');
     nav.innerHTML='<a href="index.html?skipIntro=1"><img src="icons/nav_home.png" alt=""><span>首页</span></a><a href="sects.html"><img src="icons/nav_sects.png" alt=""><span>门派</span></a><a href="conv_8.html"><img src="icons/nav_support.png" alt=""><span>智能客服</span></a><a href="char_13.html"'+(wikiActive?' class="is-active"':'')+'><img src="icons/item_07358.png" alt=""><span>百科</span></a><a href="index.html?skipIntro=1#events"><img src="icons/nav_events.png" alt=""><span>活动</span></a>';
-    document.body.appendChild(nav);
+    document.documentElement.appendChild(nav);
   }
   function bindWikiNav(){
     if(wikiBound)return;
@@ -534,7 +534,14 @@
     box.addEventListener('click',close);
     document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
   }
+  function fitViewport(){
+    var vp=document.querySelector('meta[name="viewport"]');
+    if(!vp)return;
+    var c=vp.getAttribute('content')||'';
+    if(c.indexOf('viewport-fit')===-1)vp.setAttribute('content',c.replace(/\s+$/,'')+', viewport-fit=cover');
+  }
   function initWiki(){
+    fitViewport();
     document.body.classList.add('wiki-detail-page');
     enableImgZoom();
     ensureWatermark();
