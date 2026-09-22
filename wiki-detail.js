@@ -15,6 +15,27 @@
     {name:'子女部分', icon:'art/nav_children.webp',               src:'children.html'},
     {name:'便捷功能', icon:'art/convenient/智能战斗.webp',         src:'conv_1.html'}
   ];
+  var WIKI_CHAPTERS={
+    'char_13.html':['头像叠加','头衔叠加','称谓叠加'],
+    'char_2.html':['系统介绍','灵护介绍','灵护技能','点化介绍','升级消耗','升阶消耗','技能介绍'],
+    'char_3.html':['系统介绍','坐骑进阶','坐骑星命','坐骑守护','坐骑染色'],
+    'char_4.html':['系统介绍','百变精气','系别克制','变身抽取','变身分解','变身卡图鉴'],
+    'char_5.html':['系统介绍','成长介绍','星级介绍','套装介绍','龙晶介绍','灵器介绍','灵器特技'],
+    'char_7.html':['打造介绍','启灵介绍','套装效果','洗魂介绍','附魂介绍','特效介绍'],
+    'char_8.html':['修炼技能','生活技能','帮派技能'],
+    'char_10.html':['系统介绍','基础光华介绍'],
+    'char_11.html':['系统介绍','灵石介绍','灵石等级限制','灵石转换说明','成长属性介绍','灵石等级换算比例','各阶所需 1 级灵石数量'],
+    'pet.html':[{label:'宠物图鉴',kids:[{label:'神兽',cat:'shenshou'},{label:'魔兽',cat:'moshou'},{label:'变异',cat:'bianyi'}]},'宠物返生','宠物化生','碎片转换','宠物分解','宠物觉醒','宠物继承','宠物印记','宠物飞升','宠物星灵','宠物灵宝','宠物装备','装备重铸','宠物内丹','宠物护佑','护佑技能','终极技能'],
+    'companion.html':[{label:'仙侣图鉴',kids:[{label:'全部仙侣',cat:'ALL'},{label:'B级',cat:'B'},{label:'A级',cat:'A'},{label:'S级',cat:'S'},{label:'SS级',cat:'SS'}]},'仙侣寻缘','仙侣升星','仙侣神器','仙侣巡逻','仙侣结交','仙侣洞府','仙侣元神'],
+    'home.html':['系统介绍','房屋等级评分','风水值详情','风格家具评分','房屋统计'],
+    'children.html':['系统介绍','子女印记','子女守护','子女性格','子女门派技能','门派技能提升','子女装备提升','装备升阶消耗','子女装备属性重置','子女成长','子女资质','子女开格','子女秘籍'],
+    'conv_1.html':['智能战斗','智能组队','智能理包','门派转换','性别重生','调整速度']
+  };
+  var menuCard=null;
+  var menuOpen=false;
+  var menuLocked=false;
+  var menuLockY=0;
+  var pendingFocus=null;
   var htmlCache=Object.create(null);
   var htmlWait=Object.create(null);
   var wikiPages=Object.create(null);
@@ -328,7 +349,8 @@
     document.title=page.title||document.title;
     setDesc(page.description);
     document.body.className=page.bodyClass||'';
-    document.body.classList.add('wiki-detail-page','has-wiki-rail');
+    document.body.classList.add('wiki-detail-page','wiki-has-menu');
+    document.body.classList.remove('has-wiki-rail');
     applyFlatMode(isFlatFile(file));
     enableStyles(file);
     stage.appendChild(page.fragment);
@@ -356,7 +378,8 @@
     var desc=doc.querySelector('meta[name="description"]');
     if(desc)setDesc(desc.getAttribute('content'));
     document.body.className=doc.body.className||'';
-    document.body.classList.add('wiki-detail-page','has-wiki-rail');
+    document.body.classList.add('wiki-detail-page','wiki-has-menu');
+    document.body.classList.remove('has-wiki-rail');
     applyFlatMode(isFlatFile(file));
     var anchor=document.querySelector('link[href="wiki-detail.css"]')||document.getElementById('wiki-nosb');
     Array.from(doc.head.querySelectorAll('style,link[rel="stylesheet"]')).forEach(function(el){
@@ -452,19 +475,245 @@
     if(mark&&mark.nextSibling)document.body.insertBefore(stage,mark.nextSibling);
     else document.body.appendChild(stage)
   }
-  function addWikiRail(){
-    if(document.querySelector('.wiki-side-rail'))return;
-    var file=currentFile();
-    if(!isWikiFile(file))return;
-    document.body.classList.add('has-wiki-rail');
-    var rail=document.createElement('aside');
-    rail.className='wiki-side-rail';
-    rail.setAttribute('aria-label','百科分类');
-    rail.innerHTML=WIKI_ITEMS.map(function(item){
-      var active=item.src===file?' is-active':'';
-      return '<a class="wiki-side-btn'+active+'" href="'+item.src+'" title="'+item.name+'" aria-label="'+item.name+'"><img src="'+item.icon+'" alt=""></a>'
+  function chapterLabel(chapter){
+    return typeof chapter==='string'?chapter:(chapter&&chapter.label)||''
+  }
+  function wikiHref(file,label){
+    return label?file+'#'+encodeURIComponent(label):file
+  }
+  function buildMenuCard(){
+    if(menuCard)return menuCard;
+    var card=document.createElement('div');
+    card.id='wiki-menu-card';
+    card.className='wiki-menu-card';
+    card.setAttribute('role','dialog');
+    card.setAttribute('aria-label','百科目录');
+    card.setAttribute('aria-hidden','true');
+    var html=WIKI_ITEMS.map(function(item){
+      var chapters=WIKI_CHAPTERS[item.src]||[];
+      var links=chapters.map(function(chapter){
+        var label=chapterLabel(chapter);
+        var kids=chapter&&chapter.kids;
+        if(!kids){
+          return '<a href="'+wikiHref(item.src,label)+'" data-wiki-file="'+item.src+'" data-wiki-label="'+label+'">'+label+'</a>'
+        }
+        var kidHtml=kids.map(function(kid){
+          return '<a class="wiki-menu-kid" href="'+wikiHref(item.src,label)+'" data-wiki-file="'+item.src+'" data-wiki-label="'+label+'" data-wiki-cat="'+kid.cat+'">'+kid.label+'</a>'
+        }).join('');
+        return '<span class="wiki-menu-group"><a href="'+wikiHref(item.src,label)+'" data-wiki-file="'+item.src+'" data-wiki-label="'+label+'">'+label+'</a><span class="wiki-menu-kids">'+kidHtml+'</span></span>'
+      }).join('');
+      return '<section class="wiki-menu-block" data-file="'+item.src+'"><a class="wiki-menu-head" href="'+item.src+'" data-wiki-file="'+item.src+'"><img src="'+item.icon+'" alt="" draggable="false"><span>'+item.name+'</span></a><div class="wiki-menu-links">'+links+'</div></section>'
     }).join('');
-    document.documentElement.appendChild(rail);
+    card.innerHTML=html;
+    document.documentElement.appendChild(card);
+    card.addEventListener('click',function(event){
+      var link=event.target.closest&&event.target.closest('a[data-wiki-file]');
+      if(!link||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+      var file=link.getAttribute('data-wiki-file');
+      if(!isWikiFile(file))return;
+      event.preventDefault();
+      openChapter(file,link.getAttribute('data-wiki-label')||'',link.getAttribute('data-wiki-cat')||'');
+    });
+    card.addEventListener('pointerenter',function(event){
+      var link=event.target.closest&&event.target.closest('a[data-wiki-file]');
+      if(!link)return;
+      prefetchWiki(link.getAttribute('data-wiki-file'));
+    },true);
+    menuCard=card;
+    return card
+  }
+  function syncMenuState(file){
+    if(!menuCard)return;
+    file=file||currentFile();
+    var label=currentTabLabel();
+    var activeCat='';
+    var catBtn=document.querySelector('.ency-side-btn.active');
+    if(catBtn) activeCat=catBtn.getAttribute('data-cat')||'';
+    Array.from(menuCard.querySelectorAll('.wiki-menu-block')).forEach(function(block){
+      block.classList.toggle('is-current',block.getAttribute('data-file')===file);
+    });
+    Array.from(menuCard.querySelectorAll('a[data-wiki-file]')).forEach(function(link){
+      if(link.classList.contains('wiki-menu-head')){
+        link.classList.toggle('is-on',false);
+        return
+      }
+      var same=link.getAttribute('data-wiki-file')===file;
+      var lab=link.getAttribute('data-wiki-label')||'';
+      var cat=link.getAttribute('data-wiki-cat')||'';
+      var on=same&&!!lab&&lab===label&&(cat?cat===activeCat:!link.classList.contains('wiki-menu-kid'));
+      link.classList.toggle('is-on',on);
+    });
+  }
+  function currentTitle(){
+    return document.querySelector('#wiki-stage .page-title.wiki-title-art')||document.querySelector('.page-title.wiki-title-art')
+  }
+  function syncTitleA11y(){
+    var title=currentTitle();
+    if(!title)return;
+    var on=isWikiFile(currentFile());
+    if(!on){
+      title.removeAttribute('role');
+      title.removeAttribute('aria-expanded');
+      title.removeAttribute('aria-controls');
+      return
+    }
+    title.setAttribute('role','button');
+    title.tabIndex=0;
+    title.setAttribute('aria-expanded',menuOpen?'true':'false');
+    title.setAttribute('aria-controls','wiki-menu-card');
+    var name=((title.querySelector('h1')||{}).textContent||'百科').replace(/\s+/g,' ').trim();
+    title.setAttribute('aria-label',name+'，点击展开或收起百科目录');
+    if(!title.querySelector('.wiki-title-hint')){
+      var hint=document.createElement('p');
+      hint.className='wiki-title-hint';
+      hint.textContent='点击上方图片可自由切换其他介绍';
+      title.appendChild(hint);
+    }
+  }
+  function placeMenu(){
+    if(!menuCard)return;
+    var title=currentTitle();
+    var wrap=title&&title.closest('.wrap,.page-shell');
+    if(!title||!wrap)return;
+    var tr=title.getBoundingClientRect();
+    var wr=wrap.getBoundingClientRect();
+    if(!menuLocked&&(tr.bottom<8||tr.top>window.innerHeight-8)){
+      closeMenu(true);
+      return
+    }
+    var side=16;
+    var top=Math.round(tr.bottom+8);
+    var bottomGap=76;
+    var left=Math.round(wr.left+side);
+    var width=Math.round(wr.width-side*2);
+    if(left<8)left=8;
+    if(left+width>window.innerWidth-8)width=window.innerWidth-8-left;
+    menuCard.style.left=left+'px';
+    menuCard.style.width=Math.max(160,width)+'px';
+    menuCard.style.top=top+'px';
+    menuCard.style.maxHeight=Math.max(96,Math.round(window.innerHeight-top-bottomGap))+'px';
+  }
+  function lockPageScroll(){
+    if(menuLocked)return;
+    menuLockY=window.scrollY||document.documentElement.scrollTop||0;
+    var gap=window.innerWidth-document.documentElement.clientWidth;
+    document.documentElement.classList.add('wiki-menu-lock');
+    document.body.style.top=(-menuLockY)+'px';
+    if(gap>0)document.body.style.paddingRight=gap+'px';
+    menuLocked=true;
+  }
+  function unlockPageScroll(){
+    if(!menuLocked)return;
+    var y=menuLockY;
+    menuLocked=false;
+    document.documentElement.classList.remove('wiki-menu-lock');
+    document.body.style.top='';
+    document.body.style.paddingRight='';
+    var root=document.documentElement;
+    var prev=root.style.scrollBehavior;
+    root.style.scrollBehavior='auto';
+    window.scrollTo(0,y);
+    root.style.scrollBehavior=prev;
+  }
+  function openMenu(){
+    if(!isWikiFile(currentFile())||!currentTitle())return;
+    buildMenuCard();
+    menuOpen=true;
+    lockPageScroll();
+    syncMenuState();
+    placeMenu();
+    menuCard.setAttribute('aria-hidden','false');
+    syncTitleA11y();
+    requestAnimationFrame(function(){
+      if(!menuOpen||!menuCard)return;
+      menuCard.classList.add('is-open');
+      var current=menuCard.querySelector('.wiki-menu-block.is-current');
+      if(current) menuCard.scrollTop=Math.max(0,current.offsetTop-8);
+    });
+  }
+  function closeMenu(immediate){
+    var wasOpen=menuOpen;
+    menuOpen=false;
+    unlockPageScroll();
+    if(!menuCard||!wasOpen)return;
+    menuCard.classList.remove('is-open');
+    menuCard.setAttribute('aria-hidden','true');
+    syncTitleA11y();
+    if(immediate) menuCard.style.maxHeight='0px';
+  }
+  function toggleMenu(){
+    if(menuOpen) closeMenu();
+    else openMenu();
+  }
+  function openChapter(file,label,cat){
+    closeMenu();
+    if(!isWikiFile(file))return;
+    if(file===activeFile){
+      if(label){
+        var bar=document.querySelector('.wtab-bar,.wiki-tabs');
+        var btn=Array.from(bar?bar.querySelectorAll('.wtab,.wiki-tab'):[]).find(function(el){return tabLabelOf(el)===label});
+        if(btn&&!btn.classList.contains('active')&&!btn.classList.contains('is-active')) btn.click();
+        else setTabHash(label);
+      }
+      if(cat){
+        var side=document.querySelector('.ency-side-btn[data-cat="'+cat+'"]');
+        if(side) side.click();
+      }
+      syncMenuState();
+      window.scrollTo({top:0,behavior:'smooth'});
+      return
+    }
+    pendingFocus={label:label||'',cat:cat||''};
+    updateRailActive(file);
+    try{history.pushState({wiki:file},'',wikiHref(file,label))}catch(e){}
+    switchTo(file);
+  }
+  function bindWikiMenu(){
+    document.addEventListener('click',function(event){
+      if(!isWikiFile(currentFile()))return;
+      var title=event.target.closest&&event.target.closest('.page-title.wiki-title-art');
+      if(title){
+        event.preventDefault();
+        toggleMenu();
+        return
+      }
+      if(menuOpen&&menuCard&&!menuCard.contains(event.target)) closeMenu();
+    });
+    document.addEventListener('keydown',function(event){
+      if(menuOpen&&!event.target.closest('input,textarea')&&(event.key==='ArrowUp'||event.key==='ArrowDown'||event.key==='PageUp'||event.key==='PageDown'||event.key==='Home'||event.key==='End')){
+        if(!(menuCard&&menuCard.contains(event.target)))event.preventDefault();
+      }
+      if(event.key==='Escape'&&menuOpen){
+        closeMenu();
+        return
+      }
+      var title=event.target.closest&&event.target.closest('.page-title.wiki-title-art');
+      if(!title||!isWikiFile(currentFile()))return;
+      if(event.key==='Enter'||event.key===' '){
+        event.preventDefault();
+        toggleMenu();
+      }
+    });
+    function blockBackgroundScroll(event){
+      if(!menuOpen)return;
+      if(menuCard&&(event.target===menuCard||menuCard.contains(event.target)))return;
+      event.preventDefault();
+    }
+    document.addEventListener('wheel',blockBackgroundScroll,{passive:false});
+    document.addEventListener('touchmove',blockBackgroundScroll,{passive:false});
+    window.addEventListener('scroll',function(){if(menuOpen&&!menuLocked)placeMenu()},true);
+    window.addEventListener('resize',function(){if(menuOpen) placeMenu()});
+  }
+  function setupWikiMenu(){
+    var old=document.querySelector('.wiki-side-rail');
+    if(old&&old.parentNode) old.parentNode.removeChild(old);
+    document.body.classList.remove('has-wiki-rail');
+    if(!isWikiFile(currentFile()))return;
+    document.body.classList.add('wiki-has-menu');
+    buildMenuCard();
+    syncMenuState();
+    syncTitleA11y();
+    bindWikiMenu();
   }
   function addBottomNav(){
     if(document.querySelector('.wiki-bottom-nav'))return;
@@ -546,7 +795,7 @@
     enableImgZoom();
     ensureWatermark();
     wrapStage();
-    addWikiRail();
+    setupWikiMenu();
     addBottomNav();
     bindWikiNav();
     setupTabs();
